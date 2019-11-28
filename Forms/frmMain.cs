@@ -32,14 +32,20 @@ namespace QLDSV
             form.Show();
         }
 
-        private void barButtonItem1_ItemClick(object sender, DevExpress.XtraBars.ItemClickEventArgs e)
-        {
-            ShowMdiChildren(typeof(frmLop));
-        }
 
         private void frmMain_Load(object sender, EventArgs e)
         {
 
+        }
+
+        private void barButton_Lop_ItemClick(object sender, DevExpress.XtraBars.ItemClickEventArgs e)
+        {
+            ShowMdiChildren(typeof(frmLop));
+        }
+
+        private void barButtonItem_Thoat_ItemClick(object sender, DevExpress.XtraBars.ItemClickEventArgs e)
+        {
+            Close();
         }
     }
 }

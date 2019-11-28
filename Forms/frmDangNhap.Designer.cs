@@ -73,8 +73,10 @@
             // 
             // cmbKhoa
             // 
+            this.cmbKhoa.BackColor = System.Drawing.SystemColors.Info;
+            this.cmbKhoa.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.cmbKhoa.FormattingEnabled = true;
-            this.cmbKhoa.Location = new System.Drawing.Point(209, 32);
+            this.cmbKhoa.Location = new System.Drawing.Point(209, 33);
             this.cmbKhoa.Name = "cmbKhoa";
             this.cmbKhoa.Size = new System.Drawing.Size(329, 23);
             this.cmbKhoa.TabIndex = 0;
@@ -88,7 +90,7 @@
             this.btnThoat.TabIndex = 5;
             this.btnThoat.Text = "Thoát";
             this.btnThoat.UseVisualStyleBackColor = true;
-            this.btnThoat.Click += new System.EventHandler(this.button2_Click);
+            this.btnThoat.Click += new System.EventHandler(this.btnThoat_Click);
             // 
             // btnDangNhap
             // 
