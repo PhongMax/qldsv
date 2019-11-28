@@ -61,7 +61,6 @@
             this.colTENLOP = new DevExpress.XtraGrid.Columns.GridColumn();
             this.colMAKH = new DevExpress.XtraGrid.Columns.GridColumn();
             this.groupBox1 = new System.Windows.Forms.GroupBox();
-            this.pictureBox1 = new System.Windows.Forms.PictureBox();
             this.txtMaKhoa = new DevExpress.XtraEditors.TextEdit();
             this.txtTenLop = new DevExpress.XtraEditors.TextEdit();
             this.txtMaLop = new DevExpress.XtraEditors.TextEdit();
@@ -75,7 +74,6 @@
             ((System.ComponentModel.ISupportInitialize)(this.lOPGridControl)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.gridView1)).BeginInit();
             this.groupBox1.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.txtMaKhoa.Properties)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.txtTenLop.Properties)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.txtMaLop.Properties)).BeginInit();
@@ -93,7 +91,7 @@
             // tENLOPLabel
             // 
             tENLOPLabel.AutoSize = true;
-            tENLOPLabel.Location = new System.Drawing.Point(12, 53);
+            tENLOPLabel.Location = new System.Drawing.Point(12, 52);
             tENLOPLabel.Name = "tENLOPLabel";
             tENLOPLabel.Size = new System.Drawing.Size(55, 14);
             tENLOPLabel.TabIndex = 2;
@@ -102,7 +100,7 @@
             // mAKHLabel
             // 
             mAKHLabel.AutoSize = true;
-            mAKHLabel.Location = new System.Drawing.Point(18, 89);
+            mAKHLabel.Location = new System.Drawing.Point(18, 88);
             mAKHLabel.Name = "mAKHLabel";
             mAKHLabel.Size = new System.Drawing.Size(44, 14);
             mAKHLabel.TabIndex = 4;
@@ -225,7 +223,7 @@
             this.barDockControlTop.Dock = System.Windows.Forms.DockStyle.Top;
             this.barDockControlTop.Location = new System.Drawing.Point(0, 0);
             this.barDockControlTop.Manager = this.barManagerLop;
-            this.barDockControlTop.Size = new System.Drawing.Size(688, 24);
+            this.barDockControlTop.Size = new System.Drawing.Size(829, 24);
             // 
             // barDockControlBottom
             // 
@@ -233,7 +231,7 @@
             this.barDockControlBottom.Dock = System.Windows.Forms.DockStyle.Bottom;
             this.barDockControlBottom.Location = new System.Drawing.Point(0, 480);
             this.barDockControlBottom.Manager = this.barManagerLop;
-            this.barDockControlBottom.Size = new System.Drawing.Size(688, 23);
+            this.barDockControlBottom.Size = new System.Drawing.Size(829, 23);
             // 
             // barDockControlLeft
             // 
@@ -247,7 +245,7 @@
             // 
             this.barDockControlRight.CausesValidation = false;
             this.barDockControlRight.Dock = System.Windows.Forms.DockStyle.Right;
-            this.barDockControlRight.Location = new System.Drawing.Point(688, 24);
+            this.barDockControlRight.Location = new System.Drawing.Point(829, 24);
             this.barDockControlRight.Manager = this.barManagerLop;
             this.barDockControlRight.Size = new System.Drawing.Size(0, 456);
             // 
@@ -258,7 +256,7 @@
             this.panelBox.Dock = System.Windows.Forms.DockStyle.Top;
             this.panelBox.Location = new System.Drawing.Point(0, 24);
             this.panelBox.Name = "panelBox";
-            this.panelBox.Size = new System.Drawing.Size(688, 53);
+            this.panelBox.Size = new System.Drawing.Size(829, 53);
             this.panelBox.TabIndex = 4;
             // 
             // labelTenKhoa
@@ -313,7 +311,7 @@
             this.lOPGridControl.MainView = this.gridView1;
             this.lOPGridControl.MenuManager = this.barManagerLop;
             this.lOPGridControl.Name = "lOPGridControl";
-            this.lOPGridControl.Size = new System.Drawing.Size(688, 197);
+            this.lOPGridControl.Size = new System.Drawing.Size(829, 197);
             this.lOPGridControl.TabIndex = 15;
             this.lOPGridControl.ViewCollection.AddRange(new DevExpress.XtraGrid.Views.Base.BaseView[] {
             this.gridView1});
@@ -353,7 +351,6 @@
             // 
             // groupBox1
             // 
-            this.groupBox1.Controls.Add(this.pictureBox1);
             this.groupBox1.Controls.Add(mAKHLabel);
             this.groupBox1.Controls.Add(this.txtMaKhoa);
             this.groupBox1.Controls.Add(tENLOPLabel);
@@ -363,18 +360,9 @@
             this.groupBox1.Dock = System.Windows.Forms.DockStyle.Fill;
             this.groupBox1.Location = new System.Drawing.Point(0, 274);
             this.groupBox1.Name = "groupBox1";
-            this.groupBox1.Size = new System.Drawing.Size(688, 206);
+            this.groupBox1.Size = new System.Drawing.Size(829, 206);
             this.groupBox1.TabIndex = 16;
             this.groupBox1.TabStop = false;
-            // 
-            // pictureBox1
-            // 
-            this.pictureBox1.Image = global::QLDSV.Properties.Resources.create_login_128;
-            this.pictureBox1.Location = new System.Drawing.Point(583, 16);
-            this.pictureBox1.Name = "pictureBox1";
-            this.pictureBox1.Size = new System.Drawing.Size(93, 90);
-            this.pictureBox1.TabIndex = 6;
-            this.pictureBox1.TabStop = false;
             // 
             // txtMaKhoa
             // 
@@ -382,7 +370,7 @@
             this.txtMaKhoa.Location = new System.Drawing.Point(68, 86);
             this.txtMaKhoa.MenuManager = this.barManagerLop;
             this.txtMaKhoa.Name = "txtMaKhoa";
-            this.txtMaKhoa.Size = new System.Drawing.Size(329, 20);
+            this.txtMaKhoa.Size = new System.Drawing.Size(253, 20);
             this.txtMaKhoa.TabIndex = 5;
             // 
             // txtTenLop
@@ -391,7 +379,7 @@
             this.txtTenLop.Location = new System.Drawing.Point(68, 50);
             this.txtTenLop.MenuManager = this.barManagerLop;
             this.txtTenLop.Name = "txtTenLop";
-            this.txtTenLop.Size = new System.Drawing.Size(329, 20);
+            this.txtTenLop.Size = new System.Drawing.Size(253, 20);
             this.txtTenLop.TabIndex = 3;
             // 
             // txtMaLop
@@ -400,7 +388,7 @@
             this.txtMaLop.Location = new System.Drawing.Point(68, 13);
             this.txtMaLop.MenuManager = this.barManagerLop;
             this.txtMaLop.Name = "txtMaLop";
-            this.txtMaLop.Size = new System.Drawing.Size(329, 20);
+            this.txtMaLop.Size = new System.Drawing.Size(253, 20);
             this.txtMaLop.TabIndex = 1;
             // 
             // frmLop
@@ -408,7 +396,7 @@
             this.Appearance.Options.UseFont = true;
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 14F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(688, 503);
+            this.ClientSize = new System.Drawing.Size(829, 503);
             this.Controls.Add(this.groupBox1);
             this.Controls.Add(this.lOPGridControl);
             this.Controls.Add(this.panelBox);
@@ -430,7 +418,6 @@
             ((System.ComponentModel.ISupportInitialize)(this.gridView1)).EndInit();
             this.groupBox1.ResumeLayout(false);
             this.groupBox1.PerformLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.txtMaKhoa.Properties)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.txtTenLop.Properties)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.txtMaLop.Properties)).EndInit();
@@ -469,7 +456,6 @@
         private DevExpress.XtraGrid.Columns.GridColumn colMALOP;
         private DevExpress.XtraGrid.Columns.GridColumn colTENLOP;
         private DevExpress.XtraGrid.Columns.GridColumn colMAKH;
-        private System.Windows.Forms.PictureBox pictureBox1;
         private DevExpress.XtraEditors.TextEdit txtMaKhoa;
         private DevExpress.XtraEditors.TextEdit txtTenLop;
         private DevExpress.XtraEditors.TextEdit txtMaLop;

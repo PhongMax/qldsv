@@ -62,7 +62,21 @@ namespace QLDSV
         //biến dùng để chứa danh sách các phân mãnh, mà mình sẽ gọi cái viewDSPM bằng code
         // dùng để khi đi qua form nhân viên muốn hiện 2 chi nhánh lại thì chỉ cần chạy lấy lại dữ liệu và chỉ cần chạy 1 lần 
         public static BindingSource Bds_Dspm = new BindingSource(); //giu DSPM khi dang nhap
-        public static frmMain fr_Main;
+
+        // dùng để xử lý khi nhấn vào frm đăng nhập sẽ hiện thị frm Main
+        public static frmMain frmMain;
+        public static frmDangNhap FrmDangNhap;
+
+        // hàm test run này dùng để test các form, ko cần phải lần lượt đi vào form này rồi tới form kia mà test
+
+        static void TestRun()
+        {
+            //String testconn = "Data Source=TK13\\SERVER01;Initial Catalog=QLDSV;Persist Security Info=True;User ID=hongson;Password=123";
+            //Program.URL_Connect = testconn;
+            //Program.Conn = new SqlConnection(testconn);
+            //FormLop = new frmLop();
+            //Application.Run(FormLop);
+        }
 
         public static int KetNoi()
         {
@@ -95,7 +109,7 @@ namespace QLDSV
         // https://youtu.be/z8pgdIbtV3E?t=3233
         public static SqlDataReader ExecSqlDataReader(String strLenh)
         {
-            //SqlDataReader myReader;// replace by Myreader static of program
+            SqlDataReader myReader;
             SqlCommand sqlcmd = new SqlCommand(strLenh, Program.Conn);
 
             //xác định kiểu lệnh cho sqlcmd là kiểu text.
@@ -104,7 +118,7 @@ namespace QLDSV
             if (Program.Conn.State == ConnectionState.Closed) Program.Conn.Open();
             try
             {
-                MyReader = sqlcmd.ExecuteReader(); return MyReader;
+                myReader = sqlcmd.ExecuteReader(); return myReader;
             }
             catch (SqlException ex)
             {
@@ -116,7 +130,8 @@ namespace QLDSV
 
         // tải về cho phép xem xóa sửa ==> tốc độ tải chậm hơn cái ở trên
         // duyệt 2 chiều dưới lên
-        // form nhập liệu thì dùng datatable. 
+        // form nhập liệu thì dùng datatable.
+
         public static DataTable ExecSqlDataTable(String cmd)
         {
             DataTable dt = new DataTable();
@@ -135,9 +150,10 @@ namespace QLDSV
 
             BonusSkins.Register();
             SkinManager.EnableFormSkins();
-
-            Application.Run(new frmDangNhap());
-            Application.Run(new frmMain());
+           
+            //TestRun()
+            Program.FrmDangNhap = new frmDangNhap();
+            Application.Run(Program.FrmDangNhap);
 
         }
     }
