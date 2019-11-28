@@ -22,17 +22,60 @@ namespace QLDSV.Forms
         {
             this.Validate();
             this.bdsLOP.EndEdit();
-            this.tableAdapterManager.UpdateAll(this.dS);
+            this.tableAdapterManager.UpdateAll(this.DS);
 
         }
 
         private void frmLop_Load(object sender, EventArgs e)
         {
-            string URL_Connect = "Data Source=";
-            // TODO: This line of code loads data into the 'dS.LOP' table. You can move, or remove it, as needed.
-            this.LOPTableAdapter.Connection.ConnectionString = Program.URL_Connect;
-            this.LOPTableAdapter.Fill(this.dS.LOP);
 
+            //string URL_Connect = "Data Source=DESKTOP-ASUS\\SERVER1;Initial Catalog=QLDSV;User ID=HTKN;Password=123456";//Just for test
+            this.LOPTableAdapter.Connection.ConnectionString = Program.URL_Connect;
+            this.DS.EnforceConstraints = false;
+            this.LOPTableAdapter.Fill(this.DS.LOP);
+
+            // đoạn code liên kết giữa bds với combo box
+            cmbKhoa.DataSource = Program.Bds_Dspm.DataSource;
+            cmbKhoa.DisplayMember = "TENKHOA";
+            cmbKhoa.ValueMember = "TENSERVER";
+
+            // lệnh này quan trọng... phải bỏ vào. ==> để cho combo box chạy đúng.
+            cmbKhoa.SelectedIndex = 1;
+            cmbKhoa.SelectedIndex = 0;
+
+        }
+
+        private void cmbKhoa_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            if (cmbKhoa.SelectedValue.ToString() == "System.Data.DataRowView")
+                return;
+
+            // gán server đã chọn vào biến toàn cục.
+            Program.ServerName = cmbKhoa.SelectedValue.ToString();
+
+            if (cmbKhoa.SelectedIndex != Program.MKhoa) {
+                Program.MLogin = Program.RemoteLogin;
+                Program.MPassword = Program.RemotePassword;
+            }
+            else {
+                Program.MLogin = Program.MLoginDN;
+                Program.MPassword = Program.PasswordDN;
+            }
+
+            if (Program.KetNoi() == 0) {
+                MessageBox.Show("Lỗi kết nối về chi nhánh mới", "", MessageBoxButtons.OK);
+            }
+            else {
+
+                this.LOPTableAdapter.Connection.ConnectionString = Program.URL_Connect;
+                this.DS.EnforceConstraints = false;
+                this.LOPTableAdapter.Fill(this.DS.LOP);
+            }
+        }
+
+        private void barBtnThoat_ItemClick(object sender, DevExpress.XtraBars.ItemClickEventArgs e)
+        {
+            Close();
         }
     }
 }

@@ -25,7 +25,6 @@ namespace QLDSV
 
             Program.Conn.ConnectionString = chuoiketnoi;
 
-
             DataTable dt = new DataTable();
             //gọi 1 view và trả về dưới dạng datatable
             dt = Program.ExecSqlDataTable("SELECT * FROM V_DSPM");
@@ -33,7 +32,7 @@ namespace QLDSV
             // cất dt vào biến toàn cục Bds_Dspm
             Program.Bds_Dspm.DataSource = dt;
 
-            // đoạn code liên kết giữa bds với combo box
+            // đoạn code liên kết giữa bds với combobox
             cmbKhoa.DataSource = dt;
             cmbKhoa.DisplayMember = "TENKHOA";
             cmbKhoa.ValueMember = "TENSERVER";
@@ -42,13 +41,8 @@ namespace QLDSV
             cmbKhoa.SelectedIndex = 1;
             cmbKhoa.SelectedIndex = 0;
 
-
         }
 
-        private void button2_Click(object sender, EventArgs e)
-        {
-            Close();
-        }
 
         private void cmbKhoa_SelectedIndexChanged(object sender, EventArgs e)
         {
@@ -56,7 +50,6 @@ namespace QLDSV
             {
                 // gán server đã chọn vào biến toàn cục.
                 Program.ServerName = cmbKhoa.SelectedValue.ToString();
- 
             }
             catch (Exception) { };
         }
@@ -74,17 +67,16 @@ namespace QLDSV
             }
 
             Program.MLogin = txtLogin.Text;
-            Program.Password = txtPass.Text;
+            Program.MPassword = txtPass.Text;
             if (Program.KetNoi() == 0)
             {
                 return;
             }
-
            
-            Program.MKhoa = cmbKhoa.SelectedIndex;
+            Program.MKhoa = cmbKhoa.SelectedIndex;// index [0,1,2]
 
             Program.MLoginDN = Program.MLogin;
-            Program.PasswordDN = Program.Password;
+            Program.PasswordDN = Program.MPassword;
 
           
             String strLenh = "exec SP_DANGNHAP '" + Program.MLogin + "'";
@@ -115,6 +107,11 @@ namespace QLDSV
         private void chkShowPass_CheckedChanged(object sender, EventArgs e)
         {
             txtPass.UseSystemPasswordChar = (chkShowPass.Checked) ? false : true;
+        }
+
+        private void btnThoat_Click(object sender, EventArgs e)
+        {
+            Close();
         }
     }
 }
