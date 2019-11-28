@@ -84,7 +84,7 @@
             // lblHOTEN
             // 
             this.lblHOTEN.Name = "lblHOTEN";
-            this.lblHOTEN.Size = new System.Drawing.Size(45, 17);
+            this.lblHOTEN.Size = new System.Drawing.Size(46, 17);
             this.lblHOTEN.Text = "HOTEN";
             // 
             // lblNHOM
@@ -314,8 +314,6 @@
 
         #endregion
         private System.Windows.Forms.StatusStrip statusStrip1;
-        private System.Windows.Forms.ToolStripStatusLabel lblMAGV;
-        private System.Windows.Forms.ToolStripStatusLabel lblHOTEN;
         public System.Windows.Forms.ToolStripStatusLabel lblNHOM;
         private DevExpress.XtraBars.Ribbon.RibbonPage ribbonPage3;
         private DevExpress.XtraBars.Ribbon.RibbonPage ribbonPage2;
@@ -341,6 +339,8 @@
         private DevExpress.XtraBars.BarButtonItem barButtonItem1;
         private DevExpress.XtraBars.Ribbon.RibbonPageGroup ribbonPageGroup3;
         private DevExpress.XtraBars.BarButtonItem barButtonItem_Thoat;
+        public System.Windows.Forms.ToolStripStatusLabel lblMAGV;
+        public System.Windows.Forms.ToolStripStatusLabel lblHOTEN;
     }
 }
 

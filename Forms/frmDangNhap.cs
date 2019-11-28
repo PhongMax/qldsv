@@ -21,7 +21,7 @@ namespace QLDSV
 
         private void frmDangNhap_Load(object sender, EventArgs e)
         {
-            string chuoiketnoi = "Data Source=DESKTOP-ASUS;Initial Catalog=" + Program.Database + ";Integrated Security=True";
+            string chuoiketnoi = "Data Source=DESKTOP-CCI6BQR;Initial Catalog=" + Program.Database + ";Integrated Security=True";
 
             Program.Conn.ConnectionString = chuoiketnoi;
 
@@ -100,8 +100,17 @@ namespace QLDSV
 
             Program.MyReader.Close();
             Program.Conn.Close();
-            MessageBox.Show("UserName : "+ Program.UserName + "   Họ tên :" + Program.MHoten + " Group: " + Program.MGroup, "", MessageBoxButtons.OK);
 
+            // truy cập vào frm main 
+            Program.frmMain = new frmMain();
+
+            // hiện thông tin tài khoản
+            Program.frmMain.lblMAGV.Text = "MÃ GIẢNG VIÊN : " + Program.UserName;
+            Program.frmMain.lblHOTEN.Text = " ||   HỌ VÀ TÊN : " + Program.MHoten;
+            Program.frmMain.lblNHOM.Text = " ||   NHÓM : " + Program.MGroup;
+
+            Program.frmMain.Show();
+            Program.FrmDangNhap.Visible = false;
         }
 
         private void chkShowPass_CheckedChanged(object sender, EventArgs e)
