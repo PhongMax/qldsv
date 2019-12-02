@@ -32,6 +32,7 @@ namespace QLDSV
             // cất dt vào biến toàn cục Bds_Dspm
             Program.Bds_Dspm.DataSource = dt;
 
+
             // đoạn code liên kết giữa bds với combobox
             cmbKhoa.DataSource = dt;
             cmbKhoa.DisplayMember = "TENKHOA";
@@ -73,7 +74,7 @@ namespace QLDSV
                 return;
             }
            
-            Program.MKhoa = cmbKhoa.SelectedIndex;// index [0,1,2]
+            Program.MKhoa = cmbKhoa.SelectedIndex;// 0: CNTT ,  1: VT, 2: HỌC PHÍ
 
             Program.MLoginDN = Program.MLogin;
             Program.PasswordDN = Program.MPassword;
