@@ -123,5 +123,10 @@ namespace QLDSV
         {
             Close();
         }
+
+        private void frmDangNhap_VisibleChanged(object sender, EventArgs e)
+        {
+            Program.Bds_Dspm.RemoveFilter();
+        }
     }
 }
