@@ -35,16 +35,10 @@ namespace QLDSV.Forms
             this.LOPTableAdapter.Fill(this.DS.LOP);
 
             // đoạn code liên kết giữa bds với combo box
+            // lọc phân mãnh trước
             Program.Bds_Dspm.Filter = "TENKHOA LIKE 'KHOA%'";
-            cmbKhoa.DataSource = Program.Bds_Dspm.DataSource;
-            cmbKhoa.DisplayMember = "TENKHOA";
-            cmbKhoa.ValueMember = "TENSERVER";
-
-            // lệnh này quan trọng... phải bỏ vào. ==> để cho combo box chạy đúng.
-            cmbKhoa.SelectedIndex = 1;
-            cmbKhoa.SelectedIndex = 0;
-
-            //Program.Bds_Dspm.RemoveFilter();
+            Utils.BindingDataToComBo(cmbKhoa, Program.Bds_Dspm.DataSource);
+           
         }
 
         private void cmbKhoa_SelectedIndexChanged(object sender, EventArgs e)

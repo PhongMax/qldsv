@@ -34,14 +34,7 @@ namespace QLDSV
 
 
             // đoạn code liên kết giữa bds với combobox
-            cmbKhoa.DataSource = dt;
-            cmbKhoa.DisplayMember = "TENKHOA";
-            cmbKhoa.ValueMember = "TENSERVER";
-
-            // lệnh này quan trọng... phải bỏ vào. ==> để cho combo box chạy đúng.
-            cmbKhoa.SelectedIndex = 1;
-            cmbKhoa.SelectedIndex = 0;
-
+            Utils.BindingDataToComBo(cmbKhoa, dt);
         }
 
 
