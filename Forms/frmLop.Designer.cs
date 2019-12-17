@@ -266,17 +266,18 @@
             // labelTenKhoa
             // 
             this.labelTenKhoa.AutoSize = true;
-            this.labelTenKhoa.Location = new System.Drawing.Point(343, 19);
+            this.labelTenKhoa.Font = new System.Drawing.Font("Times New Roman", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.labelTenKhoa.Location = new System.Drawing.Point(17, 16);
             this.labelTenKhoa.Name = "labelTenKhoa";
-            this.labelTenKhoa.Size = new System.Drawing.Size(54, 14);
+            this.labelTenKhoa.Size = new System.Drawing.Size(56, 19);
             this.labelTenKhoa.TabIndex = 1;
-            this.labelTenKhoa.Text = "Tên Khoa";
+            this.labelTenKhoa.Text = "KHOA";
             // 
             // cmbKhoa
             // 
             this.cmbKhoa.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.cmbKhoa.FormattingEnabled = true;
-            this.cmbKhoa.Location = new System.Drawing.Point(403, 16);
+            this.cmbKhoa.Location = new System.Drawing.Point(79, 16);
             this.cmbKhoa.Name = "cmbKhoa";
             this.cmbKhoa.Size = new System.Drawing.Size(273, 22);
             this.cmbKhoa.TabIndex = 0;
