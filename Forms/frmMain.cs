@@ -37,10 +37,6 @@ namespace QLDSV
         }
 
 
-        private void frmMain_Load(object sender, EventArgs e)
-        {
-
-        }
 
         private void barButton_Lop_ItemClick(object sender, DevExpress.XtraBars.ItemClickEventArgs e)
         {
