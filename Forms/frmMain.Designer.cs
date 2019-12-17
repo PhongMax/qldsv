@@ -48,7 +48,7 @@
             this.barButton_SinhVien = new DevExpress.XtraBars.BarButtonItem();
             this.ribbonPageGroup_Diem = new DevExpress.XtraBars.Ribbon.RibbonPageGroup();
             this.barButtonItem1 = new DevExpress.XtraBars.BarButtonItem();
-            this.ribbonPageGroup3 = new DevExpress.XtraBars.Ribbon.RibbonPageGroup();
+            this.ribbonPageGroup_Thoat = new DevExpress.XtraBars.Ribbon.RibbonPageGroup();
             this.barButtonItem_Thoat = new DevExpress.XtraBars.BarButtonItem();
             this.barButtonItem2 = new DevExpress.XtraBars.BarButtonItem();
             this.barButtonItem3 = new DevExpress.XtraBars.BarButtonItem();
@@ -84,7 +84,7 @@
             // lblHOTEN
             // 
             this.lblHOTEN.Name = "lblHOTEN";
-            this.lblHOTEN.Size = new System.Drawing.Size(46, 17);
+            this.lblHOTEN.Size = new System.Drawing.Size(45, 17);
             this.lblHOTEN.Text = "HOTEN";
             // 
             // lblNHOM
@@ -118,7 +118,7 @@
             this.ribbonPageGroup_GiangVien,
             this.ribbonPageGroup1,
             this.ribbonPageGroup_Diem,
-            this.ribbonPageGroup3});
+            this.ribbonPageGroup_Thoat});
             this.ribbonPage1.Name = "ribbonPage1";
             this.ribbonPage1.Text = "Quản trị";
             // 
@@ -195,11 +195,11 @@
             this.barButtonItem1.Name = "barButtonItem1";
             this.barButtonItem1.RibbonStyle = ((DevExpress.XtraBars.Ribbon.RibbonItemStyles)((DevExpress.XtraBars.Ribbon.RibbonItemStyles.Large | DevExpress.XtraBars.Ribbon.RibbonItemStyles.SmallWithText)));
             // 
-            // ribbonPageGroup3
+            // ribbonPageGroup_Thoat
             // 
-            this.ribbonPageGroup3.ItemLinks.Add(this.barButtonItem_Thoat);
-            this.ribbonPageGroup3.Name = "ribbonPageGroup3";
-            this.ribbonPageGroup3.Text = "ribbonPageGroup3";
+            this.ribbonPageGroup_Thoat.ItemLinks.Add(this.barButtonItem_Thoat);
+            this.ribbonPageGroup_Thoat.Name = "ribbonPageGroup_Thoat";
+            this.ribbonPageGroup_Thoat.Text = "Thoát";
             // 
             // barButtonItem_Thoat
             // 
@@ -339,7 +339,7 @@
         private DevExpress.XtraBars.BarButtonItem barButton_SinhVien;
         private DevExpress.XtraBars.Ribbon.RibbonPageGroup ribbonPageGroup_Diem;
         private DevExpress.XtraBars.BarButtonItem barButtonItem1;
-        private DevExpress.XtraBars.Ribbon.RibbonPageGroup ribbonPageGroup3;
+        private DevExpress.XtraBars.Ribbon.RibbonPageGroup ribbonPageGroup_Thoat;
         private DevExpress.XtraBars.BarButtonItem barButtonItem_Thoat;
         public System.Windows.Forms.ToolStripStatusLabel lblMAGV;
         public System.Windows.Forms.ToolStripStatusLabel lblHOTEN;

@@ -68,6 +68,7 @@ namespace QLDSV
         public static frmDangNhap FrmDangNhap;
 
         // hàm test run này dùng để test các form, ko cần phải lần lượt đi vào form này rồi tới form kia mà test
+
         static void TestRun()
         {
             //String testconn = "Data Source=TK13\\SERVER01;Initial Catalog=QLDSV;Persist Security Info=True;User ID=hongson;Password=123";
@@ -75,8 +76,8 @@ namespace QLDSV
             //Program.Conn = new SqlConnection(testconn);
             //FormLop = new frmLop();
             //Application.Run(FormLop);
-
         }
+
         public static int KetNoi()
         {
             if (Program.Conn != null && Program.Conn.State == ConnectionState.Open)
@@ -108,7 +109,7 @@ namespace QLDSV
         // https://youtu.be/z8pgdIbtV3E?t=3233
         public static SqlDataReader ExecSqlDataReader(String strLenh)
         {
-            SqlDataReader myReader;// replace by Myreader static of program
+            SqlDataReader myReader;
             SqlCommand sqlcmd = new SqlCommand(strLenh, Program.Conn);
 
             //xác định kiểu lệnh cho sqlcmd là kiểu text.
@@ -129,7 +130,8 @@ namespace QLDSV
 
         // tải về cho phép xem xóa sửa ==> tốc độ tải chậm hơn cái ở trên
         // duyệt 2 chiều dưới lên
-        // form nhập liệu thì dùng datatable. 
+        // form nhập liệu thì dùng datatable.
+
         public static DataTable ExecSqlDataTable(String cmd)
         {
             DataTable dt = new DataTable();

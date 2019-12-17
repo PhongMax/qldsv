@@ -12,8 +12,10 @@ namespace QLDSV
 {
     public partial class frmMain : DevExpress.XtraBars.Ribbon.RibbonForm
     {
-        //flag dangxuat giúp giải việc sự nhọc nhằng giữa sự kiện form closing với dòng lệnh Program.frmMain.Close();
+        // TODO: flag dangxuat giúp giải việc sự nhọc nhằng giữa sự kiện form closing với dòng lệnh Program.frmMain.Close();
+
         Boolean dangxuat = false;
+
         public frmMain()
         {
             InitializeComponent();
