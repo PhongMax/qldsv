@@ -108,6 +108,7 @@
             this.txtPass.Name = "txtPass";
             this.txtPass.Size = new System.Drawing.Size(329, 22);
             this.txtPass.TabIndex = 2;
+            this.txtPass.Text = "123456";
             this.txtPass.UseSystemPasswordChar = true;
             // 
             // txtLogin
@@ -116,6 +117,7 @@
             this.txtLogin.Name = "txtLogin";
             this.txtLogin.Size = new System.Drawing.Size(329, 22);
             this.txtLogin.TabIndex = 1;
+            this.txtLogin.Text = "cntt";
             // 
             // label3
             // 
@@ -170,6 +172,7 @@
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Đăng Nhập";
             this.Load += new System.EventHandler(this.frmDangNhap_Load);
+            this.VisibleChanged += new System.EventHandler(this.frmDangNhap_VisibleChanged);
             this.groupBox1.ResumeLayout(false);
             this.groupBox1.PerformLayout();
             this.ResumeLayout(false);

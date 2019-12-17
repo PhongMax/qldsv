@@ -13,6 +13,10 @@ namespace QLDSV.Forms
 {
     public partial class frmLop : DevExpress.XtraEditors.XtraForm
     {
+        // Declare Variable
+        private int _vitri = 0;
+        private String _makhoa = "";
+
         public frmLop()
         {
             InitializeComponent();
@@ -23,26 +27,28 @@ namespace QLDSV.Forms
             this.Validate();
             this.bdsLOP.EndEdit();
             this.tableAdapterManager.UpdateAll(this.DS);
-
         }
 
         private void frmLop_Load(object sender, EventArgs e)
         {
-
-            //string URL_Connect = "Data Source=DESKTOP-ASUS\\SERVER1;Initial Catalog=QLDSV;User ID=HTKN;Password=123456";//Just for test
-            this.LOPTableAdapter.Connection.ConnectionString = Program.URL_Connect;
+            // TODO: This line of code loads data into the 'DS.SINHVIEN' table. You can move, or remove it, as needed.
             this.DS.EnforceConstraints = false;
+
+            // kết nối trước rồi mới fill.
+            this.LOPTableAdapter.Connection.ConnectionString = Program.URL_Connect;
+            this.sINHVIENTableAdapter.Connection.ConnectionString = Program.URL_Connect;
+
             this.LOPTableAdapter.Fill(this.DS.LOP);
+            this.sINHVIENTableAdapter.Fill(this.DS.SINHVIEN);
+            
 
-            // đoạn code liên kết giữa bds với combo box
-            cmbKhoa.DataSource = Program.Bds_Dspm.DataSource;
-            cmbKhoa.DisplayMember = "TENKHOA";
-            cmbKhoa.ValueMember = "TENSERVER";
+            this.grbLop.Enabled = false;
+            // đoạn code liên kết giữa bds với combobox
+            // lọc phân mảnh trước
+            Program.Bds_Dspm.Filter = "TENKHOA LIKE 'KHOA%'";
 
-            // lệnh này quan trọng... phải bỏ vào. ==> để cho combo box chạy đúng.
-            cmbKhoa.SelectedIndex = 1;
-            cmbKhoa.SelectedIndex = 0;
-
+            Utils.BindingDataToComBo(cmbKhoa, Program.Bds_Dspm.DataSource);
+           
         }
 
         private void cmbKhoa_SelectedIndexChanged(object sender, EventArgs e)
@@ -67,15 +73,42 @@ namespace QLDSV.Forms
             }
             else {
 
-                this.LOPTableAdapter.Connection.ConnectionString = Program.URL_Connect;
                 this.DS.EnforceConstraints = false;
+
+                // kết nối trước rồi mới fill.
+                this.LOPTableAdapter.Connection.ConnectionString = Program.URL_Connect;
+                this.sINHVIENTableAdapter.Connection.ConnectionString = Program.URL_Connect;
+
                 this.LOPTableAdapter.Fill(this.DS.LOP);
+                this.sINHVIENTableAdapter.Fill(this.DS.SINHVIEN);
+
+                this._makhoa = ((DataRowView)bdsLOP[0])["MAKH"].ToString();
+                Console.WriteLine("Ma Khoa La : ", _makhoa);
             }
         }
 
         private void barBtnThoat_ItemClick(object sender, DevExpress.XtraBars.ItemClickEventArgs e)
         {
             Close();
+        }
+
+        private void barBtnThem_ItemClick(object sender, DevExpress.XtraBars.ItemClickEventArgs e)
+        {
+            _vitri = bdsLOP.Position;
+
+            grbLop.Enabled = true;
+            txtMaKhoa.Text = ((DataRowView)bdsLOP[0])["MAKH"].ToString();
+
+
+            barBtnThem.Enabled
+                = barBtnXoa.Enabled
+                = barBtnSua.Enabled
+                = barBtnUndo.Enabled
+                = barBtnGhi.Enabled
+                = barBtnHuy.Enabled
+                = barBtnLammoi.Enabled = false;
+            //bdsLOP.AddNew();
+            
         }
     }
 }

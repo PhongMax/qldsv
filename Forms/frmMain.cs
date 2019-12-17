@@ -12,6 +12,10 @@ namespace QLDSV
 {
     public partial class frmMain : DevExpress.XtraBars.Ribbon.RibbonForm
     {
+        // TODO: flag dangxuat giúp giải việc sự nhọc nhằng giữa sự kiện form closing với dòng lệnh Program.frmMain.Close();
+
+        Boolean dangxuat = false;
+
         public frmMain()
         {
             InitializeComponent();
@@ -46,6 +50,27 @@ namespace QLDSV
         private void barButtonItem_Thoat_ItemClick(object sender, DevExpress.XtraBars.ItemClickEventArgs e)
         {
             Close();
+        }
+
+        private void barBtnDangXuat_ItemClick(object sender, DevExpress.XtraBars.ItemClickEventArgs e)
+        {
+            dangxuat = true;
+            Program.frmMain.Close();
+            Program.FrmDangNhap.Visible = true;
+           
+        }
+
+        private void frmMain_FormClosing(object sender, FormClosingEventArgs e)
+        {
+            if (!dangxuat)
+            {
+                if (MessageBox.Show("Bạn có thực sự muốn thoát?", "Xác nhận.", MessageBoxButtons.OKCancel) == DialogResult.OK)
+                {
+                    Program.FrmDangNhap.Visible = true;
+                    Program.FrmDangNhap.Close();
+                }
+                else e.Cancel = true;
+            }
         }
     }
 }
