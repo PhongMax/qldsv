@@ -117,7 +117,6 @@
             this.txtLogin.Name = "txtLogin";
             this.txtLogin.Size = new System.Drawing.Size(329, 22);
             this.txtLogin.TabIndex = 1;
-            this.txtLogin.Text = "cntt";
             // 
             // label3
             // 

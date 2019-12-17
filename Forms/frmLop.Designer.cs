@@ -64,7 +64,7 @@
             this.txtMaKhoa = new DevExpress.XtraEditors.TextEdit();
             this.txtTenLop = new DevExpress.XtraEditors.TextEdit();
             this.txtMaLop = new DevExpress.XtraEditors.TextEdit();
-            this.sINHVIENBindingSource = new System.Windows.Forms.BindingSource(this.components);
+            this.bdsSV = new System.Windows.Forms.BindingSource(this.components);
             this.sINHVIENTableAdapter = new QLDSV.DSTableAdapters.SINHVIENTableAdapter();
             maLopLabel = new System.Windows.Forms.Label();
             tENLOPLabel = new System.Windows.Forms.Label();
@@ -79,7 +79,7 @@
             ((System.ComponentModel.ISupportInitialize)(this.txtMaKhoa.Properties)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.txtTenLop.Properties)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.txtMaLop.Properties)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.sINHVIENBindingSource)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.bdsSV)).BeginInit();
             this.SuspendLayout();
             // 
             // maLopLabel
@@ -200,6 +200,7 @@
             this.barBtnLammoi.Id = 6;
             this.barBtnLammoi.ImageOptions.SvgImage = ((DevExpress.Utils.Svg.SvgImage)(resources.GetObject("barBtnLammoi.ImageOptions.SvgImage")));
             this.barBtnLammoi.Name = "barBtnLammoi";
+            this.barBtnLammoi.ItemClick += new DevExpress.XtraBars.ItemClickEventHandler(this.barBtnLammoi_ItemClick_1);
             // 
             // barBtnThoat
             // 
@@ -266,17 +267,18 @@
             // labelTenKhoa
             // 
             this.labelTenKhoa.AutoSize = true;
-            this.labelTenKhoa.Location = new System.Drawing.Point(343, 19);
+            this.labelTenKhoa.Font = new System.Drawing.Font("Times New Roman", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.labelTenKhoa.Location = new System.Drawing.Point(17, 16);
             this.labelTenKhoa.Name = "labelTenKhoa";
-            this.labelTenKhoa.Size = new System.Drawing.Size(54, 14);
+            this.labelTenKhoa.Size = new System.Drawing.Size(56, 19);
             this.labelTenKhoa.TabIndex = 1;
-            this.labelTenKhoa.Text = "Tên Khoa";
+            this.labelTenKhoa.Text = "KHOA";
             // 
             // cmbKhoa
             // 
             this.cmbKhoa.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.cmbKhoa.FormattingEnabled = true;
-            this.cmbKhoa.Location = new System.Drawing.Point(403, 16);
+            this.cmbKhoa.Location = new System.Drawing.Point(79, 16);
             this.cmbKhoa.Name = "cmbKhoa";
             this.cmbKhoa.Size = new System.Drawing.Size(273, 22);
             this.cmbKhoa.TabIndex = 0;
@@ -396,10 +398,10 @@
             this.txtMaLop.Size = new System.Drawing.Size(329, 20);
             this.txtMaLop.TabIndex = 1;
             // 
-            // sINHVIENBindingSource
+            // bdsSV
             // 
-            this.sINHVIENBindingSource.DataMember = "FK_SINHVIEN_LOP";
-            this.sINHVIENBindingSource.DataSource = this.bdsLOP;
+            this.bdsSV.DataMember = "FK_SINHVIEN_LOP";
+            this.bdsSV.DataSource = this.bdsLOP;
             // 
             // sINHVIENTableAdapter
             // 
@@ -435,7 +437,7 @@
             ((System.ComponentModel.ISupportInitialize)(this.txtMaKhoa.Properties)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.txtTenLop.Properties)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.txtMaLop.Properties)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.sINHVIENBindingSource)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.bdsSV)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -474,7 +476,7 @@
         private DevExpress.XtraEditors.TextEdit txtMaKhoa;
         private DevExpress.XtraEditors.TextEdit txtTenLop;
         private DevExpress.XtraEditors.TextEdit txtMaLop;
-        private System.Windows.Forms.BindingSource sINHVIENBindingSource;
+        private System.Windows.Forms.BindingSource bdsSV;
         private DSTableAdapters.SINHVIENTableAdapter sINHVIENTableAdapter;
     }
 }
