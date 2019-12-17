@@ -13,6 +13,8 @@ namespace QLDSV.Forms
 {
     public partial class frmLop : DevExpress.XtraEditors.XtraForm
     {
+        private int _vitri;
+        private string _makhoa = "";
         public frmLop()
         {
             InitializeComponent();
@@ -28,6 +30,7 @@ namespace QLDSV.Forms
 
         private void frmLop_Load(object sender, EventArgs e)
         {
+
             // TODO: This line of code loads data into the 'DS.SINHVIEN' table. You can move, or remove it, as needed.
             this.DS.EnforceConstraints = false;
 
@@ -38,10 +41,19 @@ namespace QLDSV.Forms
             this.LOPTableAdapter.Fill(this.DS.LOP);
             this.sINHVIENTableAdapter.Fill(this.DS.SINHVIEN);
 
+            _makhoa = ((DataRowView)bdsLOP[0])["MAKH"].ToString();
+            this.txtMaKhoa.Text = _makhoa;
+            this.txtMaKhoa.Enabled = false;
+
+            this.grbLop.Enabled = false;
             // đoạn code liên kết giữa bds với combo box
             // lọc phân mãnh trước
             Program.Bds_Dspm.Filter = "TENKHOA LIKE 'KHOA%'";
             Utils.BindingDataToComBo(cmbKhoa, Program.Bds_Dspm.DataSource);
+
+
+
+          
            
         }
 
@@ -67,15 +79,37 @@ namespace QLDSV.Forms
             }
             else {
 
-                this.LOPTableAdapter.Connection.ConnectionString = Program.URL_Connect;
                 this.DS.EnforceConstraints = false;
+
+                this.LOPTableAdapter.Connection.ConnectionString = Program.URL_Connect;
+                this.sINHVIENTableAdapter.Connection.ConnectionString = Program.URL_Connect;
+
                 this.LOPTableAdapter.Fill(this.DS.LOP);
+                this.sINHVIENTableAdapter.Fill(this.DS.SINHVIEN);
+
+                _makhoa = ((DataRowView)bdsLOP[bdsLOP.Position])["MAKH"].ToString();
             }
         }
 
         private void barBtnThoat_ItemClick(object sender, DevExpress.XtraBars.ItemClickEventArgs e)
         {
             Close();
+        }
+
+        private void barBtnThem_ItemClick(object sender, DevExpress.XtraBars.ItemClickEventArgs e)
+        {
+            _vitri = bdsLOP.Position;
+
+
+            // tắt lưới
+            lOPGridControl.Enabled = false;
+
+            // tật groupbox nhập lớp
+            grbLop.Enabled = true;
+
+            // thao tác thêm
+            bdsLOP.AddNew();
+            txtMaKhoa.EditValue = _makhoa;
         }
     }
 }
