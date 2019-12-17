@@ -41,7 +41,7 @@ namespace QLDSV.Forms
             this.LOPTableAdapter.Fill(this.DS.LOP);
             this.sINHVIENTableAdapter.Fill(this.DS.SINHVIEN);
 
-            _makhoa = ((DataRowView)bdsLOP[0])["MAKH"].ToString();
+            _makhoa = ((DataRowView)bdsLOP[5])["MAKH"].ToString();
             this.txtMaKhoa.Text = _makhoa;
             this.txtMaKhoa.Enabled = false;
 
