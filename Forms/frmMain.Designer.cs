@@ -267,6 +267,7 @@
             this.barBtnDangXuat.ImageOptions.Image = global::QLDSV.Properties.Resources.turn_off_32;
             this.barBtnDangXuat.Name = "barBtnDangXuat";
             this.barBtnDangXuat.RibbonStyle = DevExpress.XtraBars.Ribbon.RibbonItemStyles.Large;
+            this.barBtnDangXuat.ItemClick += new DevExpress.XtraBars.ItemClickEventHandler(this.barBtnDangXuat_ItemClick);
             // 
             // ribbonPage4
             // 
@@ -302,6 +303,7 @@
             this.Ribbon = this.ribbonControl1;
             this.Text = "Quản lý điểm sinh viên";
             this.WindowState = System.Windows.Forms.FormWindowState.Maximized;
+            this.FormClosing += new System.Windows.Forms.FormClosingEventHandler(this.frmMain_FormClosing);
             this.Load += new System.EventHandler(this.frmMain_Load);
             this.statusStrip1.ResumeLayout(false);
             this.statusStrip1.PerformLayout();

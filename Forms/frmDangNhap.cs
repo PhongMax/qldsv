@@ -32,15 +32,9 @@ namespace QLDSV
             // cất dt vào biến toàn cục Bds_Dspm
             Program.Bds_Dspm.DataSource = dt;
 
+
             // đoạn code liên kết giữa bds với combobox
-            cmbKhoa.DataSource = dt;
-            cmbKhoa.DisplayMember = "TENKHOA";
-            cmbKhoa.ValueMember = "TENSERVER";
-
-            // lệnh này quan trọng... phải bỏ vào. ==> để cho combo box chạy đúng.
-            cmbKhoa.SelectedIndex = 1;
-            cmbKhoa.SelectedIndex = 0;
-
+            Utils.BindingDataToComBo(cmbKhoa, dt);
         }
 
 
@@ -73,7 +67,7 @@ namespace QLDSV
                 return;
             }
            
-            Program.MKhoa = cmbKhoa.SelectedIndex;// index [0,1,2]
+            Program.MKhoa = cmbKhoa.SelectedIndex;// 0: CNTT ,  1: VT, 2: HỌC PHÍ
 
             Program.MLoginDN = Program.MLogin;
             Program.PasswordDN = Program.MPassword;
@@ -95,8 +89,19 @@ namespace QLDSV
                 MessageBox.Show("Login bạn nhập không có quyền truy cập dữ liệu\nBạn xem lại username, password", "", MessageBoxButtons.OK);
                 return;
             }
-            Program.MHoten = Program.MyReader.GetString(1);
-            Program.MGroup = Program.MyReader.GetString(2);
+
+            try
+            {
+                Program.MHoten = Program.MyReader.GetString(1);
+                Program.MGroup = Program.MyReader.GetString(2);
+            }
+            catch(Exception ex)
+            {
+                MessageBox.Show("Login bạn nhập không có quyền truy cập vào chương trình", "", MessageBoxButtons.OK);
+                return;
+            }
+
+         
 
             Program.MyReader.Close();
             Program.Conn.Close();
@@ -121,6 +126,11 @@ namespace QLDSV
         private void btnThoat_Click(object sender, EventArgs e)
         {
             Close();
+        }
+
+        private void frmDangNhap_VisibleChanged(object sender, EventArgs e)
+        {
+            Program.Bds_Dspm.RemoveFilter();
         }
     }
 }

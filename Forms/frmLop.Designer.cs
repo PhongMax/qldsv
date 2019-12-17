@@ -60,11 +60,12 @@
             this.colMALOP = new DevExpress.XtraGrid.Columns.GridColumn();
             this.colTENLOP = new DevExpress.XtraGrid.Columns.GridColumn();
             this.colMAKH = new DevExpress.XtraGrid.Columns.GridColumn();
-            this.groupBox1 = new System.Windows.Forms.GroupBox();
-            this.pictureBox1 = new System.Windows.Forms.PictureBox();
+            this.grbLop = new System.Windows.Forms.GroupBox();
             this.txtMaKhoa = new DevExpress.XtraEditors.TextEdit();
             this.txtTenLop = new DevExpress.XtraEditors.TextEdit();
             this.txtMaLop = new DevExpress.XtraEditors.TextEdit();
+            this.sINHVIENBindingSource = new System.Windows.Forms.BindingSource(this.components);
+            this.sINHVIENTableAdapter = new QLDSV.DSTableAdapters.SINHVIENTableAdapter();
             maLopLabel = new System.Windows.Forms.Label();
             tENLOPLabel = new System.Windows.Forms.Label();
             mAKHLabel = new System.Windows.Forms.Label();
@@ -74,11 +75,11 @@
             ((System.ComponentModel.ISupportInitialize)(this.bdsLOP)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.lOPGridControl)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.gridView1)).BeginInit();
-            this.groupBox1.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
+            this.grbLop.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.txtMaKhoa.Properties)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.txtTenLop.Properties)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.txtMaLop.Properties)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.sINHVIENBindingSource)).BeginInit();
             this.SuspendLayout();
             // 
             // maLopLabel
@@ -156,6 +157,7 @@
             this.barBtnThem.Id = 0;
             this.barBtnThem.ImageOptions.SvgImage = ((DevExpress.Utils.Svg.SvgImage)(resources.GetObject("barBtnThem.ImageOptions.SvgImage")));
             this.barBtnThem.Name = "barBtnThem";
+            this.barBtnThem.ItemClick += new DevExpress.XtraBars.ItemClickEventHandler(this.barBtnThem_ItemClick);
             // 
             // barBtnXoa
             // 
@@ -326,6 +328,7 @@
             this.colMAKH});
             this.gridView1.GridControl = this.lOPGridControl;
             this.gridView1.Name = "gridView1";
+            this.gridView1.OptionsBehavior.ReadOnly = true;
             // 
             // colMALOP
             // 
@@ -351,30 +354,20 @@
             this.colMAKH.Visible = true;
             this.colMAKH.VisibleIndex = 2;
             // 
-            // groupBox1
+            // grbLop
             // 
-            this.groupBox1.Controls.Add(this.pictureBox1);
-            this.groupBox1.Controls.Add(mAKHLabel);
-            this.groupBox1.Controls.Add(this.txtMaKhoa);
-            this.groupBox1.Controls.Add(tENLOPLabel);
-            this.groupBox1.Controls.Add(this.txtTenLop);
-            this.groupBox1.Controls.Add(maLopLabel);
-            this.groupBox1.Controls.Add(this.txtMaLop);
-            this.groupBox1.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.groupBox1.Location = new System.Drawing.Point(0, 274);
-            this.groupBox1.Name = "groupBox1";
-            this.groupBox1.Size = new System.Drawing.Size(688, 206);
-            this.groupBox1.TabIndex = 16;
-            this.groupBox1.TabStop = false;
-            // 
-            // pictureBox1
-            // 
-            this.pictureBox1.Image = global::QLDSV.Properties.Resources.create_login_128;
-            this.pictureBox1.Location = new System.Drawing.Point(583, 16);
-            this.pictureBox1.Name = "pictureBox1";
-            this.pictureBox1.Size = new System.Drawing.Size(93, 90);
-            this.pictureBox1.TabIndex = 6;
-            this.pictureBox1.TabStop = false;
+            this.grbLop.Controls.Add(mAKHLabel);
+            this.grbLop.Controls.Add(this.txtMaKhoa);
+            this.grbLop.Controls.Add(tENLOPLabel);
+            this.grbLop.Controls.Add(this.txtTenLop);
+            this.grbLop.Controls.Add(maLopLabel);
+            this.grbLop.Controls.Add(this.txtMaLop);
+            this.grbLop.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.grbLop.Location = new System.Drawing.Point(0, 274);
+            this.grbLop.Name = "grbLop";
+            this.grbLop.Size = new System.Drawing.Size(688, 206);
+            this.grbLop.TabIndex = 16;
+            this.grbLop.TabStop = false;
             // 
             // txtMaKhoa
             // 
@@ -403,13 +396,22 @@
             this.txtMaLop.Size = new System.Drawing.Size(329, 20);
             this.txtMaLop.TabIndex = 1;
             // 
+            // sINHVIENBindingSource
+            // 
+            this.sINHVIENBindingSource.DataMember = "FK_SINHVIEN_LOP";
+            this.sINHVIENBindingSource.DataSource = this.bdsLOP;
+            // 
+            // sINHVIENTableAdapter
+            // 
+            this.sINHVIENTableAdapter.ClearBeforeFill = true;
+            // 
             // frmLop
             // 
             this.Appearance.Options.UseFont = true;
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 14F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(688, 503);
-            this.Controls.Add(this.groupBox1);
+            this.Controls.Add(this.grbLop);
             this.Controls.Add(this.lOPGridControl);
             this.Controls.Add(this.panelBox);
             this.Controls.Add(this.barDockControlLeft);
@@ -428,12 +430,12 @@
             ((System.ComponentModel.ISupportInitialize)(this.bdsLOP)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.lOPGridControl)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.gridView1)).EndInit();
-            this.groupBox1.ResumeLayout(false);
-            this.groupBox1.PerformLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();
+            this.grbLop.ResumeLayout(false);
+            this.grbLop.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.txtMaKhoa.Properties)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.txtTenLop.Properties)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.txtMaLop.Properties)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.sINHVIENBindingSource)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -465,13 +467,14 @@
         private DevExpress.XtraBars.BarButtonItem barBtnThoat;
         private DevExpress.XtraGrid.GridControl lOPGridControl;
         private DevExpress.XtraGrid.Views.Grid.GridView gridView1;
-        private System.Windows.Forms.GroupBox groupBox1;
+        private System.Windows.Forms.GroupBox grbLop;
         private DevExpress.XtraGrid.Columns.GridColumn colMALOP;
         private DevExpress.XtraGrid.Columns.GridColumn colTENLOP;
         private DevExpress.XtraGrid.Columns.GridColumn colMAKH;
-        private System.Windows.Forms.PictureBox pictureBox1;
         private DevExpress.XtraEditors.TextEdit txtMaKhoa;
         private DevExpress.XtraEditors.TextEdit txtTenLop;
         private DevExpress.XtraEditors.TextEdit txtMaLop;
+        private System.Windows.Forms.BindingSource sINHVIENBindingSource;
+        private DSTableAdapters.SINHVIENTableAdapter sINHVIENTableAdapter;
     }
 }
