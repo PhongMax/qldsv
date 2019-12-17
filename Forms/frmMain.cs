@@ -43,6 +43,26 @@ namespace QLDSV
             ShowMdiChildren(typeof(frmLop));
         }
 
+        private void barButton_MonHoc_ItemClick(object sender, DevExpress.XtraBars.ItemClickEventArgs e)
+        {
+            ShowMdiChildren(typeof(frmMonHoc));
+        }
+
+        private void barButton_GiangVien_ItemClick(object sender, DevExpress.XtraBars.ItemClickEventArgs e)
+        {
+            ShowMdiChildren(typeof(frmGiangVien));
+        }
+
+        private void barButton_SinhVien_ItemClick(object sender, DevExpress.XtraBars.ItemClickEventArgs e)
+        {
+            ShowMdiChildren(typeof(frmSinhVien));
+        }
+
+        private void barButtonItem1_ItemClick(object sender, DevExpress.XtraBars.ItemClickEventArgs e)
+        {
+            ShowMdiChildren(typeof(frmDiem));
+        }
+
         private void barButtonItem_Thoat_ItemClick(object sender, DevExpress.XtraBars.ItemClickEventArgs e)
         {
             Close();
@@ -68,5 +88,7 @@ namespace QLDSV
                 else e.Cancel = true;
             }
         }
+
+
     }
 }

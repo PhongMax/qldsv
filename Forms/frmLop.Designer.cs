@@ -56,7 +56,7 @@
             this.LOPTableAdapter = new QLDSV.DSTableAdapters.LOPTableAdapter();
             this.tableAdapterManager = new QLDSV.DSTableAdapters.TableAdapterManager();
             this.lOPGridControl = new DevExpress.XtraGrid.GridControl();
-            this.gridView1 = new DevExpress.XtraGrid.Views.Grid.GridView();
+            this.gridViewLop = new DevExpress.XtraGrid.Views.Grid.GridView();
             this.colMALOP = new DevExpress.XtraGrid.Columns.GridColumn();
             this.colTENLOP = new DevExpress.XtraGrid.Columns.GridColumn();
             this.colMAKH = new DevExpress.XtraGrid.Columns.GridColumn();
@@ -64,8 +64,8 @@
             this.txtMaKhoa = new DevExpress.XtraEditors.TextEdit();
             this.txtTenLop = new DevExpress.XtraEditors.TextEdit();
             this.txtMaLop = new DevExpress.XtraEditors.TextEdit();
-            this.sINHVIENBindingSource = new System.Windows.Forms.BindingSource(this.components);
-            this.sINHVIENTableAdapter = new QLDSV.DSTableAdapters.SINHVIENTableAdapter();
+            this.bdsSINHVIEN = new System.Windows.Forms.BindingSource(this.components);
+            this.SINHVIENTableAdapter = new QLDSV.DSTableAdapters.SINHVIENTableAdapter();
             maLopLabel = new System.Windows.Forms.Label();
             tENLOPLabel = new System.Windows.Forms.Label();
             mAKHLabel = new System.Windows.Forms.Label();
@@ -74,12 +74,12 @@
             ((System.ComponentModel.ISupportInitialize)(this.DS)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.bdsLOP)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.lOPGridControl)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.gridView1)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.gridViewLop)).BeginInit();
             this.grbLop.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.txtMaKhoa.Properties)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.txtTenLop.Properties)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.txtMaLop.Properties)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.sINHVIENBindingSource)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.bdsSINHVIEN)).BeginInit();
             this.SuspendLayout();
             // 
             // maLopLabel
@@ -186,6 +186,7 @@
             this.barBtnGhi.Id = 4;
             this.barBtnGhi.ImageOptions.SvgImage = ((DevExpress.Utils.Svg.SvgImage)(resources.GetObject("barBtnGhi.ImageOptions.SvgImage")));
             this.barBtnGhi.Name = "barBtnGhi";
+            this.barBtnGhi.ItemClick += new DevExpress.XtraBars.ItemClickEventHandler(this.barBtnGhi_ItemClick);
             // 
             // barBtnHuy
             // 
@@ -200,10 +201,11 @@
             this.barBtnLammoi.Id = 6;
             this.barBtnLammoi.ImageOptions.SvgImage = ((DevExpress.Utils.Svg.SvgImage)(resources.GetObject("barBtnLammoi.ImageOptions.SvgImage")));
             this.barBtnLammoi.Name = "barBtnLammoi";
+            this.barBtnLammoi.ItemClick += new DevExpress.XtraBars.ItemClickEventHandler(this.barBtnLammoi_ItemClick);
             // 
             // barBtnThoat
             // 
-            this.barBtnThoat.Caption = "Thoát";
+            this.barBtnThoat.Caption = "Đóng";
             this.barBtnThoat.Id = 7;
             this.barBtnThoat.ImageOptions.SvgImage = ((DevExpress.Utils.Svg.SvgImage)(resources.GetObject("barBtnThoat.ImageOptions.SvgImage")));
             this.barBtnThoat.Name = "barBtnThoat";
@@ -313,23 +315,23 @@
             this.lOPGridControl.DataSource = this.bdsLOP;
             this.lOPGridControl.Dock = System.Windows.Forms.DockStyle.Top;
             this.lOPGridControl.Location = new System.Drawing.Point(0, 77);
-            this.lOPGridControl.MainView = this.gridView1;
+            this.lOPGridControl.MainView = this.gridViewLop;
             this.lOPGridControl.MenuManager = this.barManagerLop;
             this.lOPGridControl.Name = "lOPGridControl";
             this.lOPGridControl.Size = new System.Drawing.Size(688, 197);
             this.lOPGridControl.TabIndex = 15;
             this.lOPGridControl.ViewCollection.AddRange(new DevExpress.XtraGrid.Views.Base.BaseView[] {
-            this.gridView1});
+            this.gridViewLop});
             // 
-            // gridView1
+            // gridViewLop
             // 
-            this.gridView1.Columns.AddRange(new DevExpress.XtraGrid.Columns.GridColumn[] {
+            this.gridViewLop.Columns.AddRange(new DevExpress.XtraGrid.Columns.GridColumn[] {
             this.colMALOP,
             this.colTENLOP,
             this.colMAKH});
-            this.gridView1.GridControl = this.lOPGridControl;
-            this.gridView1.Name = "gridView1";
-            this.gridView1.OptionsBehavior.ReadOnly = true;
+            this.gridViewLop.GridControl = this.lOPGridControl;
+            this.gridViewLop.Name = "gridViewLop";
+            this.gridViewLop.OptionsBehavior.ReadOnly = true;
             // 
             // colMALOP
             // 
@@ -397,14 +399,14 @@
             this.txtMaLop.Size = new System.Drawing.Size(329, 20);
             this.txtMaLop.TabIndex = 1;
             // 
-            // sINHVIENBindingSource
+            // bdsSINHVIEN
             // 
-            this.sINHVIENBindingSource.DataMember = "FK_SINHVIEN_LOP";
-            this.sINHVIENBindingSource.DataSource = this.bdsLOP;
+            this.bdsSINHVIEN.DataMember = "FK_SINHVIEN_LOP";
+            this.bdsSINHVIEN.DataSource = this.bdsLOP;
             // 
-            // sINHVIENTableAdapter
+            // SINHVIENTableAdapter
             // 
-            this.sINHVIENTableAdapter.ClearBeforeFill = true;
+            this.SINHVIENTableAdapter.ClearBeforeFill = true;
             // 
             // frmLop
             // 
@@ -430,13 +432,13 @@
             ((System.ComponentModel.ISupportInitialize)(this.DS)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.bdsLOP)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.lOPGridControl)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.gridView1)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.gridViewLop)).EndInit();
             this.grbLop.ResumeLayout(false);
             this.grbLop.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.txtMaKhoa.Properties)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.txtTenLop.Properties)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.txtMaLop.Properties)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.sINHVIENBindingSource)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.bdsSINHVIEN)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -467,7 +469,7 @@
         private DevExpress.XtraBars.BarButtonItem barBtnLammoi;
         private DevExpress.XtraBars.BarButtonItem barBtnThoat;
         private DevExpress.XtraGrid.GridControl lOPGridControl;
-        private DevExpress.XtraGrid.Views.Grid.GridView gridView1;
+        private DevExpress.XtraGrid.Views.Grid.GridView gridViewLop;
         private System.Windows.Forms.GroupBox grbLop;
         private DevExpress.XtraGrid.Columns.GridColumn colMALOP;
         private DevExpress.XtraGrid.Columns.GridColumn colTENLOP;
@@ -475,7 +477,7 @@
         private DevExpress.XtraEditors.TextEdit txtMaKhoa;
         private DevExpress.XtraEditors.TextEdit txtTenLop;
         private DevExpress.XtraEditors.TextEdit txtMaLop;
-        private System.Windows.Forms.BindingSource sINHVIENBindingSource;
-        private DSTableAdapters.SINHVIENTableAdapter sINHVIENTableAdapter;
+        private System.Windows.Forms.BindingSource bdsSINHVIEN;
+        private DSTableAdapters.SINHVIENTableAdapter SINHVIENTableAdapter;
     }
 }

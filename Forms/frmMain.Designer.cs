@@ -132,7 +132,7 @@
             // 
             this.barButton_Lop.Id = 4;
             this.barButton_Lop.ImageOptions.Image = global::QLDSV.Properties.Resources._class;
-            this.barButton_Lop.LargeWidth = 80;
+            this.barButton_Lop.LargeWidth = 50;
             this.barButton_Lop.Name = "barButton_Lop";
             this.barButton_Lop.RibbonStyle = DevExpress.XtraBars.Ribbon.RibbonItemStyles.Large;
             this.barButton_Lop.ItemClick += new DevExpress.XtraBars.ItemClickEventHandler(this.barButton_Lop_ItemClick);
@@ -149,9 +149,10 @@
             // 
             this.barButton_MonHoc.Id = 7;
             this.barButton_MonHoc.ImageOptions.Image = global::QLDSV.Properties.Resources.bright;
-            this.barButton_MonHoc.LargeWidth = 80;
+            this.barButton_MonHoc.LargeWidth = 50;
             this.barButton_MonHoc.Name = "barButton_MonHoc";
             this.barButton_MonHoc.RibbonStyle = ((DevExpress.XtraBars.Ribbon.RibbonItemStyles)((DevExpress.XtraBars.Ribbon.RibbonItemStyles.Large | DevExpress.XtraBars.Ribbon.RibbonItemStyles.SmallWithText)));
+            this.barButton_MonHoc.ItemClick += new DevExpress.XtraBars.ItemClickEventHandler(this.barButton_MonHoc_ItemClick);
             // 
             // ribbonPageGroup_GiangVien
             // 
@@ -163,9 +164,10 @@
             // 
             this.barButton_GiangVien.Id = 8;
             this.barButton_GiangVien.ImageOptions.Image = global::QLDSV.Properties.Resources.conference;
-            this.barButton_GiangVien.LargeWidth = 80;
+            this.barButton_GiangVien.LargeWidth = 50;
             this.barButton_GiangVien.Name = "barButton_GiangVien";
             this.barButton_GiangVien.RibbonStyle = ((DevExpress.XtraBars.Ribbon.RibbonItemStyles)((DevExpress.XtraBars.Ribbon.RibbonItemStyles.Large | DevExpress.XtraBars.Ribbon.RibbonItemStyles.SmallWithText)));
+            this.barButton_GiangVien.ItemClick += new DevExpress.XtraBars.ItemClickEventHandler(this.barButton_GiangVien_ItemClick);
             // 
             // ribbonPageGroup1
             // 
@@ -177,9 +179,10 @@
             // 
             this.barButton_SinhVien.Id = 9;
             this.barButton_SinhVien.ImageOptions.Image = global::QLDSV.Properties.Resources.students;
-            this.barButton_SinhVien.LargeWidth = 80;
+            this.barButton_SinhVien.LargeWidth = 50;
             this.barButton_SinhVien.Name = "barButton_SinhVien";
             this.barButton_SinhVien.RibbonStyle = ((DevExpress.XtraBars.Ribbon.RibbonItemStyles)((DevExpress.XtraBars.Ribbon.RibbonItemStyles.Large | DevExpress.XtraBars.Ribbon.RibbonItemStyles.SmallWithText)));
+            this.barButton_SinhVien.ItemClick += new DevExpress.XtraBars.ItemClickEventHandler(this.barButton_SinhVien_ItemClick);
             // 
             // ribbonPageGroup_Diem
             // 
@@ -191,9 +194,10 @@
             // 
             this.barButtonItem1.Id = 10;
             this.barButtonItem1.ImageOptions.Image = global::QLDSV.Properties.Resources.score;
-            this.barButtonItem1.LargeWidth = 80;
+            this.barButtonItem1.LargeWidth = 50;
             this.barButtonItem1.Name = "barButtonItem1";
             this.barButtonItem1.RibbonStyle = ((DevExpress.XtraBars.Ribbon.RibbonItemStyles)((DevExpress.XtraBars.Ribbon.RibbonItemStyles.Large | DevExpress.XtraBars.Ribbon.RibbonItemStyles.SmallWithText)));
+            this.barButtonItem1.ItemClick += new DevExpress.XtraBars.ItemClickEventHandler(this.barButtonItem1_ItemClick);
             // 
             // ribbonPageGroup_Thoat
             // 
@@ -205,7 +209,7 @@
             // 
             this.barButtonItem_Thoat.Id = 11;
             this.barButtonItem_Thoat.ImageOptions.Image = global::QLDSV.Properties.Resources.power_button;
-            this.barButtonItem_Thoat.LargeWidth = 80;
+            this.barButtonItem_Thoat.LargeWidth = 50;
             this.barButtonItem_Thoat.Name = "barButtonItem_Thoat";
             this.barButtonItem_Thoat.RibbonStyle = ((DevExpress.XtraBars.Ribbon.RibbonItemStyles)((DevExpress.XtraBars.Ribbon.RibbonItemStyles.Large | DevExpress.XtraBars.Ribbon.RibbonItemStyles.SmallWithText)));
             this.barButtonItem_Thoat.ItemClick += new DevExpress.XtraBars.ItemClickEventHandler(this.barButtonItem_Thoat_ItemClick);
