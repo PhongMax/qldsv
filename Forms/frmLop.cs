@@ -41,39 +41,42 @@ namespace QLDSV.Forms
             this.LOPTableAdapter.Fill(this.DS.LOP);
             this.sINHVIENTableAdapter.Fill(this.DS.SINHVIEN);
 
-            _makhoa = ((DataRowView)bdsLOP[5])["MAKH"].ToString();
-            this.txtMaKhoa.Text = _makhoa;
+            _makhoa = Utils.GetMaKhoa();
             this.txtMaKhoa.Enabled = false;
 
             this.grbLop.Enabled = false;
             // đoạn code liên kết giữa bds với combo box
-            // lọc phân mãnh trước
+            // lọc phân mảnh trước
             Program.Bds_Dspm.Filter = "TENKHOA LIKE 'KHOA%'";
             Utils.BindingDataToComBo(cmbKhoa, Program.Bds_Dspm.DataSource);
-
-
-
-          
            
         }
 
         private void cmbKhoa_SelectedIndexChanged(object sender, EventArgs e)
         {
+            // bắt lỗi khi giá trị của selectedvalue = "sysem.data.datarowview"
             if (cmbKhoa.SelectedValue.ToString() == "System.Data.DataRowView")
                 return;
 
             // gán server đã chọn vào biến toàn cục.
             Program.ServerName = cmbKhoa.SelectedValue.ToString();
 
+
+            // đoạn code hỗ trợ chuyển chi nhánh
+            // ở chi nhánh A qua B thì dùng RemoteLogin,
             if (cmbKhoa.SelectedIndex != Program.MKhoa) {
                 Program.MLogin = Program.RemoteLogin;
                 Program.MPassword = Program.RemotePassword;
             }
-            else {
+            else
+            { // ở B về lại A dùng login ban đầu
                 Program.MLogin = Program.MLoginDN;
                 Program.MPassword = Program.PasswordDN;
             }
 
+
+            // kết nối database với dữ liệu ở đoạn code trên và fill dữ liệu, nếu như có lỗi thì
+            // thoát.
             if (Program.KetNoi() == 0) {
                 MessageBox.Show("Lỗi kết nối về chi nhánh mới", "", MessageBoxButtons.OK);
             }
@@ -87,7 +90,7 @@ namespace QLDSV.Forms
                 this.LOPTableAdapter.Fill(this.DS.LOP);
                 this.sINHVIENTableAdapter.Fill(this.DS.SINHVIEN);
 
-                _makhoa = ((DataRowView)bdsLOP[bdsLOP.Position])["MAKH"].ToString();
+                this.txtMaKhoa.Text = Utils.GetMaKhoa();
             }
         }
 
@@ -99,7 +102,6 @@ namespace QLDSV.Forms
         private void barBtnThem_ItemClick(object sender, DevExpress.XtraBars.ItemClickEventArgs e)
         {
             _vitri = bdsLOP.Position;
-
 
             // tắt lưới
             lOPGridControl.Enabled = false;

@@ -84,7 +84,7 @@
             // lblHOTEN
             // 
             this.lblHOTEN.Name = "lblHOTEN";
-            this.lblHOTEN.Size = new System.Drawing.Size(45, 17);
+            this.lblHOTEN.Size = new System.Drawing.Size(46, 17);
             this.lblHOTEN.Text = "HOTEN";
             // 
             // lblNHOM
@@ -301,7 +301,7 @@
             this.Margin = new System.Windows.Forms.Padding(4);
             this.Name = "frmMain";
             this.Ribbon = this.ribbonControl1;
-            this.Text = "Quản lý điểm sinh viên";
+            this.Text = "QUẢN LÝ ĐIỂM SINH VIÊN";
             this.WindowState = System.Windows.Forms.FormWindowState.Maximized;
             this.FormClosing += new System.Windows.Forms.FormClosingEventHandler(this.frmMain_FormClosing);
             this.Load += new System.EventHandler(this.frmMain_Load);
