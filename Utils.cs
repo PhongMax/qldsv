@@ -24,6 +24,19 @@ namespace QLDSV
             // nếu login vào là khoa vt, thì combox sẽ hiện khoa vt
             // chỗ này chưa xong, bị lỗi nếu như login vào với server học phí...
             combo.SelectedIndex = Program.MKhoa;
+
+        }
+
+
+        public static string GetMaKhoa()
+        {
+            DataTable dt = new DataTable();
+            BindingSource bds = new BindingSource();
+            dt = Program.ExecSqlDataTable("SELECT MAKH FROM KHOA");
+          
+            bds.DataSource = dt;
+            
+            return ((DataRowView)bds[0])["MAKH"].ToString();
         }
     }
 }
