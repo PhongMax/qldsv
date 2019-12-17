@@ -13,10 +13,8 @@ namespace QLDSV.Forms
 {
     public partial class frmLop : DevExpress.XtraEditors.XtraForm
     {
-        // Declare Variable
-        private int _vitri = 0;
-        private String _makhoa = "";
-
+        private int _vitri;
+        private string _makhoa = "";
         public frmLop()
         {
             InitializeComponent();
@@ -27,10 +25,12 @@ namespace QLDSV.Forms
             this.Validate();
             this.bdsLOP.EndEdit();
             this.tableAdapterManager.UpdateAll(this.DS);
+
         }
 
         private void frmLop_Load(object sender, EventArgs e)
         {
+
             // TODO: This line of code loads data into the 'DS.SINHVIEN' table. You can move, or remove it, as needed.
             this.DS.EnforceConstraints = false;
 
@@ -40,14 +40,20 @@ namespace QLDSV.Forms
 
             this.LOPTableAdapter.Fill(this.DS.LOP);
             this.sINHVIENTableAdapter.Fill(this.DS.SINHVIEN);
-            
+
+            _makhoa = ((DataRowView)bdsLOP[0])["MAKH"].ToString();
+            this.txtMaKhoa.Text = _makhoa;
+            this.txtMaKhoa.Enabled = false;
 
             this.grbLop.Enabled = false;
-            // đoạn code liên kết giữa bds với combobox
-            // lọc phân mảnh trước
+            // đoạn code liên kết giữa bds với combo box
+            // lọc phân mãnh trước
             Program.Bds_Dspm.Filter = "TENKHOA LIKE 'KHOA%'";
-
             Utils.BindingDataToComBo(cmbKhoa, Program.Bds_Dspm.DataSource);
+
+
+
+          
            
         }
 
@@ -75,15 +81,13 @@ namespace QLDSV.Forms
 
                 this.DS.EnforceConstraints = false;
 
-                // kết nối trước rồi mới fill.
                 this.LOPTableAdapter.Connection.ConnectionString = Program.URL_Connect;
                 this.sINHVIENTableAdapter.Connection.ConnectionString = Program.URL_Connect;
 
                 this.LOPTableAdapter.Fill(this.DS.LOP);
                 this.sINHVIENTableAdapter.Fill(this.DS.SINHVIEN);
 
-                this._makhoa = ((DataRowView)bdsLOP[0])["MAKH"].ToString();
-                Console.WriteLine("Ma Khoa La : ", _makhoa);
+                _makhoa = ((DataRowView)bdsLOP[bdsLOP.Position])["MAKH"].ToString();
             }
         }
 
@@ -96,19 +100,16 @@ namespace QLDSV.Forms
         {
             _vitri = bdsLOP.Position;
 
+
+            // tắt lưới
+            lOPGridControl.Enabled = false;
+
+            // tật groupbox nhập lớp
             grbLop.Enabled = true;
-            txtMaKhoa.Text = ((DataRowView)bdsLOP[0])["MAKH"].ToString();
 
-
-            barBtnThem.Enabled
-                = barBtnXoa.Enabled
-                = barBtnSua.Enabled
-                = barBtnUndo.Enabled
-                = barBtnGhi.Enabled
-                = barBtnHuy.Enabled
-                = barBtnLammoi.Enabled = false;
-            //bdsLOP.AddNew();
-            
+            // thao tác thêm
+            bdsLOP.AddNew();
+            txtMaKhoa.EditValue = _makhoa;
         }
     }
 }
