@@ -40,6 +40,24 @@ namespace QLDSV
 
         private void cmbKhoa_SelectedIndexChanged(object sender, EventArgs e)
         {
+            // gán tài khoản và mật khẩu vào form login....
+            if (cmbKhoa.SelectedIndex == 0)
+            {
+                this.txtLogin.Text = "cntt";
+
+            }
+            if (cmbKhoa.SelectedIndex == 1)
+            {
+                this.txtLogin.Text = "vt";
+               
+            }
+            if (cmbKhoa.SelectedIndex == 2)
+            {
+                this.txtLogin.Text = "hp";
+
+            }
+
+
             try
             {
                 // gán server đã chọn vào biến toàn cục.
