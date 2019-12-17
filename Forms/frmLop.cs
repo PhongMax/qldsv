@@ -41,19 +41,14 @@ namespace QLDSV.Forms
             this.LOPTableAdapter.Fill(this.DS.LOP);
             this.sINHVIENTableAdapter.Fill(this.DS.SINHVIEN);
 
-            _makhoa = ((DataRowView)bdsLOP[0])["MAKH"].ToString();
-            this.txtMaKhoa.Text = _makhoa;
+            _makhoa = Utils.GetMaKhoa();
             this.txtMaKhoa.Enabled = false;
 
             this.grbLop.Enabled = false;
             // đoạn code liên kết giữa bds với combo box
-            // lọc phân mãnh trước
+            // lọc phân mảnh trước
             Program.Bds_Dspm.Filter = "TENKHOA LIKE 'KHOA%'";
             Utils.BindingDataToComBo(cmbKhoa, Program.Bds_Dspm.DataSource);
-
-
-
-          
            
         }
 
@@ -87,7 +82,7 @@ namespace QLDSV.Forms
                 this.LOPTableAdapter.Fill(this.DS.LOP);
                 this.sINHVIENTableAdapter.Fill(this.DS.SINHVIEN);
 
-                _makhoa = ((DataRowView)bdsLOP[bdsLOP.Position])["MAKH"].ToString();
+                this.txtMaKhoa.Text = Utils.GetMaKhoa();
             }
         }
 
@@ -99,7 +94,6 @@ namespace QLDSV.Forms
         private void barBtnThem_ItemClick(object sender, DevExpress.XtraBars.ItemClickEventArgs e)
         {
             _vitri = bdsLOP.Position;
-
 
             // tắt lưới
             lOPGridControl.Enabled = false;
