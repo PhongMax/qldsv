@@ -78,5 +78,10 @@ namespace QLDSV
         {
             ShowMdiChildren(typeof(frmDangKy));
         }
+
+        private void barButton_SinhVien_ItemClick(object sender, DevExpress.XtraBars.ItemClickEventArgs e)
+        {
+            ShowMdiChildren(typeof(frmSinhVien));
+        }
     }
 }

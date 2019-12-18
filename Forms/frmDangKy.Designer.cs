@@ -28,10 +28,11 @@
         /// </summary>
         private void InitializeComponent()
         {
+            this.components = new System.ComponentModel.Container();
             this.groupBox1 = new System.Windows.Forms.GroupBox();
+            this.txtLogin = new DevExpress.XtraEditors.TextEdit();
             this.btnDangKy = new System.Windows.Forms.Button();
             this.txtPass = new DevExpress.XtraEditors.TextEdit();
-            this.txtUser = new DevExpress.XtraEditors.TextEdit();
             this.label5 = new System.Windows.Forms.Label();
             this.label4 = new System.Windows.Forms.Label();
             this.label3 = new System.Windows.Forms.Label();
@@ -40,21 +41,27 @@
             this.rdoKhoa = new System.Windows.Forms.RadioButton();
             this.rdoPGV = new System.Windows.Forms.RadioButton();
             this.label1 = new System.Windows.Forms.Label();
-            this.btnUser = new System.Windows.Forms.Button();
             this.chkShowPass = new System.Windows.Forms.CheckBox();
-            this.txtLogin = new DevExpress.XtraEditors.TextEdit();
+            this.dS = new QLDSV.DS();
+            this.bdsGiangVien = new System.Windows.Forms.BindingSource(this.components);
+            this.GIANGVIENTableAdapter = new QLDSV.DSTableAdapters.GIANGVIENTableAdapter();
+            this.tableAdapterManager = new QLDSV.DSTableAdapters.TableAdapterManager();
+            this.cmbMaGV = new System.Windows.Forms.ComboBox();
+            this.btnHuy = new System.Windows.Forms.Button();
             this.groupBox1.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.txtPass.Properties)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.txtUser.Properties)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.txtLogin.Properties)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.txtPass.Properties)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.dS)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.bdsGiangVien)).BeginInit();
             this.SuspendLayout();
             // 
             // groupBox1
             // 
+            this.groupBox1.Controls.Add(this.btnHuy);
+            this.groupBox1.Controls.Add(this.cmbMaGV);
             this.groupBox1.Controls.Add(this.txtLogin);
             this.groupBox1.Controls.Add(this.btnDangKy);
             this.groupBox1.Controls.Add(this.txtPass);
-            this.groupBox1.Controls.Add(this.txtUser);
             this.groupBox1.Controls.Add(this.label5);
             this.groupBox1.Controls.Add(this.label4);
             this.groupBox1.Controls.Add(this.label3);
@@ -63,7 +70,6 @@
             this.groupBox1.Controls.Add(this.rdoKhoa);
             this.groupBox1.Controls.Add(this.rdoPGV);
             this.groupBox1.Controls.Add(this.label1);
-            this.groupBox1.Controls.Add(this.btnUser);
             this.groupBox1.Controls.Add(this.chkShowPass);
             this.groupBox1.Dock = System.Windows.Forms.DockStyle.Fill;
             this.groupBox1.Location = new System.Drawing.Point(0, 0);
@@ -72,9 +78,18 @@
             this.groupBox1.TabIndex = 0;
             this.groupBox1.TabStop = false;
             // 
+            // txtLogin
+            // 
+            this.txtLogin.Location = new System.Drawing.Point(419, 169);
+            this.txtLogin.Name = "txtLogin";
+            this.txtLogin.Properties.MaxLength = 15;
+            this.txtLogin.Properties.NullValuePromptShowForEmptyValue = true;
+            this.txtLogin.Size = new System.Drawing.Size(202, 20);
+            this.txtLogin.TabIndex = 17;
+            // 
             // btnDangKy
             // 
-            this.btnDangKy.Location = new System.Drawing.Point(481, 336);
+            this.btnDangKy.Location = new System.Drawing.Point(419, 336);
             this.btnDangKy.Name = "btnDangKy";
             this.btnDangKy.Size = new System.Drawing.Size(77, 21);
             this.btnDangKy.TabIndex = 16;
@@ -88,13 +103,6 @@
             this.txtPass.Properties.UseSystemPasswordChar = true;
             this.txtPass.Size = new System.Drawing.Size(202, 20);
             this.txtPass.TabIndex = 15;
-            // 
-            // txtUser
-            // 
-            this.txtUser.Location = new System.Drawing.Point(419, 242);
-            this.txtUser.Name = "txtUser";
-            this.txtUser.Size = new System.Drawing.Size(202, 20);
-            this.txtUser.TabIndex = 14;
             // 
             // label5
             // 
@@ -173,15 +181,6 @@
             this.label1.TabIndex = 5;
             this.label1.Text = "Role";
             // 
-            // btnUser
-            // 
-            this.btnUser.Location = new System.Drawing.Point(626, 241);
-            this.btnUser.Name = "btnUser";
-            this.btnUser.Size = new System.Drawing.Size(31, 21);
-            this.btnUser.TabIndex = 4;
-            this.btnUser.Text = "...";
-            this.btnUser.UseVisualStyleBackColor = true;
-            // 
             // chkShowPass
             // 
             this.chkShowPass.AutoSize = true;
@@ -193,14 +192,52 @@
             this.chkShowPass.UseVisualStyleBackColor = true;
             this.chkShowPass.CheckedChanged += new System.EventHandler(this.chkShow_CheckedChanged);
             // 
-            // txtLogin
+            // dS
             // 
-            this.txtLogin.Location = new System.Drawing.Point(419, 169);
-            this.txtLogin.Name = "txtLogin";
-            this.txtLogin.Properties.MaxLength = 15;
-            this.txtLogin.Properties.NullValuePromptShowForEmptyValue = true;
-            this.txtLogin.Size = new System.Drawing.Size(202, 20);
-            this.txtLogin.TabIndex = 17;
+            this.dS.DataSetName = "DS";
+            this.dS.EnforceConstraints = false;
+            this.dS.SchemaSerializationMode = System.Data.SchemaSerializationMode.IncludeSchema;
+            // 
+            // bdsGiangVien
+            // 
+            this.bdsGiangVien.DataMember = "GIANGVIEN";
+            this.bdsGiangVien.DataSource = this.dS;
+            // 
+            // GIANGVIENTableAdapter
+            // 
+            this.GIANGVIENTableAdapter.ClearBeforeFill = true;
+            // 
+            // tableAdapterManager
+            // 
+            this.tableAdapterManager.BackupDataSetBeforeUpdate = false;
+            this.tableAdapterManager.DIEMTableAdapter = null;
+            this.tableAdapterManager.GIANGVIENTableAdapter = this.GIANGVIENTableAdapter;
+            this.tableAdapterManager.KHOATableAdapter = null;
+            this.tableAdapterManager.LOPTableAdapter = null;
+            this.tableAdapterManager.MONHOCTableAdapter = null;
+            this.tableAdapterManager.SINHVIENTableAdapter = null;
+            this.tableAdapterManager.UpdateOrder = QLDSV.DSTableAdapters.TableAdapterManager.UpdateOrderOption.InsertUpdateDelete;
+            // 
+            // cmbMaGV
+            // 
+            this.cmbMaGV.DataBindings.Add(new System.Windows.Forms.Binding("Text", this.bdsGiangVien, "MAGV", true));
+            this.cmbMaGV.DataSource = this.bdsGiangVien;
+            this.cmbMaGV.DisplayMember = "MAGV";
+            this.cmbMaGV.FormattingEnabled = true;
+            this.cmbMaGV.Location = new System.Drawing.Point(419, 235);
+            this.cmbMaGV.Name = "cmbMaGV";
+            this.cmbMaGV.Size = new System.Drawing.Size(202, 21);
+            this.cmbMaGV.TabIndex = 18;
+            this.cmbMaGV.ValueMember = "MAGV";
+            // 
+            // btnHuy
+            // 
+            this.btnHuy.Location = new System.Drawing.Point(564, 336);
+            this.btnHuy.Name = "btnHuy";
+            this.btnHuy.Size = new System.Drawing.Size(77, 21);
+            this.btnHuy.TabIndex = 19;
+            this.btnHuy.Text = "Hủy";
+            this.btnHuy.UseVisualStyleBackColor = true;
             // 
             // frmDangKy
             // 
@@ -213,9 +250,10 @@
             this.Load += new System.EventHandler(this.frmĐangKy_Load);
             this.groupBox1.ResumeLayout(false);
             this.groupBox1.PerformLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.txtPass.Properties)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.txtUser.Properties)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.txtLogin.Properties)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.txtPass.Properties)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.dS)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.bdsGiangVien)).EndInit();
             this.ResumeLayout(false);
 
         }
@@ -230,12 +268,16 @@
         private System.Windows.Forms.RadioButton rdoKhoa;
         private System.Windows.Forms.RadioButton rdoPGV;
         private System.Windows.Forms.Label label1;
-        private System.Windows.Forms.Button btnUser;
         private System.Windows.Forms.CheckBox chkShowPass;
         private System.Windows.Forms.Label label5;
         private DevExpress.XtraEditors.TextEdit txtPass;
-        private DevExpress.XtraEditors.TextEdit txtUser;
         private System.Windows.Forms.Button btnDangKy;
         private DevExpress.XtraEditors.TextEdit txtLogin;
+        private DS dS;
+        private System.Windows.Forms.BindingSource bdsGiangVien;
+        private DSTableAdapters.GIANGVIENTableAdapter GIANGVIENTableAdapter;
+        private DSTableAdapters.TableAdapterManager tableAdapterManager;
+        private System.Windows.Forms.ComboBox cmbMaGV;
+        private System.Windows.Forms.Button btnHuy;
     }
 }

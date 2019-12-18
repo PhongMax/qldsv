@@ -180,6 +180,7 @@
             this.barButton_SinhVien.LargeWidth = 80;
             this.barButton_SinhVien.Name = "barButton_SinhVien";
             this.barButton_SinhVien.RibbonStyle = ((DevExpress.XtraBars.Ribbon.RibbonItemStyles)((DevExpress.XtraBars.Ribbon.RibbonItemStyles.Large | DevExpress.XtraBars.Ribbon.RibbonItemStyles.SmallWithText)));
+            this.barButton_SinhVien.ItemClick += new DevExpress.XtraBars.ItemClickEventHandler(this.barButton_SinhVien_ItemClick);
             // 
             // ribbonPageGroup_Diem
             // 
