@@ -84,7 +84,7 @@
             // lblHOTEN
             // 
             this.lblHOTEN.Name = "lblHOTEN";
-            this.lblHOTEN.Size = new System.Drawing.Size(45, 17);
+            this.lblHOTEN.Size = new System.Drawing.Size(46, 17);
             this.lblHOTEN.Text = "HOTEN";
             // 
             // lblNHOM
@@ -251,6 +251,7 @@
             this.ribbonPage2,
             this.ribbonPage4});
             this.ribbonControl1.Size = new System.Drawing.Size(1011, 143);
+            this.ribbonControl1.Click += new System.EventHandler(this.ribbonControl1_Click);
             // 
             // barBtnTaoTaiKhoan
             // 
@@ -259,6 +260,7 @@
             this.barBtnTaoTaiKhoan.ImageOptions.SvgImage = ((DevExpress.Utils.Svg.SvgImage)(resources.GetObject("barBtnTaoTaiKhoan.ImageOptions.SvgImage")));
             this.barBtnTaoTaiKhoan.Name = "barBtnTaoTaiKhoan";
             this.barBtnTaoTaiKhoan.RibbonStyle = ((DevExpress.XtraBars.Ribbon.RibbonItemStyles)((DevExpress.XtraBars.Ribbon.RibbonItemStyles.Large | DevExpress.XtraBars.Ribbon.RibbonItemStyles.SmallWithText)));
+            this.barBtnTaoTaiKhoan.ItemClick += new DevExpress.XtraBars.ItemClickEventHandler(this.barBtnTaoTaiKhoan_ItemClick);
             // 
             // barBtnDangXuat
             // 

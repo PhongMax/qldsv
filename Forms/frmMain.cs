@@ -68,5 +68,15 @@ namespace QLDSV
                 else e.Cancel = true;
             }
         }
+
+        private void ribbonControl1_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void barBtnTaoTaiKhoan_ItemClick(object sender, DevExpress.XtraBars.ItemClickEventArgs e)
+        {
+            ShowMdiChildren(typeof(frmDangKy));
+        }
     }
 }

@@ -30,15 +30,14 @@ namespace QLDSV.Forms
 
         private void loadInitializeData()
         {
-            // TODO: This line of code loads data into the 'DS.SINHVIEN' table. You can move, or remove it, as needed.
-            this.DS.EnforceConstraints = false;
-
+            
             // kết nối trước rồi mới fill.
             this.LOPTableAdapter.Connection.ConnectionString = Program.URL_Connect;
-            this.sINHVIENTableAdapter.Connection.ConnectionString = Program.URL_Connect;
+            this.SINHVIENTableAdapter.Connection.ConnectionString = Program.URL_Connect;
+
 
             this.LOPTableAdapter.Fill(this.DS.LOP);
-            this.sINHVIENTableAdapter.Fill(this.DS.SINHVIEN);
+            this.SINHVIENTableAdapter.Fill(this.DS.SINHVIEN);
         }
 
         // TODO : Load Method
@@ -99,10 +98,10 @@ namespace QLDSV.Forms
                 this.DS.EnforceConstraints = false;
 
                 this.LOPTableAdapter.Connection.ConnectionString = Program.URL_Connect;
-                this.sINHVIENTableAdapter.Connection.ConnectionString = Program.URL_Connect;
+                this.SINHVIENTableAdapter.Connection.ConnectionString = Program.URL_Connect;
 
                 this.LOPTableAdapter.Fill(this.DS.LOP);
-                this.sINHVIENTableAdapter.Fill(this.DS.SINHVIEN);
+                this.SINHVIENTableAdapter.Fill(this.DS.SINHVIEN);
 
                 this.txtMaKhoa.EditValue = Utils.GetMaKhoa();
             }
@@ -161,11 +160,6 @@ namespace QLDSV.Forms
         private void barBtnThoat_ItemClick(object sender, DevExpress.XtraBars.ItemClickEventArgs e)
         {
             Close();
-        }
-
-        private void barBtnLammoi_ItemClick_1(object sender, DevExpress.XtraBars.ItemClickEventArgs e)
-        {
-
         }
     }
 }

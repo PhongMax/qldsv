@@ -65,7 +65,7 @@
             this.txtTenLop = new DevExpress.XtraEditors.TextEdit();
             this.txtMaLop = new DevExpress.XtraEditors.TextEdit();
             this.bdsSV = new System.Windows.Forms.BindingSource(this.components);
-            this.sINHVIENTableAdapter = new QLDSV.DSTableAdapters.SINHVIENTableAdapter();
+            this.SINHVIENTableAdapter = new QLDSV.DSTableAdapters.SINHVIENTableAdapter();
             maLopLabel = new System.Windows.Forms.Label();
             tENLOPLabel = new System.Windows.Forms.Label();
             mAKHLabel = new System.Windows.Forms.Label();
@@ -165,6 +165,7 @@
             this.barBtnXoa.Id = 1;
             this.barBtnXoa.ImageOptions.SvgImage = ((DevExpress.Utils.Svg.SvgImage)(resources.GetObject("barBtnXoa.ImageOptions.SvgImage")));
             this.barBtnXoa.Name = "barBtnXoa";
+            this.barBtnXoa.ItemClick += new DevExpress.XtraBars.ItemClickEventHandler(this.barBtnXoa_ItemClick);
             // 
             // barBtnSua
             // 
@@ -172,6 +173,7 @@
             this.barBtnSua.Id = 2;
             this.barBtnSua.ImageOptions.SvgImage = ((DevExpress.Utils.Svg.SvgImage)(resources.GetObject("barBtnSua.ImageOptions.SvgImage")));
             this.barBtnSua.Name = "barBtnSua";
+            this.barBtnSua.ItemClick += new DevExpress.XtraBars.ItemClickEventHandler(this.barBtnSua_ItemClick);
             // 
             // barBtnUndo
             // 
@@ -179,6 +181,7 @@
             this.barBtnUndo.Id = 3;
             this.barBtnUndo.ImageOptions.SvgImage = ((DevExpress.Utils.Svg.SvgImage)(resources.GetObject("barBtnUndo.ImageOptions.SvgImage")));
             this.barBtnUndo.Name = "barBtnUndo";
+            this.barBtnUndo.ItemClick += new DevExpress.XtraBars.ItemClickEventHandler(this.barBtnUndo_ItemClick);
             // 
             // barBtnGhi
             // 
@@ -186,6 +189,7 @@
             this.barBtnGhi.Id = 4;
             this.barBtnGhi.ImageOptions.SvgImage = ((DevExpress.Utils.Svg.SvgImage)(resources.GetObject("barBtnGhi.ImageOptions.SvgImage")));
             this.barBtnGhi.Name = "barBtnGhi";
+            this.barBtnGhi.ItemClick += new DevExpress.XtraBars.ItemClickEventHandler(this.barBtnGhi_ItemClick);
             // 
             // barBtnHuy
             // 
@@ -193,6 +197,7 @@
             this.barBtnHuy.Id = 5;
             this.barBtnHuy.ImageOptions.SvgImage = ((DevExpress.Utils.Svg.SvgImage)(resources.GetObject("barBtnHuy.ImageOptions.SvgImage")));
             this.barBtnHuy.Name = "barBtnHuy";
+            this.barBtnHuy.ItemClick += new DevExpress.XtraBars.ItemClickEventHandler(this.barBtnHuy_ItemClick);
             // 
             // barBtnLammoi
             // 
@@ -200,7 +205,7 @@
             this.barBtnLammoi.Id = 6;
             this.barBtnLammoi.ImageOptions.SvgImage = ((DevExpress.Utils.Svg.SvgImage)(resources.GetObject("barBtnLammoi.ImageOptions.SvgImage")));
             this.barBtnLammoi.Name = "barBtnLammoi";
-            this.barBtnLammoi.ItemClick += new DevExpress.XtraBars.ItemClickEventHandler(this.barBtnLammoi_ItemClick_1);
+            this.barBtnLammoi.ItemClick += new DevExpress.XtraBars.ItemClickEventHandler(this.barBtnLammoi_ItemClick);
             // 
             // barBtnThoat
             // 
@@ -287,6 +292,7 @@
             // DS
             // 
             this.DS.DataSetName = "DS";
+            this.DS.EnforceConstraints = false;
             this.DS.SchemaSerializationMode = System.Data.SchemaSerializationMode.IncludeSchema;
             // 
             // bdsLOP
@@ -317,7 +323,7 @@
             this.lOPGridControl.MainView = this.gridView1;
             this.lOPGridControl.MenuManager = this.barManagerLop;
             this.lOPGridControl.Name = "lOPGridControl";
-            this.lOPGridControl.Size = new System.Drawing.Size(688, 197);
+            this.lOPGridControl.Size = new System.Drawing.Size(688, 300);
             this.lOPGridControl.TabIndex = 15;
             this.lOPGridControl.ViewCollection.AddRange(new DevExpress.XtraGrid.Views.Base.BaseView[] {
             this.gridView1});
@@ -365,9 +371,9 @@
             this.grbLop.Controls.Add(maLopLabel);
             this.grbLop.Controls.Add(this.txtMaLop);
             this.grbLop.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.grbLop.Location = new System.Drawing.Point(0, 274);
+            this.grbLop.Location = new System.Drawing.Point(0, 377);
             this.grbLop.Name = "grbLop";
-            this.grbLop.Size = new System.Drawing.Size(688, 206);
+            this.grbLop.Size = new System.Drawing.Size(688, 103);
             this.grbLop.TabIndex = 16;
             this.grbLop.TabStop = false;
             // 
@@ -403,9 +409,9 @@
             this.bdsSV.DataMember = "FK_SINHVIEN_LOP";
             this.bdsSV.DataSource = this.bdsLOP;
             // 
-            // sINHVIENTableAdapter
+            // SINHVIENTableAdapter
             // 
-            this.sINHVIENTableAdapter.ClearBeforeFill = true;
+            this.SINHVIENTableAdapter.ClearBeforeFill = true;
             // 
             // frmLop
             // 
@@ -477,6 +483,6 @@
         private DevExpress.XtraEditors.TextEdit txtTenLop;
         private DevExpress.XtraEditors.TextEdit txtMaLop;
         private System.Windows.Forms.BindingSource bdsSV;
-        private DSTableAdapters.SINHVIENTableAdapter sINHVIENTableAdapter;
+        private DSTableAdapters.SINHVIENTableAdapter SINHVIENTableAdapter;
     }
 }

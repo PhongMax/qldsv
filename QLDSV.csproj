@@ -107,11 +107,11 @@
     <Compile Include="Forms\frmSinhVien.Designer.cs">
       <DependentUpon>frmSinhVien.cs</DependentUpon>
     </Compile>
-    <Compile Include="Forms\frmĐangKy.cs">
+    <Compile Include="Forms\frmDangKy.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="Forms\frmĐangKy.Designer.cs">
-      <DependentUpon>frmĐangKy.cs</DependentUpon>
+    <Compile Include="Forms\frmDangKy.Designer.cs">
+      <DependentUpon>frmDangKy.cs</DependentUpon>
     </Compile>
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
@@ -125,8 +125,8 @@
     <EmbeddedResource Include="Forms\frmMain.resx">
       <DependentUpon>frmMain.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="Forms\frmĐangKy.resx">
-      <DependentUpon>frmĐangKy.cs</DependentUpon>
+    <EmbeddedResource Include="Forms\frmDangKy.resx">
+      <DependentUpon>frmDangKy.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Properties\licenses.licx" />
     <EmbeddedResource Include="Properties\Resources.resx">
