@@ -84,7 +84,7 @@
             // lblHOTEN
             // 
             this.lblHOTEN.Name = "lblHOTEN";
-            this.lblHOTEN.Size = new System.Drawing.Size(46, 17);
+            this.lblHOTEN.Size = new System.Drawing.Size(45, 17);
             this.lblHOTEN.Text = "HOTEN";
             // 
             // lblNHOM
