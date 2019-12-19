@@ -36,5 +36,30 @@ namespace QLDSV
             
             return ((DataRowView)bds[0])["MAKH"].ToString();
         }
+
+        // hỗ trợ trong combobox chọn chi nhánh, được tách ra dùng cho các form khác...
+        public static void ComboboxHelper(ComboBox cmb)
+        {
+            // bắt lỗi khi giá trị của selectedvalue = "sysem.data.datarowview"
+            if (cmb.SelectedValue.ToString() == "System.Data.DataRowView")
+                return;
+
+            // gán server đã chọn vào biến toàn cục.
+            Program.ServerName = cmb.SelectedValue.ToString();
+
+
+            // đoạn code hỗ trợ chuyển chi nhánh
+            // ở chi nhánh A qua B thì dùng RemoteLogin,
+            if (cmb.SelectedIndex != Program.MKhoa)
+            {
+                Program.MLogin = Program.RemoteLogin;
+                Program.MPassword = Program.RemotePassword;
+            }
+            else
+            { // ở B về lại A dùng login ban đầu
+                Program.MLogin = Program.MLoginDN;
+                Program.MPassword = Program.PasswordDN;
+            }
+        }
     }
 }

@@ -67,25 +67,9 @@ namespace QLDSV.Forms
 
         private void cmbKhoa_SelectedIndexChanged(object sender, EventArgs e)
         {
-            // bắt lỗi khi giá trị của selectedvalue = "sysem.data.datarowview"
-            if (cmbKhoa.SelectedValue.ToString() == "System.Data.DataRowView")
-                return;
 
-            // gán server đã chọn vào biến toàn cục.
-            Program.ServerName = cmbKhoa.SelectedValue.ToString();
-
-
-            // đoạn code hỗ trợ chuyển chi nhánh
-            // ở chi nhánh A qua B thì dùng RemoteLogin,
-            if (cmbKhoa.SelectedIndex != Program.MKhoa) {
-                Program.MLogin = Program.RemoteLogin;
-                Program.MPassword = Program.RemotePassword;
-            }
-            else
-            { // ở B về lại A dùng login ban đầu
-                Program.MLogin = Program.MLoginDN;
-                Program.MPassword = Program.PasswordDN;
-            }
+            // chuyển chi nhánh .....
+            Utils.ComboboxHelper(this.cmbKhoa);
 
 
             // kết nối database với dữ liệu ở đoạn code trên và fill dữ liệu, nếu như có lỗi thì
@@ -95,14 +79,7 @@ namespace QLDSV.Forms
             }
             else {
 
-                this.DS.EnforceConstraints = false;
-
-                this.LOPTableAdapter.Connection.ConnectionString = Program.URL_Connect;
-                this.SINHVIENTableAdapter.Connection.ConnectionString = Program.URL_Connect;
-
-                this.LOPTableAdapter.Fill(this.DS.LOP);
-                this.SINHVIENTableAdapter.Fill(this.DS.SINHVIEN);
-
+                loadInitializeData();
                 this.txtMaKhoa.EditValue = Utils.GetMaKhoa();
             }
         }

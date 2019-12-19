@@ -42,7 +42,6 @@
             this.barButton_Lop = new DevExpress.XtraBars.BarButtonItem();
             this.ribbonPageGroup_MonHoc = new DevExpress.XtraBars.Ribbon.RibbonPageGroup();
             this.barButton_MonHoc = new DevExpress.XtraBars.BarButtonItem();
-            this.ribbonPageGroup_GiangVien = new DevExpress.XtraBars.Ribbon.RibbonPageGroup();
             this.barButton_GiangVien = new DevExpress.XtraBars.BarButtonItem();
             this.ribbonPageGroup1 = new DevExpress.XtraBars.Ribbon.RibbonPageGroup();
             this.barButton_SinhVien = new DevExpress.XtraBars.BarButtonItem();
@@ -115,7 +114,6 @@
             this.ribbonPage1.Groups.AddRange(new DevExpress.XtraBars.Ribbon.RibbonPageGroup[] {
             this.ribbonPageGroup_Lop,
             this.ribbonPageGroup_MonHoc,
-            this.ribbonPageGroup_GiangVien,
             this.ribbonPageGroup1,
             this.ribbonPageGroup_Diem,
             this.ribbonPageGroup_Thoat});
@@ -152,12 +150,6 @@
             this.barButton_MonHoc.LargeWidth = 80;
             this.barButton_MonHoc.Name = "barButton_MonHoc";
             this.barButton_MonHoc.RibbonStyle = ((DevExpress.XtraBars.Ribbon.RibbonItemStyles)((DevExpress.XtraBars.Ribbon.RibbonItemStyles.Large | DevExpress.XtraBars.Ribbon.RibbonItemStyles.SmallWithText)));
-            // 
-            // ribbonPageGroup_GiangVien
-            // 
-            this.ribbonPageGroup_GiangVien.ItemLinks.Add(this.barButton_GiangVien);
-            this.ribbonPageGroup_GiangVien.Name = "ribbonPageGroup_GiangVien";
-            this.ribbonPageGroup_GiangVien.Text = "GIẢNG VIÊN";
             // 
             // barButton_GiangVien
             // 
@@ -336,7 +328,6 @@
         private DevExpress.XtraBars.BarButtonItem barButtonItem2;
         private DevExpress.XtraBars.BarButtonItem barButtonItem3;
         private DevExpress.XtraBars.BarButtonItem barButton_MonHoc;
-        private DevExpress.XtraBars.Ribbon.RibbonPageGroup ribbonPageGroup_GiangVien;
         private DevExpress.XtraBars.BarButtonItem barButton_GiangVien;
         private DevExpress.XtraBars.Ribbon.RibbonPageGroup ribbonPageGroup1;
         private DevExpress.XtraBars.BarButtonItem barButton_SinhVien;
