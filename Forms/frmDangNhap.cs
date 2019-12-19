@@ -115,6 +115,7 @@ namespace QLDSV
             }
             catch(Exception ex)
             {
+                Debug.WriteLine("---> Lỗi: " + ex.ToString());
                 MessageBox.Show("Login bạn nhập không có quyền truy cập vào chương trình", "", MessageBoxButtons.OK);
                 return;
             }
@@ -129,8 +130,8 @@ namespace QLDSV
 
             // hiện thông tin tài khoản
             Program.frmMain.lblMAGV.Text = "MÃ GIẢNG VIÊN : " + Program.UserName;
-            Program.frmMain.lblHOTEN.Text = " ||   HỌ VÀ TÊN : " + Program.MHoten;
-            Program.frmMain.lblNHOM.Text = " ||   NHÓM : " + Program.MGroup;
+            Program.frmMain.lblHOTEN.Text = " |  HỌ VÀ TÊN : " + Program.MHoten;
+            Program.frmMain.lblNHOM.Text = " |  NHÓM : " + Program.MGroup;
 
             Program.frmMain.Show();
             Program.FrmDangNhap.Visible = false;
