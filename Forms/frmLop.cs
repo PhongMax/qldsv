@@ -60,8 +60,11 @@ namespace QLDSV.Forms
             // TODO : Role Action
             if (Program.MGroup != "PGV")
             {
-                cmbKhoa.Enabled = false;
+                cmbKhoa.Visible =false;
+                lblTenKhoa.Text = ((DataRowView)Program.Bds_Dspm[Program.MKhoa])["TENKHOA"].ToString();
             }
+           
+            
            
         }
 

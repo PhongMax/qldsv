@@ -49,7 +49,7 @@
             this.barDockControlLeft = new DevExpress.XtraBars.BarDockControl();
             this.barDockControlRight = new DevExpress.XtraBars.BarDockControl();
             this.panelBox = new System.Windows.Forms.Panel();
-            this.labelTenKhoa = new System.Windows.Forms.Label();
+            this.lblTenKhoa = new System.Windows.Forms.Label();
             this.cmbKhoa = new System.Windows.Forms.ComboBox();
             this.DS = new QLDSV.DS();
             this.bdsLOP = new System.Windows.Forms.BindingSource(this.components);
@@ -233,7 +233,7 @@
             this.barDockControlTop.Dock = System.Windows.Forms.DockStyle.Top;
             this.barDockControlTop.Location = new System.Drawing.Point(0, 0);
             this.barDockControlTop.Manager = this.barManagerLop;
-            this.barDockControlTop.Size = new System.Drawing.Size(688, 24);
+            this.barDockControlTop.Size = new System.Drawing.Size(908, 24);
             // 
             // barDockControlBottom
             // 
@@ -241,7 +241,7 @@
             this.barDockControlBottom.Dock = System.Windows.Forms.DockStyle.Bottom;
             this.barDockControlBottom.Location = new System.Drawing.Point(0, 480);
             this.barDockControlBottom.Manager = this.barManagerLop;
-            this.barDockControlBottom.Size = new System.Drawing.Size(688, 23);
+            this.barDockControlBottom.Size = new System.Drawing.Size(908, 23);
             // 
             // barDockControlLeft
             // 
@@ -255,35 +255,35 @@
             // 
             this.barDockControlRight.CausesValidation = false;
             this.barDockControlRight.Dock = System.Windows.Forms.DockStyle.Right;
-            this.barDockControlRight.Location = new System.Drawing.Point(688, 24);
+            this.barDockControlRight.Location = new System.Drawing.Point(908, 24);
             this.barDockControlRight.Manager = this.barManagerLop;
             this.barDockControlRight.Size = new System.Drawing.Size(0, 456);
             // 
             // panelBox
             // 
-            this.panelBox.Controls.Add(this.labelTenKhoa);
+            this.panelBox.Controls.Add(this.lblTenKhoa);
             this.panelBox.Controls.Add(this.cmbKhoa);
             this.panelBox.Dock = System.Windows.Forms.DockStyle.Top;
             this.panelBox.Location = new System.Drawing.Point(0, 24);
             this.panelBox.Name = "panelBox";
-            this.panelBox.Size = new System.Drawing.Size(688, 53);
+            this.panelBox.Size = new System.Drawing.Size(908, 53);
             this.panelBox.TabIndex = 4;
             // 
-            // labelTenKhoa
+            // lblTenKhoa
             // 
-            this.labelTenKhoa.AutoSize = true;
-            this.labelTenKhoa.Font = new System.Drawing.Font("Times New Roman", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.labelTenKhoa.Location = new System.Drawing.Point(17, 16);
-            this.labelTenKhoa.Name = "labelTenKhoa";
-            this.labelTenKhoa.Size = new System.Drawing.Size(56, 19);
-            this.labelTenKhoa.TabIndex = 1;
-            this.labelTenKhoa.Text = "KHOA";
+            this.lblTenKhoa.AutoSize = true;
+            this.lblTenKhoa.Font = new System.Drawing.Font("Times New Roman", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblTenKhoa.Location = new System.Drawing.Point(431, 17);
+            this.lblTenKhoa.Name = "lblTenKhoa";
+            this.lblTenKhoa.Size = new System.Drawing.Size(56, 19);
+            this.lblTenKhoa.TabIndex = 1;
+            this.lblTenKhoa.Text = "KHOA";
             // 
             // cmbKhoa
             // 
             this.cmbKhoa.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.cmbKhoa.FormattingEnabled = true;
-            this.cmbKhoa.Location = new System.Drawing.Point(79, 16);
+            this.cmbKhoa.Location = new System.Drawing.Point(493, 17);
             this.cmbKhoa.Name = "cmbKhoa";
             this.cmbKhoa.Size = new System.Drawing.Size(273, 22);
             this.cmbKhoa.TabIndex = 0;
@@ -323,13 +323,28 @@
             this.lOPGridControl.MainView = this.gridView1;
             this.lOPGridControl.MenuManager = this.barManagerLop;
             this.lOPGridControl.Name = "lOPGridControl";
-            this.lOPGridControl.Size = new System.Drawing.Size(688, 300);
+            this.lOPGridControl.Size = new System.Drawing.Size(908, 300);
             this.lOPGridControl.TabIndex = 15;
             this.lOPGridControl.ViewCollection.AddRange(new DevExpress.XtraGrid.Views.Base.BaseView[] {
             this.gridView1});
             // 
             // gridView1
             // 
+            this.gridView1.Appearance.FocusedCell.BackColor = System.Drawing.Color.Lime;
+            this.gridView1.Appearance.FocusedCell.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, ((System.Drawing.FontStyle)((System.Drawing.FontStyle.Bold | System.Drawing.FontStyle.Italic))), System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.gridView1.Appearance.FocusedCell.Options.UseBackColor = true;
+            this.gridView1.Appearance.FocusedCell.Options.UseFont = true;
+            this.gridView1.Appearance.FocusedRow.BackColor = System.Drawing.Color.Lime;
+            this.gridView1.Appearance.FocusedRow.BackColor2 = System.Drawing.Color.FromArgb(((int)(((byte)(128)))), ((int)(((byte)(255)))), ((int)(((byte)(128)))));
+            this.gridView1.Appearance.FocusedRow.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))));
+            this.gridView1.Appearance.FocusedRow.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Italic, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.gridView1.Appearance.FocusedRow.Options.UseBackColor = true;
+            this.gridView1.Appearance.FocusedRow.Options.UseBorderColor = true;
+            this.gridView1.Appearance.FocusedRow.Options.UseFont = true;
+            this.gridView1.Appearance.HeaderPanel.Options.UseTextOptions = true;
+            this.gridView1.Appearance.HeaderPanel.TextOptions.HAlignment = DevExpress.Utils.HorzAlignment.Center;
+            this.gridView1.Appearance.Row.Options.UseTextOptions = true;
+            this.gridView1.Appearance.Row.TextOptions.HAlignment = DevExpress.Utils.HorzAlignment.Center;
             this.gridView1.Columns.AddRange(new DevExpress.XtraGrid.Columns.GridColumn[] {
             this.colMALOP,
             this.colTENLOP,
@@ -337,30 +352,43 @@
             this.gridView1.GridControl = this.lOPGridControl;
             this.gridView1.Name = "gridView1";
             this.gridView1.OptionsBehavior.ReadOnly = true;
+            this.gridView1.OptionsView.ShowGroupPanel = false;
             // 
             // colMALOP
             // 
+            this.colMALOP.AppearanceHeader.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.colMALOP.AppearanceHeader.Options.UseFont = true;
             this.colMALOP.Caption = "Mã Lớp";
             this.colMALOP.FieldName = "MALOP";
+            this.colMALOP.Fixed = DevExpress.XtraGrid.Columns.FixedStyle.Left;
             this.colMALOP.Name = "colMALOP";
             this.colMALOP.Visible = true;
             this.colMALOP.VisibleIndex = 0;
+            this.colMALOP.Width = 161;
             // 
             // colTENLOP
             // 
+            this.colTENLOP.AppearanceCell.Options.UseTextOptions = true;
+            this.colTENLOP.AppearanceCell.TextOptions.HAlignment = DevExpress.Utils.HorzAlignment.Near;
+            this.colTENLOP.AppearanceHeader.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.colTENLOP.AppearanceHeader.Options.UseFont = true;
             this.colTENLOP.Caption = "Tên Lớp";
             this.colTENLOP.FieldName = "TENLOP";
             this.colTENLOP.Name = "colTENLOP";
             this.colTENLOP.Visible = true;
             this.colTENLOP.VisibleIndex = 1;
+            this.colTENLOP.Width = 363;
             // 
             // colMAKH
             // 
+            this.colMAKH.AppearanceHeader.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.colMAKH.AppearanceHeader.Options.UseFont = true;
             this.colMAKH.Caption = "Mã Khoa";
             this.colMAKH.FieldName = "MAKH";
             this.colMAKH.Name = "colMAKH";
             this.colMAKH.Visible = true;
             this.colMAKH.VisibleIndex = 2;
+            this.colMAKH.Width = 364;
             // 
             // grbLop
             // 
@@ -373,7 +401,7 @@
             this.grbLop.Dock = System.Windows.Forms.DockStyle.Fill;
             this.grbLop.Location = new System.Drawing.Point(0, 377);
             this.grbLop.Name = "grbLop";
-            this.grbLop.Size = new System.Drawing.Size(688, 103);
+            this.grbLop.Size = new System.Drawing.Size(908, 103);
             this.grbLop.TabIndex = 16;
             this.grbLop.TabStop = false;
             // 
@@ -418,7 +446,7 @@
             this.Appearance.Options.UseFont = true;
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 14F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(688, 503);
+            this.ClientSize = new System.Drawing.Size(908, 503);
             this.Controls.Add(this.grbLop);
             this.Controls.Add(this.lOPGridControl);
             this.Controls.Add(this.panelBox);
@@ -463,7 +491,7 @@
         private DevExpress.XtraBars.BarButtonItem barBtnSua;
         private DevExpress.XtraBars.BarButtonItem barBtnUndo;
         private System.Windows.Forms.Panel panelBox;
-        private System.Windows.Forms.Label labelTenKhoa;
+        private System.Windows.Forms.Label lblTenKhoa;
         private System.Windows.Forms.ComboBox cmbKhoa;
         private System.Windows.Forms.BindingSource bdsLOP;
         private DS DS;
