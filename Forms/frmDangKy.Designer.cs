@@ -51,6 +51,7 @@
             this.DSGVTableAdapter = new QLDSV.DSTableAdapters.GETDSGVTableAdapter();
             this.tableAdapterManager = new QLDSV.DSTableAdapters.TableAdapterManager();
             this.errorProvider = new System.Windows.Forms.ErrorProvider(this.components);
+            this.lblTrangThai = new System.Windows.Forms.Label();
             this.grbDangKy.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.txtConfirm.Properties)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.lookUpUser.Properties)).BeginInit();
@@ -63,6 +64,7 @@
             // 
             // grbDangKy
             // 
+            this.grbDangKy.Controls.Add(this.lblTrangThai);
             this.grbDangKy.Controls.Add(this.txtConfirm);
             this.grbDangKy.Controls.Add(this.lblConfirm);
             this.grbDangKy.Controls.Add(this.chkShowPass);
@@ -273,6 +275,14 @@
             // 
             this.errorProvider.ContainerControl = this;
             // 
+            // lblTrangThai
+            // 
+            this.lblTrangThai.AutoSize = true;
+            this.lblTrangThai.Location = new System.Drawing.Point(635, 301);
+            this.lblTrangThai.Name = "lblTrangThai";
+            this.lblTrangThai.Size = new System.Drawing.Size(0, 13);
+            this.lblTrangThai.TabIndex = 23;
+            // 
             // frmDangKy
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -319,5 +329,6 @@
         private System.Windows.Forms.Label lblConfirm;
         private System.Windows.Forms.CheckBox chkShowPass;
         private System.Windows.Forms.ErrorProvider errorProvider;
+        private System.Windows.Forms.Label lblTrangThai;
     }
 }

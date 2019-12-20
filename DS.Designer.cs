@@ -6243,7 +6243,8 @@ SELECT MASV, HO, TEN, MALOP, PHAI, NGAYSINH, NOISINH, DIACHI, GHICHU, NGHIHOC FR
             this._commandCollection = new global::System.Data.SqlClient.SqlCommand[1];
             this._commandCollection[0] = new global::System.Data.SqlClient.SqlCommand();
             this._commandCollection[0].Connection = this.Connection;
-            this._commandCollection[0].CommandText = "  SELECT MAGV, HO + \' \' + TEN AS TEN\r\n  FROM dbo.GIANGVIEN";
+            this._commandCollection[0].CommandText = "  SELECT MAGV, HO + \' \' + TEN AS TEN\r\n  FROM dbo.GIANGVIEN\r\n  WHERE  MAGV NOT IN(" +
+                "SELECT name FROM sys.database_principals\r\n\t\t\t\t\tWHERE type_desc = \'SQL_USER\')\r\n";
             this._commandCollection[0].CommandType = global::System.Data.CommandType.Text;
         }
         
