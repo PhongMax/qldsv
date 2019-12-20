@@ -130,7 +130,9 @@
             this.barButton_Lop.ImageOptions.Image = global::QLDSV.Properties.Resources._class;
             this.barButton_Lop.LargeWidth = 100;
             this.barButton_Lop.Name = "barButton_Lop";
-            this.barButton_Lop.RibbonStyle = DevExpress.XtraBars.Ribbon.RibbonItemStyles.Large;
+            this.barButton_Lop.RibbonStyle = ((DevExpress.XtraBars.Ribbon.RibbonItemStyles)((DevExpress.XtraBars.Ribbon.RibbonItemStyles.Large | DevExpress.XtraBars.Ribbon.RibbonItemStyles.SmallWithoutText)));
+            this.barButton_Lop.SmallWithoutTextWidth = 100;
+            this.barButton_Lop.SmallWithTextWidth = 100;
             this.barButton_Lop.ItemClick += new DevExpress.XtraBars.ItemClickEventHandler(this.barButton_Lop_ItemClick);
             // 
             // ribbonPageGroup_MonHoc

@@ -48,7 +48,7 @@ namespace QLDSV.Forms
 
             _makhoa = Utils.GetMaKhoa();
             this.txtMaKhoa.EditValue = _makhoa;
-            this.txtMaKhoa.Enabled = false;
+       
 
             //this.grbLop.Enabled = true;
             // đoạn code liên kết giữa bds với combo box
@@ -99,14 +99,13 @@ namespace QLDSV.Forms
             barBtnXoa.Enabled
                 = barBtnSua.Enabled
                 = barBtnUndo.Enabled
-                = barBtnGhi.Enabled
                 = barBtnLammoi.Enabled = false;
 
             // thao tác chuẩn bị thêm
             bdsLOP.AddNew();
             txtMaKhoa.EditValue = _makhoa;
 
-
+            
 
         }
 
@@ -127,7 +126,16 @@ namespace QLDSV.Forms
 
         private void barBtnGhi_ItemClick(object sender, DevExpress.XtraBars.ItemClickEventArgs e)
         {
-
+            bool check = this.ValidateInfoLOP();
+            if (check)
+            {
+                MessageBox.Show("oke ", "", MessageBoxButtons.OK);
+                
+            }
+            else
+            {
+                return;
+            }
         }
 
         private void barBtnHuy_ItemClick(object sender, DevExpress.XtraBars.ItemClickEventArgs e)
@@ -145,5 +153,36 @@ namespace QLDSV.Forms
         {
             Close();
         }
+
+
+      
+
+        private bool ValidateInfoLOP()
+        {
+            bool isValid = true;
+
+            // xóa hết thông báo ở errorProvider
+            errorProvider.Clear();
+
+
+            // check khoảng trống ở textedit
+            if (txtMaLop.Text.Trim().Equals(""))
+            {
+                this.errorProvider.SetError(txtMaLop, "Mã lớp không được để trống !");
+                isValid = false;
+            }
+            if (txtMaKhoa.Text.Trim().Equals(""))
+            {
+                this.errorProvider.SetError(txtTenLop, "Tên lớp không được để trống !");
+                isValid = false;
+            }
+
+
+           
+
+            return isValid;
+        }
+
+
     }
 }

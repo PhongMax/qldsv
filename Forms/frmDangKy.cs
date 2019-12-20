@@ -42,7 +42,7 @@ namespace QLDSV.Forms
 
         private void btnDangKy_Click(object sender, EventArgs e)
         {
-            bool check = this.ValidateChildrens();
+            bool check = this.ValidateInfo();
             if (check)
             {
                 createTaiKhoan();
@@ -154,7 +154,7 @@ namespace QLDSV.Forms
         }
 
 
-        private bool ValidateChildrens()
+        private bool ValidateInfo()
         {
             bool isValid = true;
 
