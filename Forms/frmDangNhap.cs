@@ -57,7 +57,6 @@ namespace QLDSV
                 this.txtPass.Text = "123456";
             }
 
-
             try
             {
                 // gán server đã chọn vào biến toàn cục.
@@ -131,7 +130,7 @@ namespace QLDSV
             // hiện thông tin tài khoản
             Program.frmMain.lblMAGV.Text = "MÃ GIẢNG VIÊN : " + Program.UserName;
             Program.frmMain.lblHOTEN.Text = " |  HỌ VÀ TÊN : " + Program.MHoten;
-            Program.frmMain.lblNHOM.Text = " |  NHÓM : " + Program.MGroup;
+            Program.frmMain.lblNHOM.Text = "|  NHÓM : " + Program.MGroup;
 
             Program.frmMain.Show();
             Program.FrmDangNhap.Visible = false;
