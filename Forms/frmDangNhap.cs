@@ -43,7 +43,7 @@ namespace QLDSV
             // gán tài khoản và mật khẩu vào form login...., sau này báo cáo xóa cụm if này đi.
             if (cmbKhoa.SelectedIndex == 0)
             {
-                this.txtLogin.Text = "cntt";
+                this.txtLogin.Text = "pgv";
                 this.txtPass.Text = "123456";
             }
             if (cmbKhoa.SelectedIndex == 1)
@@ -56,7 +56,6 @@ namespace QLDSV
                 this.txtLogin.Text = "hp";
                 this.txtPass.Text = "123456";
             }
-
 
             try
             {
@@ -131,7 +130,7 @@ namespace QLDSV
             // hiện thông tin tài khoản
             Program.frmMain.lblMAGV.Text = "MÃ GIẢNG VIÊN : " + Program.UserName;
             Program.frmMain.lblHOTEN.Text = " |  HỌ VÀ TÊN : " + Program.MHoten;
-            Program.frmMain.lblNHOM.Text = " |  NHÓM : " + Program.MGroup;
+            Program.frmMain.lblNHOM.Text = "|  NHÓM : " + Program.MGroup;
 
             Program.frmMain.Show();
             Program.FrmDangNhap.Visible = false;

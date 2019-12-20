@@ -56,14 +56,14 @@
             this.groupBox1.Controls.Add(this.label1);
             this.groupBox1.Location = new System.Drawing.Point(44, 39);
             this.groupBox1.Name = "groupBox1";
-            this.groupBox1.Size = new System.Drawing.Size(645, 246);
+            this.groupBox1.Size = new System.Drawing.Size(492, 246);
             this.groupBox1.TabIndex = 0;
             this.groupBox1.TabStop = false;
             // 
             // chkShowPass
             // 
             this.chkShowPass.AutoSize = true;
-            this.chkShowPass.Location = new System.Drawing.Point(556, 164);
+            this.chkShowPass.Location = new System.Drawing.Point(378, 163);
             this.chkShowPass.Name = "chkShowPass";
             this.chkShowPass.Size = new System.Drawing.Size(72, 19);
             this.chkShowPass.TabIndex = 3;
@@ -76,15 +76,15 @@
             this.cmbKhoa.BackColor = System.Drawing.SystemColors.Info;
             this.cmbKhoa.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.cmbKhoa.FormattingEnabled = true;
-            this.cmbKhoa.Location = new System.Drawing.Point(209, 33);
+            this.cmbKhoa.Location = new System.Drawing.Point(159, 33);
             this.cmbKhoa.Name = "cmbKhoa";
-            this.cmbKhoa.Size = new System.Drawing.Size(329, 23);
+            this.cmbKhoa.Size = new System.Drawing.Size(216, 23);
             this.cmbKhoa.TabIndex = 0;
             this.cmbKhoa.SelectedIndexChanged += new System.EventHandler(this.cmbKhoa_SelectedIndexChanged);
             // 
             // btnThoat
             // 
-            this.btnThoat.Location = new System.Drawing.Point(405, 192);
+            this.btnThoat.Location = new System.Drawing.Point(275, 189);
             this.btnThoat.Name = "btnThoat";
             this.btnThoat.Size = new System.Drawing.Size(87, 27);
             this.btnThoat.TabIndex = 5;
@@ -94,7 +94,7 @@
             // 
             // btnDangNhap
             // 
-            this.btnDangNhap.Location = new System.Drawing.Point(209, 194);
+            this.btnDangNhap.Location = new System.Drawing.Point(159, 189);
             this.btnDangNhap.Name = "btnDangNhap";
             this.btnDangNhap.Size = new System.Drawing.Size(87, 27);
             this.btnDangNhap.TabIndex = 4;
@@ -104,18 +104,18 @@
             // 
             // txtPass
             // 
-            this.txtPass.Location = new System.Drawing.Point(209, 161);
+            this.txtPass.Location = new System.Drawing.Point(159, 161);
             this.txtPass.Name = "txtPass";
-            this.txtPass.Size = new System.Drawing.Size(329, 22);
+            this.txtPass.Size = new System.Drawing.Size(216, 22);
             this.txtPass.TabIndex = 2;
             this.txtPass.Text = "123456";
             this.txtPass.UseSystemPasswordChar = true;
             // 
             // txtLogin
             // 
-            this.txtLogin.Location = new System.Drawing.Point(209, 94);
+            this.txtLogin.Location = new System.Drawing.Point(159, 94);
             this.txtLogin.Name = "txtLogin";
-            this.txtLogin.Size = new System.Drawing.Size(329, 22);
+            this.txtLogin.Size = new System.Drawing.Size(216, 22);
             this.txtLogin.TabIndex = 1;
             // 
             // label3
@@ -149,7 +149,7 @@
             // 
             this.label4.AutoSize = true;
             this.label4.Font = new System.Drawing.Font("Times New Roman", 14.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label4.Location = new System.Drawing.Point(281, 9);
+            this.label4.Location = new System.Drawing.Point(151, 14);
             this.label4.Name = "label4";
             this.label4.Size = new System.Drawing.Size(255, 22);
             this.label4.TabIndex = 3;
@@ -160,7 +160,7 @@
             this.AcceptButton = this.btnDangNhap;
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 15F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(719, 320);
+            this.ClientSize = new System.Drawing.Size(578, 320);
             this.Controls.Add(this.label4);
             this.Controls.Add(this.groupBox1);
             this.Font = new System.Drawing.Font("Times New Roman", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));

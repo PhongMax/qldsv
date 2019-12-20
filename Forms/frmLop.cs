@@ -35,7 +35,6 @@ namespace QLDSV.Forms
             this.LOPTableAdapter.Connection.ConnectionString = Program.URL_Connect;
             this.SINHVIENTableAdapter.Connection.ConnectionString = Program.URL_Connect;
 
-
             this.LOPTableAdapter.Fill(this.DS.LOP);
             this.SINHVIENTableAdapter.Fill(this.DS.SINHVIEN);
         }
@@ -63,9 +62,12 @@ namespace QLDSV.Forms
                 cmbKhoa.Visible =false;
                 lblTenKhoa.Text = ((DataRowView)Program.Bds_Dspm[Program.MKhoa])["TENKHOA"].ToString();
             }
-           
-            
-           
+
+
+            // bật groupbox nhập lớp
+            pnControlLeft.Enabled = false;
+
+
         }
 
         private void cmbKhoa_SelectedIndexChanged(object sender, EventArgs e)
@@ -91,8 +93,8 @@ namespace QLDSV.Forms
         {
             _vitri = bdsLOP.Position;
 
-            // tật groupbox nhập lớp
-            grbLop.Enabled = true;
+            // bật groupbox nhập lớp
+            pnControlLeft.Enabled = true;
 
             barBtnXoa.Enabled
                 = barBtnSua.Enabled
@@ -103,6 +105,9 @@ namespace QLDSV.Forms
             // thao tác chuẩn bị thêm
             bdsLOP.AddNew();
             txtMaKhoa.EditValue = _makhoa;
+
+
+
         }
 
         private void barBtnXoa_ItemClick(object sender, DevExpress.XtraBars.ItemClickEventArgs e)
@@ -132,8 +137,7 @@ namespace QLDSV.Forms
 
         private void barBtnLammoi_ItemClick(object sender, DevExpress.XtraBars.ItemClickEventArgs e)
         {
-            // TODO : Load Data
-            loadInitializeData();
+            frmLop_Load(sender, e);
             MessageBox.Show("Làm mới dữ liệu thành công","",MessageBoxButtons.OK);
         }
 

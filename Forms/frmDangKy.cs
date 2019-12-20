@@ -1,5 +1,6 @@
 ﻿using DevExpress.XtraEditors;
 using System;
+using System.Data.SqlClient;
 using System.Linq;
 using System.Windows.Forms;
 
@@ -28,7 +29,7 @@ namespace QLDSV.Forms
             else if (Program.MGroup == Program.NhomQuyen[2])
             {
                 rdoPKeToan.Checked = true;
-                rdoPKeToan.Enabled = rdoKhoa.Enabled = false;
+                rdoPGV.Enabled = rdoKhoa.Enabled = false;
             }
         }
 
@@ -44,13 +45,58 @@ namespace QLDSV.Forms
             bool check = this.ValidateChildrens();
             if (check)
             {
-                MessageBox.Show("Thao tác đăng ký tài khoản thành công !", "", MessageBoxButtons.OK);
+                createTaiKhoan();
                 this.Close();
             }
             else
             {
                 return;
             }
+        }
+
+      
+        // 1: trùng, 0 : not trùng
+        private void createTaiKhoan()
+        {
+
+            String login = txtLogin.Text;
+            String pass = txtPass.Text;
+            String user = (String)lookUpUser.EditValue;
+            String role = rdoKhoa.Checked ? Program.NhomQuyen[1] : (rdoPGV.Checked ? Program.NhomQuyen[0] : Program.NhomQuyen[2]);
+            String strLenh = " DECLARE @return_value int " +
+
+                            " EXEC    @return_value = [dbo].[SP_TAOLOGIN] " +
+
+                            " @LGNAME = N'" + login + "', " +
+                            " @PASS = N'" + pass + "', " +
+                            " @USERNAME = N'" + user + "', " +
+                            " @ROLE = N'" + role + "' " +
+
+                            " SELECT  'Return Value' = @return_value ";
+            SqlDataReader dataReader = Program.ExecSqlDataReader(strLenh); 
+
+            // nếu null thì thoát luôn
+            if (dataReader == null)
+            {
+                MessageBox.Show("Tạo tài khoản thất tại. Mời bạn xem lại !", "", MessageBoxButtons.OK);
+                return;
+            }
+
+            dataReader.Read();
+            int resultCheckLogin = int.Parse(dataReader.GetValue(0).ToString());
+            dataReader.Close();
+
+            if (resultCheckLogin == 1)
+            {
+                MessageBox.Show("Login bị trùng . Mời bạn nhập login khác !", "", MessageBoxButtons.OK);
+            }else if(resultCheckLogin == 2)
+            {
+                MessageBox.Show("User bị trùng . Mời bạn nhập User khác !", "", MessageBoxButtons.OK);
+
+            }
+            MessageBox.Show("Tạo login thành công !" , "", MessageBoxButtons.OK);
+
+            return;
         }
 
         // true: ko empty, false : empty
@@ -72,10 +118,8 @@ namespace QLDSV.Forms
                         errorProvider.SetError(c, null);
                     }
                 }
-
             }
             return check;
-
         }
 
         // true :đã chọn, false : ko chọn
@@ -95,7 +139,6 @@ namespace QLDSV.Forms
 
                     if (checkRadioButton((RadioButton)c))
                     {
-                        
                         errorProvider.SetError(c, null);
                         return true;
                     }
@@ -138,7 +181,31 @@ namespace QLDSV.Forms
             {
                 isValid = false;
             }
+
+            // login không được chứa khoảng trống
+            if (txtLogin.Text.Contains(" "))
+            {
+                this.errorProvider.SetError(txtLogin, "Tên login không được chứa khoảng trăng !");
+                isValid = false;
+            }
+
+           
             return isValid;
+        }
+
+        private void btnHuy_Click(object sender, EventArgs e)
+        {
+            DialogResult dr=   MessageBox.Show("Bạn thật sự muốn hủy thao tác đăng ký tài khoản?",
+                      "Xác thực", MessageBoxButtons.YesNo);
+
+            switch (dr)
+            {
+                case DialogResult.Yes:
+                    this.Close();
+                    break;
+                case DialogResult.No:
+                    return;
+            }
         }
     }
 }
