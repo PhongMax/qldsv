@@ -8,11 +8,14 @@ using System.Linq;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 using DevExpress.XtraEditors;
+using DevExpress.XtraGrid.Views.Grid;
+using System.Data.SqlClient;
 
 namespace QLDSV.Forms
 {
     public partial class frmLop : DevExpress.XtraEditors.XtraForm
     {
+        // dùng cho chức năng undo...
         private int _vitri;
         private string _makhoa = "";
 
@@ -57,16 +60,24 @@ namespace QLDSV.Forms
             Utils.BindingDataToComBo(cmbKhoa, Program.Bds_Dspm.DataSource);
 
             // TODO : Role Action
-            if (Program.MGroup != "PGV")
+            if (Program.MGroup == Program.NhomQuyen[0])
             {
-                cmbKhoa.Visible =false;
-                lblTenKhoa.Text = ((DataRowView)Program.Bds_Dspm[Program.MKhoa])["TENKHOA"].ToString();
+                cmbKhoa.Visible = true;
+
             }
+            else if (Program.MGroup == Program.NhomQuyen[1])
+            {
+                cmbKhoa.Visible = false;
+                lblTenKhoa.Text = ((DataRowView)Program.Bds_Dspm[Program.MKhoa])["TENKHOA"].ToString();
+                barBtnThem.Enabled = barBtnSua.Enabled = barBtnXoa.Enabled
+                    = barBtnUndo.Enabled = false;
 
+            }
+          
 
+            barBtnHuy.Enabled = barBtnGhi.Enabled = false;
             // bật groupbox nhập lớp
             pnControlLeft.Enabled = false;
-
 
         }
 
@@ -96,11 +107,13 @@ namespace QLDSV.Forms
             // bật groupbox nhập lớp
             pnControlLeft.Enabled = true;
 
-            barBtnXoa.Enabled
+            barBtnGhi.Enabled = barBtnHuy.Enabled = true;
+            barBtnXoa.Enabled=barBtnThem.Enabled
                 = barBtnSua.Enabled
                 = barBtnUndo.Enabled
                 = barBtnLammoi.Enabled = false;
 
+            lOPGridControl.Enabled = false;
             // thao tác chuẩn bị thêm
             bdsLOP.AddNew();
             txtMaKhoa.EditValue = _makhoa;
@@ -109,14 +122,15 @@ namespace QLDSV.Forms
 
         }
 
-        private void barBtnXoa_ItemClick(object sender, DevExpress.XtraBars.ItemClickEventArgs e)
-        {
-
-        }
-
         private void barBtnSua_ItemClick(object sender, DevExpress.XtraBars.ItemClickEventArgs e)
         {
+            lOPGridControl.Enabled = true;
+            barBtnThem.Enabled = barBtnXoa.Enabled = barBtnLammoi.Enabled = barBtnSua.Enabled = false;
 
+            barBtnHuy.Enabled = barBtnGhi.Enabled = true;
+            lOPGridControl.Enabled = false;
+            pnControlLeft.Enabled = true;
+                
         }
 
         private void barBtnUndo_ItemClick(object sender, DevExpress.XtraBars.ItemClickEventArgs e)
@@ -129,11 +143,37 @@ namespace QLDSV.Forms
             bool check = this.ValidateInfoLOP();
             if (check)
             {
-                MessageBox.Show("oke ", "", MessageBoxButtons.OK);
-                
+                DialogResult dr = MessageBox.Show("Bạn có chắc muốn ghi dữ liệu vào Database?", "Thông báo",
+                    MessageBoxButtons.OKCancel, MessageBoxIcon.Question);
+                if (dr == DialogResult.OK)
+                {
+                    try
+                    {
+                        barBtnXoa.Enabled
+                          = barBtnSua.Enabled
+                          = barBtnUndo.Enabled = barBtnThem.Enabled
+                          = barBtnLammoi.Enabled = true;
+
+                        lOPGridControl.Enabled = true;
+                        // bật groupbox nhập lớp
+                        pnControlLeft.Enabled = false;
+                        this.bdsLOP.EndEdit();
+                        this.LOPTableAdapter.Update(this.DS.LOP);
+                    }
+                    catch (Exception ex)
+                    {
+                        bdsLOP.RemoveCurrent();
+                        MessageBox.Show("Ghi dữ liệu thất lại. Vui lòng kiểm tra lại!\n" + ex.Message, "Error",
+                            MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    }
+                }
+
+
+
             }
             else
             {
+                // lỗi thì return thôi.
                 return;
             }
         }
@@ -141,17 +181,44 @@ namespace QLDSV.Forms
         private void barBtnHuy_ItemClick(object sender, DevExpress.XtraBars.ItemClickEventArgs e)
         {
             bdsLOP.CancelEdit();
+            barBtnThem.Enabled = barBtnXoa.Enabled = barBtnSua.Enabled = barBtnLammoi.Enabled
+                = barBtnUndo.Enabled = true;
+            lOPGridControl.Enabled = true;
+            // load lại cả form...
+            frmLop_Load(sender, e);
         }
 
         private void barBtnLammoi_ItemClick(object sender, DevExpress.XtraBars.ItemClickEventArgs e)
         {
-            frmLop_Load(sender, e);
-            MessageBox.Show("Làm mới dữ liệu thành công","",MessageBoxButtons.OK);
+                
+               frmLop_Load(sender, e);
+                MessageBox.Show("Làm mới dữ liệu thành công", "", MessageBoxButtons.OK);
+            
+         
         }
 
         private void barBtnThoat_ItemClick(object sender, DevExpress.XtraBars.ItemClickEventArgs e)
         {
-            Close();
+            if (pnControlLeft.Enabled)
+            {
+                DialogResult dr = MessageBox.Show(" Dữ liệu Lớp chưa lưu vào Database. \n Bạn có chắc muốn thoát !", "Thông báo", MessageBoxButtons.YesNo);
+
+                if (dr == DialogResult.No)
+                {
+                    return;
+                }
+                else if (dr == DialogResult.Yes)
+                {
+                    this.Close();
+
+                }
+            }else
+            {
+                this.Close();
+                return;
+            }
+           
+        
         }
 
 
@@ -171,18 +238,115 @@ namespace QLDSV.Forms
                 this.errorProvider.SetError(txtMaLop, "Mã lớp không được để trống !");
                 isValid = false;
             }
-            if (txtMaKhoa.Text.Trim().Equals(""))
+            if (txtTenLop.Text.Trim().Equals(""))
             {
                 this.errorProvider.SetError(txtTenLop, "Tên lớp không được để trống !");
                 isValid = false;
             }
 
 
-           
+            // check mã có tồn tại ở database hay ko ?
+            string strLenh = " DECLARE  @return_value int " +
+                            " EXEC    @return_value = [dbo].[SP_CHECKID] " +
+                            " @Code = N'" + txtMaLop.Text + "'," +
+                            " @Type = N'MALOP' " +
+                            " SELECT  'Return Value' = @return_value ";
 
+            int resultMa = Utils.CheckDataHelper(strLenh);
+
+            if (resultMa == -1)
+            {
+                MessageBox.Show("Lỗi kết nối với database. Mời ban xem lại !", "", MessageBoxButtons.OK);
+
+                this.Close();
+            }
+            if (resultMa == 1)
+            {
+                this.errorProvider.SetError(txtMaLop, "Mã lớp đã tồn tại ở Khoa hiên tại !");
+                isValid = false;
+            }
+            if (resultMa == 2)
+            {
+                this.errorProvider.SetError(txtMaLop, "Mã lớp đã tồn tại ở Khoa khác !");
+                isValid = false;
+            }
+
+            // check tên có tồn tại ở database hay ko ?
+
+            string strLenh1 = " DECLARE @return_value int " +
+
+                                " EXEC    @return_value = [dbo].[SP_CHECKNAME] " +
+
+                                " @Name = N'" + txtTenLop.Text + "', " +
+                                
+                                " @Type = N'TENLOP' " +
+
+                                " SELECT  'Return Value' = @return_value ";
+            int resultTen = Utils.CheckDataHelper(strLenh1);
+            if (resultTen == -1)
+            {
+                MessageBox.Show("Lỗi kết nối với Database. Mời bạn xem lại !", "", MessageBoxButtons.OK);
+                this.Close();
+            }
+            if (resultTen == 1)
+            {
+                this.errorProvider.SetError(txtTenLop, "Tên lớp đã có rồi !");
+                isValid = false;
+            }
+            if (resultTen == 2)
+            {
+                this.errorProvider.SetError(txtTenLop, "Tên lớp đã tồn tại ở Khoa khác !");
+                isValid = false;
+            }
+             
             return isValid;
         }
 
+        private void gridView1_MasterRowGetRelationDisplayCaption(object sender, DevExpress.XtraGrid.Views.Grid.MasterRowGetRelationNameEventArgs e)
+        {
+             e.RelationName = "DANH SÁCH SINH VIÊN ";
 
+        }
+
+        private void txtMaLop_EditValueChanged(object sender, EventArgs e)
+        {
+            // thường thành hoa
+            txtMaLop.Properties.CharacterCasing = CharacterCasing.Upper;
+        }
+
+        private void frmLop_FormClosing(object sender, FormClosingEventArgs e)
+        {
+            this.Close(); 
+        }
+
+        private void barBtnXoa_ItemClick(object sender, DevExpress.XtraBars.ItemClickEventArgs e)
+        {
+            if (bdsSV.Count > 0)
+            {
+                MessageBox.Show("Không thể xóa lớp này vì Lớp đã có sinh viên.", "", MessageBoxButtons.OK);
+                return;
+            }
+            if (MessageBox.Show("Bạn có thực sự muốn xóa Lớp này??", "Xác nhận.", MessageBoxButtons.OKCancel) == DialogResult.OK)
+            {
+                try
+                {
+                    
+                    bdsLOP.RemoveCurrent();
+                    this.LOPTableAdapter.Connection.ConnectionString = Program.URL_Connect;
+                    this.LOPTableAdapter.Update(this.DS.LOP);
+                }
+                catch (Exception ex)
+                {
+                    MessageBox.Show("Lỗi xóa Lớp.\nBạn hãy xóa lại\n" + ex.Message, "", MessageBoxButtons.OK);
+                    this.LOPTableAdapter.Fill(this.DS.LOP);
+                    return;
+
+                }
+            }
+            if (bdsLOP.Count == 0) barBtnXoa.Enabled = false;
+
+
+            barBtnLammoi.Enabled = true;
+        }
     }
 }

@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Data;
+using System.Data.SqlClient;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -60,6 +61,25 @@ namespace QLDSV
                 Program.MLogin = Program.MLoginDN;
                 Program.MPassword = Program.PasswordDN;
             }
+        }
+
+
+        public static int CheckDataHelper(String query)
+        {
+
+            SqlDataReader dataReader = Program.ExecSqlDataReader(query);
+
+            // nếu null thì thoát luôn
+            if (dataReader == null)
+            {
+               
+                return -1;
+            }
+
+            dataReader.Read();
+            int result = int.Parse(dataReader.GetValue(0).ToString());
+            dataReader.Close();
+            return result;
         }
     }
 }

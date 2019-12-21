@@ -36,7 +36,6 @@
             this.barManagerLop = new DevExpress.XtraBars.BarManager(this.components);
             this.bar2 = new DevExpress.XtraBars.Bar();
             this.barBtnThem = new DevExpress.XtraBars.BarButtonItem();
-            this.barBtnXoa = new DevExpress.XtraBars.BarButtonItem();
             this.barBtnSua = new DevExpress.XtraBars.BarButtonItem();
             this.barBtnUndo = new DevExpress.XtraBars.BarButtonItem();
             this.barBtnGhi = new DevExpress.XtraBars.BarButtonItem();
@@ -70,6 +69,7 @@
             this.pnControlLeft = new System.Windows.Forms.Panel();
             this.grbLop = new System.Windows.Forms.GroupBox();
             this.errorProvider = new System.Windows.Forms.ErrorProvider(this.components);
+            this.barBtnXoa = new DevExpress.XtraBars.BarButtonItem();
             mAKHLabel = new System.Windows.Forms.Label();
             tENLOPLabel = new System.Windows.Forms.Label();
             maLopLabel = new System.Windows.Forms.Label();
@@ -131,15 +131,15 @@
             this.barManagerLop.Form = this;
             this.barManagerLop.Items.AddRange(new DevExpress.XtraBars.BarItem[] {
             this.barBtnThem,
-            this.barBtnXoa,
             this.barBtnSua,
             this.barBtnUndo,
             this.barBtnGhi,
             this.barBtnHuy,
             this.barBtnLammoi,
-            this.barBtnThoat});
+            this.barBtnThoat,
+            this.barBtnXoa});
             this.barManagerLop.MainMenu = this.bar2;
-            this.barManagerLop.MaxItemId = 8;
+            this.barManagerLop.MaxItemId = 9;
             this.barManagerLop.StatusBar = this.bar3;
             // 
             // bar2
@@ -150,7 +150,7 @@
             this.bar2.DockStyle = DevExpress.XtraBars.BarDockStyle.Top;
             this.bar2.LinksPersistInfo.AddRange(new DevExpress.XtraBars.LinkPersistInfo[] {
             new DevExpress.XtraBars.LinkPersistInfo(DevExpress.XtraBars.BarLinkUserDefines.PaintStyle, this.barBtnThem, DevExpress.XtraBars.BarItemPaintStyle.CaptionGlyph),
-            new DevExpress.XtraBars.LinkPersistInfo(DevExpress.XtraBars.BarLinkUserDefines.PaintStyle, this.barBtnXoa, DevExpress.XtraBars.BarItemPaintStyle.CaptionGlyph),
+            new DevExpress.XtraBars.LinkPersistInfo(this.barBtnXoa),
             new DevExpress.XtraBars.LinkPersistInfo(DevExpress.XtraBars.BarLinkUserDefines.PaintStyle, this.barBtnSua, DevExpress.XtraBars.BarItemPaintStyle.CaptionGlyph),
             new DevExpress.XtraBars.LinkPersistInfo(DevExpress.XtraBars.BarLinkUserDefines.PaintStyle, this.barBtnUndo, DevExpress.XtraBars.BarItemPaintStyle.CaptionGlyph),
             new DevExpress.XtraBars.LinkPersistInfo(DevExpress.XtraBars.BarLinkUserDefines.PaintStyle, this.barBtnGhi, DevExpress.XtraBars.BarItemPaintStyle.CaptionGlyph),
@@ -168,14 +168,6 @@
             this.barBtnThem.ImageOptions.SvgImage = ((DevExpress.Utils.Svg.SvgImage)(resources.GetObject("barBtnThem.ImageOptions.SvgImage")));
             this.barBtnThem.Name = "barBtnThem";
             this.barBtnThem.ItemClick += new DevExpress.XtraBars.ItemClickEventHandler(this.barBtnThem_ItemClick);
-            // 
-            // barBtnXoa
-            // 
-            this.barBtnXoa.Caption = "Xóa";
-            this.barBtnXoa.Id = 1;
-            this.barBtnXoa.ImageOptions.SvgImage = ((DevExpress.Utils.Svg.SvgImage)(resources.GetObject("barBtnXoa.ImageOptions.SvgImage")));
-            this.barBtnXoa.Name = "barBtnXoa";
-            this.barBtnXoa.ItemClick += new DevExpress.XtraBars.ItemClickEventHandler(this.barBtnXoa_ItemClick);
             // 
             // barBtnSua
             // 
@@ -367,6 +359,7 @@
             this.gridView1.OptionsBehavior.ReadOnly = true;
             this.gridView1.OptionsView.ShowFooter = true;
             this.gridView1.OptionsView.ShowGroupPanel = false;
+            this.gridView1.MasterRowGetRelationDisplayCaption += new DevExpress.XtraGrid.Views.Grid.MasterRowGetRelationNameEventHandler(this.gridView1_MasterRowGetRelationDisplayCaption);
             // 
             // colMALOP
             // 
@@ -418,34 +411,36 @@
             // txtMaKhoa
             // 
             this.txtMaKhoa.DataBindings.Add(new System.Windows.Forms.Binding("EditValue", this.bdsLOP, "MAKH", true));
-            this.txtMaKhoa.Location = new System.Drawing.Point(121, 109);
+            this.txtMaKhoa.Location = new System.Drawing.Point(86, 109);
             this.txtMaKhoa.MenuManager = this.barManagerLop;
             this.txtMaKhoa.Name = "txtMaKhoa";
             this.txtMaKhoa.Properties.Appearance.Options.UseTextOptions = true;
             this.txtMaKhoa.Properties.Appearance.TextOptions.HAlignment = DevExpress.Utils.HorzAlignment.Center;
             this.txtMaKhoa.Properties.ReadOnly = true;
-            this.txtMaKhoa.Size = new System.Drawing.Size(204, 20);
+            this.txtMaKhoa.Size = new System.Drawing.Size(273, 20);
             this.txtMaKhoa.TabIndex = 5;
             // 
             // txtTenLop
             // 
             this.txtTenLop.DataBindings.Add(new System.Windows.Forms.Binding("EditValue", this.bdsLOP, "TENLOP", true));
-            this.txtTenLop.Location = new System.Drawing.Point(121, 73);
+            this.txtTenLop.Location = new System.Drawing.Point(86, 73);
             this.txtTenLop.MenuManager = this.barManagerLop;
             this.txtTenLop.Name = "txtTenLop";
-            this.txtTenLop.Properties.MaxLength = 200;
-            this.txtTenLop.Size = new System.Drawing.Size(204, 20);
+            this.txtTenLop.Properties.MaxLength = 100;
+            this.txtTenLop.Size = new System.Drawing.Size(273, 20);
             this.txtTenLop.TabIndex = 3;
             // 
             // txtMaLop
             // 
             this.txtMaLop.DataBindings.Add(new System.Windows.Forms.Binding("EditValue", this.bdsLOP, "MALOP", true));
-            this.txtMaLop.Location = new System.Drawing.Point(121, 36);
+            this.txtMaLop.Location = new System.Drawing.Point(86, 36);
             this.txtMaLop.MenuManager = this.barManagerLop;
             this.txtMaLop.Name = "txtMaLop";
+            this.txtMaLop.Properties.Mask.EditMask = "\"\\\\p{Lu}+\"";
             this.txtMaLop.Properties.MaxLength = 8;
-            this.txtMaLop.Size = new System.Drawing.Size(204, 20);
+            this.txtMaLop.Size = new System.Drawing.Size(273, 20);
             this.txtMaLop.TabIndex = 1;
+            this.txtMaLop.EditValueChanged += new System.EventHandler(this.txtMaLop_EditValueChanged);
             // 
             // panel1
             // 
@@ -460,9 +455,9 @@
             // pnControlRight
             // 
             this.pnControlRight.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.pnControlRight.Location = new System.Drawing.Point(368, 0);
+            this.pnControlRight.Location = new System.Drawing.Point(407, 0);
             this.pnControlRight.Name = "pnControlRight";
-            this.pnControlRight.Size = new System.Drawing.Size(540, 138);
+            this.pnControlRight.Size = new System.Drawing.Size(501, 138);
             this.pnControlRight.TabIndex = 1;
             // 
             // pnControlLeft
@@ -472,7 +467,7 @@
             this.pnControlLeft.Dock = System.Windows.Forms.DockStyle.Left;
             this.pnControlLeft.Location = new System.Drawing.Point(0, 0);
             this.pnControlLeft.Name = "pnControlLeft";
-            this.pnControlLeft.Size = new System.Drawing.Size(368, 138);
+            this.pnControlLeft.Size = new System.Drawing.Size(407, 138);
             this.pnControlLeft.TabIndex = 0;
             // 
             // grbLop
@@ -486,7 +481,7 @@
             this.grbLop.Font = new System.Drawing.Font("Times New Roman", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.grbLop.Location = new System.Drawing.Point(12, 6);
             this.grbLop.Name = "grbLop";
-            this.grbLop.Size = new System.Drawing.Size(350, 156);
+            this.grbLop.Size = new System.Drawing.Size(389, 156);
             this.grbLop.TabIndex = 0;
             this.grbLop.TabStop = false;
             this.grbLop.Text = "Nhập thông tin lớp";
@@ -494,6 +489,15 @@
             // errorProvider
             // 
             this.errorProvider.ContainerControl = this;
+            // 
+            // barBtnXoa
+            // 
+            this.barBtnXoa.Caption = "Xóa";
+            this.barBtnXoa.Id = 8;
+            this.barBtnXoa.ImageOptions.SvgImage = ((DevExpress.Utils.Svg.SvgImage)(resources.GetObject("barButtonItem1.ImageOptions.SvgImage")));
+            this.barBtnXoa.Name = "barBtnXoa";
+            this.barBtnXoa.PaintStyle = DevExpress.XtraBars.BarItemPaintStyle.CaptionGlyph;
+            this.barBtnXoa.ItemClick += new DevExpress.XtraBars.ItemClickEventHandler(this.barBtnXoa_ItemClick);
             // 
             // frmLop
             // 
@@ -544,7 +548,6 @@
         private DevExpress.XtraBars.BarDockControl barDockControlBottom;
         private DevExpress.XtraBars.BarDockControl barDockControlLeft;
         private DevExpress.XtraBars.BarDockControl barDockControlRight;
-        private DevExpress.XtraBars.BarButtonItem barBtnXoa;
         private DevExpress.XtraBars.BarButtonItem barBtnSua;
         private DevExpress.XtraBars.BarButtonItem barBtnUndo;
         private System.Windows.Forms.Panel panelBox;
@@ -573,5 +576,6 @@
         private System.Windows.Forms.Panel pnControlLeft;
         private System.Windows.Forms.GroupBox grbLop;
         private System.Windows.Forms.ErrorProvider errorProvider;
+        private DevExpress.XtraBars.BarButtonItem barBtnXoa;
     }
 }

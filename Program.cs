@@ -118,7 +118,8 @@ namespace QLDSV
             if (Program.Conn.State == ConnectionState.Closed) Program.Conn.Open();
             try
             {
-                myReader = sqlcmd.ExecuteReader(); return myReader;
+                myReader = sqlcmd.ExecuteReader();
+                return myReader;
             }
             catch (SqlException ex)
             {

@@ -46,7 +46,7 @@ namespace QLDSV.Forms
             if (check)
             {
                 createTaiKhoan();
-                this.Close();
+           
             }
             else
             {
@@ -58,11 +58,12 @@ namespace QLDSV.Forms
         // 1: trùng, 0 : not trùng
         private void createTaiKhoan()
         {
-
+            
             String login = txtLogin.Text;
             String pass = txtPass.Text;
             String user = (String)lookUpUser.EditValue;
             String role = rdoKhoa.Checked ? Program.NhomQuyen[1] : (rdoPGV.Checked ? Program.NhomQuyen[0] : Program.NhomQuyen[2]);
+
             String strLenh = " DECLARE @return_value int " +
 
                             " EXEC    @return_value = [dbo].[SP_TAOLOGIN] " +
@@ -73,28 +74,30 @@ namespace QLDSV.Forms
                             " @ROLE = N'" + role + "' " +
 
                             " SELECT  'Return Value' = @return_value ";
-            SqlDataReader dataReader = Program.ExecSqlDataReader(strLenh); 
+            int resultCheckLogin = Utils.CheckDataHelper(strLenh);
 
-            // nếu null thì thoát luôn
-            if (dataReader == null)
+            if (resultCheckLogin == -1 )
             {
-                MessageBox.Show("Tạo tài khoản thất tại. Mời bạn xem lại !", "", MessageBoxButtons.OK);
-                return;
+                MessageBox.Show("Lỗi kết nối với database. Mời ban xem lại !", "", MessageBoxButtons.OK);
+                this.Close();
             }
-
-            dataReader.Read();
-            int resultCheckLogin = int.Parse(dataReader.GetValue(0).ToString());
-            dataReader.Close();
-
             if (resultCheckLogin == 1)
             {
-                MessageBox.Show("Login bị trùng . Mời bạn nhập login khác !", "", MessageBoxButtons.OK);
+                errorProvider.SetError(this.txtLogin, "Login bị trùng . Mời bạn nhập login khác !");
             }else if(resultCheckLogin == 2)
             {
-                MessageBox.Show("User bị trùng . Mời bạn nhập User khác !", "", MessageBoxButtons.OK);
+                errorProvider.SetError(this.lookUpUser, "User bị trùng . Mời bạn nhập User khác !");
 
+            }else if(resultCheckLogin == 3)
+            {
+                MessageBox.Show("Lỗi thực thi trong cơ sơ dữ liệu !", "", MessageBoxButtons.OK);
             }
-            MessageBox.Show("Tạo login thành công !" , "", MessageBoxButtons.OK);
+            else if (resultCheckLogin ==0)
+            {
+                MessageBox.Show("Tạo tài khoản thành công !", "", MessageBoxButtons.OK);
+                
+            }
+           
 
             return;
         }
@@ -198,13 +201,14 @@ namespace QLDSV.Forms
             DialogResult dr=   MessageBox.Show("Bạn thật sự muốn hủy thao tác đăng ký tài khoản?",
                       "Xác thực", MessageBoxButtons.YesNo);
 
-            switch (dr)
+            if (dr == DialogResult.No)
             {
-                case DialogResult.Yes:
-                    this.Close();
-                    break;
-                case DialogResult.No:
-                    return;
+                return;
+            }
+            else if (dr == DialogResult.Yes)
+            {
+                this.Close();
+
             }
         }
     }

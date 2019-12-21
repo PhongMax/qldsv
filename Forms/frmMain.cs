@@ -40,7 +40,10 @@ namespace QLDSV
 
         private void barButton_Lop_ItemClick(object sender, DevExpress.XtraBars.ItemClickEventArgs e)
         {
-            ShowMdiChildren(typeof(frmLop));
+            if (!(Program.MGroup == Program.NhomQuyen[2]))
+            {
+                ShowMdiChildren(typeof(frmLop));
+            }
         }
 
         private void barButtonItem_Thoat_ItemClick(object sender, DevExpress.XtraBars.ItemClickEventArgs e)
