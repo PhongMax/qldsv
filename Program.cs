@@ -67,8 +67,8 @@ namespace QLDSV
         public static frmMain frmMain;
         public static frmDangNhap FrmDangNhap;
 
-        // hàm test run này dùng để test các form, ko cần phải lần lượt đi vào form này rồi tới form kia mà test
-
+        // lưu danh sách các nhóm quyền
+        public static string[] NhomQuyen = new string[3] {"PGV", "KHOA", "PKeToan"};
         static void TestRun()
         {
             //String testconn = "Data Source=TK13\\SERVER01;Initial Catalog=QLDSV;Persist Security Info=True;User ID=hongson;Password=123";
@@ -97,7 +97,7 @@ namespace QLDSV
 
             catch (Exception e)
             {
-                MessageBox.Show("Lỗi kết nối cơ sở dữ liệu.\nBạn xem lại Username và Password.\n " + e.Message, string.Empty, MessageBoxButtons.OK);
+                MessageBox.Show("---> Lỗi kết nối cơ sở dữ liệu.\n---> Bạn xem lại Username và Password.\n " + e.Message, string.Empty, MessageBoxButtons.OK);
                 return 0;
             }
         }
@@ -118,7 +118,8 @@ namespace QLDSV
             if (Program.Conn.State == ConnectionState.Closed) Program.Conn.Open();
             try
             {
-                myReader = sqlcmd.ExecuteReader(); return myReader;
+                myReader = sqlcmd.ExecuteReader();
+                return myReader;
             }
             catch (SqlException ex)
             {

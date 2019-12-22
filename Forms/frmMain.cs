@@ -40,27 +40,10 @@ namespace QLDSV
 
         private void barButton_Lop_ItemClick(object sender, DevExpress.XtraBars.ItemClickEventArgs e)
         {
-            ShowMdiChildren(typeof(frmLop));
-        }
-
-        private void barButton_MonHoc_ItemClick(object sender, DevExpress.XtraBars.ItemClickEventArgs e)
-        {
-            ShowMdiChildren(typeof(frmMonHoc));
-        }
-
-        private void barButton_GiangVien_ItemClick(object sender, DevExpress.XtraBars.ItemClickEventArgs e)
-        {
-            ShowMdiChildren(typeof(frmGiangVien));
-        }
-
-        private void barButton_SinhVien_ItemClick(object sender, DevExpress.XtraBars.ItemClickEventArgs e)
-        {
-            ShowMdiChildren(typeof(frmSinhVien));
-        }
-
-        private void barButtonItem1_ItemClick(object sender, DevExpress.XtraBars.ItemClickEventArgs e)
-        {
-            ShowMdiChildren(typeof(frmDiem));
+            if (!(Program.MGroup == Program.NhomQuyen[2]))
+            {
+                ShowMdiChildren(typeof(frmLop));
+            }
         }
 
         private void barButtonItem_Thoat_ItemClick(object sender, DevExpress.XtraBars.ItemClickEventArgs e)
@@ -89,6 +72,19 @@ namespace QLDSV
             }
         }
 
+        private void ribbonControl1_Click(object sender, EventArgs e)
+        {
 
+        }
+
+        private void barBtnTaoTaiKhoan_ItemClick(object sender, DevExpress.XtraBars.ItemClickEventArgs e)
+        {
+            ShowMdiChildren(typeof(frmDangKy));
+        }
+
+        private void barButton_SinhVien_ItemClick(object sender, DevExpress.XtraBars.ItemClickEventArgs e)
+        {
+            ShowMdiChildren(typeof(frmSinhVien));
+        }
     }
 }

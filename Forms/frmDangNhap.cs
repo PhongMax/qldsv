@@ -21,7 +21,7 @@ namespace QLDSV
 
         private void frmDangNhap_Load(object sender, EventArgs e)
         {
-            string chuoiketnoi = "Data Source=DESKTOP-ASUS;Initial Catalog=" + Program.Database + ";Integrated Security=True";
+            string chuoiketnoi = "Data Source=DESKTOP-CCI6BQR;Initial Catalog=" + Program.Database + ";Integrated Security=True";
 
             Program.Conn.ConnectionString = chuoiketnoi;
 
@@ -39,6 +39,23 @@ namespace QLDSV
 
         private void cmbKhoa_SelectedIndexChanged(object sender, EventArgs e)
         {
+            // gán tài khoản và mật khẩu vào form login...., sau này báo cáo xóa cụm if này đi.
+            if (cmbKhoa.SelectedIndex == 0)
+            {
+                this.txtLogin.Text = "pgv";
+                this.txtPass.Text = "123456";
+            }
+            if (cmbKhoa.SelectedIndex == 1)
+            {
+                this.txtLogin.Text = "vt";
+                this.txtPass.Text = "123456";
+            }
+            if (cmbKhoa.SelectedIndex == 2)
+            {
+                this.txtLogin.Text = "hp";
+                this.txtPass.Text = "123456";
+            }
+
             try
             {
                 // gán server đã chọn vào biến toàn cục.
@@ -96,6 +113,7 @@ namespace QLDSV
             }
             catch(Exception ex)
             {
+                Debug.WriteLine("---> Lỗi: " + ex.ToString());
                 MessageBox.Show("Login bạn nhập không có quyền truy cập vào chương trình", "", MessageBoxButtons.OK);
                 return;
             }
@@ -110,8 +128,8 @@ namespace QLDSV
 
             // hiện thông tin tài khoản
             Program.frmMain.lblMAGV.Text = "MÃ GIẢNG VIÊN : " + Program.UserName;
-            Program.frmMain.lblHOTEN.Text = " ||   HỌ VÀ TÊN : " + Program.MHoten;
-            Program.frmMain.lblNHOM.Text = " ||   NHÓM : " + Program.MGroup;
+            Program.frmMain.lblHOTEN.Text = " |  HỌ VÀ TÊN : " + Program.MHoten;
+            Program.frmMain.lblNHOM.Text = "|  NHÓM : " + Program.MGroup;
 
             Program.frmMain.Show();
             Program.FrmDangNhap.Visible = false;
@@ -126,10 +144,11 @@ namespace QLDSV
         {
             Close();
         }
-
+            
         private void frmDangNhap_VisibleChanged(object sender, EventArgs e)
         {
             Program.Bds_Dspm.RemoveFilter();
+            cmbKhoa_SelectedIndexChanged(sender, e);
         }
     }
 }

@@ -42,14 +42,12 @@
             this.barButton_Lop = new DevExpress.XtraBars.BarButtonItem();
             this.ribbonPageGroup_MonHoc = new DevExpress.XtraBars.Ribbon.RibbonPageGroup();
             this.barButton_MonHoc = new DevExpress.XtraBars.BarButtonItem();
-            this.ribbonPageGroup_GiangVien = new DevExpress.XtraBars.Ribbon.RibbonPageGroup();
-            this.barButton_GiangVien = new DevExpress.XtraBars.BarButtonItem();
             this.ribbonPageGroup1 = new DevExpress.XtraBars.Ribbon.RibbonPageGroup();
             this.barButton_SinhVien = new DevExpress.XtraBars.BarButtonItem();
             this.ribbonPageGroup_Diem = new DevExpress.XtraBars.Ribbon.RibbonPageGroup();
             this.barButtonItem1 = new DevExpress.XtraBars.BarButtonItem();
-            this.ribbonPageGroup_Thoat = new DevExpress.XtraBars.Ribbon.RibbonPageGroup();
             this.barButtonItem_Thoat = new DevExpress.XtraBars.BarButtonItem();
+            this.barButton_GiangVien = new DevExpress.XtraBars.BarButtonItem();
             this.barButtonItem2 = new DevExpress.XtraBars.BarButtonItem();
             this.barButtonItem3 = new DevExpress.XtraBars.BarButtonItem();
             this.ribbonControl1 = new DevExpress.XtraBars.Ribbon.RibbonControl();
@@ -84,7 +82,7 @@
             // lblHOTEN
             // 
             this.lblHOTEN.Name = "lblHOTEN";
-            this.lblHOTEN.Size = new System.Drawing.Size(45, 17);
+            this.lblHOTEN.Size = new System.Drawing.Size(46, 17);
             this.lblHOTEN.Text = "HOTEN";
             // 
             // lblNHOM
@@ -115,10 +113,8 @@
             this.ribbonPage1.Groups.AddRange(new DevExpress.XtraBars.Ribbon.RibbonPageGroup[] {
             this.ribbonPageGroup_Lop,
             this.ribbonPageGroup_MonHoc,
-            this.ribbonPageGroup_GiangVien,
             this.ribbonPageGroup1,
-            this.ribbonPageGroup_Diem,
-            this.ribbonPageGroup_Thoat});
+            this.ribbonPageGroup_Diem});
             this.ribbonPage1.Name = "ribbonPage1";
             this.ribbonPage1.Text = "Quản trị";
             // 
@@ -132,9 +128,11 @@
             // 
             this.barButton_Lop.Id = 4;
             this.barButton_Lop.ImageOptions.Image = global::QLDSV.Properties.Resources._class;
-            this.barButton_Lop.LargeWidth = 50;
+            this.barButton_Lop.LargeWidth = 100;
             this.barButton_Lop.Name = "barButton_Lop";
-            this.barButton_Lop.RibbonStyle = DevExpress.XtraBars.Ribbon.RibbonItemStyles.Large;
+            this.barButton_Lop.RibbonStyle = ((DevExpress.XtraBars.Ribbon.RibbonItemStyles)((DevExpress.XtraBars.Ribbon.RibbonItemStyles.Large | DevExpress.XtraBars.Ribbon.RibbonItemStyles.SmallWithoutText)));
+            this.barButton_Lop.SmallWithoutTextWidth = 100;
+            this.barButton_Lop.SmallWithTextWidth = 100;
             this.barButton_Lop.ItemClick += new DevExpress.XtraBars.ItemClickEventHandler(this.barButton_Lop_ItemClick);
             // 
             // ribbonPageGroup_MonHoc
@@ -149,25 +147,9 @@
             // 
             this.barButton_MonHoc.Id = 7;
             this.barButton_MonHoc.ImageOptions.Image = global::QLDSV.Properties.Resources.bright;
-            this.barButton_MonHoc.LargeWidth = 50;
+            this.barButton_MonHoc.LargeWidth = 100;
             this.barButton_MonHoc.Name = "barButton_MonHoc";
             this.barButton_MonHoc.RibbonStyle = ((DevExpress.XtraBars.Ribbon.RibbonItemStyles)((DevExpress.XtraBars.Ribbon.RibbonItemStyles.Large | DevExpress.XtraBars.Ribbon.RibbonItemStyles.SmallWithText)));
-            this.barButton_MonHoc.ItemClick += new DevExpress.XtraBars.ItemClickEventHandler(this.barButton_MonHoc_ItemClick);
-            // 
-            // ribbonPageGroup_GiangVien
-            // 
-            this.ribbonPageGroup_GiangVien.ItemLinks.Add(this.barButton_GiangVien);
-            this.ribbonPageGroup_GiangVien.Name = "ribbonPageGroup_GiangVien";
-            this.ribbonPageGroup_GiangVien.Text = "GIẢNG VIÊN";
-            // 
-            // barButton_GiangVien
-            // 
-            this.barButton_GiangVien.Id = 8;
-            this.barButton_GiangVien.ImageOptions.Image = global::QLDSV.Properties.Resources.conference;
-            this.barButton_GiangVien.LargeWidth = 50;
-            this.barButton_GiangVien.Name = "barButton_GiangVien";
-            this.barButton_GiangVien.RibbonStyle = ((DevExpress.XtraBars.Ribbon.RibbonItemStyles)((DevExpress.XtraBars.Ribbon.RibbonItemStyles.Large | DevExpress.XtraBars.Ribbon.RibbonItemStyles.SmallWithText)));
-            this.barButton_GiangVien.ItemClick += new DevExpress.XtraBars.ItemClickEventHandler(this.barButton_GiangVien_ItemClick);
             // 
             // ribbonPageGroup1
             // 
@@ -179,7 +161,7 @@
             // 
             this.barButton_SinhVien.Id = 9;
             this.barButton_SinhVien.ImageOptions.Image = global::QLDSV.Properties.Resources.students;
-            this.barButton_SinhVien.LargeWidth = 50;
+            this.barButton_SinhVien.LargeWidth = 100;
             this.barButton_SinhVien.Name = "barButton_SinhVien";
             this.barButton_SinhVien.RibbonStyle = ((DevExpress.XtraBars.Ribbon.RibbonItemStyles)((DevExpress.XtraBars.Ribbon.RibbonItemStyles.Large | DevExpress.XtraBars.Ribbon.RibbonItemStyles.SmallWithText)));
             this.barButton_SinhVien.ItemClick += new DevExpress.XtraBars.ItemClickEventHandler(this.barButton_SinhVien_ItemClick);
@@ -194,25 +176,26 @@
             // 
             this.barButtonItem1.Id = 10;
             this.barButtonItem1.ImageOptions.Image = global::QLDSV.Properties.Resources.score;
-            this.barButtonItem1.LargeWidth = 50;
+            this.barButtonItem1.LargeWidth = 100;
             this.barButtonItem1.Name = "barButtonItem1";
             this.barButtonItem1.RibbonStyle = ((DevExpress.XtraBars.Ribbon.RibbonItemStyles)((DevExpress.XtraBars.Ribbon.RibbonItemStyles.Large | DevExpress.XtraBars.Ribbon.RibbonItemStyles.SmallWithText)));
-            this.barButtonItem1.ItemClick += new DevExpress.XtraBars.ItemClickEventHandler(this.barButtonItem1_ItemClick);
-            // 
-            // ribbonPageGroup_Thoat
-            // 
-            this.ribbonPageGroup_Thoat.ItemLinks.Add(this.barButtonItem_Thoat);
-            this.ribbonPageGroup_Thoat.Name = "ribbonPageGroup_Thoat";
-            this.ribbonPageGroup_Thoat.Text = "Thoát";
             // 
             // barButtonItem_Thoat
             // 
             this.barButtonItem_Thoat.Id = 11;
             this.barButtonItem_Thoat.ImageOptions.Image = global::QLDSV.Properties.Resources.power_button;
-            this.barButtonItem_Thoat.LargeWidth = 50;
+            this.barButtonItem_Thoat.LargeWidth = 80;
             this.barButtonItem_Thoat.Name = "barButtonItem_Thoat";
             this.barButtonItem_Thoat.RibbonStyle = ((DevExpress.XtraBars.Ribbon.RibbonItemStyles)((DevExpress.XtraBars.Ribbon.RibbonItemStyles.Large | DevExpress.XtraBars.Ribbon.RibbonItemStyles.SmallWithText)));
             this.barButtonItem_Thoat.ItemClick += new DevExpress.XtraBars.ItemClickEventHandler(this.barButtonItem_Thoat_ItemClick);
+            // 
+            // barButton_GiangVien
+            // 
+            this.barButton_GiangVien.Id = 8;
+            this.barButton_GiangVien.ImageOptions.Image = global::QLDSV.Properties.Resources.conference;
+            this.barButton_GiangVien.LargeWidth = 80;
+            this.barButton_GiangVien.Name = "barButton_GiangVien";
+            this.barButton_GiangVien.RibbonStyle = ((DevExpress.XtraBars.Ribbon.RibbonItemStyles)((DevExpress.XtraBars.Ribbon.RibbonItemStyles.Large | DevExpress.XtraBars.Ribbon.RibbonItemStyles.SmallWithText)));
             // 
             // barButtonItem2
             // 
@@ -255,20 +238,24 @@
             this.ribbonPage2,
             this.ribbonPage4});
             this.ribbonControl1.Size = new System.Drawing.Size(1011, 143);
+            this.ribbonControl1.Click += new System.EventHandler(this.ribbonControl1_Click);
             // 
             // barBtnTaoTaiKhoan
             // 
             this.barBtnTaoTaiKhoan.Caption = "Tạo tài khoản";
             this.barBtnTaoTaiKhoan.Id = 2;
             this.barBtnTaoTaiKhoan.ImageOptions.SvgImage = ((DevExpress.Utils.Svg.SvgImage)(resources.GetObject("barBtnTaoTaiKhoan.ImageOptions.SvgImage")));
+            this.barBtnTaoTaiKhoan.LargeWidth = 80;
             this.barBtnTaoTaiKhoan.Name = "barBtnTaoTaiKhoan";
             this.barBtnTaoTaiKhoan.RibbonStyle = ((DevExpress.XtraBars.Ribbon.RibbonItemStyles)((DevExpress.XtraBars.Ribbon.RibbonItemStyles.Large | DevExpress.XtraBars.Ribbon.RibbonItemStyles.SmallWithText)));
+            this.barBtnTaoTaiKhoan.ItemClick += new DevExpress.XtraBars.ItemClickEventHandler(this.barBtnTaoTaiKhoan_ItemClick);
             // 
             // barBtnDangXuat
             // 
             this.barBtnDangXuat.Caption = "Đăng xuất";
             this.barBtnDangXuat.Id = 3;
             this.barBtnDangXuat.ImageOptions.Image = global::QLDSV.Properties.Resources.turn_off_32;
+            this.barBtnDangXuat.LargeWidth = 80;
             this.barBtnDangXuat.Name = "barBtnDangXuat";
             this.barBtnDangXuat.RibbonStyle = DevExpress.XtraBars.Ribbon.RibbonItemStyles.Large;
             this.barBtnDangXuat.ItemClick += new DevExpress.XtraBars.ItemClickEventHandler(this.barBtnDangXuat_ItemClick);
@@ -337,13 +324,11 @@
         private DevExpress.XtraBars.BarButtonItem barButtonItem2;
         private DevExpress.XtraBars.BarButtonItem barButtonItem3;
         private DevExpress.XtraBars.BarButtonItem barButton_MonHoc;
-        private DevExpress.XtraBars.Ribbon.RibbonPageGroup ribbonPageGroup_GiangVien;
         private DevExpress.XtraBars.BarButtonItem barButton_GiangVien;
         private DevExpress.XtraBars.Ribbon.RibbonPageGroup ribbonPageGroup1;
         private DevExpress.XtraBars.BarButtonItem barButton_SinhVien;
         private DevExpress.XtraBars.Ribbon.RibbonPageGroup ribbonPageGroup_Diem;
         private DevExpress.XtraBars.BarButtonItem barButtonItem1;
-        private DevExpress.XtraBars.Ribbon.RibbonPageGroup ribbonPageGroup_Thoat;
         private DevExpress.XtraBars.BarButtonItem barButtonItem_Thoat;
         public System.Windows.Forms.ToolStripStatusLabel lblMAGV;
         public System.Windows.Forms.ToolStripStatusLabel lblHOTEN;
