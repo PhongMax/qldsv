@@ -66,7 +66,13 @@
             this.txtMaLop = new DevExpress.XtraEditors.TextEdit();
             this.panel1 = new System.Windows.Forms.Panel();
             this.pnControlRight = new System.Windows.Forms.Panel();
-            this.gridControl1 = new DevExpress.XtraGrid.GridControl();
+            this.SinhVienGridControl = new DevExpress.XtraGrid.GridControl();
+            this.contextSinhVien = new System.Windows.Forms.ContextMenuStrip(this.components);
+            this.conThem = new System.Windows.Forms.ToolStripMenuItem();
+            this.conSua = new System.Windows.Forms.ToolStripMenuItem();
+            this.conXoa = new System.Windows.Forms.ToolStripMenuItem();
+            this.toolStripSeparator1 = new System.Windows.Forms.ToolStripSeparator();
+            this.conGhi = new System.Windows.Forms.ToolStripMenuItem();
             this.gridView2 = new DevExpress.XtraGrid.Views.Grid.GridView();
             this.colMASV = new DevExpress.XtraGrid.Columns.GridColumn();
             this.colHO = new DevExpress.XtraGrid.Columns.GridColumn();
@@ -101,7 +107,8 @@
             ((System.ComponentModel.ISupportInitialize)(this.txtMaLop.Properties)).BeginInit();
             this.panel1.SuspendLayout();
             this.pnControlRight.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.gridControl1)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.SinhVienGridControl)).BeginInit();
+            this.contextSinhVien.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.gridView2)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.repositoryItemMaLop)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.repositoryItemGridLookUpEdit1View)).BeginInit();
@@ -387,6 +394,8 @@
             this.colMALOP.FieldName = "MALOP";
             this.colMALOP.Fixed = DevExpress.XtraGrid.Columns.FixedStyle.Left;
             this.colMALOP.Name = "colMALOP";
+            this.colMALOP.OptionsColumn.AllowEdit = false;
+            this.colMALOP.OptionsColumn.AllowFocus = false;
             this.colMALOP.Summary.AddRange(new DevExpress.XtraGrid.GridSummaryItem[] {
             new DevExpress.XtraGrid.GridColumnSummaryItem(DevExpress.Data.SummaryItemType.Count, "MALOP", "Số dòng: {0}")});
             this.colMALOP.Visible = true;
@@ -402,6 +411,8 @@
             this.colTENLOP.Caption = "Tên Lớp";
             this.colTENLOP.FieldName = "TENLOP";
             this.colTENLOP.Name = "colTENLOP";
+            this.colTENLOP.OptionsColumn.AllowEdit = false;
+            this.colTENLOP.OptionsColumn.AllowFocus = false;
             this.colTENLOP.Visible = true;
             this.colTENLOP.VisibleIndex = 1;
             this.colTENLOP.Width = 363;
@@ -413,6 +424,8 @@
             this.colMAKH.Caption = "Mã Khoa";
             this.colMAKH.FieldName = "MAKH";
             this.colMAKH.Name = "colMAKH";
+            this.colMAKH.OptionsColumn.AllowEdit = false;
+            this.colMAKH.OptionsColumn.AllowFocus = false;
             this.colMAKH.Visible = true;
             this.colMAKH.VisibleIndex = 2;
             this.colMAKH.Width = 364;
@@ -472,27 +485,73 @@
             // 
             // pnControlRight
             // 
-            this.pnControlRight.Controls.Add(this.gridControl1);
+            this.pnControlRight.Controls.Add(this.SinhVienGridControl);
             this.pnControlRight.Dock = System.Windows.Forms.DockStyle.Fill;
             this.pnControlRight.Location = new System.Drawing.Point(375, 0);
             this.pnControlRight.Name = "pnControlRight";
             this.pnControlRight.Size = new System.Drawing.Size(533, 161);
             this.pnControlRight.TabIndex = 1;
             // 
-            // gridControl1
+            // SinhVienGridControl
             // 
-            this.gridControl1.DataSource = this.bdsSV;
-            this.gridControl1.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.gridControl1.Location = new System.Drawing.Point(0, 0);
-            this.gridControl1.MainView = this.gridView2;
-            this.gridControl1.MenuManager = this.barManagerLop;
-            this.gridControl1.Name = "gridControl1";
-            this.gridControl1.RepositoryItems.AddRange(new DevExpress.XtraEditors.Repository.RepositoryItem[] {
+            this.SinhVienGridControl.ContextMenuStrip = this.contextSinhVien;
+            this.SinhVienGridControl.DataSource = this.bdsSV;
+            this.SinhVienGridControl.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.SinhVienGridControl.Location = new System.Drawing.Point(0, 0);
+            this.SinhVienGridControl.MainView = this.gridView2;
+            this.SinhVienGridControl.MenuManager = this.barManagerLop;
+            this.SinhVienGridControl.Name = "SinhVienGridControl";
+            this.SinhVienGridControl.RepositoryItems.AddRange(new DevExpress.XtraEditors.Repository.RepositoryItem[] {
             this.repositoryItemMaLop});
-            this.gridControl1.Size = new System.Drawing.Size(533, 161);
-            this.gridControl1.TabIndex = 16;
-            this.gridControl1.ViewCollection.AddRange(new DevExpress.XtraGrid.Views.Base.BaseView[] {
+            this.SinhVienGridControl.Size = new System.Drawing.Size(533, 161);
+            this.SinhVienGridControl.TabIndex = 16;
+            this.SinhVienGridControl.ViewCollection.AddRange(new DevExpress.XtraGrid.Views.Base.BaseView[] {
             this.gridView2});
+            // 
+            // contextSinhVien
+            // 
+            this.contextSinhVien.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.conThem,
+            this.conSua,
+            this.conXoa,
+            this.toolStripSeparator1,
+            this.conGhi});
+            this.contextSinhVien.Name = "contextMenuStrip1";
+            this.contextSinhVien.Size = new System.Drawing.Size(106, 98);
+            // 
+            // conThem
+            // 
+            this.conThem.Image = global::QLDSV.Properties.Resources.add_user_32;
+            this.conThem.Name = "conThem";
+            this.conThem.Size = new System.Drawing.Size(105, 22);
+            this.conThem.Text = "Thêm";
+            this.conThem.Click += new System.EventHandler(this.conThem_Click);
+            // 
+            // conSua
+            // 
+            this.conSua.Name = "conSua";
+            this.conSua.Size = new System.Drawing.Size(105, 22);
+            this.conSua.Text = "Sửa";
+            this.conSua.Click += new System.EventHandler(this.conSua_Click);
+            // 
+            // conXoa
+            // 
+            this.conXoa.Name = "conXoa";
+            this.conXoa.Size = new System.Drawing.Size(105, 22);
+            this.conXoa.Text = "Xóa";
+            this.conXoa.Click += new System.EventHandler(this.conXoa_Click);
+            // 
+            // toolStripSeparator1
+            // 
+            this.toolStripSeparator1.Name = "toolStripSeparator1";
+            this.toolStripSeparator1.Size = new System.Drawing.Size(102, 6);
+            // 
+            // conGhi
+            // 
+            this.conGhi.Name = "conGhi";
+            this.conGhi.Size = new System.Drawing.Size(105, 22);
+            this.conGhi.Text = "Ghi";
+            this.conGhi.Click += new System.EventHandler(this.conGhi_Click);
             // 
             // gridView2
             // 
@@ -524,7 +583,7 @@
             this.colDIACHI,
             this.colGHICHU,
             this.colNGHIHOC});
-            this.gridView2.GridControl = this.gridControl1;
+            this.gridView2.GridControl = this.SinhVienGridControl;
             this.gridView2.Name = "gridView2";
             this.gridView2.OptionsView.ShowFooter = true;
             this.gridView2.OptionsView.ShowGroupPanel = false;
@@ -534,6 +593,7 @@
             this.colMASV.Caption = "Mã Sinh Viên";
             this.colMASV.FieldName = "MASV";
             this.colMASV.Name = "colMASV";
+            this.colMASV.OptionsColumn.AllowFocus = false;
             this.colMASV.Summary.AddRange(new DevExpress.XtraGrid.GridSummaryItem[] {
             new DevExpress.XtraGrid.GridColumnSummaryItem(DevExpress.Data.SummaryItemType.Count, "MASV", "Số dòng : {0}")});
             this.colMASV.Visible = true;
@@ -545,6 +605,7 @@
             this.colHO.Caption = "Họ và tên lót";
             this.colHO.FieldName = "HO";
             this.colHO.Name = "colHO";
+            this.colHO.OptionsColumn.AllowFocus = false;
             this.colHO.Visible = true;
             this.colHO.VisibleIndex = 1;
             this.colHO.Width = 59;
@@ -554,6 +615,7 @@
             this.colTEN.Caption = "Tên";
             this.colTEN.FieldName = "TEN";
             this.colTEN.Name = "colTEN";
+            this.colTEN.OptionsColumn.AllowFocus = false;
             this.colTEN.Visible = true;
             this.colTEN.VisibleIndex = 2;
             this.colTEN.Width = 29;
@@ -564,6 +626,7 @@
             this.colMALOP1.ColumnEdit = this.repositoryItemMaLop;
             this.colMALOP1.FieldName = "MALOP";
             this.colMALOP1.Name = "colMALOP1";
+            this.colMALOP1.OptionsColumn.AllowFocus = false;
             this.colMALOP1.Visible = true;
             this.colMALOP1.VisibleIndex = 3;
             this.colMALOP1.Width = 56;
@@ -622,6 +685,7 @@
             this.colPHAI.Caption = "Phái";
             this.colPHAI.FieldName = "PHAI";
             this.colPHAI.Name = "colPHAI";
+            this.colPHAI.OptionsColumn.AllowFocus = false;
             this.colPHAI.ToolTip = "(Tick --> Nam)";
             this.colPHAI.Visible = true;
             this.colPHAI.VisibleIndex = 4;
@@ -632,6 +696,7 @@
             this.colNGAYSINH.Caption = "Ngày sinh";
             this.colNGAYSINH.FieldName = "NGAYSINH";
             this.colNGAYSINH.Name = "colNGAYSINH";
+            this.colNGAYSINH.OptionsColumn.AllowFocus = false;
             this.colNGAYSINH.Visible = true;
             this.colNGAYSINH.VisibleIndex = 5;
             this.colNGAYSINH.Width = 59;
@@ -641,6 +706,7 @@
             this.colNOISINH.Caption = "Nơi sinh";
             this.colNOISINH.FieldName = "NOISINH";
             this.colNOISINH.Name = "colNOISINH";
+            this.colNOISINH.OptionsColumn.AllowFocus = false;
             this.colNOISINH.Visible = true;
             this.colNOISINH.VisibleIndex = 6;
             this.colNOISINH.Width = 51;
@@ -650,6 +716,7 @@
             this.colDIACHI.Caption = "Địa chỉ";
             this.colDIACHI.FieldName = "DIACHI";
             this.colDIACHI.Name = "colDIACHI";
+            this.colDIACHI.OptionsColumn.AllowFocus = false;
             this.colDIACHI.Visible = true;
             this.colDIACHI.VisibleIndex = 7;
             this.colDIACHI.Width = 51;
@@ -659,6 +726,7 @@
             this.colGHICHU.Caption = "Ghi chú";
             this.colGHICHU.FieldName = "GHICHU";
             this.colGHICHU.Name = "colGHICHU";
+            this.colGHICHU.OptionsColumn.AllowFocus = false;
             this.colGHICHU.Visible = true;
             this.colGHICHU.VisibleIndex = 8;
             this.colGHICHU.Width = 102;
@@ -668,6 +736,7 @@
             this.colNGHIHOC.Caption = "Nghỉ học";
             this.colNGHIHOC.FieldName = "NGHIHOC";
             this.colNGHIHOC.Name = "colNGHIHOC";
+            this.colNGHIHOC.OptionsColumn.AllowFocus = false;
             this.colNGHIHOC.ToolTip = "(Tick --> nghỉ học)";
             this.colNGHIHOC.Visible = true;
             this.colNGHIHOC.VisibleIndex = 9;
@@ -734,7 +803,8 @@
             ((System.ComponentModel.ISupportInitialize)(this.txtMaLop.Properties)).EndInit();
             this.panel1.ResumeLayout(false);
             this.pnControlRight.ResumeLayout(false);
-            ((System.ComponentModel.ISupportInitialize)(this.gridControl1)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.SinhVienGridControl)).EndInit();
+            this.contextSinhVien.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.gridView2)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.repositoryItemMaLop)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.repositoryItemGridLookUpEdit1View)).EndInit();
@@ -785,7 +855,7 @@
         private System.Windows.Forms.GroupBox grbLop;
         private System.Windows.Forms.ErrorProvider errorProvider;
         private DevExpress.XtraBars.BarButtonItem barBtnXoa;
-        private DevExpress.XtraGrid.GridControl gridControl1;
+        private DevExpress.XtraGrid.GridControl SinhVienGridControl;
         private DevExpress.XtraGrid.Views.Grid.GridView gridView2;
         private DevExpress.XtraGrid.Columns.GridColumn colMASV;
         private DevExpress.XtraGrid.Columns.GridColumn colHO;
@@ -802,5 +872,11 @@
         private DevExpress.XtraGrid.Columns.GridColumn colMa;
         private DevExpress.XtraGrid.Columns.GridColumn colTenn;
         private DevExpress.XtraGrid.Columns.GridColumn colKhoa;
+        private System.Windows.Forms.ContextMenuStrip contextSinhVien;
+        private System.Windows.Forms.ToolStripMenuItem conThem;
+        private System.Windows.Forms.ToolStripMenuItem conSua;
+        private System.Windows.Forms.ToolStripMenuItem conXoa;
+        private System.Windows.Forms.ToolStripSeparator toolStripSeparator1;
+        private System.Windows.Forms.ToolStripMenuItem conGhi;
     }
 }

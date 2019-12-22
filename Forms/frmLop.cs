@@ -46,13 +46,12 @@ namespace QLDSV.Forms
         // TODO : Load Method
         private void frmLop_Load(object sender, EventArgs e)
         {
+            this.errorProvider.Clear();
 
             // TODO : Load Data
             loadInitializeData();
 
-            
-        
-
+            lOPGridControl.Enabled = true;
 
             //this.grbLop.Enabled = true;
             // đoạn code liên kết giữa bds với combo box
@@ -61,15 +60,32 @@ namespace QLDSV.Forms
             Utils.BindingDataToComBo(cmbKhoa, Program.Bds_Dspm.DataSource);
 
             // TODO : Role Action
-            if (Program.MGroup == Program.NhomQuyen[0])
+            if (Program.MGroup == Program.NhomQuyen[0])// PGV
             {
                 cmbKhoa.Visible = true;
 
+                // add here
+                barBtnThem.Enabled
+                    = barBtnXoa.Enabled
+                    = barBtnSua.Enabled
+                    = barBtnLammoi.Enabled
+                    = barBtnUndo.Enabled = true;
+                cmbKhoa.Enabled = true;
+
             }
-            else if (Program.MGroup == Program.NhomQuyen[1])
+            else if (Program.MGroup == Program.NhomQuyen[1]) // KHOA
             {
                 cmbKhoa.Visible = false;
+
+                barBtnThem.Enabled
+                   = barBtnXoa.Enabled
+                   = barBtnSua.Enabled
+                   = barBtnLammoi.Enabled
+                   = barBtnUndo.Enabled = false;
+                
+
                 lblTenKhoa.Text = ((DataRowView)Program.Bds_Dspm[Program.MKhoa])["TENKHOA"].ToString();
+
                 barBtnThem.Enabled = barBtnSua.Enabled = barBtnXoa.Enabled
                     = barBtnUndo.Enabled = false;
 
@@ -142,7 +158,11 @@ namespace QLDSV.Forms
 
             cmbKhoa.Enabled = false;
             pnControlLeft.Enabled = true;
-                
+
+
+            // reload phần sub
+            this.SinhVienGridControl.Update();
+            this.SinhVienGridControl.Refresh();
         }
 
         private void barBtnUndo_ItemClick(object sender, DevExpress.XtraBars.ItemClickEventArgs e)
@@ -197,11 +217,7 @@ namespace QLDSV.Forms
         private void barBtnHuy_ItemClick(object sender, DevExpress.XtraBars.ItemClickEventArgs e)
         {
             bdsLOP.CancelEdit();
-            barBtnThem.Enabled = barBtnXoa.Enabled = barBtnSua.Enabled = barBtnLammoi.Enabled
-                = barBtnUndo.Enabled = true;
-            lOPGridControl.Enabled = true;
-
-            cmbKhoa.Enabled = true;
+            
             // load lại cả form...
             frmLop_Load(sender, e);
         }
@@ -383,5 +399,28 @@ namespace QLDSV.Forms
             this.repositoryItemMaLop.AutoHeight = true;
         }
 
+
+
+        //---------------------------- Phân subform -----------------------------------------------
+
+        private void conThem_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void conSua_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void conXoa_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void conGhi_Click(object sender, EventArgs e)
+        {
+
+        }
     }
 }
