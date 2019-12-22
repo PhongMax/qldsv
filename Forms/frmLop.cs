@@ -17,11 +17,13 @@ namespace QLDSV.Forms
     {
         // dùng cho chức năng undo...
         private int _vitri;
-        private string _makhoa = "";
+
+
 
         public frmLop()
         {
             InitializeComponent();
+            initLockupEditColumn();
         }
 
         private void lOPBindingNavigatorSaveItem_Click(object sender, EventArgs e)
@@ -33,7 +35,6 @@ namespace QLDSV.Forms
 
         private void loadInitializeData()
         {
-            
             // kết nối trước rồi mới fill.
             this.LOPTableAdapter.Connection.ConnectionString = Program.URL_Connect;
             this.SINHVIENTableAdapter.Connection.ConnectionString = Program.URL_Connect;
@@ -49,9 +50,9 @@ namespace QLDSV.Forms
             // TODO : Load Data
             loadInitializeData();
 
-            _makhoa = Utils.GetMaKhoa();
-            this.txtMaKhoa.EditValue = _makhoa;
-       
+            
+        
+
 
             //this.grbLop.Enabled = true;
             // đoạn code liên kết giữa bds với combo box
@@ -113,12 +114,21 @@ namespace QLDSV.Forms
                 = barBtnUndo.Enabled
                 = barBtnLammoi.Enabled = false;
 
+
+            cmbKhoa.Enabled = false;
+
             lOPGridControl.Enabled = false;
             // thao tác chuẩn bị thêm
             bdsLOP.AddNew();
-            txtMaKhoa.EditValue = _makhoa;
+            this.txtMaKhoa.EditValue = Utils.GetMaKhoa();
 
-            
+
+
+
+
+
+
+
 
         }
 
@@ -129,6 +139,8 @@ namespace QLDSV.Forms
 
             barBtnHuy.Enabled = barBtnGhi.Enabled = true;
             lOPGridControl.Enabled = false;
+
+            cmbKhoa.Enabled = false;
             pnControlLeft.Enabled = true;
                 
         }
@@ -154,10 +166,14 @@ namespace QLDSV.Forms
                           = barBtnUndo.Enabled = barBtnThem.Enabled
                           = barBtnLammoi.Enabled = true;
 
+                        cmbKhoa.Enabled = true;
                         lOPGridControl.Enabled = true;
                         // bật groupbox nhập lớp
                         pnControlLeft.Enabled = false;
                         this.bdsLOP.EndEdit();
+
+                        // lệnh này quan trọng.
+                         this.bdsLOP.ResetCurrentItem();
                         this.LOPTableAdapter.Update(this.DS.LOP);
                     }
                     catch (Exception ex)
@@ -184,6 +200,8 @@ namespace QLDSV.Forms
             barBtnThem.Enabled = barBtnXoa.Enabled = barBtnSua.Enabled = barBtnLammoi.Enabled
                 = barBtnUndo.Enabled = true;
             lOPGridControl.Enabled = true;
+
+            cmbKhoa.Enabled = true;
             // load lại cả form...
             frmLop_Load(sender, e);
         }
@@ -256,6 +274,8 @@ namespace QLDSV.Forms
 
             if (resultMa == -1)
             {
+
+
                 MessageBox.Show("Lỗi kết nối với database. Mời ban xem lại !", "", MessageBoxButtons.OK);
 
                 this.Close();
@@ -348,5 +368,20 @@ namespace QLDSV.Forms
 
             barBtnLammoi.Enabled = true;
         }
+
+        // xử lý GridControl and LookupEdit
+        private void initLockupEditColumn()
+        {
+            this.repositoryItemMaLop.DataSource = this.bdsLOP;
+            this.repositoryItemMaLop.ValueMember = "MALOP";
+            this.repositoryItemMaLop.DisplayMember = "MALOP";
+
+            this.repositoryItemMaLop.NullText = @"Chọn lớp";
+            this.repositoryItemMaLop.BestFitMode = DevExpress.XtraEditors.Controls.BestFitMode.BestFitResizePopup;
+            // Specify the dropdown height. 
+            //  this.repositoryItemMaLop.DropDownRows = bdsLOP.Count;
+            this.repositoryItemMaLop.AutoHeight = true;
+        }
+
     }
 }

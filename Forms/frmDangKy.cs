@@ -16,7 +16,8 @@ namespace QLDSV.Forms
         private void frmĐangKy_Load(object sender, EventArgs e)
         {
             // TODO: This line of code loads data into the 'dS.GIANGVIEN' table. You can move, or remove it, as needed.
-            this.DSGVTableAdapter.Connection.ConnectionString = Program.URL_Connect;
+
+          this.DSGVTableAdapter.Connection.ConnectionString = Program.URL_Connect;
             this.DSGVTableAdapter.Fill(this.dS.GETDSGV);
 
 
@@ -42,6 +43,12 @@ namespace QLDSV.Forms
 
         private void btnDangKy_Click(object sender, EventArgs e)
         {
+
+            if (Program.MLogin == "HTKN")
+            {
+                MessageBox.Show("Bạn hãy quay về Khoa ban đầu trước khi thực hiên tạo tài khoản !", "", MessageBoxButtons.OK);
+                return;
+            }
             bool check = this.ValidateInfo();
             if (check)
             {
@@ -86,7 +93,7 @@ namespace QLDSV.Forms
                 errorProvider.SetError(this.txtLogin, "Login bị trùng . Mời bạn nhập login khác !");
             }else if(resultCheckLogin == 2)
             {
-                errorProvider.SetError(this.lookUpUser, "User bị trùng . Mời bạn nhập User khác !");
+                errorProvider.SetError(this.lookUpUser, "Giảng viên đã có tài khoản rồi !");
 
             }else if(resultCheckLogin == 3)
             {
