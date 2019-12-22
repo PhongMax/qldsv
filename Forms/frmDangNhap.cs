@@ -118,8 +118,6 @@ namespace QLDSV
                 return;
             }
 
-         
-
             Program.MyReader.Close();
             Program.Conn.Close();
 

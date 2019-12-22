@@ -17,7 +17,6 @@ namespace QLDSV.Forms
     {
         // dùng cho chức năng undo...
         private int _vitri;
-        private string _makhoa = "";
 
         public frmLop()
         {
@@ -33,7 +32,7 @@ namespace QLDSV.Forms
 
         private void loadInitializeData()
         {
-            
+
             // kết nối trước rồi mới fill.
             this.LOPTableAdapter.Connection.ConnectionString = Program.URL_Connect;
             this.SINHVIENTableAdapter.Connection.ConnectionString = Program.URL_Connect;
@@ -48,10 +47,6 @@ namespace QLDSV.Forms
 
             // TODO : Load Data
             loadInitializeData();
-
-            _makhoa = Utils.GetMaKhoa();
-            this.txtMaKhoa.EditValue = _makhoa;
-       
 
             //this.grbLop.Enabled = true;
             // đoạn code liên kết giữa bds với combo box
@@ -71,9 +66,7 @@ namespace QLDSV.Forms
                 lblTenKhoa.Text = ((DataRowView)Program.Bds_Dspm[Program.MKhoa])["TENKHOA"].ToString();
                 barBtnThem.Enabled = barBtnSua.Enabled = barBtnXoa.Enabled
                     = barBtnUndo.Enabled = false;
-
             }
-          
 
             barBtnHuy.Enabled = barBtnGhi.Enabled = false;
             // bật groupbox nhập lớp
@@ -87,16 +80,12 @@ namespace QLDSV.Forms
             // chuyển chi nhánh .....
             Utils.ComboboxHelper(this.cmbKhoa);
 
-
-            // kết nối database với dữ liệu ở đoạn code trên và fill dữ liệu, nếu như có lỗi thì
-            // thoát.
+            // kết nối database với dữ liệu ở đoạn code trên và fill dữ liệu, nếu như có lỗi thì thoát.
             if (Program.KetNoi() == 0) {
                 MessageBox.Show("Lỗi kết nối về chi nhánh mới", "", MessageBoxButtons.OK);
             }
             else {
-
                 loadInitializeData();
-                this.txtMaKhoa.EditValue = Utils.GetMaKhoa();
             }
         }
 
@@ -115,10 +104,9 @@ namespace QLDSV.Forms
 
             lOPGridControl.Enabled = false;
             // thao tác chuẩn bị thêm
+            this.txtMaKhoa.EditValue = Utils.GetMaKhoa();
+            Console.WriteLine("Inside Khoa : " + this.txtMaKhoa.Text.ToString());
             bdsLOP.AddNew();
-            txtMaKhoa.EditValue = _makhoa;
-
-            
 
         }
 
@@ -130,6 +118,8 @@ namespace QLDSV.Forms
             barBtnHuy.Enabled = barBtnGhi.Enabled = true;
             lOPGridControl.Enabled = false;
             pnControlLeft.Enabled = true;
+
+            cmbKhoa.Enabled = false;
                 
         }
 
@@ -154,10 +144,15 @@ namespace QLDSV.Forms
                           = barBtnUndo.Enabled = barBtnThem.Enabled
                           = barBtnLammoi.Enabled = true;
 
+                        cmbKhoa.Enabled = true;
+
                         lOPGridControl.Enabled = true;
                         // bật groupbox nhập lớp
                         pnControlLeft.Enabled = false;
                         this.bdsLOP.EndEdit();
+
+                        this.bdsLOP.ResetCurrentItem();// tự động render để hiển thị dữ liệu mới
+
                         this.LOPTableAdapter.Update(this.DS.LOP);
                     }
                     catch (Exception ex)
@@ -184,6 +179,8 @@ namespace QLDSV.Forms
             barBtnThem.Enabled = barBtnXoa.Enabled = barBtnSua.Enabled = barBtnLammoi.Enabled
                 = barBtnUndo.Enabled = true;
             lOPGridControl.Enabled = true;
+
+            cmbKhoa.Enabled = true;
             // load lại cả form...
             frmLop_Load(sender, e);
         }
@@ -193,8 +190,6 @@ namespace QLDSV.Forms
                 
                frmLop_Load(sender, e);
                 MessageBox.Show("Làm mới dữ liệu thành công", "", MessageBoxButtons.OK);
-            
-         
         }
 
         private void barBtnThoat_ItemClick(object sender, DevExpress.XtraBars.ItemClickEventArgs e)
@@ -210,19 +205,13 @@ namespace QLDSV.Forms
                 else if (dr == DialogResult.Yes)
                 {
                     this.Close();
-
                 }
             }else
             {
                 this.Close();
                 return;
             }
-           
-        
         }
-
-
-      
 
         private bool ValidateInfoLOP()
         {

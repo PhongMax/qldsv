@@ -107,6 +107,7 @@ namespace QLDSV
         // chỉ duyệt 1 chiều từ trên xuống
         // vì vậy báo cáo thì dùng datareader
         // https://youtu.be/z8pgdIbtV3E?t=3233
+
         public static SqlDataReader ExecSqlDataReader(String strLenh)
         {
             SqlDataReader myReader;

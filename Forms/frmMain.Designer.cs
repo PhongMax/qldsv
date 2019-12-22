@@ -30,7 +30,7 @@
         {
             this.components = new System.ComponentModel.Container();
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(frmMain));
-            this.statusStrip1 = new System.Windows.Forms.StatusStrip();
+            this.statusStrip = new System.Windows.Forms.StatusStrip();
             this.lblMAGV = new System.Windows.Forms.ToolStripStatusLabel();
             this.lblHOTEN = new System.Windows.Forms.ToolStripStatusLabel();
             this.lblNHOM = new System.Windows.Forms.ToolStripStatusLabel();
@@ -45,33 +45,33 @@
             this.ribbonPageGroup1 = new DevExpress.XtraBars.Ribbon.RibbonPageGroup();
             this.barButton_SinhVien = new DevExpress.XtraBars.BarButtonItem();
             this.ribbonPageGroup_Diem = new DevExpress.XtraBars.Ribbon.RibbonPageGroup();
-            this.barButtonItem1 = new DevExpress.XtraBars.BarButtonItem();
+            this.barButton_Diem = new DevExpress.XtraBars.BarButtonItem();
             this.barButtonItem_Thoat = new DevExpress.XtraBars.BarButtonItem();
             this.barButton_GiangVien = new DevExpress.XtraBars.BarButtonItem();
             this.barButtonItem2 = new DevExpress.XtraBars.BarButtonItem();
             this.barButtonItem3 = new DevExpress.XtraBars.BarButtonItem();
             this.ribbonControl1 = new DevExpress.XtraBars.Ribbon.RibbonControl();
-            this.barBtnTaoTaiKhoan = new DevExpress.XtraBars.BarButtonItem();
-            this.barBtnDangXuat = new DevExpress.XtraBars.BarButtonItem();
+            this.barButton_Register = new DevExpress.XtraBars.BarButtonItem();
+            this.barButton_Logout = new DevExpress.XtraBars.BarButtonItem();
             this.ribbonPage4 = new DevExpress.XtraBars.Ribbon.RibbonPage();
             this.ribbonPageGroup4 = new DevExpress.XtraBars.Ribbon.RibbonPageGroup();
-            this.xtraTabbedMdiManager1 = new DevExpress.XtraTabbedMdi.XtraTabbedMdiManager(this.components);
-            this.statusStrip1.SuspendLayout();
+            this.TableManager = new DevExpress.XtraTabbedMdi.XtraTabbedMdiManager(this.components);
+            this.statusStrip.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.ribbonControl1)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.xtraTabbedMdiManager1)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.TableManager)).BeginInit();
             this.SuspendLayout();
             // 
-            // statusStrip1
+            // statusStrip
             // 
-            this.statusStrip1.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.statusStrip.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.lblMAGV,
             this.lblHOTEN,
             this.lblNHOM});
-            this.statusStrip1.Location = new System.Drawing.Point(0, 449);
-            this.statusStrip1.Name = "statusStrip1";
-            this.statusStrip1.Size = new System.Drawing.Size(1011, 22);
-            this.statusStrip1.TabIndex = 1;
-            this.statusStrip1.Text = "statusStrip1";
+            this.statusStrip.Location = new System.Drawing.Point(0, 449);
+            this.statusStrip.Name = "statusStrip";
+            this.statusStrip.Size = new System.Drawing.Size(1011, 22);
+            this.statusStrip.TabIndex = 1;
+            this.statusStrip.Text = "statusStrip";
             // 
             // lblMAGV
             // 
@@ -82,7 +82,7 @@
             // lblHOTEN
             // 
             this.lblHOTEN.Name = "lblHOTEN";
-            this.lblHOTEN.Size = new System.Drawing.Size(46, 17);
+            this.lblHOTEN.Size = new System.Drawing.Size(45, 17);
             this.lblHOTEN.Text = "HOTEN";
             // 
             // lblNHOM
@@ -150,6 +150,7 @@
             this.barButton_MonHoc.LargeWidth = 100;
             this.barButton_MonHoc.Name = "barButton_MonHoc";
             this.barButton_MonHoc.RibbonStyle = ((DevExpress.XtraBars.Ribbon.RibbonItemStyles)((DevExpress.XtraBars.Ribbon.RibbonItemStyles.Large | DevExpress.XtraBars.Ribbon.RibbonItemStyles.SmallWithText)));
+            this.barButton_MonHoc.ItemClick += new DevExpress.XtraBars.ItemClickEventHandler(this.barButton_MonHoc_ItemClick);
             // 
             // ribbonPageGroup1
             // 
@@ -168,17 +169,18 @@
             // 
             // ribbonPageGroup_Diem
             // 
-            this.ribbonPageGroup_Diem.ItemLinks.Add(this.barButtonItem1);
+            this.ribbonPageGroup_Diem.ItemLinks.Add(this.barButton_Diem);
             this.ribbonPageGroup_Diem.Name = "ribbonPageGroup_Diem";
             this.ribbonPageGroup_Diem.Text = "ĐIỂM";
             // 
-            // barButtonItem1
+            // barButton_Diem
             // 
-            this.barButtonItem1.Id = 10;
-            this.barButtonItem1.ImageOptions.Image = global::QLDSV.Properties.Resources.score;
-            this.barButtonItem1.LargeWidth = 100;
-            this.barButtonItem1.Name = "barButtonItem1";
-            this.barButtonItem1.RibbonStyle = ((DevExpress.XtraBars.Ribbon.RibbonItemStyles)((DevExpress.XtraBars.Ribbon.RibbonItemStyles.Large | DevExpress.XtraBars.Ribbon.RibbonItemStyles.SmallWithText)));
+            this.barButton_Diem.Id = 10;
+            this.barButton_Diem.ImageOptions.Image = global::QLDSV.Properties.Resources.score;
+            this.barButton_Diem.LargeWidth = 100;
+            this.barButton_Diem.Name = "barButton_Diem";
+            this.barButton_Diem.RibbonStyle = ((DevExpress.XtraBars.Ribbon.RibbonItemStyles)((DevExpress.XtraBars.Ribbon.RibbonItemStyles.Large | DevExpress.XtraBars.Ribbon.RibbonItemStyles.SmallWithText)));
+            this.barButton_Diem.ItemClick += new DevExpress.XtraBars.ItemClickEventHandler(this.barButton_Diem_ItemClick);
             // 
             // barButtonItem_Thoat
             // 
@@ -187,7 +189,6 @@
             this.barButtonItem_Thoat.LargeWidth = 80;
             this.barButtonItem_Thoat.Name = "barButtonItem_Thoat";
             this.barButtonItem_Thoat.RibbonStyle = ((DevExpress.XtraBars.Ribbon.RibbonItemStyles)((DevExpress.XtraBars.Ribbon.RibbonItemStyles.Large | DevExpress.XtraBars.Ribbon.RibbonItemStyles.SmallWithText)));
-            this.barButtonItem_Thoat.ItemClick += new DevExpress.XtraBars.ItemClickEventHandler(this.barButtonItem_Thoat_ItemClick);
             // 
             // barButton_GiangVien
             // 
@@ -219,15 +220,15 @@
             this.ribbonControl1.Items.AddRange(new DevExpress.XtraBars.BarItem[] {
             this.ribbonControl1.ExpandCollapseItem,
             this.ribbonControl1.SearchEditItem,
-            this.barBtnTaoTaiKhoan,
-            this.barBtnDangXuat,
+            this.barButton_Register,
+            this.barButton_Logout,
             this.barButton_Lop,
             this.barButtonItem2,
             this.barButtonItem3,
             this.barButton_MonHoc,
             this.barButton_GiangVien,
             this.barButton_SinhVien,
-            this.barButtonItem1,
+            this.barButton_Diem,
             this.barButtonItem_Thoat});
             this.ribbonControl1.Location = new System.Drawing.Point(0, 0);
             this.ribbonControl1.Margin = new System.Windows.Forms.Padding(4);
@@ -238,27 +239,26 @@
             this.ribbonPage2,
             this.ribbonPage4});
             this.ribbonControl1.Size = new System.Drawing.Size(1011, 143);
-            this.ribbonControl1.Click += new System.EventHandler(this.ribbonControl1_Click);
             // 
-            // barBtnTaoTaiKhoan
+            // barButton_Register
             // 
-            this.barBtnTaoTaiKhoan.Caption = "Tạo tài khoản";
-            this.barBtnTaoTaiKhoan.Id = 2;
-            this.barBtnTaoTaiKhoan.ImageOptions.SvgImage = ((DevExpress.Utils.Svg.SvgImage)(resources.GetObject("barBtnTaoTaiKhoan.ImageOptions.SvgImage")));
-            this.barBtnTaoTaiKhoan.LargeWidth = 80;
-            this.barBtnTaoTaiKhoan.Name = "barBtnTaoTaiKhoan";
-            this.barBtnTaoTaiKhoan.RibbonStyle = ((DevExpress.XtraBars.Ribbon.RibbonItemStyles)((DevExpress.XtraBars.Ribbon.RibbonItemStyles.Large | DevExpress.XtraBars.Ribbon.RibbonItemStyles.SmallWithText)));
-            this.barBtnTaoTaiKhoan.ItemClick += new DevExpress.XtraBars.ItemClickEventHandler(this.barBtnTaoTaiKhoan_ItemClick);
+            this.barButton_Register.Caption = "Tạo tài khoản";
+            this.barButton_Register.Id = 2;
+            this.barButton_Register.ImageOptions.SvgImage = ((DevExpress.Utils.Svg.SvgImage)(resources.GetObject("barButton_Register.ImageOptions.SvgImage")));
+            this.barButton_Register.LargeWidth = 80;
+            this.barButton_Register.Name = "barButton_Register";
+            this.barButton_Register.RibbonStyle = ((DevExpress.XtraBars.Ribbon.RibbonItemStyles)((DevExpress.XtraBars.Ribbon.RibbonItemStyles.Large | DevExpress.XtraBars.Ribbon.RibbonItemStyles.SmallWithText)));
+            this.barButton_Register.ItemClick += new DevExpress.XtraBars.ItemClickEventHandler(this.barButton_Register_ItemClick);
             // 
-            // barBtnDangXuat
+            // barButton_Logout
             // 
-            this.barBtnDangXuat.Caption = "Đăng xuất";
-            this.barBtnDangXuat.Id = 3;
-            this.barBtnDangXuat.ImageOptions.Image = global::QLDSV.Properties.Resources.turn_off_32;
-            this.barBtnDangXuat.LargeWidth = 80;
-            this.barBtnDangXuat.Name = "barBtnDangXuat";
-            this.barBtnDangXuat.RibbonStyle = DevExpress.XtraBars.Ribbon.RibbonItemStyles.Large;
-            this.barBtnDangXuat.ItemClick += new DevExpress.XtraBars.ItemClickEventHandler(this.barBtnDangXuat_ItemClick);
+            this.barButton_Logout.Caption = "Đăng xuất";
+            this.barButton_Logout.Id = 3;
+            this.barButton_Logout.ImageOptions.Image = global::QLDSV.Properties.Resources.turn_off_32;
+            this.barButton_Logout.LargeWidth = 80;
+            this.barButton_Logout.Name = "barButton_Logout";
+            this.barButton_Logout.RibbonStyle = DevExpress.XtraBars.Ribbon.RibbonItemStyles.Large;
+            this.barButton_Logout.ItemClick += new DevExpress.XtraBars.ItemClickEventHandler(this.barButton_Logout_ItemClick);
             // 
             // ribbonPage4
             // 
@@ -269,14 +269,14 @@
             // 
             // ribbonPageGroup4
             // 
-            this.ribbonPageGroup4.ItemLinks.Add(this.barBtnTaoTaiKhoan);
-            this.ribbonPageGroup4.ItemLinks.Add(this.barBtnDangXuat);
+            this.ribbonPageGroup4.ItemLinks.Add(this.barButton_Register);
+            this.ribbonPageGroup4.ItemLinks.Add(this.barButton_Logout);
             this.ribbonPageGroup4.Name = "ribbonPageGroup4";
             this.ribbonPageGroup4.Text = "Hệ thống";
             // 
-            // xtraTabbedMdiManager1
+            // TableManager
             // 
-            this.xtraTabbedMdiManager1.MdiParent = this;
+            this.TableManager.MdiParent = this;
             // 
             // frmMain
             // 
@@ -284,7 +284,7 @@
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 17F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(1011, 471);
-            this.Controls.Add(this.statusStrip1);
+            this.Controls.Add(this.statusStrip);
             this.Controls.Add(this.ribbonControl1);
             this.Font = new System.Drawing.Font("Times New Roman", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
@@ -296,17 +296,17 @@
             this.Text = "QUẢN LÝ ĐIỂM SINH VIÊN";
             this.WindowState = System.Windows.Forms.FormWindowState.Maximized;
             this.FormClosing += new System.Windows.Forms.FormClosingEventHandler(this.frmMain_FormClosing);
-            this.statusStrip1.ResumeLayout(false);
-            this.statusStrip1.PerformLayout();
+            this.statusStrip.ResumeLayout(false);
+            this.statusStrip.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.ribbonControl1)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.xtraTabbedMdiManager1)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.TableManager)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
         }
 
         #endregion
-        private System.Windows.Forms.StatusStrip statusStrip1;
+        private System.Windows.Forms.StatusStrip statusStrip;
         public System.Windows.Forms.ToolStripStatusLabel lblNHOM;
         private DevExpress.XtraBars.Ribbon.RibbonPage ribbonPage3;
         private DevExpress.XtraBars.Ribbon.RibbonPage ribbonPage2;
@@ -314,12 +314,12 @@
         private DevExpress.XtraBars.Ribbon.RibbonPage ribbonPage1;
         private DevExpress.XtraBars.Ribbon.RibbonPageGroup ribbonPageGroup_Lop;
         private DevExpress.XtraBars.Ribbon.RibbonControl ribbonControl1;
-        private DevExpress.XtraTabbedMdi.XtraTabbedMdiManager xtraTabbedMdiManager1;
+        private DevExpress.XtraTabbedMdi.XtraTabbedMdiManager TableManager;
         private DevExpress.XtraBars.Ribbon.RibbonPageGroup ribbonPageGroup_MonHoc;
         private DevExpress.XtraBars.Ribbon.RibbonPage ribbonPage4;
         private DevExpress.XtraBars.Ribbon.RibbonPageGroup ribbonPageGroup4;
-        private DevExpress.XtraBars.BarButtonItem barBtnTaoTaiKhoan;
-        private DevExpress.XtraBars.BarButtonItem barBtnDangXuat;
+        private DevExpress.XtraBars.BarButtonItem barButton_Register;
+        private DevExpress.XtraBars.BarButtonItem barButton_Logout;
         private DevExpress.XtraBars.BarButtonItem barButton_Lop;
         private DevExpress.XtraBars.BarButtonItem barButtonItem2;
         private DevExpress.XtraBars.BarButtonItem barButtonItem3;
@@ -328,7 +328,7 @@
         private DevExpress.XtraBars.Ribbon.RibbonPageGroup ribbonPageGroup1;
         private DevExpress.XtraBars.BarButtonItem barButton_SinhVien;
         private DevExpress.XtraBars.Ribbon.RibbonPageGroup ribbonPageGroup_Diem;
-        private DevExpress.XtraBars.BarButtonItem barButtonItem1;
+        private DevExpress.XtraBars.BarButtonItem barButton_Diem;
         private DevExpress.XtraBars.BarButtonItem barButtonItem_Thoat;
         public System.Windows.Forms.ToolStripStatusLabel lblMAGV;
         public System.Windows.Forms.ToolStripStatusLabel lblHOTEN;

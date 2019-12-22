@@ -21,6 +21,7 @@ namespace QLDSV
             InitializeComponent();
         }
 
+        // TODO : HANDLE CONTROL CHILDREN
         private void ShowMdiChildren(Type fType)
         {
             foreach (Form f in this.MdiChildren)
@@ -36,7 +37,7 @@ namespace QLDSV
             form.Show();
         }
 
-
+        // ============================ BUTTON EVENT ============================ //
 
         private void barButton_Lop_ItemClick(object sender, DevExpress.XtraBars.ItemClickEventArgs e)
         {
@@ -45,20 +46,21 @@ namespace QLDSV
                 ShowMdiChildren(typeof(frmLop));
             }
         }
-
-        private void barButtonItem_Thoat_ItemClick(object sender, DevExpress.XtraBars.ItemClickEventArgs e)
+        private void barButton_MonHoc_ItemClick(object sender, DevExpress.XtraBars.ItemClickEventArgs e)
         {
-            Close();
+            ShowMdiChildren(typeof(frmMonHoc));
+        }
+        private void barButton_SinhVien_ItemClick(object sender, DevExpress.XtraBars.ItemClickEventArgs e)
+        {
+            ShowMdiChildren(typeof(frmSinhVien));
+        }
+        private void barButton_Diem_ItemClick(object sender, DevExpress.XtraBars.ItemClickEventArgs e)
+        {
+            ShowMdiChildren(typeof(frmDiem));
         }
 
-        private void barBtnDangXuat_ItemClick(object sender, DevExpress.XtraBars.ItemClickEventArgs e)
-        {
-            dangxuat = true;
-            Program.frmMain.Close();
-            Program.FrmDangNhap.Visible = true;
-           
-        }
 
+        // TODO : Close Event
         private void frmMain_FormClosing(object sender, FormClosingEventArgs e)
         {
             if (!dangxuat)
@@ -72,19 +74,18 @@ namespace QLDSV
             }
         }
 
-        private void ribbonControl1_Click(object sender, EventArgs e)
-        {
-
-        }
-
-        private void barBtnTaoTaiKhoan_ItemClick(object sender, DevExpress.XtraBars.ItemClickEventArgs e)
+        private void barButton_Register_ItemClick(object sender, DevExpress.XtraBars.ItemClickEventArgs e)
         {
             ShowMdiChildren(typeof(frmDangKy));
         }
 
-        private void barButton_SinhVien_ItemClick(object sender, DevExpress.XtraBars.ItemClickEventArgs e)
+        private void barButton_Logout_ItemClick(object sender, DevExpress.XtraBars.ItemClickEventArgs e)
         {
-            ShowMdiChildren(typeof(frmSinhVien));
+            dangxuat = true;
+            Program.frmMain.Close();
+            Program.FrmDangNhap.Visible = true;
         }
+
+
     }
 }

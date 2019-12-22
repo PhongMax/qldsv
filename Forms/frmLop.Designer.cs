@@ -36,6 +36,7 @@
             this.barManagerLop = new DevExpress.XtraBars.BarManager(this.components);
             this.bar2 = new DevExpress.XtraBars.Bar();
             this.barBtnThem = new DevExpress.XtraBars.BarButtonItem();
+            this.barBtnXoa = new DevExpress.XtraBars.BarButtonItem();
             this.barBtnSua = new DevExpress.XtraBars.BarButtonItem();
             this.barBtnUndo = new DevExpress.XtraBars.BarButtonItem();
             this.barBtnGhi = new DevExpress.XtraBars.BarButtonItem();
@@ -69,7 +70,6 @@
             this.pnControlLeft = new System.Windows.Forms.Panel();
             this.grbLop = new System.Windows.Forms.GroupBox();
             this.errorProvider = new System.Windows.Forms.ErrorProvider(this.components);
-            this.barBtnXoa = new DevExpress.XtraBars.BarButtonItem();
             mAKHLabel = new System.Windows.Forms.Label();
             tENLOPLabel = new System.Windows.Forms.Label();
             maLopLabel = new System.Windows.Forms.Label();
@@ -168,6 +168,15 @@
             this.barBtnThem.ImageOptions.SvgImage = ((DevExpress.Utils.Svg.SvgImage)(resources.GetObject("barBtnThem.ImageOptions.SvgImage")));
             this.barBtnThem.Name = "barBtnThem";
             this.barBtnThem.ItemClick += new DevExpress.XtraBars.ItemClickEventHandler(this.barBtnThem_ItemClick);
+            // 
+            // barBtnXoa
+            // 
+            this.barBtnXoa.Caption = "Xóa";
+            this.barBtnXoa.Id = 8;
+            this.barBtnXoa.ImageOptions.SvgImage = ((DevExpress.Utils.Svg.SvgImage)(resources.GetObject("barBtnXoa.ImageOptions.SvgImage")));
+            this.barBtnXoa.Name = "barBtnXoa";
+            this.barBtnXoa.PaintStyle = DevExpress.XtraBars.BarItemPaintStyle.CaptionGlyph;
+            this.barBtnXoa.ItemClick += new DevExpress.XtraBars.ItemClickEventHandler(this.barBtnXoa_ItemClick);
             // 
             // barBtnSua
             // 
@@ -489,15 +498,6 @@
             // errorProvider
             // 
             this.errorProvider.ContainerControl = this;
-            // 
-            // barBtnXoa
-            // 
-            this.barBtnXoa.Caption = "Xóa";
-            this.barBtnXoa.Id = 8;
-            this.barBtnXoa.ImageOptions.SvgImage = ((DevExpress.Utils.Svg.SvgImage)(resources.GetObject("barButtonItem1.ImageOptions.SvgImage")));
-            this.barBtnXoa.Name = "barBtnXoa";
-            this.barBtnXoa.PaintStyle = DevExpress.XtraBars.BarItemPaintStyle.CaptionGlyph;
-            this.barBtnXoa.ItemClick += new DevExpress.XtraBars.ItemClickEventHandler(this.barBtnXoa_ItemClick);
             // 
             // frmLop
             // 

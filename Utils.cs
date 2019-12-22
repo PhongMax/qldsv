@@ -48,7 +48,6 @@ namespace QLDSV
             // gán server đã chọn vào biến toàn cục.
             Program.ServerName = cmb.SelectedValue.ToString();
 
-
             // đoạn code hỗ trợ chuyển chi nhánh
             // ở chi nhánh A qua B thì dùng RemoteLogin,
             if (cmb.SelectedIndex != Program.MKhoa)
@@ -66,16 +65,13 @@ namespace QLDSV
 
         public static int CheckDataHelper(String query)
         {
-
             SqlDataReader dataReader = Program.ExecSqlDataReader(query);
 
             // nếu null thì thoát luôn
             if (dataReader == null)
             {
-               
                 return -1;
             }
-
             dataReader.Read();
             int result = int.Parse(dataReader.GetValue(0).ToString());
             dataReader.Close();
