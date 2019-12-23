@@ -41,7 +41,7 @@
             this.barBtnUndo = new DevExpress.XtraBars.BarButtonItem();
             this.barBtnGhi = new DevExpress.XtraBars.BarButtonItem();
             this.barBtnHuy = new DevExpress.XtraBars.BarButtonItem();
-            this.barBtnLammoi = new DevExpress.XtraBars.BarButtonItem();
+            this.barBtnLamMoi = new DevExpress.XtraBars.BarButtonItem();
             this.barBtnThoat = new DevExpress.XtraBars.BarButtonItem();
             this.barDockControlTop = new DevExpress.XtraBars.BarDockControl();
             this.barDockControlBottom = new DevExpress.XtraBars.BarDockControl();
@@ -162,7 +162,7 @@
             this.barBtnUndo,
             this.barBtnGhi,
             this.barBtnHuy,
-            this.barBtnLammoi,
+            this.barBtnLamMoi,
             this.barBtnThoat,
             this.barBtnXoa});
             this.barManagerLop.MainMenu = this.bar2;
@@ -181,7 +181,7 @@
             new DevExpress.XtraBars.LinkPersistInfo(DevExpress.XtraBars.BarLinkUserDefines.PaintStyle, this.barBtnUndo, DevExpress.XtraBars.BarItemPaintStyle.CaptionGlyph),
             new DevExpress.XtraBars.LinkPersistInfo(DevExpress.XtraBars.BarLinkUserDefines.PaintStyle, this.barBtnGhi, DevExpress.XtraBars.BarItemPaintStyle.CaptionGlyph),
             new DevExpress.XtraBars.LinkPersistInfo(DevExpress.XtraBars.BarLinkUserDefines.PaintStyle, this.barBtnHuy, DevExpress.XtraBars.BarItemPaintStyle.CaptionGlyph),
-            new DevExpress.XtraBars.LinkPersistInfo(DevExpress.XtraBars.BarLinkUserDefines.PaintStyle, this.barBtnLammoi, DevExpress.XtraBars.BarItemPaintStyle.CaptionGlyph),
+            new DevExpress.XtraBars.LinkPersistInfo(DevExpress.XtraBars.BarLinkUserDefines.PaintStyle, this.barBtnLamMoi, DevExpress.XtraBars.BarItemPaintStyle.CaptionGlyph),
             new DevExpress.XtraBars.LinkPersistInfo(DevExpress.XtraBars.BarLinkUserDefines.PaintStyle, this.barBtnThoat, DevExpress.XtraBars.BarItemPaintStyle.CaptionGlyph)});
             this.bar2.OptionsBar.MultiLine = true;
             this.bar2.OptionsBar.UseWholeRow = true;
@@ -236,13 +236,13 @@
             this.barBtnHuy.Name = "barBtnHuy";
             this.barBtnHuy.ItemClick += new DevExpress.XtraBars.ItemClickEventHandler(this.barBtnHuy_ItemClick);
             // 
-            // barBtnLammoi
+            // barBtnLamMoi
             // 
-            this.barBtnLammoi.Caption = "Làm Mới";
-            this.barBtnLammoi.Id = 6;
-            this.barBtnLammoi.ImageOptions.SvgImage = ((DevExpress.Utils.Svg.SvgImage)(resources.GetObject("barBtnLammoi.ImageOptions.SvgImage")));
-            this.barBtnLammoi.Name = "barBtnLammoi";
-            this.barBtnLammoi.ItemClick += new DevExpress.XtraBars.ItemClickEventHandler(this.barBtnLammoi_ItemClick);
+            this.barBtnLamMoi.Caption = "Làm Mới";
+            this.barBtnLamMoi.Id = 6;
+            this.barBtnLamMoi.ImageOptions.SvgImage = ((DevExpress.Utils.Svg.SvgImage)(resources.GetObject("barBtnLammoi.ImageOptions.SvgImage")));
+            this.barBtnLamMoi.Name = "barBtnLamMoi";
+            this.barBtnLamMoi.ItemClick += new DevExpress.XtraBars.ItemClickEventHandler(this.barBtnLammoi_ItemClick);
             // 
             // barBtnThoat
             // 
@@ -384,7 +384,6 @@
             this.gridView1.OptionsBehavior.ReadOnly = true;
             this.gridView1.OptionsView.ShowFooter = true;
             this.gridView1.OptionsView.ShowGroupPanel = false;
-            this.gridView1.MasterRowGetRelationDisplayCaption += new DevExpress.XtraGrid.Views.Grid.MasterRowGetRelationNameEventHandler(this.gridView1_MasterRowGetRelationDisplayCaption);
             // 
             // colMALOP
             // 
@@ -517,39 +516,39 @@
             this.toolStripSeparator1,
             this.conGhi});
             this.contextSinhVien.Name = "contextMenuStrip1";
-            this.contextSinhVien.Size = new System.Drawing.Size(106, 98);
+            this.contextSinhVien.Size = new System.Drawing.Size(105, 98);
             // 
             // conThem
             // 
             this.conThem.Image = global::QLDSV.Properties.Resources.add_user_32;
             this.conThem.Name = "conThem";
-            this.conThem.Size = new System.Drawing.Size(105, 22);
+            this.conThem.Size = new System.Drawing.Size(104, 22);
             this.conThem.Text = "Thêm";
             this.conThem.Click += new System.EventHandler(this.conThem_Click);
             // 
             // conSua
             // 
             this.conSua.Name = "conSua";
-            this.conSua.Size = new System.Drawing.Size(105, 22);
+            this.conSua.Size = new System.Drawing.Size(104, 22);
             this.conSua.Text = "Sửa";
             this.conSua.Click += new System.EventHandler(this.conSua_Click);
             // 
             // conXoa
             // 
             this.conXoa.Name = "conXoa";
-            this.conXoa.Size = new System.Drawing.Size(105, 22);
+            this.conXoa.Size = new System.Drawing.Size(104, 22);
             this.conXoa.Text = "Xóa";
             this.conXoa.Click += new System.EventHandler(this.conXoa_Click);
             // 
             // toolStripSeparator1
             // 
             this.toolStripSeparator1.Name = "toolStripSeparator1";
-            this.toolStripSeparator1.Size = new System.Drawing.Size(102, 6);
+            this.toolStripSeparator1.Size = new System.Drawing.Size(101, 6);
             // 
             // conGhi
             // 
             this.conGhi.Name = "conGhi";
-            this.conGhi.Size = new System.Drawing.Size(105, 22);
+            this.conGhi.Size = new System.Drawing.Size(104, 22);
             this.conGhi.Text = "Ghi";
             this.conGhi.Click += new System.EventHandler(this.conGhi_Click);
             // 
@@ -837,7 +836,7 @@
         private DSTableAdapters.TableAdapterManager tableAdapterManager;
         private DevExpress.XtraBars.BarButtonItem barBtnGhi;
         private DevExpress.XtraBars.BarButtonItem barBtnHuy;
-        private DevExpress.XtraBars.BarButtonItem barBtnLammoi;
+        private DevExpress.XtraBars.BarButtonItem barBtnLamMoi;
         private DevExpress.XtraBars.BarButtonItem barBtnThoat;
         private DevExpress.XtraGrid.GridControl lOPGridControl;
         private DevExpress.XtraGrid.Views.Grid.GridView gridView1;
