@@ -1,4 +1,5 @@
-﻿using System;
+﻿using DevExpress.XtraGrid.Views.Grid;
+using System;
 using System.Collections.Generic;
 using System.Data;
 using System.Data.SqlClient;
@@ -76,6 +77,14 @@ namespace QLDSV
             int result = int.Parse(dataReader.GetValue(0).ToString());
             dataReader.Close();
             return result;
+        }
+
+
+        public static void setFocusRow(GridView grid , int position)
+        {
+            //grid.ClearSelection();
+            //grid.FocusedRowHandle = position;
+            //grid.SelectCell = position;
         }
     }
 }

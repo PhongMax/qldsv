@@ -113,7 +113,10 @@ namespace QLDSV.Forms
         private void barBtnSua_ItemClick(object sender, DevExpress.XtraBars.ItemClickEventArgs e)
         {
             lOPGridControl.Enabled = true;
-            barBtnThem.Enabled = barBtnXoa.Enabled = barBtnLammoi.Enabled = barBtnSua.Enabled = false;
+            barBtnThem.Enabled
+                = barBtnXoa.Enabled
+                = barBtnLammoi.Enabled
+                = barBtnSua.Enabled = false;
 
             barBtnHuy.Enabled = barBtnGhi.Enabled = true;
             lOPGridControl.Enabled = false;

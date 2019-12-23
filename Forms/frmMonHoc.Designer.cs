@@ -29,9 +29,9 @@
         private void InitializeComponent()
         {
             this.components = new System.ComponentModel.Container();
-            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(frmMonHoc));
             System.Windows.Forms.Label mAMHLabel;
             System.Windows.Forms.Label tENMHLabel;
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(frmMonHoc));
             this.barManagerMonHoc = new DevExpress.XtraBars.BarManager(this.components);
             this.bar2 = new DevExpress.XtraBars.Bar();
             this.barBtnThem = new DevExpress.XtraBars.BarButtonItem();
@@ -80,6 +80,24 @@
             this.groupBoxMonHoc.SuspendLayout();
             this.SuspendLayout();
             // 
+            // mAMHLabel
+            // 
+            mAMHLabel.AutoSize = true;
+            mAMHLabel.Location = new System.Drawing.Point(17, 22);
+            mAMHLabel.Name = "mAMHLabel";
+            mAMHLabel.Size = new System.Drawing.Size(43, 13);
+            mAMHLabel.TabIndex = 0;
+            mAMHLabel.Text = "MAMH:";
+            // 
+            // tENMHLabel
+            // 
+            tENMHLabel.AutoSize = true;
+            tENMHLabel.Location = new System.Drawing.Point(11, 54);
+            tENMHLabel.Name = "tENMHLabel";
+            tENMHLabel.Size = new System.Drawing.Size(49, 13);
+            tENMHLabel.TabIndex = 2;
+            tENMHLabel.Text = "TENMH:";
+            // 
             // barManagerMonHoc
             // 
             this.barManagerMonHoc.Bars.AddRange(new DevExpress.XtraBars.Bar[] {
@@ -117,7 +135,7 @@
             new DevExpress.XtraBars.LinkPersistInfo(DevExpress.XtraBars.BarLinkUserDefines.PaintStyle, this.barBtnGhi, DevExpress.XtraBars.BarItemPaintStyle.CaptionGlyph),
             new DevExpress.XtraBars.LinkPersistInfo(DevExpress.XtraBars.BarLinkUserDefines.PaintStyle, this.barBtnHuy, DevExpress.XtraBars.BarItemPaintStyle.CaptionGlyph),
             new DevExpress.XtraBars.LinkPersistInfo(DevExpress.XtraBars.BarLinkUserDefines.PaintStyle, this.barBtnLamMoi, DevExpress.XtraBars.BarItemPaintStyle.CaptionGlyph),
-            new DevExpress.XtraBars.LinkPersistInfo(this.barBtnDong)});
+            new DevExpress.XtraBars.LinkPersistInfo(DevExpress.XtraBars.BarLinkUserDefines.PaintStyle, this.barBtnDong, DevExpress.XtraBars.BarItemPaintStyle.CaptionGlyph)});
             this.bar2.OptionsBar.MultiLine = true;
             this.bar2.OptionsBar.UseWholeRow = true;
             this.bar2.Text = "Main menu";
@@ -180,8 +198,10 @@
             // 
             // barBtnDong
             // 
-            this.barBtnDong.Caption = "Đóng";
+            this.barBtnDong.Caption = "Thoát";
             this.barBtnDong.Id = 7;
+            this.barBtnDong.ImageOptions.Image = ((System.Drawing.Image)(resources.GetObject("barBtnDong.ImageOptions.Image")));
+            this.barBtnDong.ImageOptions.LargeImage = ((System.Drawing.Image)(resources.GetObject("barBtnDong.ImageOptions.LargeImage")));
             this.barBtnDong.Name = "barBtnDong";
             this.barBtnDong.ItemClick += new DevExpress.XtraBars.ItemClickEventHandler(this.barBtnDong_ItemClick);
             // 
@@ -317,17 +337,27 @@
             // 
             // colMAMH
             // 
+            this.colMAMH.AppearanceCell.BackColor = System.Drawing.Color.White;
+            this.colMAMH.AppearanceCell.Options.UseBackColor = true;
+            this.colMAMH.AppearanceHeader.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(192)))), ((int)(((byte)(192)))));
+            this.colMAMH.AppearanceHeader.Options.UseBackColor = true;
             this.colMAMH.Caption = "Mã Môn Học";
             this.colMAMH.FieldName = "MAMH";
             this.colMAMH.Name = "colMAMH";
+            this.colMAMH.OptionsColumn.AllowEdit = false;
+            this.colMAMH.OptionsColumn.AllowFocus = false;
             this.colMAMH.Visible = true;
             this.colMAMH.VisibleIndex = 0;
             // 
             // colTENMH
             // 
+            this.colTENMH.AppearanceHeader.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(192)))), ((int)(((byte)(192)))));
+            this.colTENMH.AppearanceHeader.Options.UseBackColor = true;
             this.colTENMH.Caption = "Tên Môn Học";
             this.colTENMH.FieldName = "TENMH";
             this.colTENMH.Name = "colTENMH";
+            this.colTENMH.OptionsColumn.AllowEdit = false;
+            this.colTENMH.OptionsColumn.AllowFocus = false;
             this.colTENMH.Visible = true;
             this.colTENMH.VisibleIndex = 1;
             // 
@@ -350,17 +380,10 @@
             this.txtMaMonHoc.Location = new System.Drawing.Point(66, 19);
             this.txtMaMonHoc.MenuManager = this.barManagerMonHoc;
             this.txtMaMonHoc.Name = "txtMaMonHoc";
+            this.txtMaMonHoc.Properties.MaxLength = 15;
             this.txtMaMonHoc.Size = new System.Drawing.Size(256, 20);
             this.txtMaMonHoc.TabIndex = 1;
-            // 
-            // mAMHLabel
-            // 
-            mAMHLabel.AutoSize = true;
-            mAMHLabel.Location = new System.Drawing.Point(17, 22);
-            mAMHLabel.Name = "mAMHLabel";
-            mAMHLabel.Size = new System.Drawing.Size(43, 13);
-            mAMHLabel.TabIndex = 0;
-            mAMHLabel.Text = "MAMH:";
+            this.txtMaMonHoc.EditValueChanged += new System.EventHandler(this.txtMaMonHoc_EditValueChanged);
             // 
             // txtTenMonHoc
             // 
@@ -368,17 +391,9 @@
             this.txtTenMonHoc.Location = new System.Drawing.Point(66, 51);
             this.txtTenMonHoc.MenuManager = this.barManagerMonHoc;
             this.txtTenMonHoc.Name = "txtTenMonHoc";
+            this.txtTenMonHoc.Properties.MaxLength = 50;
             this.txtTenMonHoc.Size = new System.Drawing.Size(256, 20);
             this.txtTenMonHoc.TabIndex = 3;
-            // 
-            // tENMHLabel
-            // 
-            tENMHLabel.AutoSize = true;
-            tENMHLabel.Location = new System.Drawing.Point(11, 54);
-            tENMHLabel.Name = "tENMHLabel";
-            tENMHLabel.Size = new System.Drawing.Size(49, 13);
-            tENMHLabel.TabIndex = 2;
-            tENMHLabel.Text = "TENMH:";
             // 
             // groupBoxMonHoc
             // 
