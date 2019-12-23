@@ -150,14 +150,14 @@ namespace QLDSV.Forms
                 {
                     MessageBox.Show("Lỗi xóa môn học.\nBạn hãy xóa lại\n" + ex.Message, "", MessageBoxButtons.OK);
                 }
-                frmMonHoc_Load(sender, e);
+       
 
             }
 
 
             if (_position > 0)
             {
-                _position--;
+       
                 bdsMONHOC.Position = _position;
             }
         }
@@ -220,19 +220,20 @@ namespace QLDSV.Forms
                             MessageBoxButtons.OK, MessageBoxIcon.Error);
                     }
                 }
-                frmMonHoc_Load(sender, e);
+                
             }
             else
             {
                 return;
             }
+
+           
         }
 
         private void barBtnHuy_ItemClick(object sender, DevExpress.XtraBars.ItemClickEventArgs e)
         {
             bdsMONHOC.CancelEdit();
 
-            //int i = this.gridView1.GetRowHandle(this.bdsMONHOC);
             frmMonHoc_Load(sender, e);
             if (_position > 0)
             {

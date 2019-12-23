@@ -10,6 +10,7 @@ using System.Windows.Forms;
 using DevExpress.XtraEditors;
 using DevExpress.XtraGrid.Views.Grid;
 using System.Data.SqlClient;
+using DevExpress.Utils;
 
 namespace QLDSV.Forms
 {
@@ -179,7 +180,6 @@ namespace QLDSV.Forms
 
             if (_position > 0)
             {
-                _position--;
                 bdsLOP.Position = _position;
             }
         }
@@ -246,13 +246,23 @@ namespace QLDSV.Forms
                             MessageBoxButtons.OK, MessageBoxIcon.Error);
                     }
                 }
-                frmLop_Load(sender, e);
+  
             }
             else
             {
                 // lỗi thì return thôi.
                 return;
             }
+
+            //chỉ riêng 1 lệnh  dành cho subform
+            loadInitializeData();
+
+           
+            if (_position > 0)
+            {
+                bdsLOP.Position = _position;
+            }
+         
         }
 
         private void barBtnHuy_ItemClick(object sender, DevExpress.XtraBars.ItemClickEventArgs e)
@@ -479,6 +489,19 @@ namespace QLDSV.Forms
             {
                 _position = bdsLOP.Position;
             }
+        }
+
+        private void gridView1_CustomDrawRowIndicator(object sender, RowIndicatorCustomDrawEventArgs e)
+        {
+            e.Handled = true;
+            SolidBrush brush = new SolidBrush(Color.FromArgb(0xC6, 0x64, 0xFF));
+            e.Graphics.FillRectangle(brush, e.Bounds);
+            e.Graphics.DrawRectangle(Pens.Black, new Rectangle(e.Bounds.X, e.Bounds.Y, e.Bounds.Width - 1, e.Bounds.Height));
+            Size size = ImageCollection.GetImageListSize(e.Info.ImageCollection);
+            Rectangle r = e.Bounds;
+            ImageCollection.DrawImageListImage(e.Cache, e.Info.ImageCollection, e.Info.ImageIndex,
+                    new Rectangle(r.X + (r.Width - size.Width) / 2, r.Y + (r.Height - size.Height) / 2, size.Width, size.Height));
+            brush.Dispose();
         }
     }
 }
