@@ -114,7 +114,7 @@ namespace QLDSV.Forms
         private void barBtnThem_ItemClick(object sender, DevExpress.XtraBars.ItemClickEventArgs e)
         {
             flagOption = "ADD";//  Add action
-
+            
             barBtnGhi.Enabled = barBtnHuy.Enabled = true;
             barBtnThem.Enabled
                 = barBtnXoa.Enabled

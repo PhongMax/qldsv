@@ -29,9 +29,10 @@ namespace QLDSV
             //gọi 1 view và trả về dưới dạng datatable
             dt = Program.ExecSqlDataTable("SELECT * FROM V_DSPM");
 
+          
             // cất dt vào biến toàn cục Bds_Dspm
             Program.Bds_Dspm.DataSource = dt;
-
+            
             // đoạn code liên kết giữa bds với combobox
             Utils.BindingDataToComBo(cmbKhoa, dt);
         }

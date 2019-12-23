@@ -441,6 +441,26 @@ namespace QLDSV.Forms
             txtMaLop.Properties.CharacterCasing = CharacterCasing.Upper;
         }
 
+        private void gridView1_CustomDrawRowIndicator(object sender, RowIndicatorCustomDrawEventArgs e)
+        {
+            e.Handled = true;
+            SolidBrush brush = new SolidBrush(Color.FromArgb(0xC6, 0x64, 0xFF));
+            e.Graphics.FillRectangle(brush, e.Bounds);
+            e.Graphics.DrawRectangle(Pens.Black, new Rectangle(e.Bounds.X, e.Bounds.Y, e.Bounds.Width - 1, e.Bounds.Height));
+            Size size = ImageCollection.GetImageListSize(e.Info.ImageCollection);
+            Rectangle r = e.Bounds;
+            ImageCollection.DrawImageListImage(e.Cache, e.Info.ImageCollection, e.Info.ImageIndex,
+                    new Rectangle(r.X + (r.Width - size.Width) / 2, r.Y + (r.Height - size.Height) / 2, size.Width, size.Height));
+            brush.Dispose();
+        }
+
+        private void gridView1_FocusedRowChanged(object sender, DevExpress.XtraGrid.Views.Base.FocusedRowChangedEventArgs e)
+        {
+            if (bdsLOP.Position > 0)
+            {
+                _position = bdsLOP.Position;
+            }
+        }
 
         // xử lý GridControl and LookupEdit
         private void initLockupEditColumn()
@@ -460,7 +480,7 @@ namespace QLDSV.Forms
 
         private void conThem_Click(object sender, EventArgs e)
         {
-
+         //   this.conThem.Enabled = this.false;
         }
 
         private void conSua_Click(object sender, EventArgs e)
@@ -483,25 +503,12 @@ namespace QLDSV.Forms
             
         }
 
-        private void gridView1_FocusedRowChanged(object sender, DevExpress.XtraGrid.Views.Base.FocusedRowChangedEventArgs e)
-        {
-            if (bdsLOP.Position > 0)
-            {
-                _position = bdsLOP.Position;
-            }
-        }
+     
 
-        private void gridView1_CustomDrawRowIndicator(object sender, RowIndicatorCustomDrawEventArgs e)
+       
+        private void toolStripMenuItem1_Click(object sender, EventArgs e)
         {
-            e.Handled = true;
-            SolidBrush brush = new SolidBrush(Color.FromArgb(0xC6, 0x64, 0xFF));
-            e.Graphics.FillRectangle(brush, e.Bounds);
-            e.Graphics.DrawRectangle(Pens.Black, new Rectangle(e.Bounds.X, e.Bounds.Y, e.Bounds.Width - 1, e.Bounds.Height));
-            Size size = ImageCollection.GetImageListSize(e.Info.ImageCollection);
-            Rectangle r = e.Bounds;
-            ImageCollection.DrawImageListImage(e.Cache, e.Info.ImageCollection, e.Info.ImageIndex,
-                    new Rectangle(r.X + (r.Width - size.Width) / 2, r.Y + (r.Height - size.Height) / 2, size.Width, size.Height));
-            brush.Dispose();
+
         }
     }
 }
