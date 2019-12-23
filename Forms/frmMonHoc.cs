@@ -15,7 +15,9 @@ namespace QLDSV.Forms
     {
         // TODO : Declare Variavble
         private int _position = 0;
-        private bool flagOption; // true = add ; false = update ; default of boolean = false
+        private string flagOption; // true = add ; false = update ; default of boolean = false
+        private string oldMaMonHoc = "";
+        private string oldTenMonHoc = "";
 
 
         public frmMonHoc()
@@ -44,10 +46,8 @@ namespace QLDSV.Forms
         private void frmMonHoc_Load(object sender, EventArgs e)
         {
             _position = bdsMONHOC.Position;
-            Utils.setFocusRow(this.gridView1,2);
 
             // TODO : Load Data
-
             errorProvider.Clear();
             loadInitializeData();
 
@@ -84,13 +84,14 @@ namespace QLDSV.Forms
 
             barBtnHuy.Enabled = barBtnGhi.Enabled = false;
 
-            // TODO : Turn on input
+            // TODO : Turn off input
             groupBoxMonHoc.Enabled = false;
         }
 
 
         private void cmbKhoa_SelectedIndexChanged(object sender, EventArgs e)
         {
+            // TODO : Chuyển Bộ Phận
             Utils.ComboboxHelper(this.cmbKhoa);
 
             // kết nối database với dữ liệu ở đoạn code trên và fill dữ liệu, nếu như có lỗi thì thoát.
@@ -105,15 +106,11 @@ namespace QLDSV.Forms
         }
 
 
-
-
-
         // ============================ EVENT BUTTON ============================ //
         private void barBtnThem_ItemClick(object sender, DevExpress.XtraBars.ItemClickEventArgs e)
         {
             _position = bdsMONHOC.Position;
-            flagOption = true;//  Add action
-
+            flagOption = "ADD";//  Add action
 
             barBtnGhi.Enabled = barBtnHuy.Enabled = true;
             barBtnThem.Enabled
@@ -157,11 +154,15 @@ namespace QLDSV.Forms
 
         private void barBtnSua_ItemClick(object sender, DevExpress.XtraBars.ItemClickEventArgs e)
         {
-            flagOption = false;//  Update action
             _position = bdsMONHOC.Position;
+            flagOption = "UPDATE";//  Update action
+            oldMaMonHoc = this.txtMaMonHoc.Text.Trim().ToString();
+            oldTenMonHoc = this.txtTenMonHoc.Text.Trim().ToString();
 
+            // TODO: Display To handle
             MONHOCGridControl.Enabled = false;
             groupBoxMonHoc.Enabled = true;
+
             barBtnGhi.Enabled = barBtnHuy.Enabled = true;
 
             barBtnThem.Enabled
@@ -170,7 +171,6 @@ namespace QLDSV.Forms
                 = barBtnUndo.Enabled
                 = barBtnLamMoi.Enabled = false;
             cmbKhoa.Enabled = false;
-
         }
 
         private void barBtnUndo_ItemClick(object sender, DevExpress.XtraBars.ItemClickEventArgs e)
@@ -196,8 +196,8 @@ namespace QLDSV.Forms
                         = barBtnUndo.Enabled
                         = barBtnLamMoi.Enabled = true;
 
-                        groupBoxMonHoc.Enabled = false;
                         MONHOCGridControl.Enabled = true;
+                        groupBoxMonHoc.Enabled = false;
 
                         this.bdsMONHOC.EndEdit();
                         this.bdsMONHOC.ResetCurrentItem();// tự động render để hiển thị dữ liệu mới
@@ -254,59 +254,103 @@ namespace QLDSV.Forms
             }
 
             
-            if (flagOption == true)// Is add new
+            if (flagOption == "ADD")
             {
+                //TODO: Check mã môn học có tồn tại chưa
+                string query1 = "DECLARE  @return_value int \n"
+                            + "EXEC @return_value = SP_CHECKID \n"
+                            + "@Code = N'" + txtMaMonHoc.Text + "',@Type = N'MAMONHOC' \n"
+                            + "SELECT 'Return Value' = @return_value";
 
+                int resultMa = Utils.CheckDataHelper(query1);
+                if (resultMa == -1)
+                {
+                    MessageBox.Show("Lỗi kết nối với database. Mời bạn xem lại", "", MessageBoxButtons.OK);
+                    this.Close();
+                }
+                if (resultMa == 1)
+                {
+                    this.errorProvider.SetError(txtMaMonHoc, "Mã môn học đã tồn tại!");
+                    return false;
+                }
+
+                // TODO : Check tên môn học có tồn tại chưa
+                string query2 = "DECLARE  @return_value int \n"
+                            + "EXEC @return_value = SP_CHECKNAME \n"
+                            + "@Name = N'" + txtTenMonHoc.Text + "',@Type = N'TENMONHOC' \n"
+                            + "SELECT 'Return Value' = @return_value";
+
+                int resultTen = Utils.CheckDataHelper(query2);
+                if (resultTen == -1)
+                {
+                    MessageBox.Show("Lỗi kết nối với database. Mời bạn xem lại", "", MessageBoxButtons.OK);
+                    this.Close();
+                }
+                if (resultTen == 1)
+                {
+                    this.errorProvider.SetError(txtTenMonHoc, "Tên môn học đã tồn tại!");
+                    return false;
+                }
             }
 
-            if (flagOption == false) //
+            if (flagOption == "UPDATE")
             {
+                if ( !this.txtMaMonHoc.Text.Trim().ToString().Equals(oldMaMonHoc))// Nếu mã môn học thay đổi so với ban đầu
+                {
+                    //TODO: Check mã môn học có tồn tại chưa
+                    string query1 = "DECLARE  @return_value int \n"
+                                + "EXEC @return_value = SP_CHECKID \n"
+                                + "@Code = N'" + txtMaMonHoc.Text + "',@Type = N'MAMONHOC' \n"
+                                + "SELECT 'Return Value' = @return_value";
 
-            }
-            //TODO: Check mã môn học có tồn tại chưa
-            string query1 = "DECLARE  @return_value int \n"
-                        + "EXEC @return_value = SP_CHECKID \n"
-                        + "@Code = N'" + txtMaMonHoc.Text + "',@Type = N'MAMONHOC' \n"
-                        + "SELECT 'Return Value' = @return_value";
+                    int resultMa = Utils.CheckDataHelper(query1);
+                    if (resultMa == -1)
+                    {
+                        MessageBox.Show("Lỗi kết nối với database. Mời bạn xem lại", "", MessageBoxButtons.OK);
+                        this.Close();
+                    }
+                    if (resultMa == 1)
+                    {
+                        this.errorProvider.SetError(txtMaMonHoc, "Mã môn học đã tồn tại!");
+                        return false;
+                    }
+                }
+                if ( !this.txtTenMonHoc.Text.Trim().ToString().Equals(oldTenMonHoc))// Nếu tên môn học thay đổi so với ban đầu
+                {
+                    // TODO : Check tên môn học có tồn tại chưa
+                    string query2 = "DECLARE  @return_value int \n"
+                                + "EXEC @return_value = SP_CHECKNAME \n"
+                                + "@Name = N'" + txtTenMonHoc.Text + "',@Type = N'TENMONHOC' \n"
+                                + "SELECT 'Return Value' = @return_value";
 
-            int resultMa = Utils.CheckDataHelper(query1);
-            if (resultMa == -1)
-            {
-                MessageBox.Show("Lỗi kết nối với database. Mời bạn xem lại","", MessageBoxButtons.OK);
-                this.Close();
+                    int resultTen = Utils.CheckDataHelper(query2);
+                    if (resultTen == -1)
+                    {
+                        MessageBox.Show("Lỗi kết nối với database. Mời bạn xem lại", "", MessageBoxButtons.OK);
+                        this.Close();
+                    }
+                    if (resultTen == 1)
+                    {
+                        this.errorProvider.SetError(txtTenMonHoc, "Tên môn học đã tồn tại!");
+                        return false;
+                    }
+                }
             }
-            if (resultMa == 1)
-            {
-                this.errorProvider.SetError(txtMaMonHoc, "Mã môn học đã tồn tại!");
-                return false;
-            }
-
-            // TODO : Check tên môn học có tồn tại chưa
-            string query2 = "DECLARE  @return_value int \n"
-                        + "EXEC @return_value = SP_CHECKNAME \n"
-                        + "@Name = N'" + txtTenMonHoc.Text + "',@Type = N'TENMONHOC' \n"
-                        + "SELECT 'Return Value' = @return_value";
-
-            int resultTen = Utils.CheckDataHelper(query2);
-            if (resultTen == -1)
-            {
-                MessageBox.Show("Lỗi kết nối với database. Mời bạn xem lại", "", MessageBoxButtons.OK);
-                this.Close();
-            }
-            if (resultTen == 1)
-            {
-                this.errorProvider.SetError(txtTenMonHoc, "Tên môn học đã tồn tại!");
-                return false;
-            }
+            
             return true;
         }
-
-
 
         private void txtMaMonHoc_EditValueChanged(object sender, EventArgs e)
         {
             txtMaMonHoc.Properties.CharacterCasing = CharacterCasing.Upper;
         }
 
+        private void gridViewMonHoc_FocusedRowChange(object sender, DevExpress.XtraGrid.Views.Base.FocusedRowChangedEventArgs e)
+        {
+            if (bdsMONHOC.Position > 0)
+            {
+                _position = bdsMONHOC.Position;
+            }
+        }
     }
 }
