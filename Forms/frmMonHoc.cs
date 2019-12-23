@@ -53,6 +53,8 @@ namespace QLDSV.Forms
             if(Program.MGroup == Program.NhomQuyen[0])// PGV
             {
                 cmbKhoa.Visible = true;
+                cmbKhoa.Enabled = true;
+
                 barBtnThem.Enabled
                    = barBtnXoa.Enabled
                    = barBtnSua.Enabled
@@ -123,11 +125,41 @@ namespace QLDSV.Forms
 
         private void barBtnXoa_ItemClick(object sender, DevExpress.XtraBars.ItemClickEventArgs e)
         {
-
+            if (bdsDiem.Count > 0)
+            {
+                MessageBox.Show("Không thể xóa môn học này vì đang chứa điểm.", "", MessageBoxButtons.OK);
+                return;
+            }
+            if (MessageBox.Show("Bạn có thực sự muốn xóa Lớp này??", "Xác nhận.", MessageBoxButtons.OKCancel) == DialogResult.OK)
+            {
+                try
+                {
+                    bdsMONHOC.RemoveCurrent();
+                    this.MONHOCTableAdapter.Connection.ConnectionString = Program.URL_Connect;
+                    this.MONHOCTableAdapter.Update(this.DS.MONHOC);
+                    this.bdsMONHOC.ResetCurrentItem();// tự động render để hiển thị dữ liệu mới
+                }
+                catch (Exception ex)
+                {
+                    MessageBox.Show("Lỗi xóa môn học.\nBạn hãy xóa lại\n" + ex.Message, "", MessageBoxButtons.OK);
+                }
+                frmMonHoc_Load(sender, e);
+            }
         }
 
         private void barBtnSua_ItemClick(object sender, DevExpress.XtraBars.ItemClickEventArgs e)
         {
+            _vitri = bdsMONHOC.Position;
+            MONHOCGridControl.Enabled = true;
+            groupBoxMonHoc.Enabled = true;
+            barBtnGhi.Enabled = barBtnHuy.Enabled = true;
+
+            barBtnThem.Enabled
+                = barBtnXoa.Enabled
+                = barBtnSua.Enabled
+                = barBtnUndo.Enabled
+                = barBtnLamMoi.Enabled = false;
+            cmbKhoa.Enabled = false;
 
         }
 
@@ -167,6 +199,7 @@ namespace QLDSV.Forms
                             MessageBoxButtons.OK, MessageBoxIcon.Error);
                     }
                 }
+                frmMonHoc_Load(sender, e);
             }
             else
             {
@@ -190,7 +223,6 @@ namespace QLDSV.Forms
         {
             this.Close();
         }
-
 
         // ====================== SUPPORT VALIDATION ====================== //
         private bool ValidateInfoMONHOC()
