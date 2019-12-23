@@ -84,6 +84,9 @@ namespace QLDSV.Forms
 
             // TODO : Turn on input
             groupBoxMonHoc.Enabled = false;
+        
+
+           
         }
 
 
@@ -216,7 +219,13 @@ namespace QLDSV.Forms
         private void barBtnHuy_ItemClick(object sender, DevExpress.XtraBars.ItemClickEventArgs e)
         {
             bdsMONHOC.CancelEdit();
+
+            //int i = this.gridView1.GetRowHandle(this.bdsMONHOC);
             frmMonHoc_Load(sender, e);
+            if (_position > 0)
+            {
+                bdsMONHOC.Position = _position;
+            }
         }
 
         private void barBtnLamMoi_ItemClick(object sender, DevExpress.XtraBars.ItemClickEventArgs e)

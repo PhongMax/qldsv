@@ -134,7 +134,7 @@
             this.lookUpUser.Properties.DataSource = this.bdsDSGV;
             this.lookUpUser.Properties.DisplayMember = "MAGV";
             this.lookUpUser.Properties.DropDownRows = 10;
-            this.lookUpUser.Properties.NullText = "";
+            this.lookUpUser.Properties.NullText = "Chọn mã giảng viên";
             this.lookUpUser.Properties.ValueMember = "MAGV";
             this.lookUpUser.Size = new System.Drawing.Size(184, 20);
             this.lookUpUser.TabIndex = 3;
@@ -200,9 +200,9 @@
             this.label4.AutoSize = true;
             this.label4.Location = new System.Drawing.Point(380, 310);
             this.label4.Name = "label4";
-            this.label4.Size = new System.Drawing.Size(29, 13);
+            this.label4.Size = new System.Drawing.Size(59, 13);
             this.label4.TabIndex = 11;
-            this.label4.Text = "User";
+            this.label4.Text = "Giảng Viên";
             // 
             // label3
             // 
