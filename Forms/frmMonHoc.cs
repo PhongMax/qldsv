@@ -14,7 +14,8 @@ namespace QLDSV.Forms
     public partial class frmMonHoc : DevExpress.XtraEditors.XtraForm
     {
         // TODO : Declare Variavble
-        private int _vitri;
+        private int _position = 0;
+        private bool flagOption; // true = add ; false = update ; default of boolean = false
 
 
         public frmMonHoc()
@@ -42,17 +43,24 @@ namespace QLDSV.Forms
 
         private void frmMonHoc_Load(object sender, EventArgs e)
         {
-            
+            _position = bdsMONHOC.Position;
+            Utils.setFocusRow(this.gridView1,2);
+
             // TODO : Load Data
+
+            errorProvider.Clear();
             loadInitializeData();
 
             Program.Bds_Dspm.Filter = "TENKHOA LIKE 'KHOA%'";
             Utils.BindingDataToComBo(cmbKhoa, Program.Bds_Dspm.DataSource);
-            
+
+            MONHOCGridControl.Enabled = true;
             // TODO : Role Action
             if(Program.MGroup == Program.NhomQuyen[0])// PGV
             {
                 cmbKhoa.Visible = true;
+                cmbKhoa.Enabled = true;
+
                 barBtnThem.Enabled
                    = barBtnXoa.Enabled
                    = barBtnSua.Enabled
@@ -103,9 +111,10 @@ namespace QLDSV.Forms
         // ============================ EVENT BUTTON ============================ //
         private void barBtnThem_ItemClick(object sender, DevExpress.XtraBars.ItemClickEventArgs e)
         {
-            _vitri = bdsMONHOC.Position;
+            _position = bdsMONHOC.Position;
+            flagOption = true;//  Add action
 
-            
+
             barBtnGhi.Enabled = barBtnHuy.Enabled = true;
             barBtnThem.Enabled
                 = barBtnXoa.Enabled
@@ -123,11 +132,44 @@ namespace QLDSV.Forms
 
         private void barBtnXoa_ItemClick(object sender, DevExpress.XtraBars.ItemClickEventArgs e)
         {
+            if (bdsDiem.Count > 0)
+            {
+                MessageBox.Show("Không thể xóa môn học này vì đang chứa điểm.", "", MessageBoxButtons.OK);
+                return;
+            }
+            if (MessageBox.Show("Bạn có thực sự muốn xóa Lớp này??", "Xác nhận.", MessageBoxButtons.OKCancel) == DialogResult.OK)
+            {
+                try
+                {
+                    bdsMONHOC.RemoveCurrent();
+                    this.MONHOCTableAdapter.Connection.ConnectionString = Program.URL_Connect;
+                    this.MONHOCTableAdapter.Update(this.DS.MONHOC);
+                    this.bdsMONHOC.ResetCurrentItem();// tự động render để hiển thị dữ liệu mới
+                }
+                catch (Exception ex)
+                {
+                    MessageBox.Show("Lỗi xóa môn học.\nBạn hãy xóa lại\n" + ex.Message, "", MessageBoxButtons.OK);
+                }
+                frmMonHoc_Load(sender, e);
 
+            }
         }
 
         private void barBtnSua_ItemClick(object sender, DevExpress.XtraBars.ItemClickEventArgs e)
         {
+            flagOption = false;//  Update action
+            _position = bdsMONHOC.Position;
+
+            MONHOCGridControl.Enabled = false;
+            groupBoxMonHoc.Enabled = true;
+            barBtnGhi.Enabled = barBtnHuy.Enabled = true;
+
+            barBtnThem.Enabled
+                = barBtnXoa.Enabled
+                = barBtnSua.Enabled
+                = barBtnUndo.Enabled
+                = barBtnLamMoi.Enabled = false;
+            cmbKhoa.Enabled = false;
 
         }
 
@@ -138,6 +180,7 @@ namespace QLDSV.Forms
 
         private void barBtnGhi_ItemClick(object sender, DevExpress.XtraBars.ItemClickEventArgs e)
         {
+            _position = bdsMONHOC.Position;
             bool check = ValidateInfoMONHOC();
             if (check)
             {
@@ -167,6 +210,7 @@ namespace QLDSV.Forms
                             MessageBoxButtons.OK, MessageBoxIcon.Error);
                     }
                 }
+                frmMonHoc_Load(sender, e);
             }
             else
             {
@@ -182,6 +226,7 @@ namespace QLDSV.Forms
 
         private void barBtnLamMoi_ItemClick(object sender, DevExpress.XtraBars.ItemClickEventArgs e)
         {
+            _position = bdsMONHOC.Position;
             frmMonHoc_Load(sender, e);
             MessageBox.Show("Làm mới dữ liệu thành công", "", MessageBoxButtons.OK);
         }
@@ -190,7 +235,6 @@ namespace QLDSV.Forms
         {
             this.Close();
         }
-
 
         // ====================== SUPPORT VALIDATION ====================== //
         private bool ValidateInfoMONHOC()
@@ -209,6 +253,16 @@ namespace QLDSV.Forms
                 return false;
             }
 
+            
+            if (flagOption == true)// Is add new
+            {
+
+            }
+
+            if (flagOption == false) //
+            {
+
+            }
             //TODO: Check mã môn học có tồn tại chưa
             string query1 = "DECLARE  @return_value int \n"
                         + "EXEC @return_value = SP_CHECKID \n"
@@ -248,6 +302,11 @@ namespace QLDSV.Forms
         }
 
 
+
+        private void txtMaMonHoc_EditValueChanged(object sender, EventArgs e)
+        {
+            txtMaMonHoc.Properties.CharacterCasing = CharacterCasing.Upper;
+        }
 
     }
 }
