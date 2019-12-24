@@ -73,6 +73,7 @@
             this.conXoa = new System.Windows.Forms.ToolStripMenuItem();
             this.toolStripSeparator1 = new System.Windows.Forms.ToolStripSeparator();
             this.conGhi = new System.Windows.Forms.ToolStripMenuItem();
+            this.toolStripSeparator2 = new System.Windows.Forms.ToolStripSeparator();
             this.conLamMoi = new System.Windows.Forms.ToolStripMenuItem();
             this.gridViewSinhVien = new DevExpress.XtraGrid.Views.Grid.GridView();
             this.colMASV = new DevExpress.XtraGrid.Columns.GridColumn();
@@ -89,7 +90,8 @@
             this.grbLop = new System.Windows.Forms.GroupBox();
             this.errorProvider = new System.Windows.Forms.ErrorProvider(this.components);
             this.behaviorManager1 = new DevExpress.Utils.Behaviors.BehaviorManager(this.components);
-            this.toolStripSeparator2 = new System.Windows.Forms.ToolStripSeparator();
+            this.bdsDiemSV = new System.Windows.Forms.BindingSource(this.components);
+            this.DIEMSVTableAdapter = new QLDSV.DSTableAdapters.DIEMTableAdapter();
             mAKHLabel = new System.Windows.Forms.Label();
             tENLOPLabel = new System.Windows.Forms.Label();
             maLopLabel = new System.Windows.Forms.Label();
@@ -112,6 +114,7 @@
             this.grbLop.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.errorProvider)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.behaviorManager1)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.bdsDiemSV)).BeginInit();
             this.SuspendLayout();
             // 
             // mAKHLabel
@@ -350,7 +353,6 @@
             this.lOPGridControl.TabIndex = 15;
             this.lOPGridControl.ViewCollection.AddRange(new DevExpress.XtraGrid.Views.Base.BaseView[] {
             this.gridView1});
-            this.lOPGridControl.FocusedViewChanged += new DevExpress.XtraGrid.ViewFocusEventHandler(this.lOPGridControl_FocusedViewChanged);
             // 
             // gridView1
             // 
@@ -554,6 +556,11 @@
             this.conGhi.Text = "Ghi";
             this.conGhi.Click += new System.EventHandler(this.conGhi_Click);
             // 
+            // toolStripSeparator2
+            // 
+            this.toolStripSeparator2.Name = "toolStripSeparator2";
+            this.toolStripSeparator2.Size = new System.Drawing.Size(118, 6);
+            // 
             // conLamMoi
             // 
             this.conLamMoi.Name = "conLamMoi";
@@ -563,6 +570,10 @@
             // 
             // gridViewSinhVien
             // 
+            this.gridViewSinhVien.Appearance.FocusedCell.BackColor = System.Drawing.Color.White;
+            this.gridViewSinhVien.Appearance.FocusedCell.Options.UseBackColor = true;
+            this.gridViewSinhVien.Appearance.FocusedRow.BackColor = System.Drawing.Color.Lime;
+            this.gridViewSinhVien.Appearance.FocusedRow.Options.UseBackColor = true;
             this.gridViewSinhVien.Columns.AddRange(new DevExpress.XtraGrid.Columns.GridColumn[] {
             this.colMASV,
             this.colHO,
@@ -576,6 +587,11 @@
             this.colNGHIHOC});
             this.gridViewSinhVien.GridControl = this.gridControlSinhVien;
             this.gridViewSinhVien.Name = "gridViewSinhVien";
+            this.gridViewSinhVien.OptionsView.ShowGroupPanel = false;
+            this.gridViewSinhVien.ShowingEditor += new System.ComponentModel.CancelEventHandler(this.gridViewSinhVien_ShowingEditor);
+            this.gridViewSinhVien.FocusedRowChanged += new DevExpress.XtraGrid.Views.Base.FocusedRowChangedEventHandler(this.gridViewSinhVien_FocusedRowChanged);
+            this.gridViewSinhVien.InvalidRowException += new DevExpress.XtraGrid.Views.Base.InvalidRowExceptionEventHandler(this.gridViewSinhVien_InvalidRowException);
+            this.gridViewSinhVien.ValidateRow += new DevExpress.XtraGrid.Views.Base.ValidateRowEventHandler(this.gridViewSinhVien_ValidateRow);
             // 
             // colMASV
             // 
@@ -678,10 +694,14 @@
             // 
             this.errorProvider.ContainerControl = this;
             // 
-            // toolStripSeparator2
+            // bdsDiemSV
             // 
-            this.toolStripSeparator2.Name = "toolStripSeparator2";
-            this.toolStripSeparator2.Size = new System.Drawing.Size(118, 6);
+            this.bdsDiemSV.DataMember = "FK_DIEM_SINHVIEN";
+            this.bdsDiemSV.DataSource = this.bdsSV;
+            // 
+            // DIEMSVTableAdapter
+            // 
+            this.DIEMSVTableAdapter.ClearBeforeFill = true;
             // 
             // frmLop
             // 
@@ -722,6 +742,7 @@
             this.grbLop.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.errorProvider)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.behaviorManager1)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.bdsDiemSV)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -787,5 +808,7 @@
         private DevExpress.XtraGrid.Columns.GridColumn colNGHIHOC;
         private DevExpress.Utils.Behaviors.BehaviorManager behaviorManager1;
         private System.Windows.Forms.ToolStripSeparator toolStripSeparator2;
+        private System.Windows.Forms.BindingSource bdsDiemSV;
+        private DSTableAdapters.DIEMTableAdapter DIEMSVTableAdapter;
     }
 }

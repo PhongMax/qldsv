@@ -148,7 +148,7 @@ namespace QLDSV.Forms
                 }
                 catch (Exception ex)
                 {
-                    MessageBox.Show("Lỗi xóa môn học.\nBạn hãy xóa lại\n" + ex.Message, "", MessageBoxButtons.OK);
+                    MessageBox.Show("Lỗi xóa môn học.\nBạn hãy xem lại\n" + ex.Message, "", MessageBoxButtons.OK);
                 }
        
 

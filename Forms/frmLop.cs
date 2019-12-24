@@ -24,6 +24,7 @@ namespace QLDSV.Forms
         private string _oldTenLop = "";
 
         private Boolean _flagUpdateSV = false;
+        private Boolean _flagSua = false;
 
         // áp dụng cho sub sinh viên
         private int _positionSV = 0;
@@ -46,19 +47,24 @@ namespace QLDSV.Forms
             // kết nối trước rồi mới fill.
             this.LOPTableAdapter.Connection.ConnectionString = Program.URL_Connect;
             this.SINHVIENTableAdapter.Connection.ConnectionString = Program.URL_Connect;
+            this.DIEMSVTableAdapter.Connection.ConnectionString = Program.URL_Connect;
 
             this.LOPTableAdapter.Fill(this.DS.LOP);
             this.SINHVIENTableAdapter.Fill(this.DS.SINHVIEN);
+            this.DIEMSVTableAdapter.Fill(this.DS.DIEM);
+
         }
 
         // TODO : Load Method
         private void frmLop_Load(object sender, EventArgs e)
         {
-       
+            
 
             // TODO : Load Data
             loadInitializeData();
             errorProvider.Clear();
+
+            this.conGhi.Enabled = false;
 
             lOPGridControl.Enabled = true;
        
@@ -98,6 +104,9 @@ namespace QLDSV.Forms
                    = barBtnLamMoi.Enabled = false;
 
                 lblTenKhoa.Text = ((DataRowView)Program.Bds_Dspm[Program.MKhoa])["TENKHOA"].ToString();
+
+                //sub
+                this.contextSinhVien.Enabled = false;
             }
 
 
@@ -479,51 +488,88 @@ namespace QLDSV.Forms
             }
         }
 
-        //// xử lý GridControl and LookupEdit   
-        //private void initLockupEditColumn()
-        //{
-        //    this.repositoryItemMaLop.DataSource = this.bdsLOP;
-        //    this.repositoryItemMaLop.ValueMember = "MALOP";
-        //    this.repositoryItemMaLop.DisplayMember = "MALOP";
-
-        //    this.repositoryItemMaLop.NullText = @"Chọn lớp";
-        //    this.repositoryItemMaLop.BestFitMode = DevExpress.XtraEditors.Controls.BestFitMode.BestFitResizePopup;
-        //    // Specify the dropdown height. 
-        //    //  this.repositoryItemMaLop.DropDownRows = bdsLOP.Count;
-        //    this.repositoryItemMaLop.AutoHeight = true;
-        //}
+    
 
         //---------------------------- Phân subform -----------------------------------------------
 
         private void conThem_Click(object sender, EventArgs e)
         {
-            this.conThem.Enabled = false;
+            this.conThem.Enabled =
+            this.conSua.Enabled = this.conXoa.Enabled = false;
+            this.conGhi.Enabled = true;
+
             this.lOPGridControl.Enabled = false;
             this.barBtnGhi.Enabled = this.barBtnHuy.Enabled = this.barBtnSua.Enabled = this.barBtnXoa.Enabled = 
                 this.barBtnThem.Enabled = this.barBtnUndo.Enabled = this.barBtnLamMoi.Enabled = false;
 
             this.cmbKhoa.Enabled = false;
+
             _flagUpdateSV = true;
             // TODO : Thao tác chuẩn bị thêm
             bdsSV.AddNew();
 
 
-            _positionSV = bdsSV.Count - 1 ;
         }
 
         private void conSua_Click(object sender, EventArgs e)
         {
+            this.conSua.Enabled = this.conXoa.Enabled = this.conThem.Enabled = false;
+            this.conGhi.Enabled = true;
+
+
+            this.lOPGridControl.Enabled = false;
+            this.barBtnGhi.Enabled = this.barBtnHuy.Enabled = this.barBtnSua.Enabled = this.barBtnXoa.Enabled =
+                this.barBtnThem.Enabled = this.barBtnUndo.Enabled = this.barBtnLamMoi.Enabled = false;
+
+            this.cmbKhoa.Enabled = false;
+
+
+
             _flagUpdateSV = true;
+            _flagSua = true;
         }
 
         private void conXoa_Click(object sender, EventArgs e)
         {
+            if (bdsDiemSV.Count > 0)
+            {
+                MessageBox.Show("Không thể xóa Sinh Viên này..từ từ tính tiếp.  .", "", MessageBoxButtons.OK);
+                return;
+            }
+            if (MessageBox.Show("Bạn có thực sự muốn xóa Sinh Viên này??", "Xác nhận.", MessageBoxButtons.OKCancel) == DialogResult.OK)
+            {
+                try
+                {
+                    bdsSV.RemoveCurrent();
+                    this.SINHVIENTableAdapter.Connection.ConnectionString = Program.URL_Connect;
+                    this.SINHVIENTableAdapter.Update(this.DS.SINHVIEN);
+                    this.bdsSV.ResetCurrentItem();// tự động render để hiển thị dữ liệu mới
+                }
+                catch (Exception ex)
+                {
+                    MessageBox.Show("Lỗi xóa Sinh Viên.\nBạn hãy xem lại\n" + ex.Message, "", MessageBoxButtons.OK);
+                }
 
+
+            }
+
+
+            if (_positionSV > 0)
+            {
+
+                bdsSV.Position = _positionSV;
+            }
         }
 
         private void conGhi_Click(object sender, EventArgs e)
         {
-            bool check = ValidateInfoSinhVien(_positionSV);
+            bool check = true;
+            int indexLastRow = bdsSV.Count - 1;
+            if (!_flagSua)
+            {
+                check = ValidateInfoSinhVien(indexLastRow);
+
+            }
             if (check)
             {
                 try
@@ -544,6 +590,7 @@ namespace QLDSV.Forms
 
 
                     _flagUpdateSV = false;
+                    _flagSua = false;
 
                     // set lại vị trí
                    bdsSV.Position = bdsSV.Count - 1;
@@ -559,87 +606,60 @@ namespace QLDSV.Forms
             {
 
                 // focuse lại vị trí bị trùng để sửa
-                this.gridViewSinhVien.FocusedRowHandle = _positionSV;
+                this.gridViewSinhVien.FocusedRowHandle = indexLastRow;
                 this.gridViewSinhVien.FocusedColumn = this.colMASV;
 
                 // phân quyền nút
                 this.conSua.Enabled = this.conXoa.Enabled = true;
                 return;
             }
+
+            if (_positionSV > 0)
+            {
+                bdsSV.Position = _positionSV;
+            }
         }
 
 
         private void conLamMoi_Click(object sender, EventArgs e)
         {
-            this.conThem.Enabled = true;
+            this.conThem.Enabled= this.conSua.Enabled = this.conXoa.Enabled = true;
+
             this.lOPGridControl.Enabled = true;
+
             this.barBtnGhi.Enabled = this.barBtnHuy.Enabled = this.barBtnSua.Enabled = this.barBtnXoa.Enabled =
                 this.barBtnThem.Enabled = this.barBtnUndo.Enabled = this.barBtnLamMoi.Enabled = true;
 
             this.cmbKhoa.Enabled = true;
 
+            _flagSua = _flagUpdateSV = false;
+
+
+         
             this.SINHVIENTableAdapter.Connection.ConnectionString = Program.URL_Connect;
+            this.DIEMSVTableAdapter.Connection.ConnectionString = Program.URL_Connect;
+
+       
             this.SINHVIENTableAdapter.Fill(this.DS.SINHVIEN);
+            this.DIEMSVTableAdapter.Fill(this.DS.DIEM);
 
             MessageBox.Show("Làm mới dữ liệu thành công", "", MessageBoxButtons.OK);
-        }
-        private void lOPGridControl_FocusedViewChanged(object sender, DevExpress.XtraGrid.ViewFocusEventArgs e)
-        {
-            
-        }
 
+            if (_positionSV > 0)
+            {
+                bdsSV.Position = _positionSV;
+            }
+        }
      
-
-
-
-        //private void gridViewSinhVien_ValidatingEditor(object sender, DevExpress.XtraEditors.Controls.BaseContainerValidateEditorEventArgs e)
-        //{
-        //    GridView view = sender as GridView;
-
-
-        //    if (view.FocusedColumn.FieldName == "MASV")
-        //    {
-        //        var obj = view.GetRowCellValue(0, "MASV");
-        //        if (string.IsNullOrEmpty(e.Value as String))
-        //        {
-        //            e.Valid = false;
-        //            e.ErrorText = "Only numeric values are accepted.";
-        //        }
-
-        //    }
-        //}
-
-        //private void gridViewSinhVien_ValidateRow(object sender, DevExpress.XtraGrid.Views.Base.ValidateRowEventArgs e)
-        //{
-        //    GridView view = sender as GridView;
-        //    //GridColumn inStockCol = view.Columns["UnitsInStock"];
-        //    //GridColumn onOrderCol = view.Columns["UnitsOnOrder"];
-        //    //Get the value of the first column 
-        //    Int16 inSt = (Int16)view.GetRowCellValue(e.RowHandle, inStockCol);
-        //    //Get the value of the second column 
-        //    Int16 onOrd = (Int16)view.GetRowCellValue(e.RowHandle, onOrderCol);
-        //    //Validity criterion 
-        //    if (inSt < onOrd)
-        //    {
-        //        e.Valid = false;
-        //        //Set errors with specific descriptions for the columns 
-        //        view.SetColumnError(inStockCol, "The value must be greater than Units On Order");
-        //        view.SetColumnError(onOrderCol, "The value must be less than Units In Stock");
-        //    }
-        //}
-
-        //private void gridViewSinhVien_InvalidRowException(object sender, DevExpress.XtraGrid.Views.Base.InvalidRowExceptionEventArgs e)
-        //{
-        //    //Suppress displaying the error message box 
-        //    e.ExceptionMode = ExceptionMode.NoAction;
-        //}
-
-
 
         private bool ValidateInfoSinhVien(int position)
         {
             string maSV = this.gridViewSinhVien.GetRowCellValue(position, "MASV").ToString();
-
+            if(string.IsNullOrEmpty(maSV))
+            {
+                XtraMessageBox.Show("Mã Sinh Viên không được để trống", "Cảnh báo", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                return false;
+            }
                 //TODO: Check mã sinh viên có tồn tại chưa
             string query1 = " DECLARE @return_value INT " + 
 
@@ -672,6 +692,61 @@ namespace QLDSV.Forms
             return true;
         }
 
-     
+        private void gridViewSinhVien_ShowingEditor(object sender, CancelEventArgs e)
+        {
+            // phân quyền cho phòng giáo vụ
+
+
+            if (_flagSua)
+            {
+                return;
+            }
+
+
+            if (!this.gridViewSinhVien.IsNewItemRow(this.gridViewSinhVien.FocusedRowHandle))
+            {
+                e.Cancel = true;
+
+            }
+            int indexLastRow = bdsSV.Count - 1;
+
+            if (_positionSV > 0  &&  indexLastRow == this.gridViewSinhVien.FocusedRowHandle   && _flagUpdateSV)
+            {
+                    e.Cancel = false;
+            }
+
+
+          
+        }
+
+        private void gridViewSinhVien_ValidateRow(object sender, DevExpress.XtraGrid.Views.Base.ValidateRowEventArgs e)
+        {
+            if (_flagSua) {
+                GridView view = sender as GridView;
+                bool check = ValidateInfoSinhVien(view.FocusedRowHandle);
+                if (!check)
+                {
+                    e.Valid = false;
+                    view.SetColumnError(this.colMASV, "Mã SINH VIÊN bị trùng !");
+                }
+              
+
+            }
+         
+        }
+
+        private void gridViewSinhVien_InvalidRowException(object sender, DevExpress.XtraGrid.Views.Base.InvalidRowExceptionEventArgs e)
+        {
+            e.ExceptionMode = ExceptionMode.NoAction;
+        }
+
+        private void gridViewSinhVien_FocusedRowChanged(object sender, DevExpress.XtraGrid.Views.Base.FocusedRowChangedEventArgs e)
+        {
+            if (bdsSV.Position > 0)
+            {
+                //_positionSV = bdsSV.Count - 1;
+                _positionSV = this.bdsSV.Position;
+            }
+        }
     }
 }
