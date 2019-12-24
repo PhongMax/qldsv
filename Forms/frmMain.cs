@@ -37,6 +37,9 @@ namespace QLDSV
             form.Show();
         }
 
+
+
+
         // ============================ BUTTON EVENT ============================ //
 
         private void barButton_Lop_ItemClick(object sender, DevExpress.XtraBars.ItemClickEventArgs e)
@@ -90,5 +93,25 @@ namespace QLDSV
         }
 
 
+        // ==================== REPORT ZONE ==================== //
+        private void barButton_DSSV_ItemClick(object sender, DevExpress.XtraBars.ItemClickEventArgs e)
+        {
+            ShowMdiChildren(typeof(Report.DSSV));
+        }
+
+        private void barButton_DSTHM_ItemClick(object sender, DevExpress.XtraBars.ItemClickEventArgs e)
+        {
+            ShowMdiChildren(typeof(Report.DSTHM));
+        }
+
+        private void barButton_BDMH_ItemClick(object sender, DevExpress.XtraBars.ItemClickEventArgs e)
+        {
+            ShowMdiChildren(typeof(Report.BDMH));
+        }
+
+        private void barButton_PD_ItemClick(object sender, DevExpress.XtraBars.ItemClickEventArgs e)
+        {
+            ShowMdiChildren(typeof(Report.PD));
+        }
     }
 }
