@@ -11,22 +11,27 @@ using DevExpress.XtraEditors;
 using DevExpress.XtraGrid.Views.Grid;
 using System.Data.SqlClient;
 using DevExpress.Utils;
+using DevExpress.XtraEditors.Controls;
 
 namespace QLDSV.Forms
 {
     public partial class frmLop : DevExpress.XtraEditors.XtraForm
     {
        
-        private int _position = 0;
-        private string flagOption; // true = add ; false = update ; default of boolean = false
-        private string oldMaLop = "";
-        private string oldTenLop = "";
+        private int _positionLop = 0;
+        private string _flagOptionLop; // true = add ; false = update ; default of boolean = false
+        private string _oldMaLop = "";
+        private string _oldTenLop = "";
 
+        private Boolean _flagUpdateSV = false;
+
+        // áp dụng cho sub sinh viên
+        private int _positionSV = 0;
 
         public frmLop()
         {
             InitializeComponent();
-            initLockupEditColumn();
+            //initLockupEditColumn();
         }
 
         private void lOPBindingNavigatorSaveItem_Click(object sender, EventArgs e)
@@ -128,7 +133,7 @@ namespace QLDSV.Forms
         private void barBtnThem_ItemClick(object sender, DevExpress.XtraBars.ItemClickEventArgs e)
         {
       
-            flagOption = "ADD";//  Add action
+            _flagOptionLop = "ADD";//  Add action
 
             // bật groupbox nhập lớp
             pnControlLeft.Enabled = true;
@@ -178,18 +183,18 @@ namespace QLDSV.Forms
 
             barBtnLamMoi.Enabled = true;
 
-            if (_position > 0)
+            if (_positionLop > 0)
             {
-                bdsLOP.Position = _position;
+                bdsLOP.Position = _positionLop;
             }
         }
 
         private void barBtnSua_ItemClick(object sender, DevExpress.XtraBars.ItemClickEventArgs e)
         {
         
-            flagOption = "UPDATE";//  Update action
-            oldMaLop = this.txtMaLop.Text.Trim().ToString();
-            oldTenLop = this.txtTenLop.Text.Trim().ToString();
+            _flagOptionLop = "UPDATE";//  Update action
+            _oldMaLop = this.txtMaLop.Text.Trim().ToString();
+            _oldTenLop = this.txtTenLop.Text.Trim().ToString();
 
             // TODO: Display To handle
             lOPGridControl.Enabled = false;
@@ -204,9 +209,7 @@ namespace QLDSV.Forms
                 = barBtnLamMoi.Enabled = false;
             cmbKhoa.Enabled = false;
 
-            // TODO: Reload Sub
-            this.SinhVienGridControl.Update();
-            this.SinhVienGridControl.Refresh();
+            
         }
 
         private void barBtnUndo_ItemClick(object sender, DevExpress.XtraBars.ItemClickEventArgs e)
@@ -257,10 +260,12 @@ namespace QLDSV.Forms
             //chỉ riêng 1 lệnh  dành cho subform
             loadInitializeData();
 
-           
-            if (_position > 0)
+            cmbKhoa.Visible = true;
+            cmbKhoa.Enabled = true;
+
+            if (_positionLop > 0)
             {
-                bdsLOP.Position = _position;
+                bdsLOP.Position = _positionLop;
             }
          
         }
@@ -272,9 +277,9 @@ namespace QLDSV.Forms
             // load lại cả form...
             frmLop_Load(sender, e);
 
-            if (_position > 0)
+            if (_positionLop > 0)
             {
-                bdsLOP.Position = _position;
+                bdsLOP.Position = _positionLop;
             }
         }
 
@@ -289,9 +294,21 @@ namespace QLDSV.Forms
 
         private void barBtnThoat_ItemClick(object sender, DevExpress.XtraBars.ItemClickEventArgs e)
         {
-            if (pnControlLeft.Enabled)
+            if (pnControlLeft.Enabled || _flagUpdateSV )
             {
-                DialogResult dr = MessageBox.Show(" Dữ liệu Lớp chưa lưu vào Database. \n Bạn có chắc muốn thoát !", "Thông báo", MessageBoxButtons.YesNo);
+                String notifi=" ";
+                String notifiLop = " Dữ liệu LỚP chưa lưu vào Database. \n Bạn có chắc muốn thoát !";
+                String notifiSV = "Dữ liệu SINH VIÊN chưa lưu vào Database. \n Bạn có chắc muốn thoát ! ";
+                if (pnControlLeft.Enabled)
+                {
+                    notifi = notifiLop;
+                }else if (_flagUpdateSV)
+                {
+                    notifi = notifiSV;
+                }
+
+            
+                DialogResult dr = XtraMessageBox.Show(notifi, "Cảnh báo", MessageBoxButtons.YesNo, MessageBoxIcon.Warning);
 
                 if (dr == DialogResult.No)
                 {
@@ -330,7 +347,7 @@ namespace QLDSV.Forms
                 return false;
             }
 
-            if (flagOption == "ADD")
+            if (_flagOptionLop == "ADD")
             {
                 //TODO: Check mã lớp có tồn tại chưa
                 string query1 = "DECLARE  @return_value int \n"
@@ -378,9 +395,9 @@ namespace QLDSV.Forms
                 }
             }
 
-            if (flagOption == "UPDATE")
+            if (_flagOptionLop == "UPDATE")
             {
-                if (!this.txtMaLop.Text.Trim().ToString().Equals(oldMaLop))// Nếu mã lớp thay đổi so với ban đầu
+                if (!this.txtMaLop.Text.Trim().ToString().Equals(_oldMaLop))// Nếu mã lớp thay đổi so với ban đầu
                 {
                     //TODO: Check mã lớp có tồn tại chưa
                     string query1 = "DECLARE  @return_value int \n"
@@ -405,7 +422,7 @@ namespace QLDSV.Forms
                         return false;
                     }
                 }
-                if (!this.txtTenLop.Text.Trim().ToString().Equals(oldTenLop))
+                if (!this.txtTenLop.Text.Trim().ToString().Equals(_oldTenLop))
                 {
                     // TODO : Check tên lớp có tồn tại chưa
                     string query2 = "DECLARE @return_value int \n"
@@ -458,34 +475,45 @@ namespace QLDSV.Forms
         {
             if (bdsLOP.Position > 0)
             {
-                _position = bdsLOP.Position;
+                _positionLop = bdsLOP.Position;
             }
         }
 
-        // xử lý GridControl and LookupEdit
-        private void initLockupEditColumn()
-        {
-            this.repositoryItemMaLop.DataSource = this.bdsLOP;
-            this.repositoryItemMaLop.ValueMember = "MALOP";
-            this.repositoryItemMaLop.DisplayMember = "MALOP";
+        //// xử lý GridControl and LookupEdit   
+        //private void initLockupEditColumn()
+        //{
+        //    this.repositoryItemMaLop.DataSource = this.bdsLOP;
+        //    this.repositoryItemMaLop.ValueMember = "MALOP";
+        //    this.repositoryItemMaLop.DisplayMember = "MALOP";
 
-            this.repositoryItemMaLop.NullText = @"Chọn lớp";
-            this.repositoryItemMaLop.BestFitMode = DevExpress.XtraEditors.Controls.BestFitMode.BestFitResizePopup;
-            // Specify the dropdown height. 
-            //  this.repositoryItemMaLop.DropDownRows = bdsLOP.Count;
-            this.repositoryItemMaLop.AutoHeight = true;
-        }
+        //    this.repositoryItemMaLop.NullText = @"Chọn lớp";
+        //    this.repositoryItemMaLop.BestFitMode = DevExpress.XtraEditors.Controls.BestFitMode.BestFitResizePopup;
+        //    // Specify the dropdown height. 
+        //    //  this.repositoryItemMaLop.DropDownRows = bdsLOP.Count;
+        //    this.repositoryItemMaLop.AutoHeight = true;
+        //}
 
         //---------------------------- Phân subform -----------------------------------------------
 
         private void conThem_Click(object sender, EventArgs e)
         {
-         //   this.conThem.Enabled = this.false;
+            this.conThem.Enabled = false;
+            this.lOPGridControl.Enabled = false;
+            this.barBtnGhi.Enabled = this.barBtnHuy.Enabled = this.barBtnSua.Enabled = this.barBtnXoa.Enabled = 
+                this.barBtnThem.Enabled = this.barBtnUndo.Enabled = this.barBtnLamMoi.Enabled = false;
+
+            this.cmbKhoa.Enabled = false;
+            _flagUpdateSV = true;
+            // TODO : Thao tác chuẩn bị thêm
+            bdsSV.AddNew();
+
+
+            _positionSV = bdsSV.Count - 1 ;
         }
 
         private void conSua_Click(object sender, EventArgs e)
         {
-
+            _flagUpdateSV = true;
         }
 
         private void conXoa_Click(object sender, EventArgs e)
@@ -495,9 +523,66 @@ namespace QLDSV.Forms
 
         private void conGhi_Click(object sender, EventArgs e)
         {
+            bool check = ValidateInfoSinhVien(_positionSV);
+            if (check)
+            {
+                try
+                {
+                    this.conThem.Enabled 
+                    = this.conGhi.Enabled
+                    = this.conXoa.Enabled
+                    = this.conSua.Enabled
+                    = true;
 
+                    this.lOPGridControl.Enabled = true;
+
+                    this.bdsSV.EndEdit();
+                    this.bdsSV.ResetCurrentItem();// tự động render để hiển thị dữ liệu mới
+                    this.SINHVIENTableAdapter.Update(this.DS.SINHVIEN);
+
+                    MessageBox.Show("Ghi dữ liệu thành công !","Thành Công", MessageBoxButtons.OK);
+
+
+                    _flagUpdateSV = false;
+
+                    // set lại vị trí
+                   bdsSV.Position = bdsSV.Count - 1;
+                }
+                catch (Exception ex)
+                {
+                    this.bdsSV.RemoveCurrent();
+                    MessageBox.Show("Ghi dữ liệu thất lại. Vui lòng kiểm tra lại!\n" + ex.Message, "Error",
+                        MessageBoxButtons.OK, MessageBoxIcon.Error);
+                }
+            }
+            else
+            {
+
+                // focuse lại vị trí bị trùng để sửa
+                this.gridViewSinhVien.FocusedRowHandle = _positionSV;
+                this.gridViewSinhVien.FocusedColumn = this.colMASV;
+
+                // phân quyền nút
+                this.conSua.Enabled = this.conXoa.Enabled = true;
+                return;
+            }
         }
 
+
+        private void conLamMoi_Click(object sender, EventArgs e)
+        {
+            this.conThem.Enabled = true;
+            this.lOPGridControl.Enabled = true;
+            this.barBtnGhi.Enabled = this.barBtnHuy.Enabled = this.barBtnSua.Enabled = this.barBtnXoa.Enabled =
+                this.barBtnThem.Enabled = this.barBtnUndo.Enabled = this.barBtnLamMoi.Enabled = true;
+
+            this.cmbKhoa.Enabled = true;
+
+            this.SINHVIENTableAdapter.Connection.ConnectionString = Program.URL_Connect;
+            this.SINHVIENTableAdapter.Fill(this.DS.SINHVIEN);
+
+            MessageBox.Show("Làm mới dữ liệu thành công", "", MessageBoxButtons.OK);
+        }
         private void lOPGridControl_FocusedViewChanged(object sender, DevExpress.XtraGrid.ViewFocusEventArgs e)
         {
             
@@ -505,10 +590,88 @@ namespace QLDSV.Forms
 
      
 
-       
-        private void toolStripMenuItem1_Click(object sender, EventArgs e)
-        {
 
+
+        //private void gridViewSinhVien_ValidatingEditor(object sender, DevExpress.XtraEditors.Controls.BaseContainerValidateEditorEventArgs e)
+        //{
+        //    GridView view = sender as GridView;
+
+
+        //    if (view.FocusedColumn.FieldName == "MASV")
+        //    {
+        //        var obj = view.GetRowCellValue(0, "MASV");
+        //        if (string.IsNullOrEmpty(e.Value as String))
+        //        {
+        //            e.Valid = false;
+        //            e.ErrorText = "Only numeric values are accepted.";
+        //        }
+
+        //    }
+        //}
+
+        //private void gridViewSinhVien_ValidateRow(object sender, DevExpress.XtraGrid.Views.Base.ValidateRowEventArgs e)
+        //{
+        //    GridView view = sender as GridView;
+        //    //GridColumn inStockCol = view.Columns["UnitsInStock"];
+        //    //GridColumn onOrderCol = view.Columns["UnitsOnOrder"];
+        //    //Get the value of the first column 
+        //    Int16 inSt = (Int16)view.GetRowCellValue(e.RowHandle, inStockCol);
+        //    //Get the value of the second column 
+        //    Int16 onOrd = (Int16)view.GetRowCellValue(e.RowHandle, onOrderCol);
+        //    //Validity criterion 
+        //    if (inSt < onOrd)
+        //    {
+        //        e.Valid = false;
+        //        //Set errors with specific descriptions for the columns 
+        //        view.SetColumnError(inStockCol, "The value must be greater than Units On Order");
+        //        view.SetColumnError(onOrderCol, "The value must be less than Units In Stock");
+        //    }
+        //}
+
+        //private void gridViewSinhVien_InvalidRowException(object sender, DevExpress.XtraGrid.Views.Base.InvalidRowExceptionEventArgs e)
+        //{
+        //    //Suppress displaying the error message box 
+        //    e.ExceptionMode = ExceptionMode.NoAction;
+        //}
+
+
+
+        private bool ValidateInfoSinhVien(int position)
+        {
+            string maSV = this.gridViewSinhVien.GetRowCellValue(position, "MASV").ToString();
+
+                //TODO: Check mã sinh viên có tồn tại chưa
+            string query1 = " DECLARE @return_value INT " + 
+
+                            " EXEC @return_value = [dbo].[SP_CHECKID] " + 
+
+                            " @Code = N'" + maSV +  "',  " +
+
+                            " @Type = N'MASV' " +
+
+                            " SELECT  'Return Value' = @return_value ";
+
+                int resultMa = Utils.CheckDataHelper(query1);
+                if (resultMa == -1)
+                {
+                    MessageBox.Show("Lỗi kết nối với database. Mời bạn xem lại", "", MessageBoxButtons.OK);
+                    this.Close();
+                }
+                if (resultMa == 1)
+                {
+                XtraMessageBox.Show("Mã Sinh Viên đã tồn tại. Mời bạn chon mã khác !", "Cảnh báo", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                return false;
+                }
+            if (resultMa == 2)
+            {
+                XtraMessageBox.Show("Mã Sinh Viên đã tồn tại ở Khoa khác. Mời bạn nhập lại !", "Cảnh báo", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                return false;
+            }
+
+
+            return true;
         }
+
+     
     }
 }

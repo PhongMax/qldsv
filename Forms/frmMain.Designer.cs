@@ -82,7 +82,7 @@
             // lblHOTEN
             // 
             this.lblHOTEN.Name = "lblHOTEN";
-            this.lblHOTEN.Size = new System.Drawing.Size(45, 17);
+            this.lblHOTEN.Size = new System.Drawing.Size(46, 17);
             this.lblHOTEN.Text = "HOTEN";
             // 
             // lblNHOM
@@ -239,6 +239,7 @@
             this.ribbonPage2,
             this.ribbonPage4});
             this.ribbonControl1.Size = new System.Drawing.Size(1011, 143);
+            this.ribbonControl1.Click += new System.EventHandler(this.ribbonControl1_Click);
             // 
             // barButton_Register
             // 

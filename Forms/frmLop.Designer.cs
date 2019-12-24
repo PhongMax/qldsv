@@ -66,24 +66,19 @@
             this.txtMaLop = new DevExpress.XtraEditors.TextEdit();
             this.panel1 = new System.Windows.Forms.Panel();
             this.pnControlRight = new System.Windows.Forms.Panel();
-            this.SinhVienGridControl = new DevExpress.XtraGrid.GridControl();
+            this.gridControlSinhVien = new DevExpress.XtraGrid.GridControl();
             this.contextSinhVien = new System.Windows.Forms.ContextMenuStrip(this.components);
             this.conThem = new System.Windows.Forms.ToolStripMenuItem();
             this.conSua = new System.Windows.Forms.ToolStripMenuItem();
             this.conXoa = new System.Windows.Forms.ToolStripMenuItem();
             this.toolStripSeparator1 = new System.Windows.Forms.ToolStripSeparator();
             this.conGhi = new System.Windows.Forms.ToolStripMenuItem();
-            this.Refresh = new System.Windows.Forms.ToolStripSeparator();
-            this.gridView2 = new DevExpress.XtraGrid.Views.Grid.GridView();
+            this.conLamMoi = new System.Windows.Forms.ToolStripMenuItem();
+            this.gridViewSinhVien = new DevExpress.XtraGrid.Views.Grid.GridView();
             this.colMASV = new DevExpress.XtraGrid.Columns.GridColumn();
             this.colHO = new DevExpress.XtraGrid.Columns.GridColumn();
             this.colTEN = new DevExpress.XtraGrid.Columns.GridColumn();
             this.colMALOP1 = new DevExpress.XtraGrid.Columns.GridColumn();
-            this.repositoryItemMaLop = new DevExpress.XtraEditors.Repository.RepositoryItemGridLookUpEdit();
-            this.repositoryItemGridLookUpEdit1View = new DevExpress.XtraGrid.Views.Grid.GridView();
-            this.colMa = new DevExpress.XtraGrid.Columns.GridColumn();
-            this.colTenn = new DevExpress.XtraGrid.Columns.GridColumn();
-            this.colKhoa = new DevExpress.XtraGrid.Columns.GridColumn();
             this.colPHAI = new DevExpress.XtraGrid.Columns.GridColumn();
             this.colNGAYSINH = new DevExpress.XtraGrid.Columns.GridColumn();
             this.colNOISINH = new DevExpress.XtraGrid.Columns.GridColumn();
@@ -93,7 +88,8 @@
             this.pnControlLeft = new System.Windows.Forms.Panel();
             this.grbLop = new System.Windows.Forms.GroupBox();
             this.errorProvider = new System.Windows.Forms.ErrorProvider(this.components);
-            this.toolStripMenuItem1 = new System.Windows.Forms.ToolStripMenuItem();
+            this.behaviorManager1 = new DevExpress.Utils.Behaviors.BehaviorManager(this.components);
+            this.toolStripSeparator2 = new System.Windows.Forms.ToolStripSeparator();
             mAKHLabel = new System.Windows.Forms.Label();
             tENLOPLabel = new System.Windows.Forms.Label();
             maLopLabel = new System.Windows.Forms.Label();
@@ -109,14 +105,13 @@
             ((System.ComponentModel.ISupportInitialize)(this.txtMaLop.Properties)).BeginInit();
             this.panel1.SuspendLayout();
             this.pnControlRight.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.SinhVienGridControl)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.gridControlSinhVien)).BeginInit();
             this.contextSinhVien.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.gridView2)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.repositoryItemMaLop)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.repositoryItemGridLookUpEdit1View)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.gridViewSinhVien)).BeginInit();
             this.pnControlLeft.SuspendLayout();
             this.grbLop.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.errorProvider)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.behaviorManager1)).BeginInit();
             this.SuspendLayout();
             // 
             // mAKHLabel
@@ -491,28 +486,26 @@
             // 
             // pnControlRight
             // 
-            this.pnControlRight.Controls.Add(this.SinhVienGridControl);
+            this.pnControlRight.Controls.Add(this.gridControlSinhVien);
             this.pnControlRight.Dock = System.Windows.Forms.DockStyle.Fill;
             this.pnControlRight.Location = new System.Drawing.Point(375, 0);
             this.pnControlRight.Name = "pnControlRight";
             this.pnControlRight.Size = new System.Drawing.Size(533, 161);
             this.pnControlRight.TabIndex = 1;
             // 
-            // SinhVienGridControl
+            // gridControlSinhVien
             // 
-            this.SinhVienGridControl.ContextMenuStrip = this.contextSinhVien;
-            this.SinhVienGridControl.DataSource = this.bdsSV;
-            this.SinhVienGridControl.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.SinhVienGridControl.Location = new System.Drawing.Point(0, 0);
-            this.SinhVienGridControl.MainView = this.gridView2;
-            this.SinhVienGridControl.MenuManager = this.barManagerLop;
-            this.SinhVienGridControl.Name = "SinhVienGridControl";
-            this.SinhVienGridControl.RepositoryItems.AddRange(new DevExpress.XtraEditors.Repository.RepositoryItem[] {
-            this.repositoryItemMaLop});
-            this.SinhVienGridControl.Size = new System.Drawing.Size(533, 161);
-            this.SinhVienGridControl.TabIndex = 16;
-            this.SinhVienGridControl.ViewCollection.AddRange(new DevExpress.XtraGrid.Views.Base.BaseView[] {
-            this.gridView2});
+            this.gridControlSinhVien.ContextMenuStrip = this.contextSinhVien;
+            this.gridControlSinhVien.DataSource = this.bdsSV;
+            this.gridControlSinhVien.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.gridControlSinhVien.Location = new System.Drawing.Point(0, 0);
+            this.gridControlSinhVien.MainView = this.gridViewSinhVien;
+            this.gridControlSinhVien.MenuManager = this.barManagerLop;
+            this.gridControlSinhVien.Name = "gridControlSinhVien";
+            this.gridControlSinhVien.Size = new System.Drawing.Size(533, 161);
+            this.gridControlSinhVien.TabIndex = 0;
+            this.gridControlSinhVien.ViewCollection.AddRange(new DevExpress.XtraGrid.Views.Base.BaseView[] {
+            this.gridViewSinhVien});
             // 
             // contextSinhVien
             // 
@@ -522,70 +515,55 @@
             this.conXoa,
             this.toolStripSeparator1,
             this.conGhi,
-            this.Refresh,
-            this.toolStripMenuItem1});
+            this.toolStripSeparator2,
+            this.conLamMoi});
             this.contextSinhVien.Name = "contextMenuStrip1";
-            this.contextSinhVien.Size = new System.Drawing.Size(181, 148);
+            this.contextSinhVien.Size = new System.Drawing.Size(122, 126);
             // 
             // conThem
             // 
             this.conThem.Image = global::QLDSV.Properties.Resources.add_user_32;
             this.conThem.Name = "conThem";
-            this.conThem.Size = new System.Drawing.Size(180, 22);
+            this.conThem.Size = new System.Drawing.Size(121, 22);
             this.conThem.Text = "Thêm";
             this.conThem.Click += new System.EventHandler(this.conThem_Click);
             // 
             // conSua
             // 
             this.conSua.Name = "conSua";
-            this.conSua.Size = new System.Drawing.Size(180, 22);
+            this.conSua.Size = new System.Drawing.Size(121, 22);
             this.conSua.Text = "Sửa";
             this.conSua.Click += new System.EventHandler(this.conSua_Click);
             // 
             // conXoa
             // 
             this.conXoa.Name = "conXoa";
-            this.conXoa.Size = new System.Drawing.Size(180, 22);
+            this.conXoa.Size = new System.Drawing.Size(121, 22);
             this.conXoa.Text = "Xóa";
             this.conXoa.Click += new System.EventHandler(this.conXoa_Click);
             // 
             // toolStripSeparator1
             // 
             this.toolStripSeparator1.Name = "toolStripSeparator1";
-            this.toolStripSeparator1.Size = new System.Drawing.Size(177, 6);
+            this.toolStripSeparator1.Size = new System.Drawing.Size(118, 6);
             // 
             // conGhi
             // 
             this.conGhi.Name = "conGhi";
-            this.conGhi.Size = new System.Drawing.Size(180, 22);
+            this.conGhi.Size = new System.Drawing.Size(121, 22);
             this.conGhi.Text = "Ghi";
             this.conGhi.Click += new System.EventHandler(this.conGhi_Click);
             // 
-            // Refresh
+            // conLamMoi
             // 
-            this.Refresh.Name = "Refresh";
-            this.Refresh.Size = new System.Drawing.Size(177, 6);
+            this.conLamMoi.Name = "conLamMoi";
+            this.conLamMoi.Size = new System.Drawing.Size(121, 22);
+            this.conLamMoi.Text = "Làm mới";
+            this.conLamMoi.Click += new System.EventHandler(this.conLamMoi_Click);
             // 
-            // gridView2
+            // gridViewSinhVien
             // 
-            this.gridView2.Appearance.FocusedCell.BackColor = System.Drawing.Color.Lime;
-            this.gridView2.Appearance.FocusedCell.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, ((System.Drawing.FontStyle)((System.Drawing.FontStyle.Bold | System.Drawing.FontStyle.Italic))), System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.gridView2.Appearance.FocusedCell.Options.UseBackColor = true;
-            this.gridView2.Appearance.FocusedCell.Options.UseFont = true;
-            this.gridView2.Appearance.FocusedRow.BackColor = System.Drawing.Color.Lime;
-            this.gridView2.Appearance.FocusedRow.BackColor2 = System.Drawing.Color.FromArgb(((int)(((byte)(128)))), ((int)(((byte)(255)))), ((int)(((byte)(128)))));
-            this.gridView2.Appearance.FocusedRow.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))));
-            this.gridView2.Appearance.FocusedRow.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Italic, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.gridView2.Appearance.FocusedRow.Options.UseBackColor = true;
-            this.gridView2.Appearance.FocusedRow.Options.UseBorderColor = true;
-            this.gridView2.Appearance.FocusedRow.Options.UseFont = true;
-            this.gridView2.Appearance.FooterPanel.Options.UseTextOptions = true;
-            this.gridView2.Appearance.FooterPanel.TextOptions.HAlignment = DevExpress.Utils.HorzAlignment.Center;
-            this.gridView2.Appearance.HeaderPanel.Options.UseTextOptions = true;
-            this.gridView2.Appearance.HeaderPanel.TextOptions.HAlignment = DevExpress.Utils.HorzAlignment.Center;
-            this.gridView2.Appearance.Row.Options.UseTextOptions = true;
-            this.gridView2.Appearance.Row.TextOptions.HAlignment = DevExpress.Utils.HorzAlignment.Center;
-            this.gridView2.Columns.AddRange(new DevExpress.XtraGrid.Columns.GridColumn[] {
+            this.gridViewSinhVien.Columns.AddRange(new DevExpress.XtraGrid.Columns.GridColumn[] {
             this.colMASV,
             this.colHO,
             this.colTEN,
@@ -596,164 +574,79 @@
             this.colDIACHI,
             this.colGHICHU,
             this.colNGHIHOC});
-            this.gridView2.GridControl = this.SinhVienGridControl;
-            this.gridView2.Name = "gridView2";
-            this.gridView2.OptionsView.ShowFooter = true;
-            this.gridView2.OptionsView.ShowGroupPanel = false;
+            this.gridViewSinhVien.GridControl = this.gridControlSinhVien;
+            this.gridViewSinhVien.Name = "gridViewSinhVien";
             // 
             // colMASV
             // 
-            this.colMASV.Caption = "Mã Sinh Viên";
             this.colMASV.FieldName = "MASV";
             this.colMASV.Name = "colMASV";
-            this.colMASV.OptionsColumn.AllowFocus = false;
-            this.colMASV.Summary.AddRange(new DevExpress.XtraGrid.GridSummaryItem[] {
-            new DevExpress.XtraGrid.GridColumnSummaryItem(DevExpress.Data.SummaryItemType.Count, "MASV", "Số dòng : {0}")});
             this.colMASV.Visible = true;
             this.colMASV.VisibleIndex = 0;
-            this.colMASV.Width = 61;
             // 
             // colHO
             // 
-            this.colHO.Caption = "Họ và tên lót";
             this.colHO.FieldName = "HO";
             this.colHO.Name = "colHO";
-            this.colHO.OptionsColumn.AllowFocus = false;
             this.colHO.Visible = true;
             this.colHO.VisibleIndex = 1;
-            this.colHO.Width = 59;
             // 
             // colTEN
             // 
-            this.colTEN.Caption = "Tên";
             this.colTEN.FieldName = "TEN";
             this.colTEN.Name = "colTEN";
-            this.colTEN.OptionsColumn.AllowFocus = false;
             this.colTEN.Visible = true;
             this.colTEN.VisibleIndex = 2;
-            this.colTEN.Width = 29;
             // 
             // colMALOP1
             // 
-            this.colMALOP1.Caption = "Mã lớp";
-            this.colMALOP1.ColumnEdit = this.repositoryItemMaLop;
             this.colMALOP1.FieldName = "MALOP";
             this.colMALOP1.Name = "colMALOP1";
-            this.colMALOP1.OptionsColumn.AllowFocus = false;
+            this.colMALOP1.OptionsColumn.ReadOnly = true;
             this.colMALOP1.Visible = true;
             this.colMALOP1.VisibleIndex = 3;
-            this.colMALOP1.Width = 56;
-            // 
-            // repositoryItemMaLop
-            // 
-            this.repositoryItemMaLop.AutoHeight = false;
-            this.repositoryItemMaLop.Buttons.AddRange(new DevExpress.XtraEditors.Controls.EditorButton[] {
-            new DevExpress.XtraEditors.Controls.EditorButton(DevExpress.XtraEditors.Controls.ButtonPredefines.Combo)});
-            this.repositoryItemMaLop.Name = "repositoryItemMaLop";
-            this.repositoryItemMaLop.PopupView = this.repositoryItemGridLookUpEdit1View;
-            // 
-            // repositoryItemGridLookUpEdit1View
-            // 
-            this.repositoryItemGridLookUpEdit1View.Columns.AddRange(new DevExpress.XtraGrid.Columns.GridColumn[] {
-            this.colMa,
-            this.colTenn,
-            this.colKhoa});
-            this.repositoryItemGridLookUpEdit1View.FocusRectStyle = DevExpress.XtraGrid.Views.Grid.DrawFocusRectStyle.RowFocus;
-            this.repositoryItemGridLookUpEdit1View.Name = "repositoryItemGridLookUpEdit1View";
-            this.repositoryItemGridLookUpEdit1View.OptionsSelection.EnableAppearanceFocusedCell = false;
-            this.repositoryItemGridLookUpEdit1View.OptionsView.ShowGroupPanel = false;
-            // 
-            // colMa
-            // 
-            this.colMa.AppearanceCell.Options.UseTextOptions = true;
-            this.colMa.AppearanceCell.TextOptions.HAlignment = DevExpress.Utils.HorzAlignment.Center;
-            this.colMa.Caption = "Mã lớp";
-            this.colMa.FieldName = "MALOP";
-            this.colMa.Name = "colMa";
-            this.colMa.Visible = true;
-            this.colMa.VisibleIndex = 0;
-            // 
-            // colTenn
-            // 
-            this.colTenn.AppearanceCell.Options.UseTextOptions = true;
-            this.colTenn.AppearanceCell.TextOptions.HAlignment = DevExpress.Utils.HorzAlignment.Center;
-            this.colTenn.Caption = "Tên lớp";
-            this.colTenn.FieldName = "TENLOP";
-            this.colTenn.Name = "colTenn";
-            this.colTenn.Visible = true;
-            this.colTenn.VisibleIndex = 1;
-            // 
-            // colKhoa
-            // 
-            this.colKhoa.AppearanceCell.Options.UseTextOptions = true;
-            this.colKhoa.AppearanceCell.TextOptions.HAlignment = DevExpress.Utils.HorzAlignment.Center;
-            this.colKhoa.Caption = "Mã khoa";
-            this.colKhoa.FieldName = "MAKH";
-            this.colKhoa.Name = "colKhoa";
-            this.colKhoa.Visible = true;
-            this.colKhoa.VisibleIndex = 2;
             // 
             // colPHAI
             // 
-            this.colPHAI.Caption = "Phái";
             this.colPHAI.FieldName = "PHAI";
             this.colPHAI.Name = "colPHAI";
-            this.colPHAI.OptionsColumn.AllowFocus = false;
-            this.colPHAI.ToolTip = "(Tick --> Nam)";
             this.colPHAI.Visible = true;
             this.colPHAI.VisibleIndex = 4;
-            this.colPHAI.Width = 24;
             // 
             // colNGAYSINH
             // 
-            this.colNGAYSINH.Caption = "Ngày sinh";
             this.colNGAYSINH.FieldName = "NGAYSINH";
             this.colNGAYSINH.Name = "colNGAYSINH";
-            this.colNGAYSINH.OptionsColumn.AllowFocus = false;
             this.colNGAYSINH.Visible = true;
             this.colNGAYSINH.VisibleIndex = 5;
-            this.colNGAYSINH.Width = 59;
             // 
             // colNOISINH
             // 
-            this.colNOISINH.Caption = "Nơi sinh";
             this.colNOISINH.FieldName = "NOISINH";
             this.colNOISINH.Name = "colNOISINH";
-            this.colNOISINH.OptionsColumn.AllowFocus = false;
             this.colNOISINH.Visible = true;
             this.colNOISINH.VisibleIndex = 6;
-            this.colNOISINH.Width = 51;
             // 
             // colDIACHI
             // 
-            this.colDIACHI.Caption = "Địa chỉ";
             this.colDIACHI.FieldName = "DIACHI";
             this.colDIACHI.Name = "colDIACHI";
-            this.colDIACHI.OptionsColumn.AllowFocus = false;
             this.colDIACHI.Visible = true;
             this.colDIACHI.VisibleIndex = 7;
-            this.colDIACHI.Width = 51;
             // 
             // colGHICHU
             // 
-            this.colGHICHU.Caption = "Ghi chú";
             this.colGHICHU.FieldName = "GHICHU";
             this.colGHICHU.Name = "colGHICHU";
-            this.colGHICHU.OptionsColumn.AllowFocus = false;
             this.colGHICHU.Visible = true;
             this.colGHICHU.VisibleIndex = 8;
-            this.colGHICHU.Width = 102;
             // 
             // colNGHIHOC
             // 
-            this.colNGHIHOC.Caption = "Nghỉ học";
             this.colNGHIHOC.FieldName = "NGHIHOC";
             this.colNGHIHOC.Name = "colNGHIHOC";
-            this.colNGHIHOC.OptionsColumn.AllowFocus = false;
-            this.colNGHIHOC.ToolTip = "(Tick --> nghỉ học)";
             this.colNGHIHOC.Visible = true;
             this.colNGHIHOC.VisibleIndex = 9;
-            this.colNGHIHOC.Width = 30;
             // 
             // pnControlLeft
             // 
@@ -785,12 +678,10 @@
             // 
             this.errorProvider.ContainerControl = this;
             // 
-            // toolStripMenuItem1
+            // toolStripSeparator2
             // 
-            this.toolStripMenuItem1.Name = "toolStripMenuItem1";
-            this.toolStripMenuItem1.Size = new System.Drawing.Size(180, 22);
-            this.toolStripMenuItem1.Text = "Làm mơi";
-            this.toolStripMenuItem1.Click += new System.EventHandler(this.toolStripMenuItem1_Click);
+            this.toolStripSeparator2.Name = "toolStripSeparator2";
+            this.toolStripSeparator2.Size = new System.Drawing.Size(118, 6);
             // 
             // frmLop
             // 
@@ -823,15 +714,14 @@
             ((System.ComponentModel.ISupportInitialize)(this.txtMaLop.Properties)).EndInit();
             this.panel1.ResumeLayout(false);
             this.pnControlRight.ResumeLayout(false);
-            ((System.ComponentModel.ISupportInitialize)(this.SinhVienGridControl)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.gridControlSinhVien)).EndInit();
             this.contextSinhVien.ResumeLayout(false);
-            ((System.ComponentModel.ISupportInitialize)(this.gridView2)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.repositoryItemMaLop)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.repositoryItemGridLookUpEdit1View)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.gridViewSinhVien)).EndInit();
             this.pnControlLeft.ResumeLayout(false);
             this.grbLop.ResumeLayout(false);
             this.grbLop.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.errorProvider)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.behaviorManager1)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -875,8 +765,16 @@
         private System.Windows.Forms.GroupBox grbLop;
         private System.Windows.Forms.ErrorProvider errorProvider;
         private DevExpress.XtraBars.BarButtonItem barBtnXoa;
-        private DevExpress.XtraGrid.GridControl SinhVienGridControl;
-        private DevExpress.XtraGrid.Views.Grid.GridView gridView2;
+        private System.Windows.Forms.ContextMenuStrip contextSinhVien;
+        private System.Windows.Forms.ToolStripMenuItem conThem;
+        private System.Windows.Forms.ToolStripMenuItem conSua;
+        private System.Windows.Forms.ToolStripMenuItem conXoa;
+        private System.Windows.Forms.ToolStripSeparator toolStripSeparator1;
+        private System.Windows.Forms.ToolStripMenuItem conGhi;
+        
+        private System.Windows.Forms.ToolStripMenuItem conLamMoi;
+        private DevExpress.XtraGrid.GridControl gridControlSinhVien;
+        private DevExpress.XtraGrid.Views.Grid.GridView gridViewSinhVien;
         private DevExpress.XtraGrid.Columns.GridColumn colMASV;
         private DevExpress.XtraGrid.Columns.GridColumn colHO;
         private DevExpress.XtraGrid.Columns.GridColumn colTEN;
@@ -887,18 +785,7 @@
         private DevExpress.XtraGrid.Columns.GridColumn colDIACHI;
         private DevExpress.XtraGrid.Columns.GridColumn colGHICHU;
         private DevExpress.XtraGrid.Columns.GridColumn colNGHIHOC;
-        private DevExpress.XtraEditors.Repository.RepositoryItemGridLookUpEdit repositoryItemMaLop;
-        private DevExpress.XtraGrid.Views.Grid.GridView repositoryItemGridLookUpEdit1View;
-        private DevExpress.XtraGrid.Columns.GridColumn colMa;
-        private DevExpress.XtraGrid.Columns.GridColumn colTenn;
-        private DevExpress.XtraGrid.Columns.GridColumn colKhoa;
-        private System.Windows.Forms.ContextMenuStrip contextSinhVien;
-        private System.Windows.Forms.ToolStripMenuItem conThem;
-        private System.Windows.Forms.ToolStripMenuItem conSua;
-        private System.Windows.Forms.ToolStripMenuItem conXoa;
-        private System.Windows.Forms.ToolStripSeparator toolStripSeparator1;
-        private System.Windows.Forms.ToolStripMenuItem conGhi;
-        private System.Windows.Forms.ToolStripSeparator Refresh;
-        private System.Windows.Forms.ToolStripMenuItem toolStripMenuItem1;
+        private DevExpress.Utils.Behaviors.BehaviorManager behaviorManager1;
+        private System.Windows.Forms.ToolStripSeparator toolStripSeparator2;
     }
 }

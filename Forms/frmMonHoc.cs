@@ -227,7 +227,9 @@ namespace QLDSV.Forms
                 return;
             }
 
-           
+            cmbKhoa.Visible = true;
+            cmbKhoa.Enabled = true;
+
         }
 
         private void barBtnHuy_ItemClick(object sender, DevExpress.XtraBars.ItemClickEventArgs e)

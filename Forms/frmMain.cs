@@ -1,4 +1,5 @@
-﻿using QLDSV.Forms;
+﻿using DevExpress.XtraEditors;
+using QLDSV.Forms;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
@@ -68,12 +69,11 @@ namespace QLDSV
         {
             if (!dangxuat)
             {
-                if (MessageBox.Show("Bạn có thực sự muốn thoát?", "Xác nhận.", MessageBoxButtons.OKCancel) == DialogResult.OK)
+                if (XtraMessageBox.Show("Bạn có thực sự muốn thoát?", "Xác nhận", MessageBoxButtons.YesNo) == DialogResult.No)
                 {
-                    Program.FrmDangNhap.Visible = true;
-                    Program.FrmDangNhap.Close();
+                    e.Cancel = true;
                 }
-                else e.Cancel = true;
+               
             }
         }
 
@@ -89,6 +89,9 @@ namespace QLDSV
             Program.FrmDangNhap.Visible = true;
         }
 
+        private void ribbonControl1_Click(object sender, EventArgs e)
+        {
 
+        }
     }
 }
