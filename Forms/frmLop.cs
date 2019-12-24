@@ -257,7 +257,9 @@ namespace QLDSV.Forms
             //chỉ riêng 1 lệnh  dành cho subform
             loadInitializeData();
 
-           
+            cmbKhoa.Visible = true;
+            cmbKhoa.Enabled = true;
+
             if (_position > 0)
             {
                 bdsLOP.Position = _position;
