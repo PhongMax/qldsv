@@ -73,6 +73,7 @@
             this.conXoa = new System.Windows.Forms.ToolStripMenuItem();
             this.toolStripSeparator1 = new System.Windows.Forms.ToolStripSeparator();
             this.conGhi = new System.Windows.Forms.ToolStripMenuItem();
+            this.Refresh = new System.Windows.Forms.ToolStripSeparator();
             this.gridView2 = new DevExpress.XtraGrid.Views.Grid.GridView();
             this.colMASV = new DevExpress.XtraGrid.Columns.GridColumn();
             this.colHO = new DevExpress.XtraGrid.Columns.GridColumn();
@@ -92,6 +93,7 @@
             this.pnControlLeft = new System.Windows.Forms.Panel();
             this.grbLop = new System.Windows.Forms.GroupBox();
             this.errorProvider = new System.Windows.Forms.ErrorProvider(this.components);
+            this.toolStripMenuItem1 = new System.Windows.Forms.ToolStripMenuItem();
             mAKHLabel = new System.Windows.Forms.Label();
             tENLOPLabel = new System.Windows.Forms.Label();
             maLopLabel = new System.Windows.Forms.Label();
@@ -240,7 +242,7 @@
             // 
             this.barBtnLamMoi.Caption = "Làm Mới";
             this.barBtnLamMoi.Id = 6;
-            this.barBtnLamMoi.ImageOptions.SvgImage = ((DevExpress.Utils.Svg.SvgImage)(resources.GetObject("barBtnLammoi.ImageOptions.SvgImage")));
+            this.barBtnLamMoi.ImageOptions.SvgImage = ((DevExpress.Utils.Svg.SvgImage)(resources.GetObject("barBtnLamMoi.ImageOptions.SvgImage")));
             this.barBtnLamMoi.Name = "barBtnLamMoi";
             this.barBtnLamMoi.ItemClick += new DevExpress.XtraBars.ItemClickEventHandler(this.barBtnLammoi_ItemClick);
             // 
@@ -353,6 +355,7 @@
             this.lOPGridControl.TabIndex = 15;
             this.lOPGridControl.ViewCollection.AddRange(new DevExpress.XtraGrid.Views.Base.BaseView[] {
             this.gridView1});
+            this.lOPGridControl.FocusedViewChanged += new DevExpress.XtraGrid.ViewFocusEventHandler(this.lOPGridControl_FocusedViewChanged);
             // 
             // gridView1
             // 
@@ -384,6 +387,8 @@
             this.gridView1.OptionsBehavior.ReadOnly = true;
             this.gridView1.OptionsView.ShowFooter = true;
             this.gridView1.OptionsView.ShowGroupPanel = false;
+            this.gridView1.CustomDrawRowIndicator += new DevExpress.XtraGrid.Views.Grid.RowIndicatorCustomDrawEventHandler(this.gridView1_CustomDrawRowIndicator);
+            this.gridView1.FocusedRowChanged += new DevExpress.XtraGrid.Views.Base.FocusedRowChangedEventHandler(this.gridView1_FocusedRowChanged);
             // 
             // colMALOP
             // 
@@ -407,6 +412,8 @@
             this.colTENLOP.AppearanceCell.TextOptions.HAlignment = DevExpress.Utils.HorzAlignment.Near;
             this.colTENLOP.AppearanceHeader.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.colTENLOP.AppearanceHeader.Options.UseFont = true;
+            this.colTENLOP.AppearanceHeader.Options.UseTextOptions = true;
+            this.colTENLOP.AppearanceHeader.TextOptions.HAlignment = DevExpress.Utils.HorzAlignment.Center;
             this.colTENLOP.Caption = "Tên Lớp";
             this.colTENLOP.FieldName = "TENLOP";
             this.colTENLOP.Name = "colTENLOP";
@@ -514,43 +521,50 @@
             this.conSua,
             this.conXoa,
             this.toolStripSeparator1,
-            this.conGhi});
+            this.conGhi,
+            this.Refresh,
+            this.toolStripMenuItem1});
             this.contextSinhVien.Name = "contextMenuStrip1";
-            this.contextSinhVien.Size = new System.Drawing.Size(105, 98);
+            this.contextSinhVien.Size = new System.Drawing.Size(181, 148);
             // 
             // conThem
             // 
             this.conThem.Image = global::QLDSV.Properties.Resources.add_user_32;
             this.conThem.Name = "conThem";
-            this.conThem.Size = new System.Drawing.Size(104, 22);
+            this.conThem.Size = new System.Drawing.Size(180, 22);
             this.conThem.Text = "Thêm";
             this.conThem.Click += new System.EventHandler(this.conThem_Click);
             // 
             // conSua
             // 
             this.conSua.Name = "conSua";
-            this.conSua.Size = new System.Drawing.Size(104, 22);
+            this.conSua.Size = new System.Drawing.Size(180, 22);
             this.conSua.Text = "Sửa";
             this.conSua.Click += new System.EventHandler(this.conSua_Click);
             // 
             // conXoa
             // 
             this.conXoa.Name = "conXoa";
-            this.conXoa.Size = new System.Drawing.Size(104, 22);
+            this.conXoa.Size = new System.Drawing.Size(180, 22);
             this.conXoa.Text = "Xóa";
             this.conXoa.Click += new System.EventHandler(this.conXoa_Click);
             // 
             // toolStripSeparator1
             // 
             this.toolStripSeparator1.Name = "toolStripSeparator1";
-            this.toolStripSeparator1.Size = new System.Drawing.Size(101, 6);
+            this.toolStripSeparator1.Size = new System.Drawing.Size(177, 6);
             // 
             // conGhi
             // 
             this.conGhi.Name = "conGhi";
-            this.conGhi.Size = new System.Drawing.Size(104, 22);
+            this.conGhi.Size = new System.Drawing.Size(180, 22);
             this.conGhi.Text = "Ghi";
             this.conGhi.Click += new System.EventHandler(this.conGhi_Click);
+            // 
+            // Refresh
+            // 
+            this.Refresh.Name = "Refresh";
+            this.Refresh.Size = new System.Drawing.Size(177, 6);
             // 
             // gridView2
             // 
@@ -771,6 +785,13 @@
             // 
             this.errorProvider.ContainerControl = this;
             // 
+            // toolStripMenuItem1
+            // 
+            this.toolStripMenuItem1.Name = "toolStripMenuItem1";
+            this.toolStripMenuItem1.Size = new System.Drawing.Size(180, 22);
+            this.toolStripMenuItem1.Text = "Làm mơi";
+            this.toolStripMenuItem1.Click += new System.EventHandler(this.toolStripMenuItem1_Click);
+            // 
             // frmLop
             // 
             this.Appearance.Options.UseFont = true;
@@ -877,5 +898,7 @@
         private System.Windows.Forms.ToolStripMenuItem conXoa;
         private System.Windows.Forms.ToolStripSeparator toolStripSeparator1;
         private System.Windows.Forms.ToolStripMenuItem conGhi;
+        private System.Windows.Forms.ToolStripSeparator Refresh;
+        private System.Windows.Forms.ToolStripMenuItem toolStripMenuItem1;
     }
 }

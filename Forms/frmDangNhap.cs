@@ -21,7 +21,7 @@ namespace QLDSV
 
         private void frmDangNhap_Load(object sender, EventArgs e)
         {
-            string chuoiketnoi = "Data Source=DESKTOP-ASUS;Initial Catalog=" + Program.Database + ";Integrated Security=True";
+            string chuoiketnoi = "Data Source=DESKTOP-CCI6BQR;Initial Catalog=" + Program.Database + ";Integrated Security=True";
 
             Program.Conn.ConnectionString = chuoiketnoi;
 
@@ -29,9 +29,10 @@ namespace QLDSV
             //gọi 1 view và trả về dưới dạng datatable
             dt = Program.ExecSqlDataTable("SELECT * FROM V_DSPM");
 
+          
             // cất dt vào biến toàn cục Bds_Dspm
             Program.Bds_Dspm.DataSource = dt;
-
+            
             // đoạn code liên kết giữa bds với combobox
             Utils.BindingDataToComBo(cmbKhoa, dt);
         }

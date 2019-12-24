@@ -79,12 +79,5 @@ namespace QLDSV
             return result;
         }
 
-
-        public static void setFocusRow(GridView grid , int position)
-        {
-            //grid.ClearSelection();
-            //grid.FocusedRowHandle = position;
-            //grid.SelectCell = position;
-        }
     }
 }

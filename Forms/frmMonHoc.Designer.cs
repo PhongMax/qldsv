@@ -223,7 +223,7 @@
             this.barDockControlTop.Dock = System.Windows.Forms.DockStyle.Top;
             this.barDockControlTop.Location = new System.Drawing.Point(0, 0);
             this.barDockControlTop.Manager = this.barManagerMonHoc;
-            this.barDockControlTop.Size = new System.Drawing.Size(688, 24);
+            this.barDockControlTop.Size = new System.Drawing.Size(902, 24);
             // 
             // barDockControlBottom
             // 
@@ -231,7 +231,7 @@
             this.barDockControlBottom.Dock = System.Windows.Forms.DockStyle.Bottom;
             this.barDockControlBottom.Location = new System.Drawing.Point(0, 480);
             this.barDockControlBottom.Manager = this.barManagerMonHoc;
-            this.barDockControlBottom.Size = new System.Drawing.Size(688, 23);
+            this.barDockControlBottom.Size = new System.Drawing.Size(902, 23);
             // 
             // barDockControlLeft
             // 
@@ -245,7 +245,7 @@
             // 
             this.barDockControlRight.CausesValidation = false;
             this.barDockControlRight.Dock = System.Windows.Forms.DockStyle.Right;
-            this.barDockControlRight.Location = new System.Drawing.Point(688, 24);
+            this.barDockControlRight.Location = new System.Drawing.Point(902, 24);
             this.barDockControlRight.Manager = this.barManagerMonHoc;
             this.barDockControlRight.Size = new System.Drawing.Size(0, 456);
             // 
@@ -257,7 +257,7 @@
             this.panel1.Dock = System.Windows.Forms.DockStyle.Top;
             this.panel1.Location = new System.Drawing.Point(0, 24);
             this.panel1.Name = "panel1";
-            this.panel1.Size = new System.Drawing.Size(688, 41);
+            this.panel1.Size = new System.Drawing.Size(902, 41);
             this.panel1.TabIndex = 4;
             // 
             // lblTenKhoa
@@ -322,7 +322,7 @@
             this.MONHOCGridControl.MainView = this.gridView1;
             this.MONHOCGridControl.MenuManager = this.barManagerMonHoc;
             this.MONHOCGridControl.Name = "MONHOCGridControl";
-            this.MONHOCGridControl.Size = new System.Drawing.Size(688, 234);
+            this.MONHOCGridControl.Size = new System.Drawing.Size(902, 234);
             this.MONHOCGridControl.TabIndex = 6;
             this.MONHOCGridControl.ViewCollection.AddRange(new DevExpress.XtraGrid.Views.Base.BaseView[] {
             this.gridView1});
@@ -334,6 +334,7 @@
             this.colTENMH});
             this.gridView1.GridControl = this.MONHOCGridControl;
             this.gridView1.Name = "gridView1";
+            this.gridView1.FocusedRowChanged += new DevExpress.XtraGrid.Views.Base.FocusedRowChangedEventHandler(this.gridView1_FocusedRowChanged);
             // 
             // colMAMH
             // 
@@ -404,7 +405,7 @@
             this.groupBoxMonHoc.Dock = System.Windows.Forms.DockStyle.Fill;
             this.groupBoxMonHoc.Location = new System.Drawing.Point(0, 299);
             this.groupBoxMonHoc.Name = "groupBoxMonHoc";
-            this.groupBoxMonHoc.Size = new System.Drawing.Size(688, 181);
+            this.groupBoxMonHoc.Size = new System.Drawing.Size(902, 181);
             this.groupBoxMonHoc.TabIndex = 7;
             this.groupBoxMonHoc.TabStop = false;
             // 
@@ -412,7 +413,7 @@
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(688, 503);
+            this.ClientSize = new System.Drawing.Size(902, 503);
             this.Controls.Add(this.groupBoxMonHoc);
             this.Controls.Add(this.MONHOCGridControl);
             this.Controls.Add(this.panel1);
@@ -421,7 +422,7 @@
             this.Controls.Add(this.barDockControlBottom);
             this.Controls.Add(this.barDockControlTop);
             this.Name = "frmMonHoc";
-            this.Text = "frmMonHoc";
+            this.Text = "Môn học";
             this.Load += new System.EventHandler(this.frmMonHoc_Load);
             ((System.ComponentModel.ISupportInitialize)(this.barManagerMonHoc)).EndInit();
             this.panel1.ResumeLayout(false);

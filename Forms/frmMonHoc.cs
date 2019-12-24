@@ -19,7 +19,6 @@ namespace QLDSV.Forms
         private string oldMaMonHoc = "";
         private string oldTenMonHoc = "";
 
-
         public frmMonHoc()
         {
             InitializeComponent();
@@ -45,7 +44,8 @@ namespace QLDSV.Forms
 
         private void frmMonHoc_Load(object sender, EventArgs e)
         {
-            _position = bdsMONHOC.Position;
+           
+     
 
             // TODO : Load Data
             errorProvider.Clear();
@@ -86,6 +86,9 @@ namespace QLDSV.Forms
 
             // TODO : Turn off input
             groupBoxMonHoc.Enabled = false;
+        
+
+           
         }
 
 
@@ -106,12 +109,12 @@ namespace QLDSV.Forms
         }
 
 
+
         // ============================ EVENT BUTTON ============================ //
         private void barBtnThem_ItemClick(object sender, DevExpress.XtraBars.ItemClickEventArgs e)
         {
-            _position = bdsMONHOC.Position;
             flagOption = "ADD";//  Add action
-
+            
             barBtnGhi.Enabled = barBtnHuy.Enabled = true;
             barBtnThem.Enabled
                 = barBtnXoa.Enabled
@@ -147,14 +150,21 @@ namespace QLDSV.Forms
                 {
                     MessageBox.Show("Lỗi xóa môn học.\nBạn hãy xóa lại\n" + ex.Message, "", MessageBoxButtons.OK);
                 }
-                frmMonHoc_Load(sender, e);
+       
 
+            }
+
+
+            if (_position > 0)
+            {
+       
+                bdsMONHOC.Position = _position;
             }
         }
 
         private void barBtnSua_ItemClick(object sender, DevExpress.XtraBars.ItemClickEventArgs e)
         {
-            _position = bdsMONHOC.Position;
+            
             flagOption = "UPDATE";//  Update action
             oldMaMonHoc = this.txtMaMonHoc.Text.Trim().ToString();
             oldTenMonHoc = this.txtTenMonHoc.Text.Trim().ToString();
@@ -180,7 +190,7 @@ namespace QLDSV.Forms
 
         private void barBtnGhi_ItemClick(object sender, DevExpress.XtraBars.ItemClickEventArgs e)
         {
-            _position = bdsMONHOC.Position;
+            
             bool check = ValidateInfoMONHOC();
             if (check)
             {
@@ -210,23 +220,30 @@ namespace QLDSV.Forms
                             MessageBoxButtons.OK, MessageBoxIcon.Error);
                     }
                 }
-                frmMonHoc_Load(sender, e);
+                
             }
             else
             {
                 return;
             }
+
+           
         }
 
         private void barBtnHuy_ItemClick(object sender, DevExpress.XtraBars.ItemClickEventArgs e)
         {
             bdsMONHOC.CancelEdit();
+
             frmMonHoc_Load(sender, e);
+            if (_position > 0)
+            {
+                bdsMONHOC.Position = _position;
+            }
         }
 
         private void barBtnLamMoi_ItemClick(object sender, DevExpress.XtraBars.ItemClickEventArgs e)
         {
-            _position = bdsMONHOC.Position;
+           
             frmMonHoc_Load(sender, e);
             MessageBox.Show("Làm mới dữ liệu thành công", "", MessageBoxButtons.OK);
         }
@@ -345,11 +362,14 @@ namespace QLDSV.Forms
             txtMaMonHoc.Properties.CharacterCasing = CharacterCasing.Upper;
         }
 
-        private void gridViewMonHoc_FocusedRowChange(object sender, DevExpress.XtraGrid.Views.Base.FocusedRowChangedEventArgs e)
+    
+
+        private void gridView1_FocusedRowChanged(object sender, DevExpress.XtraGrid.Views.Base.FocusedRowChangedEventArgs e)
         {
             if (bdsMONHOC.Position > 0)
             {
                 _position = bdsMONHOC.Position;
+
             }
         }
     }
