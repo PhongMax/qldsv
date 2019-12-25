@@ -28,6 +28,14 @@ namespace QLDSV
             combo.SelectedIndex = Program.MKhoa;
         }
 
+        //public static void BindingDataToComboReport(ComboBox combo, Object data, string type)
+        //{
+        //    if (type.Equals("TENLOP"))
+        //    {
+        //        combo.DataSource = data;
+        //    }
+        //}
+
         public static string GetMaKhoa()
         {
             DataTable dt = new DataTable();
@@ -48,6 +56,7 @@ namespace QLDSV
 
             // gán server đã chọn vào biến toàn cục.
             Program.ServerName = cmb.SelectedValue.ToString();
+            Console.WriteLine("Servername : " + Program.ServerName);
 
             // đoạn code hỗ trợ chuyển chi nhánh
             // ở chi nhánh A qua B thì dùng RemoteLogin,
