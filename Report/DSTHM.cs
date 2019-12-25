@@ -14,7 +14,6 @@ namespace QLDSV.Report
 {
     public partial class DSTHM : DevExpress.XtraEditors.XtraForm
     {
-        private string TenMonHoc = "";
 
         public DSTHM()
         {
@@ -32,9 +31,7 @@ namespace QLDSV.Report
 
         private void DSTHM_Load(object sender, EventArgs e)
         {
-            // TODO: This line of code loads data into the 'dS.MONHOC' table. You can move, or remove it, as needed.
-            this.MONHOCTableAdapter.Fill(this.DS.MONHOC);
-            // TODO: This line of code loads data into the 'dS.LOP' table. You can move, or remove it, as needed.
+            //this.MONHOCTableAdapter.Fill(this.DS.MONHOC);
             Program.Bds_Dspm.Filter = "TENKHOA LIKE 'KHOA%'";
             Utils.BindingDataToComBo(cmbKhoa, Program.Bds_Dspm.DataSource);
 
@@ -55,6 +52,7 @@ namespace QLDSV.Report
                 labelKhoa.Text = ((DataRowView)Program.Bds_Dspm[Program.MKhoa])["TENKHOA"].ToString();
             }
             this.txtMaLop.Text = this.cmbTenLop.SelectedValue.ToString();
+            this.txtMaMonHoc.Text = this.cmbTenMonHoc.SelectedValue.ToString();
         }
 
         // ============================= EVENT ============================= //
@@ -71,18 +69,21 @@ namespace QLDSV.Report
             this.txtMaLop.Text = this.cmbTenLop.SelectedValue.ToString();
         }
 
-        private void cmbTenMonHoc_SelectedIndexChanged(object sender, EventArgs e)
-        {
-            this.TenMonHoc = cmbTenMonHoc.SelectedText.Trim().ToString();
-        }
-
         private void cmbTenLop_SelectedIndexChanged(object sender, EventArgs e)
         {
             try
             {
                 txtMaLop.Text = this.cmbTenLop.SelectedValue.ToString();
+            } catch (Exception) { }
+        }
+
+        private void cmbTenMonHoc_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            try
+            {
+                this.txtMaMonHoc.Text = this.cmbTenMonHoc.SelectedValue.ToString();
             }
-            catch (Exception) { }
+            catch { }
         }
 
         private void button_IN_Click(object sender, EventArgs e)

@@ -19,15 +19,104 @@ namespace QLDSV.Report
             InitializeComponent();
         }
 
+        private void loadInitializeData()
+        {
+            this.DS.EnforceConstraints = false;
+
+            this.LOPTableAdapter.Connection.ConnectionString = Program.URL_Connect;
+            this.LOPTableAdapter.Fill(this.DS.LOP);
+
+            this.sINHVIENTableAdapter.Connection.ConnectionString = Program.URL_Connect;
+            this.sINHVIENTableAdapter.Fill(this.DS.SINHVIEN);
+        }
+
         private void PD_Load(object sender, EventArgs e)
         {
 
+            Program.Bds_Dspm.Filter = "TENKHOA LIKE 'KHOA%'";
+            Utils.BindingDataToComBo(cmbKhoa, Program.Bds_Dspm.DataSource);
+
+            loadInitializeData();
+
+            if (Program.MGroup == Program.NhomQuyen[0])// PGV
+            {
+                cmbKhoa.Visible = true;
+                cmbKhoa.Enabled = true;
+                labelKhoa.Visible = false;
+            }
+            if (Program.MGroup == Program.NhomQuyen[1])// KHOA
+            {
+                cmbKhoa.Visible = false;
+                cmbKhoa.Enabled = false;
+                label_Khoa.Visible = false;
+
+                labelKhoa.Visible = true;
+                labelKhoa.Text = ((DataRowView)Program.Bds_Dspm[Program.MKhoa])["TENKHOA"].ToString();
+            }
+
+            if (this.cmbTenSinhVien.SelectedValue != null)
+            {
+                this.txtMaSV.Text = this.cmbTenSinhVien.SelectedValue.ToString();
+            }
+            else
+            {
+                this.txtMaSV.Text = "Lớp Chưa Có Sinh Viên";
+            }
         }
 
         // ============================= EVENT ============================= //
+        private void cmbKhoa_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            // TODO : Chuyển Bộ Phận
+            Utils.ComboboxHelper(this.cmbKhoa);
+            // kết nối database với dữ liệu ở đoạn code trên và fill dữ liệu, nếu như có lỗi thì thoát.
+            if (Program.KetNoi() == 0)
+            {
+                MessageBox.Show("Lỗi kết nối về chi nhánh mới", "", MessageBoxButtons.OK);
+            }
+            loadInitializeData();
+            if (this.cmbTenSinhVien.SelectedValue != null)
+            {
+                this.txtMaSV.Text = this.cmbTenSinhVien.SelectedValue.ToString();
+            }
+            else
+            {
+                this.txtMaSV.Text = "Lớp Chưa Có Sinh Viên";
+            }
+        }
+
+        private void cmbTenLop_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            this.sINHVIENTableAdapter.Fill(this.DS.SINHVIEN);
+
+            if (this.cmbTenSinhVien.SelectedValue != null)
+            {
+                //this.txtMaSV.Text = this.cmbTenSinhVien.SelectedValue.ToString();
+                this.txtMaSV.Text = "NO NO NO";
+            }
+            else
+            {
+                this.txtMaSV.Text = "Lớp Chưa Có Sinh Viên";
+            }
+        }
+
+        private void cmbTenSinhVien_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            if (this.cmbTenSinhVien.SelectedValue != null)
+            {
+                this.txtMaSV.Text = this.cmbTenSinhVien.SelectedValue.ToString();
+            }
+            else
+            {
+                this.txtMaSV.Text = "Lớp Chưa Có Sinh Viên";
+            }
+        }
+
+
         private void button_IN_Click(object sender, EventArgs e)
         {
-            XtraReport_PD report = new XtraReport_PD("N15DCCN002");
+            // Chưa làm validate MASV có tồn tại không
+            XtraReport_PD report = new XtraReport_PD(this.txtMaSV.Text.Trim().ToString());
             ReportPrintTool print = new ReportPrintTool(report);
             print.ShowPreviewDialog();
         }
@@ -36,5 +125,7 @@ namespace QLDSV.Report
         {
             this.Close();
         }
+
+
     }
 }

@@ -44,9 +44,9 @@
             this.button_Thoat = new System.Windows.Forms.Button();
             this.button_IN = new System.Windows.Forms.Button();
             this.dateTimePicker = new System.Windows.Forms.DateTimePicker();
-            this.LOPTableAdapter = new QLDSV.DSTableAdapters.LOPTableAdapter();
             this.cmbTenMonHoc = new System.Windows.Forms.ComboBox();
             this.bdsMONHOC = new System.Windows.Forms.BindingSource(this.components);
+            this.LOPTableAdapter = new QLDSV.DSTableAdapters.LOPTableAdapter();
             this.MONHOCTableAdapter = new QLDSV.DSTableAdapters.MONHOCTableAdapter();
             ((System.ComponentModel.ISupportInitialize)(this.bdsLOP)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.DS)).BeginInit();
@@ -204,10 +204,6 @@
             this.dateTimePicker.Size = new System.Drawing.Size(390, 20);
             this.dateTimePicker.TabIndex = 11;
             // 
-            // LOPTableAdapter
-            // 
-            this.LOPTableAdapter.ClearBeforeFill = true;
-            // 
             // cmbTenMonHoc
             // 
             this.cmbTenMonHoc.DataSource = this.bdsMONHOC;
@@ -225,6 +221,10 @@
             // 
             this.bdsMONHOC.DataMember = "MONHOC";
             this.bdsMONHOC.DataSource = this.DS;
+            // 
+            // LOPTableAdapter
+            // 
+            this.LOPTableAdapter.ClearBeforeFill = true;
             // 
             // MONHOCTableAdapter
             // 
