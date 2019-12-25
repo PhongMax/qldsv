@@ -45,8 +45,6 @@ namespace QLDSV.Forms
         private void frmMonHoc_Load(object sender, EventArgs e)
         {
            
-     
-
             // TODO : Load Data
             errorProvider.Clear();
             loadInitializeData();
@@ -86,8 +84,6 @@ namespace QLDSV.Forms
 
             // TODO : Turn off input
             groupBoxMonHoc.Enabled = false;
-        
-
            
         }
 
@@ -364,14 +360,12 @@ namespace QLDSV.Forms
             txtMaMonHoc.Properties.CharacterCasing = CharacterCasing.Upper;
         }
 
-    
 
         private void gridView1_FocusedRowChanged(object sender, DevExpress.XtraGrid.Views.Base.FocusedRowChangedEventArgs e)
         {
             if (bdsMONHOC.Position > 0)
             {
                 _position = bdsMONHOC.Position;
-
             }
         }
     }
