@@ -32,7 +32,6 @@ namespace QLDSV.Forms
         public frmLop()
         {
             InitializeComponent();
-            //initLockupEditColumn();
         }
 
         private void lOPBindingNavigatorSaveItem_Click(object sender, EventArgs e)
@@ -755,7 +754,18 @@ namespace QLDSV.Forms
 
             GridView view = sender as GridView;
             view.SetRowCellValue(e.RowHandle, view.Columns["NGHIHOC"], 0);
-            view.SetRowCellValue(e.RowHandle, view.Columns["PHAI"], 0);
+            view.SetRowCellValue(e.RowHandle, view.Columns["PHAI"], 1);
+        }
+
+        private void gridView1_MasterRowGetRelationDisplayCaption(object sender, MasterRowGetRelationNameEventArgs e)
+        {
+            e.RelationName = "Danh sách sinh viên";
+        }
+
+        private void repositoryItemTextEditMaSV_EditValueChanged(object sender, EventArgs e)
+        {
+            // thường thành hoa
+            repositoryItemTextEditMaSV.CharacterCasing = CharacterCasing.Upper;
         }
     }
 }
