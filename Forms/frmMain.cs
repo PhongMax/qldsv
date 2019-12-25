@@ -72,14 +72,11 @@ namespace QLDSV
         {
             if (!dangxuat)
             {
-                if (XtraMessageBox.Show("Bạn có thực sự muốn thoát?", "Xác nhận", MessageBoxButtons.YesNo) == DialogResult.No)
+                if (MessageBox.Show("Bạn có thực sự muốn thoát?", "Xác nhận", MessageBoxButtons.YesNo) == DialogResult.No)
                 {
                     e.Cancel = true;
+                    return;
                 }
-            
-
-
-
 
             }
         }

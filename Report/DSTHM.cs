@@ -14,6 +14,8 @@ namespace QLDSV.Report
 {
     public partial class DSTHM : DevExpress.XtraEditors.XtraForm
     {
+        private string TenMonHoc = "";
+
         public DSTHM()
         {
             InitializeComponent();
@@ -22,11 +24,16 @@ namespace QLDSV.Report
         private void loadInitializeData()
         {
             this.LOPTableAdapter.Connection.ConnectionString = Program.URL_Connect;
-            this.LOPTableAdapter.Fill(this.dS.LOP);
+            this.LOPTableAdapter.Fill(this.DS.LOP);
+
+            this.MONHOCTableAdapter.Connection.ConnectionString = Program.URL_Connect;
+            this.MONHOCTableAdapter.Fill(this.DS.MONHOC);
         }
 
         private void DSTHM_Load(object sender, EventArgs e)
         {
+            // TODO: This line of code loads data into the 'dS.MONHOC' table. You can move, or remove it, as needed.
+            this.MONHOCTableAdapter.Fill(this.DS.MONHOC);
             // TODO: This line of code loads data into the 'dS.LOP' table. You can move, or remove it, as needed.
             Program.Bds_Dspm.Filter = "TENKHOA LIKE 'KHOA%'";
             Utils.BindingDataToComBo(cmbKhoa, Program.Bds_Dspm.DataSource);
@@ -64,6 +71,11 @@ namespace QLDSV.Report
             this.txtMaLop.Text = this.cmbTenLop.SelectedValue.ToString();
         }
 
+        private void cmbTenMonHoc_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            this.TenMonHoc = cmbTenMonHoc.SelectedText.Trim().ToString();
+        }
+
         private void cmbTenLop_SelectedIndexChanged(object sender, EventArgs e)
         {
             try
@@ -77,9 +89,9 @@ namespace QLDSV.Report
         {
             XtraReport_DSTHM report = new XtraReport_DSTHM(this.cmbTenLop.SelectedValue.ToString());
 
-            report.lblTenLop.Text = cmbTenLop.Text;
-            report.lblTenMonHoc.Text = "CƠ SỞ DỮ LIỆU PHÂN TÁN";
-            report.lblThoiGianThi.Text = "02/01/2020";
+            report.lblTenLop.Text = this.cmbTenLop.Text;
+            report.lblTenMonHoc.Text = this.cmbTenMonHoc.Text;
+            report.lblThoiGianThi.Text = this.dateTimePicker.Value.ToString("dd-MM-yyyy");
 
             ReportPrintTool print = new ReportPrintTool(report);
             print.ShowPreviewDialog();
