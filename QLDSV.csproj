@@ -291,7 +291,10 @@
     </Compile>
   </ItemGroup>
   <ItemGroup>
+    <Content Include="Resources\942748.png" />
     <Content Include="Resources\Capture1.PNG" />
+    <Content Include="Resources\clipboard %281%29.png" />
+    <Content Include="Resources\register-icon.png" />
   </ItemGroup>
   <ItemGroup>
     <None Include="Resources\create-login-128.png" />

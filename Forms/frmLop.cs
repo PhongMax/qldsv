@@ -57,8 +57,6 @@ namespace QLDSV.Forms
         // TODO : Load Method
         private void frmLop_Load(object sender, EventArgs e)
         {
-            
-
             // TODO : Load Data
             loadInitializeData();
             errorProvider.Clear();
@@ -66,7 +64,6 @@ namespace QLDSV.Forms
             this.conGhi.Enabled = false;
 
             lOPGridControl.Enabled = true;
-       
 
             //this.grbLop.Enabled = true;
             // đoạn code liên kết giữa bds với combo box
@@ -88,7 +85,6 @@ namespace QLDSV.Forms
                    = barBtnGhi.Enabled
                    = barBtnHuy.Enabled
                    = barBtnLamMoi.Enabled = true;
-
             }
             else if (Program.MGroup == Program.NhomQuyen[1]) // KHOA
             {
@@ -108,12 +104,34 @@ namespace QLDSV.Forms
                 this.contextSinhVien.Enabled = false;
             }
 
-
             barBtnHuy.Enabled = barBtnGhi.Enabled = false;
 
             // TODO : Turn off input
             pnControlLeft.Enabled = false;
 
+            // testing
+            getMaSinhVien();
+
+        }
+
+
+        private void getMaSinhVien()
+        {
+            string result = "";
+            string lenh = string.Format("SELECT HO+' '+TEN AS HOTEN FROM dbo.SINHVIEN WHERE MASV = 'N16DCCN076'");
+            using (SqlConnection connection = new SqlConnection(Program.URL_Connect))
+            {
+                connection.Open();
+                SqlCommand sqlcmt = new SqlCommand(lenh, connection);
+                sqlcmt.CommandType = CommandType.Text;
+                try
+                {
+                    result = (String)sqlcmt.ExecuteScalar();
+
+                }
+                catch { }
+            }
+            Console.WriteLine("Ho Ten Sinh Vien : " + result);
         }
 
         private void cmbKhoa_SelectedIndexChanged(object sender, EventArgs e)
