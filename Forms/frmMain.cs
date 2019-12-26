@@ -22,6 +22,19 @@ namespace QLDSV
             InitializeComponent();
         }
 
+
+        private void frmMain_Load(object sender, EventArgs e)
+        {
+            if (Program.MGroup == Program.NhomQuyen[2])// PKT
+            {
+                this.barButton_DSDHP.Enabled = true;
+            }
+            else
+            {
+                this.barButton_DSDHP.Enabled = false;
+            }
+
+        }
         // TODO : HANDLE CONTROL CHILDREN
         private void ShowMdiChildren(Type fType)
         {
@@ -59,7 +72,7 @@ namespace QLDSV
         }
         private void barButton_SinhVien_ItemClick(object sender, DevExpress.XtraBars.ItemClickEventArgs e)
         {
-            ShowMdiChildren(typeof(frmSinhVien));
+            ShowMdiChildren(typeof(frmHocPhi));
         }
         private void barButton_Diem_ItemClick(object sender, DevExpress.XtraBars.ItemClickEventArgs e)
         {
@@ -76,19 +89,11 @@ namespace QLDSV
         {
             if (!dangxuat)
             {
-                if (XtraMessageBox.Show("Bạn có thực sự muốn thoát?", "Xác nhận", MessageBoxButtons.YesNo) == DialogResult.No)
+                if (MessageBox.Show("Bạn có thực sự muốn thoát?", "Xác nhận", MessageBoxButtons.YesNo) == DialogResult.No)
                 {
                     e.Cancel = true;
+                    return;
                 }
-                //if (MessageBox.Show("Bạn có thực sự muốn thoát?", "Xác nhận", MessageBoxButtons.YesNo) == DialogResult.No)
-                //{
-                //    e.Cancel = true;
-                //}
-
-
-
-
-
 
             }
         }
@@ -104,6 +109,7 @@ namespace QLDSV
             Program.frmMain.Close();
             Program.FrmDangNhap.Visible = true;
         }
+
 
 
         // ==================== REPORT ZONE ==================== //
@@ -125,6 +131,16 @@ namespace QLDSV
         private void barButton_PD_ItemClick(object sender, DevExpress.XtraBars.ItemClickEventArgs e)
         {
             ShowMdiChildren(typeof(Report.PD));
+        }
+
+        private void barButton_DSDHP_ItemClick(object sender, DevExpress.XtraBars.ItemClickEventArgs e)
+        {
+            ShowMdiChildren(typeof(Report.DSDHP));
+        }
+
+        private void barButton_BDTK_ItemClick(object sender, DevExpress.XtraBars.ItemClickEventArgs e)
+        {
+            ShowMdiChildren(typeof(Report.BDTK));
         }
     }
 }

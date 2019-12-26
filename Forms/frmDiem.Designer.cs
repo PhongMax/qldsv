@@ -29,7 +29,9 @@
         private void InitializeComponent()
         {
             this.components = new System.ComponentModel.Container();
-            this.pnLeftNhapDiem = new System.Windows.Forms.Panel();
+            this.repositoryItemTextEdit1 = new DevExpress.XtraEditors.Repository.RepositoryItemTextEdit();
+            this.pnLeftControl = new System.Windows.Forms.Panel();
+            this.button1 = new System.Windows.Forms.Button();
             this.grbControl = new System.Windows.Forms.GroupBox();
             this.btnHuy = new System.Windows.Forms.Button();
             this.btnLuu = new System.Windows.Forms.Button();
@@ -50,12 +52,25 @@
             this.label1 = new System.Windows.Forms.Label();
             this.lblTenKhoa = new System.Windows.Forms.Label();
             this.cmbKhoa = new System.Windows.Forms.ComboBox();
-            this.panel2 = new System.Windows.Forms.Panel();
+            this.pnRight = new System.Windows.Forms.Panel();
+            this.gridControlNhap = new DevExpress.XtraGrid.GridControl();
+            this.gridViewnNhap = new DevExpress.XtraGrid.Views.Grid.GridView();
+            this.colHoTen = new DevExpress.XtraGrid.Columns.GridColumn();
+            this.colMASV = new DevExpress.XtraGrid.Columns.GridColumn();
+            this.colDIEM = new DevExpress.XtraGrid.Columns.GridColumn();
+            this.repositoryItemTextEditNhap = new DevExpress.XtraEditors.Repository.RepositoryItemTextEdit();
+            this.gridControlSua = new DevExpress.XtraGrid.GridControl();
+            this.bdsSP_BDMH = new System.Windows.Forms.BindingSource(this.components);
+            this.gridViewSua = new DevExpress.XtraGrid.Views.Grid.GridView();
+            this.gridColumn1 = new DevExpress.XtraGrid.Columns.GridColumn();
+            this.gridColumn2 = new DevExpress.XtraGrid.Columns.GridColumn();
+            this.gridColumn3 = new DevExpress.XtraGrid.Columns.GridColumn();
             this.LOPTableAdapter = new QLDSV.DSTableAdapters.LOPTableAdapter();
             this.tableAdapterManager = new QLDSV.DSTableAdapters.TableAdapterManager();
             this.MONHOCTableAdapter = new QLDSV.DSTableAdapters.MONHOCTableAdapter();
-            this.button1 = new System.Windows.Forms.Button();
-            this.pnLeftNhapDiem.SuspendLayout();
+            this.SP_BDMHTableAdapter = new QLDSV.DSTableAdapters.SP_BDMHTableAdapter();
+            ((System.ComponentModel.ISupportInitialize)(this.repositoryItemTextEdit1)).BeginInit();
+            this.pnLeftControl.SuspendLayout();
             this.grbControl.SuspendLayout();
             this.grbDiem.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.numericLanThi)).BeginInit();
@@ -66,20 +81,41 @@
             ((System.ComponentModel.ISupportInitialize)(this.lookUpEditMalop.Properties)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.bdsLOP)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.txtTenlop.Properties)).BeginInit();
+            this.pnRight.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.gridControlNhap)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.gridViewnNhap)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.repositoryItemTextEditNhap)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.gridControlSua)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.bdsSP_BDMH)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.gridViewSua)).BeginInit();
             this.SuspendLayout();
             // 
-            // pnLeftNhapDiem
+            // repositoryItemTextEdit1
             // 
-            this.pnLeftNhapDiem.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(192)))), ((int)(((byte)(192)))), ((int)(((byte)(255)))));
-            this.pnLeftNhapDiem.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D;
-            this.pnLeftNhapDiem.Controls.Add(this.button1);
-            this.pnLeftNhapDiem.Controls.Add(this.grbControl);
-            this.pnLeftNhapDiem.Controls.Add(this.grbDiem);
-            this.pnLeftNhapDiem.Dock = System.Windows.Forms.DockStyle.Left;
-            this.pnLeftNhapDiem.Location = new System.Drawing.Point(0, 0);
-            this.pnLeftNhapDiem.Name = "pnLeftNhapDiem";
-            this.pnLeftNhapDiem.Size = new System.Drawing.Size(437, 503);
-            this.pnLeftNhapDiem.TabIndex = 0;
+            this.repositoryItemTextEdit1.AutoHeight = false;
+            this.repositoryItemTextEdit1.Name = "repositoryItemTextEdit1";
+            // 
+            // pnLeftControl
+            // 
+            this.pnLeftControl.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(192)))), ((int)(((byte)(192)))), ((int)(((byte)(255)))));
+            this.pnLeftControl.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D;
+            this.pnLeftControl.Controls.Add(this.button1);
+            this.pnLeftControl.Controls.Add(this.grbControl);
+            this.pnLeftControl.Controls.Add(this.grbDiem);
+            this.pnLeftControl.Dock = System.Windows.Forms.DockStyle.Left;
+            this.pnLeftControl.Location = new System.Drawing.Point(0, 0);
+            this.pnLeftControl.Name = "pnLeftControl";
+            this.pnLeftControl.Size = new System.Drawing.Size(437, 503);
+            this.pnLeftControl.TabIndex = 0;
+            // 
+            // button1
+            // 
+            this.button1.Location = new System.Drawing.Point(239, 357);
+            this.button1.Name = "button1";
+            this.button1.Size = new System.Drawing.Size(75, 23);
+            this.button1.TabIndex = 3;
+            this.button1.Text = "Enable Edit";
+            this.button1.UseVisualStyleBackColor = true;
             // 
             // grbControl
             // 
@@ -100,6 +136,7 @@
             this.btnHuy.TabIndex = 2;
             this.btnHuy.Text = "Hủy";
             this.btnHuy.UseVisualStyleBackColor = true;
+            this.btnHuy.Click += new System.EventHandler(this.btnHuy_Click);
             // 
             // btnLuu
             // 
@@ -109,6 +146,7 @@
             this.btnLuu.TabIndex = 1;
             this.btnLuu.Text = "Lưu";
             this.btnLuu.UseVisualStyleBackColor = true;
+            this.btnLuu.Click += new System.EventHandler(this.btnLuu_Click);
             // 
             // btnNhap
             // 
@@ -118,6 +156,7 @@
             this.btnNhap.TabIndex = 0;
             this.btnNhap.Text = "Start";
             this.btnNhap.UseVisualStyleBackColor = true;
+            this.btnNhap.Click += new System.EventHandler(this.btnNhap_Click);
             // 
             // grbDiem
             // 
@@ -137,7 +176,7 @@
             this.grbDiem.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.grbDiem.Location = new System.Drawing.Point(10, 10);
             this.grbDiem.Name = "grbDiem";
-            this.grbDiem.Size = new System.Drawing.Size(416, 307);
+            this.grbDiem.Size = new System.Drawing.Size(423, 309);
             this.grbDiem.TabIndex = 0;
             this.grbDiem.TabStop = false;
             this.grbDiem.Text = "Nhập điểm";
@@ -280,7 +319,6 @@
             this.lblTenKhoa.Size = new System.Drawing.Size(39, 14);
             this.lblTenKhoa.TabIndex = 3;
             this.lblTenKhoa.Text = "KHOA";
-            this.lblTenKhoa.Click += new System.EventHandler(this.lblTenKhoa_Click);
             // 
             // cmbKhoa
             // 
@@ -293,14 +331,169 @@
             this.cmbKhoa.TabIndex = 2;
             this.cmbKhoa.SelectedIndexChanged += new System.EventHandler(this.cmbKhoa_SelectedIndexChanged);
             // 
-            // panel2
+            // pnRight
             // 
-            this.panel2.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D;
-            this.panel2.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.panel2.Location = new System.Drawing.Point(437, 0);
-            this.panel2.Name = "panel2";
-            this.panel2.Size = new System.Drawing.Size(409, 503);
-            this.panel2.TabIndex = 1;
+            this.pnRight.Controls.Add(this.gridControlNhap);
+            this.pnRight.Controls.Add(this.gridControlSua);
+            this.pnRight.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.pnRight.Location = new System.Drawing.Point(437, 0);
+            this.pnRight.Name = "pnRight";
+            this.pnRight.Size = new System.Drawing.Size(549, 503);
+            this.pnRight.TabIndex = 1;
+            // 
+            // gridControlNhap
+            // 
+            this.gridControlNhap.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.gridControlNhap.Location = new System.Drawing.Point(0, 0);
+            this.gridControlNhap.MainView = this.gridViewnNhap;
+            this.gridControlNhap.Name = "gridControlNhap";
+            this.gridControlNhap.RepositoryItems.AddRange(new DevExpress.XtraEditors.Repository.RepositoryItem[] {
+            this.repositoryItemTextEditNhap});
+            this.gridControlNhap.Size = new System.Drawing.Size(549, 503);
+            this.gridControlNhap.TabIndex = 0;
+            this.gridControlNhap.ViewCollection.AddRange(new DevExpress.XtraGrid.Views.Base.BaseView[] {
+            this.gridViewnNhap});
+            // 
+            // gridViewnNhap
+            // 
+            this.gridViewnNhap.Appearance.FocusedRow.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(128)))), ((int)(((byte)(255)))), ((int)(((byte)(128)))));
+            this.gridViewnNhap.Appearance.FocusedRow.Options.UseBackColor = true;
+            this.gridViewnNhap.Appearance.SelectedRow.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(128)))), ((int)(((byte)(255)))), ((int)(((byte)(128)))));
+            this.gridViewnNhap.Appearance.SelectedRow.Options.UseBackColor = true;
+            this.gridViewnNhap.Columns.AddRange(new DevExpress.XtraGrid.Columns.GridColumn[] {
+            this.colHoTen,
+            this.colMASV,
+            this.colDIEM});
+            this.gridViewnNhap.GridControl = this.gridControlNhap;
+            this.gridViewnNhap.Name = "gridViewnNhap";
+            this.gridViewnNhap.OptionsView.ShowGroupPanel = false;
+            this.gridViewnNhap.HiddenEditor += new System.EventHandler(this.gridViewnNhap_HiddenEditor);
+            this.gridViewnNhap.ValidatingEditor += new DevExpress.XtraEditors.Controls.BaseContainerValidateEditorEventHandler(this.gridViewnNhap_ValidatingEditor);
+            // 
+            // colHoTen
+            // 
+            this.colHoTen.AppearanceCell.Options.UseTextOptions = true;
+            this.colHoTen.AppearanceCell.TextOptions.HAlignment = DevExpress.Utils.HorzAlignment.Center;
+            this.colHoTen.AppearanceHeader.Options.UseTextOptions = true;
+            this.colHoTen.AppearanceHeader.TextOptions.HAlignment = DevExpress.Utils.HorzAlignment.Center;
+            this.colHoTen.Caption = "Họ và Tên";
+            this.colHoTen.FieldName = "HoTen";
+            this.colHoTen.Name = "colHoTen";
+            this.colHoTen.OptionsColumn.ReadOnly = true;
+            this.colHoTen.Visible = true;
+            this.colHoTen.VisibleIndex = 0;
+            // 
+            // colMASV
+            // 
+            this.colMASV.AppearanceCell.Options.UseTextOptions = true;
+            this.colMASV.AppearanceCell.TextOptions.HAlignment = DevExpress.Utils.HorzAlignment.Center;
+            this.colMASV.AppearanceHeader.Options.UseTextOptions = true;
+            this.colMASV.AppearanceHeader.TextOptions.HAlignment = DevExpress.Utils.HorzAlignment.Center;
+            this.colMASV.Caption = "Mã sinh viên";
+            this.colMASV.FieldName = "MASV";
+            this.colMASV.Name = "colMASV";
+            this.colMASV.OptionsColumn.ReadOnly = true;
+            this.colMASV.Visible = true;
+            this.colMASV.VisibleIndex = 1;
+            // 
+            // colDIEM
+            // 
+            this.colDIEM.AppearanceCell.Options.UseTextOptions = true;
+            this.colDIEM.AppearanceCell.TextOptions.HAlignment = DevExpress.Utils.HorzAlignment.Center;
+            this.colDIEM.AppearanceHeader.Options.UseTextOptions = true;
+            this.colDIEM.AppearanceHeader.TextOptions.HAlignment = DevExpress.Utils.HorzAlignment.Center;
+            this.colDIEM.Caption = "Điểm";
+            this.colDIEM.ColumnEdit = this.repositoryItemTextEditNhap;
+            this.colDIEM.DisplayFormat.FormatType = DevExpress.Utils.FormatType.Numeric;
+            this.colDIEM.FieldName = "DIEM";
+            this.colDIEM.Name = "colDIEM";
+            this.colDIEM.Visible = true;
+            this.colDIEM.VisibleIndex = 2;
+            // 
+            // repositoryItemTextEditNhap
+            // 
+            this.repositoryItemTextEditNhap.AutoHeight = false;
+            this.repositoryItemTextEditNhap.DisplayFormat.FormatType = DevExpress.Utils.FormatType.Numeric;
+            this.repositoryItemTextEditNhap.EditFormat.FormatType = DevExpress.Utils.FormatType.Numeric;
+            this.repositoryItemTextEditNhap.Mask.BeepOnError = true;
+            this.repositoryItemTextEditNhap.Mask.EditMask = "f";
+            this.repositoryItemTextEditNhap.Mask.MaskType = DevExpress.XtraEditors.Mask.MaskType.Numeric;
+            this.repositoryItemTextEditNhap.Mask.UseMaskAsDisplayFormat = true;
+            this.repositoryItemTextEditNhap.MaxLength = 5;
+            this.repositoryItemTextEditNhap.Name = "repositoryItemTextEditNhap";
+            // 
+            // gridControlSua
+            // 
+            this.gridControlSua.DataSource = this.bdsSP_BDMH;
+            this.gridControlSua.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.gridControlSua.Location = new System.Drawing.Point(0, 0);
+            this.gridControlSua.MainView = this.gridViewSua;
+            this.gridControlSua.Name = "gridControlSua";
+            this.gridControlSua.Size = new System.Drawing.Size(549, 503);
+            this.gridControlSua.TabIndex = 2;
+            this.gridControlSua.ViewCollection.AddRange(new DevExpress.XtraGrid.Views.Base.BaseView[] {
+            this.gridViewSua});
+            // 
+            // bdsSP_BDMH
+            // 
+            this.bdsSP_BDMH.DataMember = "SP_BDMH";
+            this.bdsSP_BDMH.DataSource = this.DS;
+            // 
+            // gridViewSua
+            // 
+            this.gridViewSua.Appearance.FocusedRow.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(128)))), ((int)(((byte)(255)))), ((int)(((byte)(128)))));
+            this.gridViewSua.Appearance.FocusedRow.Options.UseBackColor = true;
+            this.gridViewSua.Columns.AddRange(new DevExpress.XtraGrid.Columns.GridColumn[] {
+            this.gridColumn1,
+            this.gridColumn2,
+            this.gridColumn3});
+            this.gridViewSua.GridControl = this.gridControlSua;
+            this.gridViewSua.Name = "gridViewSua";
+            this.gridViewSua.OptionsView.ShowGroupPanel = false;
+            // 
+            // gridColumn1
+            // 
+            this.gridColumn1.AppearanceCell.Options.UseTextOptions = true;
+            this.gridColumn1.AppearanceCell.TextOptions.HAlignment = DevExpress.Utils.HorzAlignment.Center;
+            this.gridColumn1.AppearanceHeader.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.gridColumn1.AppearanceHeader.Options.UseFont = true;
+            this.gridColumn1.AppearanceHeader.Options.UseTextOptions = true;
+            this.gridColumn1.AppearanceHeader.TextOptions.HAlignment = DevExpress.Utils.HorzAlignment.Center;
+            this.gridColumn1.Caption = "Họ và tên";
+            this.gridColumn1.FieldName = "HoTen";
+            this.gridColumn1.Name = "gridColumn1";
+            this.gridColumn1.OptionsColumn.ReadOnly = true;
+            this.gridColumn1.Visible = true;
+            this.gridColumn1.VisibleIndex = 0;
+            // 
+            // gridColumn2
+            // 
+            this.gridColumn2.AppearanceCell.Options.UseTextOptions = true;
+            this.gridColumn2.AppearanceCell.TextOptions.HAlignment = DevExpress.Utils.HorzAlignment.Center;
+            this.gridColumn2.AppearanceHeader.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.gridColumn2.AppearanceHeader.Options.UseFont = true;
+            this.gridColumn2.AppearanceHeader.Options.UseTextOptions = true;
+            this.gridColumn2.AppearanceHeader.TextOptions.HAlignment = DevExpress.Utils.HorzAlignment.Center;
+            this.gridColumn2.Caption = "Mã sinh viên";
+            this.gridColumn2.FieldName = "MASV";
+            this.gridColumn2.Name = "gridColumn2";
+            this.gridColumn2.OptionsColumn.ReadOnly = true;
+            this.gridColumn2.Visible = true;
+            this.gridColumn2.VisibleIndex = 1;
+            // 
+            // gridColumn3
+            // 
+            this.gridColumn3.AppearanceCell.Options.UseTextOptions = true;
+            this.gridColumn3.AppearanceCell.TextOptions.HAlignment = DevExpress.Utils.HorzAlignment.Center;
+            this.gridColumn3.AppearanceHeader.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.gridColumn3.AppearanceHeader.Options.UseFont = true;
+            this.gridColumn3.AppearanceHeader.Options.UseTextOptions = true;
+            this.gridColumn3.AppearanceHeader.TextOptions.HAlignment = DevExpress.Utils.HorzAlignment.Center;
+            this.gridColumn3.Caption = "Điểm";
+            this.gridColumn3.FieldName = "DIEM";
+            this.gridColumn3.Name = "gridColumn3";
+            this.gridColumn3.Visible = true;
+            this.gridColumn3.VisibleIndex = 2;
             // 
             // LOPTableAdapter
             // 
@@ -321,26 +514,22 @@
             // 
             this.MONHOCTableAdapter.ClearBeforeFill = true;
             // 
-            // button1
+            // SP_BDMHTableAdapter
             // 
-            this.button1.Location = new System.Drawing.Point(239, 357);
-            this.button1.Name = "button1";
-            this.button1.Size = new System.Drawing.Size(75, 23);
-            this.button1.TabIndex = 3;
-            this.button1.Text = "Enable Edit";
-            this.button1.UseVisualStyleBackColor = true;
+            this.SP_BDMHTableAdapter.ClearBeforeFill = true;
             // 
             // frmDiem
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(846, 503);
-            this.Controls.Add(this.panel2);
-            this.Controls.Add(this.pnLeftNhapDiem);
+            this.ClientSize = new System.Drawing.Size(986, 503);
+            this.Controls.Add(this.pnRight);
+            this.Controls.Add(this.pnLeftControl);
             this.Name = "frmDiem";
             this.Text = "Quản lý điểm";
             this.Load += new System.EventHandler(this.frmDiem_Load);
-            this.pnLeftNhapDiem.ResumeLayout(false);
+            ((System.ComponentModel.ISupportInitialize)(this.repositoryItemTextEdit1)).EndInit();
+            this.pnLeftControl.ResumeLayout(false);
             this.grbControl.ResumeLayout(false);
             this.grbDiem.ResumeLayout(false);
             this.grbDiem.PerformLayout();
@@ -352,14 +541,21 @@
             ((System.ComponentModel.ISupportInitialize)(this.lookUpEditMalop.Properties)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.bdsLOP)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.txtTenlop.Properties)).EndInit();
+            this.pnRight.ResumeLayout(false);
+            ((System.ComponentModel.ISupportInitialize)(this.gridControlNhap)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.gridViewnNhap)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.repositoryItemTextEditNhap)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.gridControlSua)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.bdsSP_BDMH)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.gridViewSua)).EndInit();
             this.ResumeLayout(false);
 
         }
 
         #endregion
 
-        private System.Windows.Forms.Panel pnLeftNhapDiem;
-        private System.Windows.Forms.Panel panel2;
+        private System.Windows.Forms.Panel pnLeftControl;
+        private System.Windows.Forms.Panel pnRight;
         private System.Windows.Forms.GroupBox grbDiem;
         private System.Windows.Forms.Label lblTenKhoa;
         private System.Windows.Forms.ComboBox cmbKhoa;
@@ -384,5 +580,19 @@
         private System.Windows.Forms.BindingSource bdsMonhoc;
         private System.Windows.Forms.NumericUpDown numericLanThi;
         private System.Windows.Forms.Button button1;
+        private System.Windows.Forms.BindingSource bdsSP_BDMH;
+        private DSTableAdapters.SP_BDMHTableAdapter SP_BDMHTableAdapter;
+        private DevExpress.XtraGrid.GridControl gridControlNhap;
+        private DevExpress.XtraGrid.Views.Grid.GridView gridViewnNhap;
+        private DevExpress.XtraGrid.GridControl gridControlSua;
+        private DevExpress.XtraGrid.Views.Grid.GridView gridViewSua;
+        private DevExpress.XtraGrid.Columns.GridColumn gridColumn1;
+        private DevExpress.XtraGrid.Columns.GridColumn gridColumn2;
+        private DevExpress.XtraGrid.Columns.GridColumn gridColumn3;
+        private DevExpress.XtraEditors.Repository.RepositoryItemTextEdit repositoryItemTextEdit1;
+        private DevExpress.XtraGrid.Columns.GridColumn colHoTen;
+        private DevExpress.XtraGrid.Columns.GridColumn colMASV;
+        private DevExpress.XtraGrid.Columns.GridColumn colDIEM;
+        private DevExpress.XtraEditors.Repository.RepositoryItemTextEdit repositoryItemTextEditNhap;
     }
 }

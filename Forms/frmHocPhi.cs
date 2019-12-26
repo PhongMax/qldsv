@@ -17,5 +17,14 @@ namespace QLDSV.Forms
         {
             InitializeComponent();
         }
+
+        private void frmHocPhi_Load(object sender, EventArgs e)
+        {
+            DataTable tblDiem = Program.ExecSqlDataTable("EXEC	[dbo].[SP_DSSV_MH] @malop = N'd16cqc1'");
+
+            this.gridControl1.DataSource = tblDiem;
+
+
+        }
     }
 }
