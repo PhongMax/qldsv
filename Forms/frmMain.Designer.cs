@@ -95,7 +95,7 @@
             // lblHOTEN
             // 
             this.lblHOTEN.Name = "lblHOTEN";
-            this.lblHOTEN.Size = new System.Drawing.Size(46, 17);
+            this.lblHOTEN.Size = new System.Drawing.Size(45, 17);
             this.lblHOTEN.Text = "HOTEN";
             // 
             // lblNHOM
@@ -196,6 +196,7 @@
             this.barButton_DSDHP.ImageOptions.Image = ((System.Drawing.Image)(resources.GetObject("barButton_DSDHP.ImageOptions.Image")));
             this.barButton_DSDHP.ImageOptions.LargeImage = ((System.Drawing.Image)(resources.GetObject("barButton_DSDHP.ImageOptions.LargeImage")));
             this.barButton_DSDHP.Name = "barButton_DSDHP";
+            this.barButton_DSDHP.ItemClick += new DevExpress.XtraBars.ItemClickEventHandler(this.barButton_DSDHP_ItemClick);
             // 
             // ribbonPageGroup8
             // 
@@ -210,6 +211,7 @@
             this.barButton_BDTK.ImageOptions.Image = ((System.Drawing.Image)(resources.GetObject("barButton_BDTK.ImageOptions.Image")));
             this.barButton_BDTK.ImageOptions.LargeImage = ((System.Drawing.Image)(resources.GetObject("barButton_BDTK.ImageOptions.LargeImage")));
             this.barButton_BDTK.Name = "barButton_BDTK";
+            this.barButton_BDTK.ItemClick += new DevExpress.XtraBars.ItemClickEventHandler(this.barButton_BDTK_ItemClick);
             // 
             // ribbonPage1
             // 
@@ -350,7 +352,6 @@
             this.ribbonPage2,
             this.ribbonPage4});
             this.ribbonControl1.Size = new System.Drawing.Size(1011, 143);
-    
             // 
             // barButton_Register
             // 
@@ -422,6 +423,7 @@
             this.Text = "QUẢN LÝ ĐIỂM SINH VIÊN";
             this.WindowState = System.Windows.Forms.FormWindowState.Maximized;
             this.FormClosing += new System.Windows.Forms.FormClosingEventHandler(this.frmMain_FormClosing);
+            this.Load += new System.EventHandler(this.frmMain_Load);
             this.statusStrip.ResumeLayout(false);
             this.statusStrip.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.ribbonControl1)).EndInit();

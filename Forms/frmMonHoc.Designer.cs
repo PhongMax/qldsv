@@ -366,7 +366,7 @@
             // 
             this.errorProvider.ContainerControl = this;
             // 
-            // bdsDiem
+            // bdsSpDSSV_Diem
             // 
             this.bdsDiem.DataMember = "FK_DIEM_MONHOC1";
             this.bdsDiem.DataSource = this.bdsMONHOC;

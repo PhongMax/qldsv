@@ -28,13 +28,6 @@ namespace QLDSV
             combo.SelectedIndex = Program.MKhoa;
         }
 
-        //public static void BindingDataToComboReport(ComboBox combo, Object data, string type)
-        //{
-        //    if (type.Equals("TENLOP"))
-        //    {
-        //        combo.DataSource = data;
-        //    }
-        //}
 
         public static string GetMaKhoa()
         {
