@@ -32,25 +32,26 @@
             this.label_Khoa = new System.Windows.Forms.Label();
             this.label_TenLop = new System.Windows.Forms.Label();
             this.label_TenMonHoc = new System.Windows.Forms.Label();
-            this.label_LanThi = new System.Windows.Forms.Label();
             this.label_NgayThi = new System.Windows.Forms.Label();
             this.cmbKhoa = new System.Windows.Forms.ComboBox();
             this.cmbTenLop = new System.Windows.Forms.ComboBox();
             this.bdsLOP = new System.Windows.Forms.BindingSource(this.components);
-            this.dS = new QLDSV.DS();
-            this.cmbTenMonHoc = new System.Windows.Forms.ComboBox();
+            this.DS = new QLDSV.DS();
             this.txtMaLop = new System.Windows.Forms.TextBox();
             this.txtMaMonHoc = new System.Windows.Forms.TextBox();
-            this.cmbLanThi = new System.Windows.Forms.ComboBox();
             this.panelDSTHM = new System.Windows.Forms.Panel();
             this.labelKhoa = new System.Windows.Forms.Label();
             this.button_Thoat = new System.Windows.Forms.Button();
             this.button_IN = new System.Windows.Forms.Button();
             this.dateTimePicker = new System.Windows.Forms.DateTimePicker();
+            this.cmbTenMonHoc = new System.Windows.Forms.ComboBox();
+            this.bdsMONHOC = new System.Windows.Forms.BindingSource(this.components);
             this.LOPTableAdapter = new QLDSV.DSTableAdapters.LOPTableAdapter();
+            this.MONHOCTableAdapter = new QLDSV.DSTableAdapters.MONHOCTableAdapter();
             ((System.ComponentModel.ISupportInitialize)(this.bdsLOP)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.dS)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.DS)).BeginInit();
             this.panelDSTHM.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.bdsMONHOC)).BeginInit();
             this.SuspendLayout();
             // 
             // label_Khoa
@@ -83,21 +84,11 @@
             this.label_TenMonHoc.TabIndex = 2;
             this.label_TenMonHoc.Text = "TÊN MÔN HỌC";
             // 
-            // label_LanThi
-            // 
-            this.label_LanThi.AutoSize = true;
-            this.label_LanThi.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label_LanThi.Location = new System.Drawing.Point(115, 145);
-            this.label_LanThi.Name = "label_LanThi";
-            this.label_LanThi.Size = new System.Drawing.Size(68, 17);
-            this.label_LanThi.TabIndex = 3;
-            this.label_LanThi.Text = "LẦN THI";
-            // 
             // label_NgayThi
             // 
             this.label_NgayThi.AutoSize = true;
             this.label_NgayThi.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label_NgayThi.Location = new System.Drawing.Point(291, 141);
+            this.label_NgayThi.Location = new System.Drawing.Point(102, 145);
             this.label_NgayThi.Name = "label_NgayThi";
             this.label_NgayThi.Size = new System.Drawing.Size(81, 17);
             this.label_NgayThi.TabIndex = 4;
@@ -129,22 +120,13 @@
             // bdsLOP
             // 
             this.bdsLOP.DataMember = "LOP";
-            this.bdsLOP.DataSource = this.dS;
+            this.bdsLOP.DataSource = this.DS;
             // 
-            // dS
+            // DS
             // 
-            this.dS.DataSetName = "DS";
-            this.dS.EnforceConstraints = false;
-            this.dS.SchemaSerializationMode = System.Data.SchemaSerializationMode.IncludeSchema;
-            // 
-            // cmbTenMonHoc
-            // 
-            this.cmbTenMonHoc.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
-            this.cmbTenMonHoc.FormattingEnabled = true;
-            this.cmbTenMonHoc.Location = new System.Drawing.Point(209, 103);
-            this.cmbTenMonHoc.Name = "cmbTenMonHoc";
-            this.cmbTenMonHoc.Size = new System.Drawing.Size(393, 24);
-            this.cmbTenMonHoc.TabIndex = 7;
+            this.DS.DataSetName = "DS";
+            this.DS.EnforceConstraints = false;
+            this.DS.SchemaSerializationMode = System.Data.SchemaSerializationMode.IncludeSchema;
             // 
             // txtMaLop
             // 
@@ -160,15 +142,6 @@
             this.txtMaMonHoc.Size = new System.Drawing.Size(137, 23);
             this.txtMaMonHoc.TabIndex = 9;
             // 
-            // cmbLanThi
-            // 
-            this.cmbLanThi.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
-            this.cmbLanThi.FormattingEnabled = true;
-            this.cmbLanThi.Location = new System.Drawing.Point(209, 141);
-            this.cmbLanThi.Name = "cmbLanThi";
-            this.cmbLanThi.Size = new System.Drawing.Size(46, 24);
-            this.cmbLanThi.TabIndex = 10;
-            // 
             // panelDSTHM
             // 
             this.panelDSTHM.BackColor = System.Drawing.Color.WhiteSmoke;
@@ -176,14 +149,12 @@
             this.panelDSTHM.Controls.Add(this.button_Thoat);
             this.panelDSTHM.Controls.Add(this.button_IN);
             this.panelDSTHM.Controls.Add(this.dateTimePicker);
-            this.panelDSTHM.Controls.Add(this.cmbLanThi);
             this.panelDSTHM.Controls.Add(this.txtMaMonHoc);
             this.panelDSTHM.Controls.Add(this.txtMaLop);
             this.panelDSTHM.Controls.Add(this.cmbTenMonHoc);
             this.panelDSTHM.Controls.Add(this.cmbTenLop);
             this.panelDSTHM.Controls.Add(this.cmbKhoa);
             this.panelDSTHM.Controls.Add(this.label_NgayThi);
-            this.panelDSTHM.Controls.Add(this.label_LanThi);
             this.panelDSTHM.Controls.Add(this.label_TenMonHoc);
             this.panelDSTHM.Controls.Add(this.label_TenLop);
             this.panelDSTHM.Controls.Add(this.label_Khoa);
@@ -228,14 +199,36 @@
             // dateTimePicker
             // 
             this.dateTimePicker.Font = new System.Drawing.Font("Microsoft Sans Serif", 8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.dateTimePicker.Location = new System.Drawing.Point(378, 141);
+            this.dateTimePicker.Location = new System.Drawing.Point(212, 145);
             this.dateTimePicker.Name = "dateTimePicker";
-            this.dateTimePicker.Size = new System.Drawing.Size(224, 20);
+            this.dateTimePicker.Size = new System.Drawing.Size(390, 20);
             this.dateTimePicker.TabIndex = 11;
+            // 
+            // cmbTenMonHoc
+            // 
+            this.cmbTenMonHoc.DataSource = this.bdsMONHOC;
+            this.cmbTenMonHoc.DisplayMember = "TENMH";
+            this.cmbTenMonHoc.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this.cmbTenMonHoc.FormattingEnabled = true;
+            this.cmbTenMonHoc.Location = new System.Drawing.Point(209, 103);
+            this.cmbTenMonHoc.Name = "cmbTenMonHoc";
+            this.cmbTenMonHoc.Size = new System.Drawing.Size(393, 24);
+            this.cmbTenMonHoc.TabIndex = 7;
+            this.cmbTenMonHoc.ValueMember = "MAMH";
+            this.cmbTenMonHoc.SelectedIndexChanged += new System.EventHandler(this.cmbTenMonHoc_SelectedIndexChanged);
+            // 
+            // bdsMONHOC
+            // 
+            this.bdsMONHOC.DataMember = "MONHOC";
+            this.bdsMONHOC.DataSource = this.DS;
             // 
             // LOPTableAdapter
             // 
             this.LOPTableAdapter.ClearBeforeFill = true;
+            // 
+            // MONHOCTableAdapter
+            // 
+            this.MONHOCTableAdapter.ClearBeforeFill = true;
             // 
             // DSTHM
             // 
@@ -247,9 +240,10 @@
             this.Text = "DSTHM";
             this.Load += new System.EventHandler(this.DSTHM_Load);
             ((System.ComponentModel.ISupportInitialize)(this.bdsLOP)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.dS)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.DS)).EndInit();
             this.panelDSTHM.ResumeLayout(false);
             this.panelDSTHM.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.bdsMONHOC)).EndInit();
             this.ResumeLayout(false);
 
         }
@@ -259,21 +253,21 @@
         private System.Windows.Forms.Label label_Khoa;
         private System.Windows.Forms.Label label_TenLop;
         private System.Windows.Forms.Label label_TenMonHoc;
-        private System.Windows.Forms.Label label_LanThi;
         private System.Windows.Forms.Label label_NgayThi;
         private System.Windows.Forms.ComboBox cmbKhoa;
         private System.Windows.Forms.ComboBox cmbTenLop;
-        private System.Windows.Forms.ComboBox cmbTenMonHoc;
         private System.Windows.Forms.TextBox txtMaLop;
         private System.Windows.Forms.TextBox txtMaMonHoc;
-        private System.Windows.Forms.ComboBox cmbLanThi;
         private System.Windows.Forms.Panel panelDSTHM;
         private System.Windows.Forms.DateTimePicker dateTimePicker;
         private System.Windows.Forms.Button button_IN;
         private System.Windows.Forms.Button button_Thoat;
         private System.Windows.Forms.Label labelKhoa;
-        private DS dS;
+        private DS DS;
         private System.Windows.Forms.BindingSource bdsLOP;
         private DSTableAdapters.LOPTableAdapter LOPTableAdapter;
+        private System.Windows.Forms.ComboBox cmbTenMonHoc;
+        private System.Windows.Forms.BindingSource bdsMONHOC;
+        private DSTableAdapters.MONHOCTableAdapter MONHOCTableAdapter;
     }
 }
