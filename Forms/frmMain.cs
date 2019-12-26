@@ -27,6 +27,11 @@ namespace QLDSV
         {
             if (Program.MGroup == Program.NhomQuyen[2])// PKT
             {
+                this.barButtonItem_Lop.Enabled = false;
+                this.barButtonItem_MonHoc.Enabled = false;
+                this.barButtonItem_SinhVien.Enabled = false;
+                this.barButtonItem_Diem.Enabled = false;
+
                 this.barButton_DSDHP.Enabled = true;
                 this.barButton_DSSV.Enabled = false;
                 this.barButton_DSTHM.Enabled = false;
@@ -60,10 +65,36 @@ namespace QLDSV
 
 
         // ============================ BUTTON EVENT ============================ //
-        private void barButtonLOP_ItemClick(object sender, DevExpress.XtraBars.ItemClickEventArgs e)
+        private void barButtonItem_Lop_ItemClick(object sender, DevExpress.XtraBars.ItemClickEventArgs e)
         {
-           
+            if (!(Program.MGroup == Program.NhomQuyen[2]))
+            {
+                ShowMdiChildren(typeof(frmLop));
+            }
         }
+        private void barButtonItem_MonHoc_ItemClick(object sender, DevExpress.XtraBars.ItemClickEventArgs e)
+        {
+            if (!(Program.MGroup == Program.NhomQuyen[2]))
+            {
+                ShowMdiChildren(typeof(frmMonHoc));
+            }
+        }
+        private void barButtonItem_SinhVien_ItemClick(object sender, DevExpress.XtraBars.ItemClickEventArgs e)
+        {
+            if (!(Program.MGroup == Program.NhomQuyen[2]))
+            {
+                ShowMdiChildren(typeof(frmSinhVien));
+            }
+        }
+        private void barButtonItem_Diem_ItemClick(object sender, DevExpress.XtraBars.ItemClickEventArgs e)
+        {
+            if (!(Program.MGroup == Program.NhomQuyen[2]))
+            {
+                ShowMdiChildren(typeof(frmDiem));
+            }
+        }
+
+
 
 
         // TODO : Close Event

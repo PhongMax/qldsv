@@ -205,7 +205,7 @@ namespace QLDSV.Forms
 
         private void btnHuy_Click(object sender, EventArgs e)
         {
-            DialogResult dr=   MessageBox.Show("Bạn thật sự muốn hủy thao tác đăng ký tài khoản?",
+            DialogResult dr = XtraMessageBox.Show("Bạn thật sự muốn hủy thao tác đăng ký tài khoản?",
                       "Xác thực", MessageBoxButtons.YesNo);
 
             if (dr == DialogResult.No)
