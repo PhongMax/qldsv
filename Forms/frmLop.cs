@@ -32,7 +32,6 @@ namespace QLDSV.Forms
         public frmLop()
         {
             InitializeComponent();
-            //initLockupEditColumn();
         }
 
         private void lOPBindingNavigatorSaveItem_Click(object sender, EventArgs e)
@@ -586,6 +585,7 @@ namespace QLDSV.Forms
                     this.bdsSV.ResetCurrentItem();// tự động render để hiển thị dữ liệu mới
                     this.SINHVIENTableAdapter.Update(this.DS.SINHVIEN);
 
+                    this.cmbKhoa.Enabled = true;
                     MessageBox.Show("Ghi dữ liệu thành công !","Thành Công", MessageBoxButtons.OK);
 
 
@@ -747,6 +747,25 @@ namespace QLDSV.Forms
                 //_positionSV = bdsSV.Count - 1;
                 _positionSV = this.bdsSV.Position;
             }
+        }
+
+        private void gridViewSinhVien_InitNewRow(object sender, InitNewRowEventArgs e)
+        {
+
+            GridView view = sender as GridView;
+            view.SetRowCellValue(e.RowHandle, view.Columns["NGHIHOC"], 0);
+            view.SetRowCellValue(e.RowHandle, view.Columns["PHAI"], 1);
+        }
+
+        private void gridView1_MasterRowGetRelationDisplayCaption(object sender, MasterRowGetRelationNameEventArgs e)
+        {
+            e.RelationName = "Danh sách sinh viên";
+        }
+
+        private void repositoryItemTextEditMaSV_EditValueChanged(object sender, EventArgs e)
+        {
+            // thường thành hoa
+            repositoryItemTextEditMaSV.CharacterCasing = CharacterCasing.Upper;
         }
     }
 }
