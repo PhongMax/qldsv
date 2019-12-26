@@ -62,6 +62,8 @@ namespace QLDSV.Report
             {
                 this.txtMaSV.Text = "Lớp Chưa Có Sinh Viên";
             }
+            this.cmbTenSinhVien.Visible = false;
+
         }
 
         // ============================= EVENT ============================= //
@@ -91,8 +93,7 @@ namespace QLDSV.Report
 
             if (this.cmbTenSinhVien.SelectedValue != null)
             {
-                //this.txtMaSV.Text = this.cmbTenSinhVien.SelectedValue.ToString();
-                this.txtMaSV.Text = "NO NO NO";
+                this.txtMaSV.Text = this.cmbTenSinhVien.SelectedValue.ToString();
             }
             else
             {
@@ -100,8 +101,23 @@ namespace QLDSV.Report
             }
         }
 
+        private void btnSelectSinhVien_Click(object sender, EventArgs e)
+        {
+            this.txtMaSV.Text = "";
+            this.txtMaSV.Visible = false;
+            if (this.cmbTenSinhVien.Visible == false)
+            {
+                this.cmbTenSinhVien.Visible = true;
+            } else
+            {
+                this.cmbTenSinhVien.Visible = false;
+            }
+            
+        }
+
         private void cmbTenSinhVien_SelectedIndexChanged(object sender, EventArgs e)
         {
+            this.txtMaSV.Visible = true;
             if (this.cmbTenSinhVien.SelectedValue != null)
             {
                 this.txtMaSV.Text = this.cmbTenSinhVien.SelectedValue.ToString();
@@ -113,10 +129,15 @@ namespace QLDSV.Report
         }
 
 
+
         private void button_IN_Click(object sender, EventArgs e)
         {
             // Chưa làm validate MASV có tồn tại không
             XtraReport_PD report = new XtraReport_PD(this.txtMaSV.Text.Trim().ToString());
+
+            report.lblTenLop.Text = this.cmbTenLop.Text;
+            report.lblHoVaTen.Text = this.cmbTenSinhVien.Text;
+
             ReportPrintTool print = new ReportPrintTool(report);
             print.ShowPreviewDialog();
         }

@@ -30,6 +30,11 @@
         {
             this.components = new System.ComponentModel.Container();
             this.panelPD = new System.Windows.Forms.Panel();
+            this.cmbTenSinhVien = new System.Windows.Forms.ComboBox();
+            this.bdsSINHVIENFK = new System.Windows.Forms.BindingSource(this.components);
+            this.bdsLOP = new System.Windows.Forms.BindingSource(this.components);
+            this.DS = new QLDSV.DS();
+            this.labelKhoa = new System.Windows.Forms.Label();
             this.button_THOAT = new System.Windows.Forms.Button();
             this.button_IN = new System.Windows.Forms.Button();
             this.labelMaSV = new System.Windows.Forms.Label();
@@ -38,21 +43,18 @@
             this.label_Khoa = new System.Windows.Forms.Label();
             this.cmbTenLop = new System.Windows.Forms.ComboBox();
             this.cmbKhoa = new System.Windows.Forms.ComboBox();
-            this.labelKhoa = new System.Windows.Forms.Label();
-            this.DS = new QLDSV.DS();
-            this.bdsLOP = new System.Windows.Forms.BindingSource(this.components);
             this.LOPTableAdapter = new QLDSV.DSTableAdapters.LOPTableAdapter();
-            this.cmbTenSinhVien = new System.Windows.Forms.ComboBox();
-            this.bdsSINHVIENFK = new System.Windows.Forms.BindingSource(this.components);
             this.sINHVIENTableAdapter = new QLDSV.DSTableAdapters.SINHVIENTableAdapter();
+            this.btnSelectSinhVien = new System.Windows.Forms.Button();
             this.panelPD.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.DS)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.bdsLOP)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.bdsSINHVIENFK)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.bdsLOP)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.DS)).BeginInit();
             this.SuspendLayout();
             // 
             // panelPD
             // 
+            this.panelPD.Controls.Add(this.btnSelectSinhVien);
             this.panelPD.Controls.Add(this.cmbTenSinhVien);
             this.panelPD.Controls.Add(this.labelKhoa);
             this.panelPD.Controls.Add(this.button_THOAT);
@@ -68,6 +70,44 @@
             this.panelPD.Name = "panelPD";
             this.panelPD.Size = new System.Drawing.Size(802, 163);
             this.panelPD.TabIndex = 0;
+            // 
+            // cmbTenSinhVien
+            // 
+            this.cmbTenSinhVien.DataSource = this.bdsSINHVIENFK;
+            this.cmbTenSinhVien.DisplayMember = "TEN";
+            this.cmbTenSinhVien.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this.cmbTenSinhVien.FormattingEnabled = true;
+            this.cmbTenSinhVien.Location = new System.Drawing.Point(344, 91);
+            this.cmbTenSinhVien.Name = "cmbTenSinhVien";
+            this.cmbTenSinhVien.Size = new System.Drawing.Size(169, 21);
+            this.cmbTenSinhVien.TabIndex = 9;
+            this.cmbTenSinhVien.ValueMember = "MASV";
+            this.cmbTenSinhVien.SelectedIndexChanged += new System.EventHandler(this.cmbTenSinhVien_SelectedIndexChanged);
+            // 
+            // bdsSINHVIENFK
+            // 
+            this.bdsSINHVIENFK.DataMember = "FK_SINHVIEN_LOP";
+            this.bdsSINHVIENFK.DataSource = this.bdsLOP;
+            // 
+            // bdsLOP
+            // 
+            this.bdsLOP.DataMember = "LOP";
+            this.bdsLOP.DataSource = this.DS;
+            // 
+            // DS
+            // 
+            this.DS.DataSetName = "DS";
+            this.DS.SchemaSerializationMode = System.Data.SchemaSerializationMode.IncludeSchema;
+            // 
+            // labelKhoa
+            // 
+            this.labelKhoa.AutoSize = true;
+            this.labelKhoa.Font = new System.Drawing.Font("Consolas", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.labelKhoa.Location = new System.Drawing.Point(156, 15);
+            this.labelKhoa.Name = "labelKhoa";
+            this.labelKhoa.Size = new System.Drawing.Size(45, 19);
+            this.labelKhoa.TabIndex = 8;
+            this.labelKhoa.Text = "KHOA";
             // 
             // button_THOAT
             // 
@@ -150,51 +190,24 @@
             this.cmbKhoa.TabIndex = 0;
             this.cmbKhoa.SelectedIndexChanged += new System.EventHandler(this.cmbKhoa_SelectedIndexChanged);
             // 
-            // labelKhoa
-            // 
-            this.labelKhoa.AutoSize = true;
-            this.labelKhoa.Font = new System.Drawing.Font("Consolas", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.labelKhoa.Location = new System.Drawing.Point(156, 15);
-            this.labelKhoa.Name = "labelKhoa";
-            this.labelKhoa.Size = new System.Drawing.Size(45, 19);
-            this.labelKhoa.TabIndex = 8;
-            this.labelKhoa.Text = "KHOA";
-            // 
-            // DS
-            // 
-            this.DS.DataSetName = "DS";
-            this.DS.SchemaSerializationMode = System.Data.SchemaSerializationMode.IncludeSchema;
-            // 
-            // bdsLOP
-            // 
-            this.bdsLOP.DataMember = "LOP";
-            this.bdsLOP.DataSource = this.DS;
-            // 
             // LOPTableAdapter
             // 
             this.LOPTableAdapter.ClearBeforeFill = true;
             // 
-            // cmbTenSinhVien
-            // 
-            this.cmbTenSinhVien.DataSource = this.bdsSINHVIENFK;
-            this.cmbTenSinhVien.DisplayMember = "TEN";
-            this.cmbTenSinhVien.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
-            this.cmbTenSinhVien.FormattingEnabled = true;
-            this.cmbTenSinhVien.Location = new System.Drawing.Point(344, 91);
-            this.cmbTenSinhVien.Name = "cmbTenSinhVien";
-            this.cmbTenSinhVien.Size = new System.Drawing.Size(169, 21);
-            this.cmbTenSinhVien.TabIndex = 9;
-            this.cmbTenSinhVien.ValueMember = "MASV";
-            this.cmbTenSinhVien.SelectedIndexChanged += new System.EventHandler(this.cmbTenSinhVien_SelectedIndexChanged);
-            // 
-            // bdsSINHVIENFK
-            // 
-            this.bdsSINHVIENFK.DataMember = "FK_SINHVIEN_LOP";
-            this.bdsSINHVIENFK.DataSource = this.bdsLOP;
-            // 
             // sINHVIENTableAdapter
             // 
             this.sINHVIENTableAdapter.ClearBeforeFill = true;
+            // 
+            // btnSelectSinhVien
+            // 
+            this.btnSelectSinhVien.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(192)))), ((int)(((byte)(255)))), ((int)(((byte)(192)))));
+            this.btnSelectSinhVien.Location = new System.Drawing.Point(344, 128);
+            this.btnSelectSinhVien.Name = "btnSelectSinhVien";
+            this.btnSelectSinhVien.Size = new System.Drawing.Size(169, 23);
+            this.btnSelectSinhVien.TabIndex = 10;
+            this.btnSelectSinhVien.Text = "CHỌN THEO TÊN";
+            this.btnSelectSinhVien.UseVisualStyleBackColor = false;
+            this.btnSelectSinhVien.Click += new System.EventHandler(this.btnSelectSinhVien_Click);
             // 
             // PD
             // 
@@ -207,9 +220,9 @@
             this.Load += new System.EventHandler(this.PD_Load);
             this.panelPD.ResumeLayout(false);
             this.panelPD.PerformLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.DS)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.bdsLOP)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.bdsSINHVIENFK)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.bdsLOP)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.DS)).EndInit();
             this.ResumeLayout(false);
 
         }
@@ -232,5 +245,6 @@
         private System.Windows.Forms.ComboBox cmbTenSinhVien;
         private System.Windows.Forms.BindingSource bdsSINHVIENFK;
         private DSTableAdapters.SINHVIENTableAdapter sINHVIENTableAdapter;
+        private System.Windows.Forms.Button btnSelectSinhVien;
     }
 }

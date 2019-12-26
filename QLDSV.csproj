@@ -137,6 +137,18 @@
     <Compile Include="Report\BDMH.Designer.cs">
       <DependentUpon>BDMH.cs</DependentUpon>
     </Compile>
+    <Compile Include="Report\BDTK.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Report\BDTK.Designer.cs">
+      <DependentUpon>BDTK.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Report\DSDHP.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Report\DSDHP.Designer.cs">
+      <DependentUpon>DSDHP.cs</DependentUpon>
+    </Compile>
     <Compile Include="Report\DSSV.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -160,6 +172,12 @@
     </Compile>
     <Compile Include="Report\XtraReport_BDMH.Designer.cs">
       <DependentUpon>XtraReport_BDMH.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Report\XtraReport_DSDHP.cs">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="Report\XtraReport_DSDHP.Designer.cs">
+      <DependentUpon>XtraReport_DSDHP.cs</DependentUpon>
     </Compile>
     <Compile Include="Report\XtraReport_DSSV_TheoLop.cs">
       <SubType>Component</SubType>
@@ -218,6 +236,12 @@
     <EmbeddedResource Include="Report\BDMH.resx">
       <DependentUpon>BDMH.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="Report\BDTK.resx">
+      <DependentUpon>BDTK.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Report\DSDHP.resx">
+      <DependentUpon>DSDHP.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="Report\DSSV.resx">
       <DependentUpon>DSSV.cs</DependentUpon>
     </EmbeddedResource>
@@ -229,6 +253,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Report\XtraReport_BDMH.resx">
       <DependentUpon>XtraReport_BDMH.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Report\XtraReport_DSDHP.resx">
+      <DependentUpon>XtraReport_DSDHP.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Report\XtraReport_DSSV_TheoLop.resx">
       <DependentUpon>XtraReport_DSSV_TheoLop.cs</DependentUpon>

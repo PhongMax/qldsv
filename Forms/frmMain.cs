@@ -22,6 +22,19 @@ namespace QLDSV
             InitializeComponent();
         }
 
+
+        private void frmMain_Load(object sender, EventArgs e)
+        {
+            if (Program.MGroup == Program.NhomQuyen[2])// PKT
+            {
+                this.barButton_DSDHP.Enabled = true;
+            }
+            else
+            {
+                this.barButton_DSDHP.Enabled = false;
+            }
+
+        }
         // TODO : HANDLE CONTROL CHILDREN
         private void ShowMdiChildren(Type fType)
         {
@@ -94,6 +107,7 @@ namespace QLDSV
         }
 
 
+
         // ==================== REPORT ZONE ==================== //
         private void barButton_DSSV_ItemClick(object sender, DevExpress.XtraBars.ItemClickEventArgs e)
         {
@@ -113,6 +127,16 @@ namespace QLDSV
         private void barButton_PD_ItemClick(object sender, DevExpress.XtraBars.ItemClickEventArgs e)
         {
             ShowMdiChildren(typeof(Report.PD));
+        }
+
+        private void barButton_DSDHP_ItemClick(object sender, DevExpress.XtraBars.ItemClickEventArgs e)
+        {
+            ShowMdiChildren(typeof(Report.DSDHP));
+        }
+
+        private void barButton_BDTK_ItemClick(object sender, DevExpress.XtraBars.ItemClickEventArgs e)
+        {
+            ShowMdiChildren(typeof(Report.BDTK));
         }
     }
 }
