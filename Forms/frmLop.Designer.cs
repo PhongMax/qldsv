@@ -48,8 +48,8 @@
             this.barDockControlLeft = new DevExpress.XtraBars.BarDockControl();
             this.barDockControlRight = new DevExpress.XtraBars.BarDockControl();
             this.panelBox = new System.Windows.Forms.Panel();
-            this.lblTenKhoa = new System.Windows.Forms.Label();
             this.cmbKhoa = new System.Windows.Forms.ComboBox();
+            this.lblTenKhoa = new System.Windows.Forms.Label();
             this.DS = new QLDSV.DS();
             this.bdsLOP = new System.Windows.Forms.BindingSource(this.components);
             this.LOPTableAdapter = new QLDSV.DSTableAdapters.LOPTableAdapter();
@@ -77,6 +77,7 @@
             this.conLamMoi = new System.Windows.Forms.ToolStripMenuItem();
             this.gridViewSinhVien = new DevExpress.XtraGrid.Views.Grid.GridView();
             this.colMASV = new DevExpress.XtraGrid.Columns.GridColumn();
+            this.repositoryItemTextEditMaSV = new DevExpress.XtraEditors.Repository.RepositoryItemTextEdit();
             this.colHO = new DevExpress.XtraGrid.Columns.GridColumn();
             this.colTEN = new DevExpress.XtraGrid.Columns.GridColumn();
             this.colMALOP1 = new DevExpress.XtraGrid.Columns.GridColumn();
@@ -110,6 +111,7 @@
             ((System.ComponentModel.ISupportInitialize)(this.gridControlSinhVien)).BeginInit();
             this.contextSinhVien.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.gridViewSinhVien)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.repositoryItemTextEditMaSV)).BeginInit();
             this.pnControlLeft.SuspendLayout();
             this.grbLop.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.errorProvider)).BeginInit();
@@ -287,23 +289,13 @@
             // 
             // panelBox
             // 
-            this.panelBox.Controls.Add(this.lblTenKhoa);
             this.panelBox.Controls.Add(this.cmbKhoa);
+            this.panelBox.Controls.Add(this.lblTenKhoa);
             this.panelBox.Dock = System.Windows.Forms.DockStyle.Top;
             this.panelBox.Location = new System.Drawing.Point(0, 24);
             this.panelBox.Name = "panelBox";
             this.panelBox.Size = new System.Drawing.Size(908, 53);
             this.panelBox.TabIndex = 4;
-            // 
-            // lblTenKhoa
-            // 
-            this.lblTenKhoa.AutoSize = true;
-            this.lblTenKhoa.Font = new System.Drawing.Font("Times New Roman", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblTenKhoa.Location = new System.Drawing.Point(431, 17);
-            this.lblTenKhoa.Name = "lblTenKhoa";
-            this.lblTenKhoa.Size = new System.Drawing.Size(56, 19);
-            this.lblTenKhoa.TabIndex = 1;
-            this.lblTenKhoa.Text = "KHOA";
             // 
             // cmbKhoa
             // 
@@ -314,6 +306,16 @@
             this.cmbKhoa.Size = new System.Drawing.Size(273, 22);
             this.cmbKhoa.TabIndex = 0;
             this.cmbKhoa.SelectedIndexChanged += new System.EventHandler(this.cmbKhoa_SelectedIndexChanged);
+            // 
+            // lblTenKhoa
+            // 
+            this.lblTenKhoa.AutoSize = true;
+            this.lblTenKhoa.Font = new System.Drawing.Font("Times New Roman", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblTenKhoa.Location = new System.Drawing.Point(431, 17);
+            this.lblTenKhoa.Name = "lblTenKhoa";
+            this.lblTenKhoa.Size = new System.Drawing.Size(56, 19);
+            this.lblTenKhoa.TabIndex = 1;
+            this.lblTenKhoa.Text = "KHOA";
             // 
             // DS
             // 
@@ -385,6 +387,7 @@
             this.gridView1.OptionsView.ShowFooter = true;
             this.gridView1.OptionsView.ShowGroupPanel = false;
             this.gridView1.CustomDrawRowIndicator += new DevExpress.XtraGrid.Views.Grid.RowIndicatorCustomDrawEventHandler(this.gridView1_CustomDrawRowIndicator);
+            this.gridView1.MasterRowGetRelationDisplayCaption += new DevExpress.XtraGrid.Views.Grid.MasterRowGetRelationNameEventHandler(this.gridView1_MasterRowGetRelationDisplayCaption);
             this.gridView1.FocusedRowChanged += new DevExpress.XtraGrid.Views.Base.FocusedRowChangedEventHandler(this.gridView1_FocusedRowChanged);
             // 
             // colMALOP
@@ -504,6 +507,8 @@
             this.gridControlSinhVien.MainView = this.gridViewSinhVien;
             this.gridControlSinhVien.MenuManager = this.barManagerLop;
             this.gridControlSinhVien.Name = "gridControlSinhVien";
+            this.gridControlSinhVien.RepositoryItems.AddRange(new DevExpress.XtraEditors.Repository.RepositoryItem[] {
+            this.repositoryItemTextEditMaSV});
             this.gridControlSinhVien.Size = new System.Drawing.Size(533, 161);
             this.gridControlSinhVien.TabIndex = 0;
             this.gridControlSinhVien.ViewCollection.AddRange(new DevExpress.XtraGrid.Views.Base.BaseView[] {
@@ -589,19 +594,41 @@
             this.gridViewSinhVien.Name = "gridViewSinhVien";
             this.gridViewSinhVien.OptionsView.ShowGroupPanel = false;
             this.gridViewSinhVien.ShowingEditor += new System.ComponentModel.CancelEventHandler(this.gridViewSinhVien_ShowingEditor);
+            this.gridViewSinhVien.InitNewRow += new DevExpress.XtraGrid.Views.Grid.InitNewRowEventHandler(this.gridViewSinhVien_InitNewRow);
             this.gridViewSinhVien.FocusedRowChanged += new DevExpress.XtraGrid.Views.Base.FocusedRowChangedEventHandler(this.gridViewSinhVien_FocusedRowChanged);
             this.gridViewSinhVien.InvalidRowException += new DevExpress.XtraGrid.Views.Base.InvalidRowExceptionEventHandler(this.gridViewSinhVien_InvalidRowException);
             this.gridViewSinhVien.ValidateRow += new DevExpress.XtraGrid.Views.Base.ValidateRowEventHandler(this.gridViewSinhVien_ValidateRow);
             // 
             // colMASV
             // 
+            this.colMASV.AppearanceCell.Options.UseTextOptions = true;
+            this.colMASV.AppearanceCell.TextOptions.HAlignment = DevExpress.Utils.HorzAlignment.Center;
+            this.colMASV.AppearanceHeader.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.colMASV.AppearanceHeader.Options.UseFont = true;
+            this.colMASV.AppearanceHeader.Options.UseTextOptions = true;
+            this.colMASV.AppearanceHeader.TextOptions.HAlignment = DevExpress.Utils.HorzAlignment.Center;
+            this.colMASV.Caption = "Mã sinh viên";
+            this.colMASV.ColumnEdit = this.repositoryItemTextEditMaSV;
             this.colMASV.FieldName = "MASV";
             this.colMASV.Name = "colMASV";
             this.colMASV.Visible = true;
             this.colMASV.VisibleIndex = 0;
             // 
+            // repositoryItemTextEditMaSV
+            // 
+            this.repositoryItemTextEditMaSV.AutoHeight = false;
+            this.repositoryItemTextEditMaSV.Name = "repositoryItemTextEditMaSV";
+            this.repositoryItemTextEditMaSV.EditValueChanged += new System.EventHandler(this.repositoryItemTextEditMaSV_EditValueChanged);
+            // 
             // colHO
             // 
+            this.colHO.AppearanceCell.Options.UseTextOptions = true;
+            this.colHO.AppearanceCell.TextOptions.HAlignment = DevExpress.Utils.HorzAlignment.Center;
+            this.colHO.AppearanceHeader.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.colHO.AppearanceHeader.Options.UseFont = true;
+            this.colHO.AppearanceHeader.Options.UseTextOptions = true;
+            this.colHO.AppearanceHeader.TextOptions.HAlignment = DevExpress.Utils.HorzAlignment.Center;
+            this.colHO.Caption = "Họ";
             this.colHO.FieldName = "HO";
             this.colHO.Name = "colHO";
             this.colHO.Visible = true;
@@ -609,6 +636,13 @@
             // 
             // colTEN
             // 
+            this.colTEN.AppearanceCell.Options.UseTextOptions = true;
+            this.colTEN.AppearanceCell.TextOptions.HAlignment = DevExpress.Utils.HorzAlignment.Center;
+            this.colTEN.AppearanceHeader.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.colTEN.AppearanceHeader.Options.UseFont = true;
+            this.colTEN.AppearanceHeader.Options.UseTextOptions = true;
+            this.colTEN.AppearanceHeader.TextOptions.HAlignment = DevExpress.Utils.HorzAlignment.Center;
+            this.colTEN.Caption = "Tên";
             this.colTEN.FieldName = "TEN";
             this.colTEN.Name = "colTEN";
             this.colTEN.Visible = true;
@@ -616,6 +650,13 @@
             // 
             // colMALOP1
             // 
+            this.colMALOP1.AppearanceCell.Options.UseTextOptions = true;
+            this.colMALOP1.AppearanceCell.TextOptions.HAlignment = DevExpress.Utils.HorzAlignment.Center;
+            this.colMALOP1.AppearanceHeader.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.colMALOP1.AppearanceHeader.Options.UseFont = true;
+            this.colMALOP1.AppearanceHeader.Options.UseTextOptions = true;
+            this.colMALOP1.AppearanceHeader.TextOptions.HAlignment = DevExpress.Utils.HorzAlignment.Center;
+            this.colMALOP1.Caption = "Mã lớp";
             this.colMALOP1.FieldName = "MALOP";
             this.colMALOP1.Name = "colMALOP1";
             this.colMALOP1.OptionsColumn.ReadOnly = true;
@@ -624,13 +665,28 @@
             // 
             // colPHAI
             // 
+            this.colPHAI.AppearanceCell.Options.UseTextOptions = true;
+            this.colPHAI.AppearanceCell.TextOptions.HAlignment = DevExpress.Utils.HorzAlignment.Center;
+            this.colPHAI.AppearanceHeader.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.colPHAI.AppearanceHeader.Options.UseFont = true;
+            this.colPHAI.AppearanceHeader.Options.UseTextOptions = true;
+            this.colPHAI.AppearanceHeader.TextOptions.HAlignment = DevExpress.Utils.HorzAlignment.Center;
+            this.colPHAI.Caption = "Phái";
             this.colPHAI.FieldName = "PHAI";
             this.colPHAI.Name = "colPHAI";
+            this.colPHAI.ToolTip = "(✔ Nam, ☐ Nữ) ";
             this.colPHAI.Visible = true;
             this.colPHAI.VisibleIndex = 4;
             // 
             // colNGAYSINH
             // 
+            this.colNGAYSINH.AppearanceCell.Options.UseTextOptions = true;
+            this.colNGAYSINH.AppearanceCell.TextOptions.HAlignment = DevExpress.Utils.HorzAlignment.Center;
+            this.colNGAYSINH.AppearanceHeader.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.colNGAYSINH.AppearanceHeader.Options.UseFont = true;
+            this.colNGAYSINH.AppearanceHeader.Options.UseTextOptions = true;
+            this.colNGAYSINH.AppearanceHeader.TextOptions.HAlignment = DevExpress.Utils.HorzAlignment.Center;
+            this.colNGAYSINH.Caption = "Ngày sinh";
             this.colNGAYSINH.FieldName = "NGAYSINH";
             this.colNGAYSINH.Name = "colNGAYSINH";
             this.colNGAYSINH.Visible = true;
@@ -638,6 +694,13 @@
             // 
             // colNOISINH
             // 
+            this.colNOISINH.AppearanceCell.Options.UseTextOptions = true;
+            this.colNOISINH.AppearanceCell.TextOptions.HAlignment = DevExpress.Utils.HorzAlignment.Center;
+            this.colNOISINH.AppearanceHeader.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.colNOISINH.AppearanceHeader.Options.UseFont = true;
+            this.colNOISINH.AppearanceHeader.Options.UseTextOptions = true;
+            this.colNOISINH.AppearanceHeader.TextOptions.HAlignment = DevExpress.Utils.HorzAlignment.Center;
+            this.colNOISINH.Caption = "Nơi sinh";
             this.colNOISINH.FieldName = "NOISINH";
             this.colNOISINH.Name = "colNOISINH";
             this.colNOISINH.Visible = true;
@@ -645,6 +708,13 @@
             // 
             // colDIACHI
             // 
+            this.colDIACHI.AppearanceCell.Options.UseTextOptions = true;
+            this.colDIACHI.AppearanceCell.TextOptions.HAlignment = DevExpress.Utils.HorzAlignment.Center;
+            this.colDIACHI.AppearanceHeader.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.colDIACHI.AppearanceHeader.Options.UseFont = true;
+            this.colDIACHI.AppearanceHeader.Options.UseTextOptions = true;
+            this.colDIACHI.AppearanceHeader.TextOptions.HAlignment = DevExpress.Utils.HorzAlignment.Center;
+            this.colDIACHI.Caption = "Địa chỉ";
             this.colDIACHI.FieldName = "DIACHI";
             this.colDIACHI.Name = "colDIACHI";
             this.colDIACHI.Visible = true;
@@ -652,6 +722,13 @@
             // 
             // colGHICHU
             // 
+            this.colGHICHU.AppearanceCell.Options.UseTextOptions = true;
+            this.colGHICHU.AppearanceCell.TextOptions.HAlignment = DevExpress.Utils.HorzAlignment.Center;
+            this.colGHICHU.AppearanceHeader.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.colGHICHU.AppearanceHeader.Options.UseFont = true;
+            this.colGHICHU.AppearanceHeader.Options.UseTextOptions = true;
+            this.colGHICHU.AppearanceHeader.TextOptions.HAlignment = DevExpress.Utils.HorzAlignment.Center;
+            this.colGHICHU.Caption = "Ghi chú";
             this.colGHICHU.FieldName = "GHICHU";
             this.colGHICHU.Name = "colGHICHU";
             this.colGHICHU.Visible = true;
@@ -659,8 +736,16 @@
             // 
             // colNGHIHOC
             // 
+            this.colNGHIHOC.AppearanceCell.Options.UseTextOptions = true;
+            this.colNGHIHOC.AppearanceCell.TextOptions.HAlignment = DevExpress.Utils.HorzAlignment.Center;
+            this.colNGHIHOC.AppearanceHeader.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.colNGHIHOC.AppearanceHeader.Options.UseFont = true;
+            this.colNGHIHOC.AppearanceHeader.Options.UseTextOptions = true;
+            this.colNGHIHOC.AppearanceHeader.TextOptions.HAlignment = DevExpress.Utils.HorzAlignment.Center;
+            this.colNGHIHOC.Caption = "Nghỉ học";
             this.colNGHIHOC.FieldName = "NGHIHOC";
             this.colNGHIHOC.Name = "colNGHIHOC";
+            this.colNGHIHOC.ToolTip = "(✔ Đang học) ";
             this.colNGHIHOC.Visible = true;
             this.colNGHIHOC.VisibleIndex = 9;
             // 
@@ -737,6 +822,7 @@
             ((System.ComponentModel.ISupportInitialize)(this.gridControlSinhVien)).EndInit();
             this.contextSinhVien.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.gridViewSinhVien)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.repositoryItemTextEditMaSV)).EndInit();
             this.pnControlLeft.ResumeLayout(false);
             this.grbLop.ResumeLayout(false);
             this.grbLop.PerformLayout();
@@ -810,5 +896,6 @@
         private System.Windows.Forms.ToolStripSeparator toolStripSeparator2;
         private System.Windows.Forms.BindingSource bdsDiemSV;
         private DSTableAdapters.DIEMTableAdapter DIEMSVTableAdapter;
+        private DevExpress.XtraEditors.Repository.RepositoryItemTextEdit repositoryItemTextEditMaSV;
     }
 }

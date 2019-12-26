@@ -76,7 +76,11 @@ namespace QLDSV
         }
         private void barButton_Diem_ItemClick(object sender, DevExpress.XtraBars.ItemClickEventArgs e)
         {
-            ShowMdiChildren(typeof(frmDiem));
+            if (!(Program.MGroup == Program.NhomQuyen[2]))
+            {
+                ShowMdiChildren(typeof(frmDiem));
+            }
+            
         }
 
 
