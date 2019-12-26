@@ -18,7 +18,7 @@ namespace QLDSV.Forms
             // TODO: This line of code loads data into the 'dS.GIANGVIEN' table. You can move, or remove it, as needed.
 
           this.DSGVTableAdapter.Connection.ConnectionString = Program.URL_Connect;
-            this.DSGVTableAdapter.Fill(this.dS.GETDSGV);
+          this.DSGVTableAdapter.Fill(this.dS.GETDSGV);
 
 
             // khoa chỉ được quyền đăng ký cho khoa

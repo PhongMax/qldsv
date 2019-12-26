@@ -28,6 +28,11 @@ namespace QLDSV
             if (Program.MGroup == Program.NhomQuyen[2])// PKT
             {
                 this.barButton_DSDHP.Enabled = true;
+                this.barButton_DSSV.Enabled = false;
+                this.barButton_DSTHM.Enabled = false;
+                this.barButton_BDMH.Enabled = false;
+                this.barButton_PD.Enabled = false;
+                this.barButton_BDTK.Enabled = false;
             }
             else
             {
@@ -55,28 +60,9 @@ namespace QLDSV
 
 
         // ============================ BUTTON EVENT ============================ //
-
-        private void barButton_Lop_ItemClick(object sender, DevExpress.XtraBars.ItemClickEventArgs e)
+        private void barButtonLOP_ItemClick(object sender, DevExpress.XtraBars.ItemClickEventArgs e)
         {
-            if (!(Program.MGroup == Program.NhomQuyen[2]))
-            {
-                ShowMdiChildren(typeof(frmLop));
-            }
-        }
-        private void barButton_MonHoc_ItemClick(object sender, DevExpress.XtraBars.ItemClickEventArgs e)
-        {
-            if (!(Program.MGroup == Program.NhomQuyen[2]))
-            {
-                ShowMdiChildren(typeof(frmMonHoc));
-            }
-        }
-        private void barButton_SinhVien_ItemClick(object sender, DevExpress.XtraBars.ItemClickEventArgs e)
-        {
-            ShowMdiChildren(typeof(frmSinhVien));
-        }
-        private void barButton_Diem_ItemClick(object sender, DevExpress.XtraBars.ItemClickEventArgs e)
-        {
-            ShowMdiChildren(typeof(frmDiem));
+           
         }
 
 
@@ -138,5 +124,8 @@ namespace QLDSV
         {
             ShowMdiChildren(typeof(Report.BDTK));
         }
+
+
     }
 }
+

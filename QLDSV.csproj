@@ -290,7 +290,9 @@
       <DesignTimeSharedInput>True</DesignTimeSharedInput>
     </Compile>
   </ItemGroup>
-  <ItemGroup />
+  <ItemGroup>
+    <Content Include="Resources\Capture1.PNG" />
+  </ItemGroup>
   <ItemGroup>
     <None Include="Resources\create-login-128.png" />
   </ItemGroup>
