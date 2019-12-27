@@ -93,6 +93,13 @@ namespace QLDSV
                 ShowMdiChildren(typeof(frmDiem));
             }
         }
+        private void barButtonItem_ChuyenLop_ItemClick(object sender, DevExpress.XtraBars.ItemClickEventArgs e)
+        {
+            if (!(Program.MGroup == Program.NhomQuyen[2]))
+            {
+                ShowMdiChildren(typeof(frmChuyenLop));
+            }
+        }
 
 
 

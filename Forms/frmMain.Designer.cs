@@ -64,6 +64,7 @@
             this.ribbonPage4 = new DevExpress.XtraBars.Ribbon.RibbonPage();
             this.ribbonPageGroup_CauHinh = new DevExpress.XtraBars.Ribbon.RibbonPageGroup();
             this.TableManager = new DevExpress.XtraTabbedMdi.XtraTabbedMdiManager(this.components);
+            this.barButtonItem_ChuyenLop = new DevExpress.XtraBars.BarButtonItem();
             this.statusStrip.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.ribbonControl1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.TableManager)).BeginInit();
@@ -220,6 +221,7 @@
             this.ribbonPageGroup_QuanTri.ItemLinks.Add(this.barButtonItem_MonHoc);
             this.ribbonPageGroup_QuanTri.ItemLinks.Add(this.barButtonItem_SinhVien);
             this.ribbonPageGroup_QuanTri.ItemLinks.Add(this.barButtonItem_Diem);
+            this.ribbonPageGroup_QuanTri.ItemLinks.Add(this.barButtonItem_ChuyenLop);
             this.ribbonPageGroup_QuanTri.Name = "ribbonPageGroup_QuanTri";
             this.ribbonPageGroup_QuanTri.Text = "QUẢN LÝ DỮ LIỆU";
             // 
@@ -356,10 +358,11 @@
             this.barButton_BDTK,
             this.barButtonItem_MonHoc,
             this.barButtonItem_SinhVien,
-            this.barButtonItem_Diem});
+            this.barButtonItem_Diem,
+            this.barButtonItem_ChuyenLop});
             this.ribbonControl1.Location = new System.Drawing.Point(0, 0);
             this.ribbonControl1.Margin = new System.Windows.Forms.Padding(4);
-            this.ribbonControl1.MaxItemId = 24;
+            this.ribbonControl1.MaxItemId = 25;
             this.ribbonControl1.Name = "ribbonControl1";
             this.ribbonControl1.Pages.AddRange(new DevExpress.XtraBars.Ribbon.RibbonPage[] {
             this.ribbonPage1,
@@ -424,6 +427,18 @@
             // 
             this.TableManager.MdiParent = this;
             // 
+            // barButtonItem_ChuyenLop
+            // 
+            this.barButtonItem_ChuyenLop.Caption = "CHUYỂN LỚP";
+            this.barButtonItem_ChuyenLop.Id = 24;
+            this.barButtonItem_ChuyenLop.ImageOptions.Image = ((System.Drawing.Image)(resources.GetObject("barButtonItem5.ImageOptions.Image")));
+            this.barButtonItem_ChuyenLop.ImageOptions.LargeImage = ((System.Drawing.Image)(resources.GetObject("barButtonItem5.ImageOptions.LargeImage")));
+            this.barButtonItem_ChuyenLop.ItemAppearance.Normal.Font = new System.Drawing.Font("Consolas", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.barButtonItem_ChuyenLop.ItemAppearance.Normal.Options.UseFont = true;
+            this.barButtonItem_ChuyenLop.LargeWidth = 75;
+            this.barButtonItem_ChuyenLop.Name = "barButtonItem_ChuyenLop";
+            this.barButtonItem_ChuyenLop.ItemClick += new DevExpress.XtraBars.ItemClickEventHandler(this.barButtonItem_ChuyenLop_ItemClick);
+            // 
             // frmMain
             // 
             this.Appearance.Options.UseFont = true;
@@ -487,6 +502,7 @@
         private DevExpress.XtraBars.BarButtonItem barButtonItem_MonHoc;
         private DevExpress.XtraBars.BarButtonItem barButtonItem_SinhVien;
         private DevExpress.XtraBars.BarButtonItem barButtonItem_Diem;
+        private DevExpress.XtraBars.BarButtonItem barButtonItem_ChuyenLop;
     }
 }
 
