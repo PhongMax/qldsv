@@ -190,6 +190,9 @@ namespace QLDSV.Forms
                         cmd.Parameters.Add(new SqlParameter("@MAMH", monhoc));
                         cmd.Parameters.Add(new SqlParameter("@LAN", lanthi));
 
+
+
+                        // chỗ này sửa cho bds update kia nữa.
                         float diem = float.Parse(((DataRowView)bdsSpDSSV_Diem[i])["DIEM"].ToString());
                         cmd.Parameters.Add(new SqlParameter("@DIEM", diem));
 
@@ -232,9 +235,7 @@ namespace QLDSV.Forms
             if (view.FocusedColumn.FieldName == "DIEM")
             {
                 float diem = 0;
-                if (string.IsNullOrEmpty(e.Value as String))
-                    return;
-
+               
                 diem = float.Parse(e.Value as String);
                 if (diem < 0 || diem > 10)
                 {
@@ -263,6 +264,58 @@ namespace QLDSV.Forms
         }
 
         private void gridViewnNhap_RowCellStyle(object sender, RowCellStyleEventArgs e)
+        {
+            GridView view = sender as GridView;
+            if (e.RowHandle == view.FocusedRowHandle)
+            {
+                e.Appearance.BackColor = Color.LawnGreen;
+            }
+        }
+
+        private void gridViewSua_HiddenEditor(object sender, EventArgs e)
+        {
+
+            GridView View = sender as GridView;
+            if (View.FocusedRowHandle == GridControl.NewItemRowHandle) return;
+            if (View.FocusedRowHandle == View.RowCount - 1)
+                View.FocusedRowHandle = 0;
+            else
+                View.FocusedRowHandle++;
+            View.ShowEditor();
+        }
+
+        private void gridViewSua_ValidatingEditor(object sender, DevExpress.XtraEditors.Controls.BaseContainerValidateEditorEventArgs e)
+        {
+            GridView view = sender as GridView;
+            if (view.FocusedColumn.FieldName == "DIEM")
+            {
+
+                double price = 0;
+                price = double.Parse(e.Value as string);
+
+                if ( price < 0 || price > 10)
+                {
+                    e.Valid = false;
+                    e.ErrorText = "Điểm phải lớn hơn không và nhỏ hơn 10";
+                }
+                //try
+                //{
+                //    diem = float.Parse(e.Value as String);
+
+                //}
+                //catch (Exception)
+                //{
+                //    return;
+                // }
+                //if (e.Value < 0 || diem > 10)
+                //{
+                //    e.Valid = false;
+                //    e.ErrorText = "Điểm phải lớn hơn không và nhỏ hơn 10";
+                //}
+            }
+        }
+
+        private void gridViewSua_RowCellStyle(object sender, RowCellStyleEventArgs e)
         {
             GridView view = sender as GridView;
             if (e.RowHandle == view.FocusedRowHandle)

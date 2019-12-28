@@ -52,18 +52,19 @@
             this.lblTenKhoa = new System.Windows.Forms.Label();
             this.cmbKhoa = new System.Windows.Forms.ComboBox();
             this.pnRight = new System.Windows.Forms.Panel();
+            this.gridControlSua = new DevExpress.XtraGrid.GridControl();
+            this.bdsSP_BDMH = new System.Windows.Forms.BindingSource(this.components);
+            this.gridViewSua = new DevExpress.XtraGrid.Views.Grid.GridView();
+            this.colHoTen_Sua = new DevExpress.XtraGrid.Columns.GridColumn();
+            this.colMaSV_Sua = new DevExpress.XtraGrid.Columns.GridColumn();
+            this.colDiem_Sua = new DevExpress.XtraGrid.Columns.GridColumn();
+            this.repositoryItemTextEditDiems = new DevExpress.XtraEditors.Repository.RepositoryItemTextEdit();
             this.gridControlNhap = new DevExpress.XtraGrid.GridControl();
             this.gridViewnNhap = new DevExpress.XtraGrid.Views.Grid.GridView();
             this.colHoTen = new DevExpress.XtraGrid.Columns.GridColumn();
             this.colMASV = new DevExpress.XtraGrid.Columns.GridColumn();
             this.colDIEM = new DevExpress.XtraGrid.Columns.GridColumn();
             this.repositoryItemTextEditNhap = new DevExpress.XtraEditors.Repository.RepositoryItemTextEdit();
-            this.gridControlSua = new DevExpress.XtraGrid.GridControl();
-            this.bdsSP_BDMH = new System.Windows.Forms.BindingSource(this.components);
-            this.gridViewSua = new DevExpress.XtraGrid.Views.Grid.GridView();
-            this.gridColumn1 = new DevExpress.XtraGrid.Columns.GridColumn();
-            this.gridColumn2 = new DevExpress.XtraGrid.Columns.GridColumn();
-            this.gridColumn3 = new DevExpress.XtraGrid.Columns.GridColumn();
             this.LOPTableAdapter = new QLDSV.DSTableAdapters.LOPTableAdapter();
             this.tableAdapterManager = new QLDSV.DSTableAdapters.TableAdapterManager();
             this.MONHOCTableAdapter = new QLDSV.DSTableAdapters.MONHOCTableAdapter();
@@ -82,12 +83,13 @@
             ((System.ComponentModel.ISupportInitialize)(this.bdsLOP)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.txtTenlop.Properties)).BeginInit();
             this.pnRight.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.gridControlNhap)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.gridViewnNhap)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.repositoryItemTextEditNhap)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.gridControlSua)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.bdsSP_BDMH)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.gridViewSua)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.repositoryItemTextEditDiems)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.gridControlNhap)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.gridViewnNhap)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.repositoryItemTextEditNhap)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.errorProvider)).BeginInit();
             this.SuspendLayout();
             // 
@@ -331,6 +333,97 @@
             this.pnRight.Size = new System.Drawing.Size(465, 503);
             this.pnRight.TabIndex = 1;
             // 
+            // gridControlSua
+            // 
+            this.gridControlSua.DataSource = this.bdsSP_BDMH;
+            this.gridControlSua.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.gridControlSua.Location = new System.Drawing.Point(0, 0);
+            this.gridControlSua.MainView = this.gridViewSua;
+            this.gridControlSua.Name = "gridControlSua";
+            this.gridControlSua.RepositoryItems.AddRange(new DevExpress.XtraEditors.Repository.RepositoryItem[] {
+            this.repositoryItemTextEditDiems});
+            this.gridControlSua.Size = new System.Drawing.Size(465, 503);
+            this.gridControlSua.TabIndex = 2;
+            this.gridControlSua.ViewCollection.AddRange(new DevExpress.XtraGrid.Views.Base.BaseView[] {
+            this.gridViewSua});
+            // 
+            // bdsSP_BDMH
+            // 
+            this.bdsSP_BDMH.DataMember = "SP_BDMH";
+            this.bdsSP_BDMH.DataSource = this.DS;
+            // 
+            // gridViewSua
+            // 
+            this.gridViewSua.Appearance.FocusedRow.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(128)))), ((int)(((byte)(255)))), ((int)(((byte)(128)))));
+            this.gridViewSua.Appearance.FocusedRow.Options.UseBackColor = true;
+            this.gridViewSua.Columns.AddRange(new DevExpress.XtraGrid.Columns.GridColumn[] {
+            this.colHoTen_Sua,
+            this.colMaSV_Sua,
+            this.colDiem_Sua});
+            this.gridViewSua.GridControl = this.gridControlSua;
+            this.gridViewSua.Name = "gridViewSua";
+            this.gridViewSua.OptionsView.ShowGroupPanel = false;
+            this.gridViewSua.RowCellStyle += new DevExpress.XtraGrid.Views.Grid.RowCellStyleEventHandler(this.gridViewSua_RowCellStyle);
+            this.gridViewSua.HiddenEditor += new System.EventHandler(this.gridViewSua_HiddenEditor);
+            this.gridViewSua.ValidatingEditor += new DevExpress.XtraEditors.Controls.BaseContainerValidateEditorEventHandler(this.gridViewSua_ValidatingEditor);
+            // 
+            // colHoTen_Sua
+            // 
+            this.colHoTen_Sua.AppearanceCell.Options.UseTextOptions = true;
+            this.colHoTen_Sua.AppearanceCell.TextOptions.HAlignment = DevExpress.Utils.HorzAlignment.Center;
+            this.colHoTen_Sua.AppearanceHeader.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.colHoTen_Sua.AppearanceHeader.Options.UseFont = true;
+            this.colHoTen_Sua.AppearanceHeader.Options.UseTextOptions = true;
+            this.colHoTen_Sua.AppearanceHeader.TextOptions.HAlignment = DevExpress.Utils.HorzAlignment.Center;
+            this.colHoTen_Sua.Caption = "Họ và tên";
+            this.colHoTen_Sua.FieldName = "HoTen";
+            this.colHoTen_Sua.Name = "colHoTen_Sua";
+            this.colHoTen_Sua.OptionsColumn.ReadOnly = true;
+            this.colHoTen_Sua.Visible = true;
+            this.colHoTen_Sua.VisibleIndex = 0;
+            // 
+            // colMaSV_Sua
+            // 
+            this.colMaSV_Sua.AppearanceCell.Options.UseTextOptions = true;
+            this.colMaSV_Sua.AppearanceCell.TextOptions.HAlignment = DevExpress.Utils.HorzAlignment.Center;
+            this.colMaSV_Sua.AppearanceHeader.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.colMaSV_Sua.AppearanceHeader.Options.UseFont = true;
+            this.colMaSV_Sua.AppearanceHeader.Options.UseTextOptions = true;
+            this.colMaSV_Sua.AppearanceHeader.TextOptions.HAlignment = DevExpress.Utils.HorzAlignment.Center;
+            this.colMaSV_Sua.Caption = "Mã sinh viên";
+            this.colMaSV_Sua.FieldName = "MASV";
+            this.colMaSV_Sua.Name = "colMaSV_Sua";
+            this.colMaSV_Sua.OptionsColumn.ReadOnly = true;
+            this.colMaSV_Sua.Visible = true;
+            this.colMaSV_Sua.VisibleIndex = 1;
+            // 
+            // colDiem_Sua
+            // 
+            this.colDiem_Sua.AppearanceCell.Options.UseTextOptions = true;
+            this.colDiem_Sua.AppearanceCell.TextOptions.HAlignment = DevExpress.Utils.HorzAlignment.Center;
+            this.colDiem_Sua.AppearanceHeader.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.colDiem_Sua.AppearanceHeader.Options.UseFont = true;
+            this.colDiem_Sua.AppearanceHeader.Options.UseTextOptions = true;
+            this.colDiem_Sua.AppearanceHeader.TextOptions.HAlignment = DevExpress.Utils.HorzAlignment.Center;
+            this.colDiem_Sua.Caption = "Điểm";
+            this.colDiem_Sua.ColumnEdit = this.repositoryItemTextEditDiems;
+            this.colDiem_Sua.DisplayFormat.FormatType = DevExpress.Utils.FormatType.Numeric;
+            this.colDiem_Sua.FieldName = "DIEM";
+            this.colDiem_Sua.Name = "colDiem_Sua";
+            this.colDiem_Sua.Visible = true;
+            this.colDiem_Sua.VisibleIndex = 2;
+            // 
+            // repositoryItemTextEditDiems
+            // 
+            this.repositoryItemTextEditDiems.AutoHeight = false;
+            this.repositoryItemTextEditDiems.DisplayFormat.FormatType = DevExpress.Utils.FormatType.Numeric;
+            this.repositoryItemTextEditDiems.EditFormat.FormatType = DevExpress.Utils.FormatType.Numeric;
+            this.repositoryItemTextEditDiems.Mask.BeepOnError = true;
+            this.repositoryItemTextEditDiems.Mask.EditMask = "f";
+            this.repositoryItemTextEditDiems.Mask.MaskType = DevExpress.XtraEditors.Mask.MaskType.Numeric;
+            this.repositoryItemTextEditDiems.MaxLength = 5;
+            this.repositoryItemTextEditDiems.Name = "repositoryItemTextEditDiems";
+            // 
             // gridControlNhap
             // 
             this.gridControlNhap.Dock = System.Windows.Forms.DockStyle.Fill;
@@ -413,79 +506,6 @@
             this.repositoryItemTextEditNhap.MaxLength = 5;
             this.repositoryItemTextEditNhap.Name = "repositoryItemTextEditNhap";
             // 
-            // gridControlSua
-            // 
-            this.gridControlSua.DataSource = this.bdsSP_BDMH;
-            this.gridControlSua.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.gridControlSua.Location = new System.Drawing.Point(0, 0);
-            this.gridControlSua.MainView = this.gridViewSua;
-            this.gridControlSua.Name = "gridControlSua";
-            this.gridControlSua.Size = new System.Drawing.Size(465, 503);
-            this.gridControlSua.TabIndex = 2;
-            this.gridControlSua.ViewCollection.AddRange(new DevExpress.XtraGrid.Views.Base.BaseView[] {
-            this.gridViewSua});
-            // 
-            // bdsSP_BDMH
-            // 
-            this.bdsSP_BDMH.DataMember = "SP_BDMH";
-            this.bdsSP_BDMH.DataSource = this.DS;
-            // 
-            // gridViewSua
-            // 
-            this.gridViewSua.Appearance.FocusedRow.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(128)))), ((int)(((byte)(255)))), ((int)(((byte)(128)))));
-            this.gridViewSua.Appearance.FocusedRow.Options.UseBackColor = true;
-            this.gridViewSua.Columns.AddRange(new DevExpress.XtraGrid.Columns.GridColumn[] {
-            this.gridColumn1,
-            this.gridColumn2,
-            this.gridColumn3});
-            this.gridViewSua.GridControl = this.gridControlSua;
-            this.gridViewSua.Name = "gridViewSua";
-            this.gridViewSua.OptionsView.ShowGroupPanel = false;
-            // 
-            // gridColumn1
-            // 
-            this.gridColumn1.AppearanceCell.Options.UseTextOptions = true;
-            this.gridColumn1.AppearanceCell.TextOptions.HAlignment = DevExpress.Utils.HorzAlignment.Center;
-            this.gridColumn1.AppearanceHeader.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.gridColumn1.AppearanceHeader.Options.UseFont = true;
-            this.gridColumn1.AppearanceHeader.Options.UseTextOptions = true;
-            this.gridColumn1.AppearanceHeader.TextOptions.HAlignment = DevExpress.Utils.HorzAlignment.Center;
-            this.gridColumn1.Caption = "Họ và tên";
-            this.gridColumn1.FieldName = "HoTen";
-            this.gridColumn1.Name = "gridColumn1";
-            this.gridColumn1.OptionsColumn.ReadOnly = true;
-            this.gridColumn1.Visible = true;
-            this.gridColumn1.VisibleIndex = 0;
-            // 
-            // gridColumn2
-            // 
-            this.gridColumn2.AppearanceCell.Options.UseTextOptions = true;
-            this.gridColumn2.AppearanceCell.TextOptions.HAlignment = DevExpress.Utils.HorzAlignment.Center;
-            this.gridColumn2.AppearanceHeader.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.gridColumn2.AppearanceHeader.Options.UseFont = true;
-            this.gridColumn2.AppearanceHeader.Options.UseTextOptions = true;
-            this.gridColumn2.AppearanceHeader.TextOptions.HAlignment = DevExpress.Utils.HorzAlignment.Center;
-            this.gridColumn2.Caption = "Mã sinh viên";
-            this.gridColumn2.FieldName = "MASV";
-            this.gridColumn2.Name = "gridColumn2";
-            this.gridColumn2.OptionsColumn.ReadOnly = true;
-            this.gridColumn2.Visible = true;
-            this.gridColumn2.VisibleIndex = 1;
-            // 
-            // gridColumn3
-            // 
-            this.gridColumn3.AppearanceCell.Options.UseTextOptions = true;
-            this.gridColumn3.AppearanceCell.TextOptions.HAlignment = DevExpress.Utils.HorzAlignment.Center;
-            this.gridColumn3.AppearanceHeader.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.gridColumn3.AppearanceHeader.Options.UseFont = true;
-            this.gridColumn3.AppearanceHeader.Options.UseTextOptions = true;
-            this.gridColumn3.AppearanceHeader.TextOptions.HAlignment = DevExpress.Utils.HorzAlignment.Center;
-            this.gridColumn3.Caption = "Điểm";
-            this.gridColumn3.FieldName = "DIEM";
-            this.gridColumn3.Name = "gridColumn3";
-            this.gridColumn3.Visible = true;
-            this.gridColumn3.VisibleIndex = 2;
-            // 
             // LOPTableAdapter
             // 
             this.LOPTableAdapter.ClearBeforeFill = true;
@@ -537,12 +557,13 @@
             ((System.ComponentModel.ISupportInitialize)(this.bdsLOP)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.txtTenlop.Properties)).EndInit();
             this.pnRight.ResumeLayout(false);
-            ((System.ComponentModel.ISupportInitialize)(this.gridControlNhap)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.gridViewnNhap)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.repositoryItemTextEditNhap)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.gridControlSua)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.bdsSP_BDMH)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.gridViewSua)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.repositoryItemTextEditDiems)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.gridControlNhap)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.gridViewnNhap)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.repositoryItemTextEditNhap)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.errorProvider)).EndInit();
             this.ResumeLayout(false);
 
@@ -581,14 +602,15 @@
         private DevExpress.XtraGrid.Views.Grid.GridView gridViewnNhap;
         private DevExpress.XtraGrid.GridControl gridControlSua;
         private DevExpress.XtraGrid.Views.Grid.GridView gridViewSua;
-        private DevExpress.XtraGrid.Columns.GridColumn gridColumn1;
-        private DevExpress.XtraGrid.Columns.GridColumn gridColumn2;
-        private DevExpress.XtraGrid.Columns.GridColumn gridColumn3;
+        private DevExpress.XtraGrid.Columns.GridColumn colHoTen_Sua;
+        private DevExpress.XtraGrid.Columns.GridColumn colMaSV_Sua;
+        private DevExpress.XtraGrid.Columns.GridColumn colDiem_Sua;
         private DevExpress.XtraEditors.Repository.RepositoryItemTextEdit repositoryItemTextEdit1;
         private DevExpress.XtraGrid.Columns.GridColumn colHoTen;
         private DevExpress.XtraGrid.Columns.GridColumn colMASV;
         private DevExpress.XtraGrid.Columns.GridColumn colDIEM;
         private DevExpress.XtraEditors.Repository.RepositoryItemTextEdit repositoryItemTextEditNhap;
         private System.Windows.Forms.ErrorProvider errorProvider;
+        private DevExpress.XtraEditors.Repository.RepositoryItemTextEdit repositoryItemTextEditDiems;
     }
 }
