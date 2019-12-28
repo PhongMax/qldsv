@@ -66,7 +66,7 @@
             // 
             this.chkShowPass.AutoSize = true;
             this.chkShowPass.Font = new System.Drawing.Font("Consolas", 9.75F, System.Drawing.FontStyle.Italic, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.chkShowPass.Location = new System.Drawing.Point(245, 151);
+            this.chkShowPass.Location = new System.Drawing.Point(276, 155);
             this.chkShowPass.Name = "chkShowPass";
             this.chkShowPass.Size = new System.Drawing.Size(82, 19);
             this.chkShowPass.TabIndex = 3;
@@ -113,7 +113,7 @@
             this.txtPass.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.txtPass.Location = new System.Drawing.Point(101, 123);
             this.txtPass.Name = "txtPass";
-            this.txtPass.Size = new System.Drawing.Size(216, 26);
+            this.txtPass.Size = new System.Drawing.Size(257, 26);
             this.txtPass.TabIndex = 2;
             this.txtPass.Text = "123456";
             this.txtPass.UseSystemPasswordChar = true;
@@ -123,14 +123,14 @@
             this.txtLogin.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.txtLogin.Location = new System.Drawing.Point(101, 91);
             this.txtLogin.Name = "txtLogin";
-            this.txtLogin.Size = new System.Drawing.Size(216, 26);
+            this.txtLogin.Size = new System.Drawing.Size(257, 26);
             this.txtLogin.TabIndex = 1;
             // 
             // label3
             // 
             this.label3.AutoSize = true;
             this.label3.Font = new System.Drawing.Font("Consolas", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label3.Location = new System.Drawing.Point(6, 126);
+            this.label3.Location = new System.Drawing.Point(6, 130);
             this.label3.Name = "label3";
             this.label3.Size = new System.Drawing.Size(81, 19);
             this.label3.TabIndex = 2;
@@ -140,7 +140,7 @@
             // 
             this.label2.AutoSize = true;
             this.label2.Font = new System.Drawing.Font("Consolas", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label2.Location = new System.Drawing.Point(6, 94);
+            this.label2.Location = new System.Drawing.Point(2, 98);
             this.label2.Name = "label2";
             this.label2.Size = new System.Drawing.Size(90, 19);
             this.label2.TabIndex = 1;
@@ -159,6 +159,7 @@
             // label4
             // 
             this.label4.AutoSize = true;
+            this.label4.BackColor = System.Drawing.Color.LightBlue;
             this.label4.Font = new System.Drawing.Font("Consolas", 14.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label4.Location = new System.Drawing.Point(78, 9);
             this.label4.Name = "label4";

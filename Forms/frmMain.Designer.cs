@@ -49,6 +49,7 @@
             this.barButtonItem_MonHoc = new DevExpress.XtraBars.BarButtonItem();
             this.barButtonItem_SinhVien = new DevExpress.XtraBars.BarButtonItem();
             this.barButtonItem_Diem = new DevExpress.XtraBars.BarButtonItem();
+            this.barButtonItem_ChuyenLop = new DevExpress.XtraBars.BarButtonItem();
             this.barButton_MonHoc = new DevExpress.XtraBars.BarButtonItem();
             this.barButton_SinhVien = new DevExpress.XtraBars.BarButtonItem();
             this.barButton_Diem = new DevExpress.XtraBars.BarButtonItem();
@@ -64,7 +65,6 @@
             this.ribbonPage4 = new DevExpress.XtraBars.Ribbon.RibbonPage();
             this.ribbonPageGroup_CauHinh = new DevExpress.XtraBars.Ribbon.RibbonPageGroup();
             this.TableManager = new DevExpress.XtraTabbedMdi.XtraTabbedMdiManager(this.components);
-            this.barButtonItem_ChuyenLop = new DevExpress.XtraBars.BarButtonItem();
             this.statusStrip.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.ribbonControl1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.TableManager)).BeginInit();
@@ -111,7 +111,7 @@
             this.ribbonPage2.Appearance.Options.UseFont = true;
             this.ribbonPage2.Groups.AddRange(new DevExpress.XtraBars.Ribbon.RibbonPageGroup[] {
             this.ribbonPageGroup2});
-            this.ribbonPage2.ImageOptions.SvgImage = ((DevExpress.Utils.Svg.SvgImage)(resources.GetObject("ribbonPage2.ImageOptions.SvgImage")));
+            this.ribbonPage2.ImageOptions.Image = ((System.Drawing.Image)(resources.GetObject("ribbonPage2.ImageOptions.Image")));
             this.ribbonPage2.Name = "ribbonPage2";
             this.ribbonPage2.Text = "BÁO CÁO";
             // 
@@ -211,7 +211,7 @@
             this.ribbonPage1.Appearance.Options.UseFont = true;
             this.ribbonPage1.Groups.AddRange(new DevExpress.XtraBars.Ribbon.RibbonPageGroup[] {
             this.ribbonPageGroup_QuanTri});
-            this.ribbonPage1.ImageOptions.SvgImage = ((DevExpress.Utils.Svg.SvgImage)(resources.GetObject("ribbonPage1.ImageOptions.SvgImage")));
+            this.ribbonPage1.ImageOptions.Image = ((System.Drawing.Image)(resources.GetObject("ribbonPage1.ImageOptions.Image")));
             this.ribbonPage1.Name = "ribbonPage1";
             this.ribbonPage1.Text = "QUẢN TRỊ";
             // 
@@ -275,6 +275,18 @@
             this.barButtonItem_Diem.LargeWidth = 75;
             this.barButtonItem_Diem.Name = "barButtonItem_Diem";
             this.barButtonItem_Diem.ItemClick += new DevExpress.XtraBars.ItemClickEventHandler(this.barButtonItem_Diem_ItemClick);
+            // 
+            // barButtonItem_ChuyenLop
+            // 
+            this.barButtonItem_ChuyenLop.Caption = "CHUYỂN LỚP";
+            this.barButtonItem_ChuyenLop.Id = 24;
+            this.barButtonItem_ChuyenLop.ImageOptions.Image = ((System.Drawing.Image)(resources.GetObject("barButtonItem_ChuyenLop.ImageOptions.Image")));
+            this.barButtonItem_ChuyenLop.ImageOptions.LargeImage = ((System.Drawing.Image)(resources.GetObject("barButtonItem_ChuyenLop.ImageOptions.LargeImage")));
+            this.barButtonItem_ChuyenLop.ItemAppearance.Normal.Font = new System.Drawing.Font("Consolas", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.barButtonItem_ChuyenLop.ItemAppearance.Normal.Options.UseFont = true;
+            this.barButtonItem_ChuyenLop.LargeWidth = 75;
+            this.barButtonItem_ChuyenLop.Name = "barButtonItem_ChuyenLop";
+            this.barButtonItem_ChuyenLop.ItemClick += new DevExpress.XtraBars.ItemClickEventHandler(this.barButtonItem_ChuyenLop_ItemClick);
             // 
             // barButton_MonHoc
             // 
@@ -368,7 +380,7 @@
             this.ribbonPage1,
             this.ribbonPage2,
             this.ribbonPage4});
-            this.ribbonControl1.Size = new System.Drawing.Size(1011, 162);
+            this.ribbonControl1.Size = new System.Drawing.Size(1011, 177);
             // 
             // barButton_Register
             // 
@@ -410,9 +422,11 @@
             // 
             // ribbonPage4
             // 
+            this.ribbonPage4.Appearance.Font = new System.Drawing.Font("Consolas", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.ribbonPage4.Appearance.Options.UseFont = true;
             this.ribbonPage4.Groups.AddRange(new DevExpress.XtraBars.Ribbon.RibbonPageGroup[] {
             this.ribbonPageGroup_CauHinh});
-            this.ribbonPage4.ImageOptions.SvgImage = ((DevExpress.Utils.Svg.SvgImage)(resources.GetObject("ribbonPage4.ImageOptions.SvgImage")));
+            this.ribbonPage4.ImageOptions.Image = ((System.Drawing.Image)(resources.GetObject("ribbonPage4.ImageOptions.Image")));
             this.ribbonPage4.Name = "ribbonPage4";
             this.ribbonPage4.Text = "CẤU HÌNH";
             // 
@@ -421,23 +435,11 @@
             this.ribbonPageGroup_CauHinh.ItemLinks.Add(this.barButton_Register);
             this.ribbonPageGroup_CauHinh.ItemLinks.Add(this.barButton_Logout);
             this.ribbonPageGroup_CauHinh.Name = "ribbonPageGroup_CauHinh";
-            this.ribbonPageGroup_CauHinh.Text = "Hệ thống";
+            this.ribbonPageGroup_CauHinh.Text = "HỆ THỐNG";
             // 
             // TableManager
             // 
             this.TableManager.MdiParent = this;
-            // 
-            // barButtonItem_ChuyenLop
-            // 
-            this.barButtonItem_ChuyenLop.Caption = "CHUYỂN LỚP";
-            this.barButtonItem_ChuyenLop.Id = 24;
-            this.barButtonItem_ChuyenLop.ImageOptions.Image = ((System.Drawing.Image)(resources.GetObject("barButtonItem5.ImageOptions.Image")));
-            this.barButtonItem_ChuyenLop.ImageOptions.LargeImage = ((System.Drawing.Image)(resources.GetObject("barButtonItem5.ImageOptions.LargeImage")));
-            this.barButtonItem_ChuyenLop.ItemAppearance.Normal.Font = new System.Drawing.Font("Consolas", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.barButtonItem_ChuyenLop.ItemAppearance.Normal.Options.UseFont = true;
-            this.barButtonItem_ChuyenLop.LargeWidth = 75;
-            this.barButtonItem_ChuyenLop.Name = "barButtonItem_ChuyenLop";
-            this.barButtonItem_ChuyenLop.ItemClick += new DevExpress.XtraBars.ItemClickEventHandler(this.barButtonItem_ChuyenLop_ItemClick);
             // 
             // frmMain
             // 
@@ -448,7 +450,7 @@
             this.Controls.Add(this.statusStrip);
             this.Controls.Add(this.ribbonControl1);
             this.Font = new System.Drawing.Font("Times New Roman", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
+            this.IconOptions.Icon = ((System.Drawing.Icon)(resources.GetObject("frmMain.IconOptions.Icon")));
             this.IsMdiContainer = true;
             this.Margin = new System.Windows.Forms.Padding(4);
             this.Name = "frmMain";

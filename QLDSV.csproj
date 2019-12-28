@@ -173,6 +173,12 @@
     <Compile Include="Report\XtraReport_BDMH.Designer.cs">
       <DependentUpon>XtraReport_BDMH.cs</DependentUpon>
     </Compile>
+    <Compile Include="Report\XtraReport_BDTK.cs">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="Report\XtraReport_BDTK.Designer.cs">
+      <DependentUpon>XtraReport_BDTK.cs</DependentUpon>
+    </Compile>
     <Compile Include="Report\XtraReport_DSDHP.cs">
       <SubType>Component</SubType>
     </Compile>
@@ -253,6 +259,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Report\XtraReport_BDMH.resx">
       <DependentUpon>XtraReport_BDMH.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Report\XtraReport_BDTK.resx">
+      <DependentUpon>XtraReport_BDTK.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Report\XtraReport_DSDHP.resx">
       <DependentUpon>XtraReport_DSDHP.cs</DependentUpon>

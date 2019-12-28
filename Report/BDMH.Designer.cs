@@ -30,32 +30,33 @@
         {
             this.components = new System.ComponentModel.Container();
             this.panelBDMH = new System.Windows.Forms.Panel();
+            this.label_LanThi = new System.Windows.Forms.Label();
+            this.cmbLan = new System.Windows.Forms.ComboBox();
+            this.txtMaMonHoc = new System.Windows.Forms.TextBox();
+            this.labelKhoa = new System.Windows.Forms.Label();
             this.button_Thoat = new System.Windows.Forms.Button();
             this.button_IN = new System.Windows.Forms.Button();
             this.txtMaLop = new System.Windows.Forms.TextBox();
             this.cmbTenMonHoc = new System.Windows.Forms.ComboBox();
+            this.bdsMONHOC = new System.Windows.Forms.BindingSource(this.components);
+            this.DS = new QLDSV.DS();
             this.cmbTenLop = new System.Windows.Forms.ComboBox();
+            this.bdsLOP = new System.Windows.Forms.BindingSource(this.components);
             this.cmbKhoa = new System.Windows.Forms.ComboBox();
             this.label_TenMonHoc = new System.Windows.Forms.Label();
             this.label_TenLop = new System.Windows.Forms.Label();
             this.label_Khoa = new System.Windows.Forms.Label();
-            this.labelKhoa = new System.Windows.Forms.Label();
-            this.DS = new QLDSV.DS();
-            this.bdsLOP = new System.Windows.Forms.BindingSource(this.components);
             this.LOPTableAdapter = new QLDSV.DSTableAdapters.LOPTableAdapter();
-            this.bdsMONHOC = new System.Windows.Forms.BindingSource(this.components);
             this.MONHOCTableAdapter = new QLDSV.DSTableAdapters.MONHOCTableAdapter();
-            this.txtMaMonHoc = new System.Windows.Forms.TextBox();
-            this.cmbLan = new System.Windows.Forms.ComboBox();
-            this.label_LanThi = new System.Windows.Forms.Label();
             this.panelBDMH.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.bdsMONHOC)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.DS)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.bdsLOP)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.bdsMONHOC)).BeginInit();
             this.SuspendLayout();
             // 
             // panelBDMH
             // 
+            this.panelBDMH.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(224)))), ((int)(((byte)(224)))), ((int)(((byte)(224)))));
             this.panelBDMH.Controls.Add(this.label_LanThi);
             this.panelBDMH.Controls.Add(this.cmbLan);
             this.panelBDMH.Controls.Add(this.txtMaMonHoc);
@@ -72,36 +73,79 @@
             this.panelBDMH.Dock = System.Windows.Forms.DockStyle.Top;
             this.panelBDMH.Location = new System.Drawing.Point(0, 0);
             this.panelBDMH.Name = "panelBDMH";
-            this.panelBDMH.Size = new System.Drawing.Size(838, 210);
+            this.panelBDMH.Size = new System.Drawing.Size(838, 187);
             this.panelBDMH.TabIndex = 0;
+            // 
+            // label_LanThi
+            // 
+            this.label_LanThi.AutoSize = true;
+            this.label_LanThi.Font = new System.Drawing.Font("Consolas", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label_LanThi.Location = new System.Drawing.Point(653, 97);
+            this.label_LanThi.Name = "label_LanThi";
+            this.label_LanThi.Size = new System.Drawing.Size(36, 19);
+            this.label_LanThi.TabIndex = 15;
+            this.label_LanThi.Text = "LẦN";
+            // 
+            // cmbLan
+            // 
+            this.cmbLan.BackColor = System.Drawing.Color.Gold;
+            this.cmbLan.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this.cmbLan.FormattingEnabled = true;
+            this.cmbLan.Location = new System.Drawing.Point(695, 96);
+            this.cmbLan.Name = "cmbLan";
+            this.cmbLan.Size = new System.Drawing.Size(38, 21);
+            this.cmbLan.TabIndex = 14;
+            // 
+            // txtMaMonHoc
+            // 
+            this.txtMaMonHoc.BackColor = System.Drawing.SystemColors.InactiveCaption;
+            this.txtMaMonHoc.Font = new System.Drawing.Font("Consolas", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.txtMaMonHoc.Location = new System.Drawing.Point(547, 94);
+            this.txtMaMonHoc.Name = "txtMaMonHoc";
+            this.txtMaMonHoc.Size = new System.Drawing.Size(100, 26);
+            this.txtMaMonHoc.TabIndex = 13;
+            // 
+            // labelKhoa
+            // 
+            this.labelKhoa.AutoSize = true;
+            this.labelKhoa.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.labelKhoa.Location = new System.Drawing.Point(196, 26);
+            this.labelKhoa.Name = "labelKhoa";
+            this.labelKhoa.Size = new System.Drawing.Size(41, 13);
+            this.labelKhoa.TabIndex = 12;
+            this.labelKhoa.Text = "KHOA";
             // 
             // button_Thoat
             // 
-            this.button_Thoat.Location = new System.Drawing.Point(315, 119);
+            this.button_Thoat.BackColor = System.Drawing.Color.LightCoral;
+            this.button_Thoat.Font = new System.Drawing.Font("Consolas", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.button_Thoat.Location = new System.Drawing.Point(462, 126);
             this.button_Thoat.Name = "button_Thoat";
-            this.button_Thoat.Size = new System.Drawing.Size(165, 23);
+            this.button_Thoat.Size = new System.Drawing.Size(73, 37);
             this.button_Thoat.TabIndex = 11;
             this.button_Thoat.Text = "THOÁT";
-            this.button_Thoat.UseVisualStyleBackColor = true;
+            this.button_Thoat.UseVisualStyleBackColor = false;
             this.button_Thoat.Click += new System.EventHandler(this.button_Thoat_Click);
             // 
             // button_IN
             // 
-            this.button_IN.Location = new System.Drawing.Point(135, 119);
+            this.button_IN.BackColor = System.Drawing.Color.DodgerBlue;
+            this.button_IN.Font = new System.Drawing.Font("Consolas", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.button_IN.Location = new System.Drawing.Point(383, 126);
             this.button_IN.Name = "button_IN";
-            this.button_IN.Size = new System.Drawing.Size(174, 23);
+            this.button_IN.Size = new System.Drawing.Size(73, 37);
             this.button_IN.TabIndex = 10;
             this.button_IN.Text = "IN";
-            this.button_IN.UseVisualStyleBackColor = true;
+            this.button_IN.UseVisualStyleBackColor = false;
             this.button_IN.Click += new System.EventHandler(this.button_IN_Click);
             // 
             // txtMaLop
             // 
             this.txtMaLop.BackColor = System.Drawing.SystemColors.InactiveCaption;
-            this.txtMaLop.Font = new System.Drawing.Font("Consolas", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.txtMaLop.Location = new System.Drawing.Point(492, 51);
+            this.txtMaLop.Font = new System.Drawing.Font("Consolas", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.txtMaLop.Location = new System.Drawing.Point(547, 58);
             this.txtMaLop.Name = "txtMaLop";
-            this.txtMaLop.Size = new System.Drawing.Size(100, 23);
+            this.txtMaLop.Size = new System.Drawing.Size(100, 26);
             this.txtMaLop.TabIndex = 8;
             // 
             // cmbTenMonHoc
@@ -109,127 +153,92 @@
             this.cmbTenMonHoc.DataSource = this.bdsMONHOC;
             this.cmbTenMonHoc.DisplayMember = "TENMH";
             this.cmbTenMonHoc.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this.cmbTenMonHoc.Font = new System.Drawing.Font("Consolas", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.cmbTenMonHoc.FormattingEnabled = true;
-            this.cmbTenMonHoc.Location = new System.Drawing.Point(135, 86);
+            this.cmbTenMonHoc.Location = new System.Drawing.Point(190, 93);
             this.cmbTenMonHoc.Name = "cmbTenMonHoc";
-            this.cmbTenMonHoc.Size = new System.Drawing.Size(345, 21);
+            this.cmbTenMonHoc.Size = new System.Drawing.Size(345, 23);
             this.cmbTenMonHoc.TabIndex = 6;
             this.cmbTenMonHoc.ValueMember = "MAMH";
             this.cmbTenMonHoc.SelectedIndexChanged += new System.EventHandler(this.cmbTenMonHoc_SelectedIndexChanged);
-            // 
-            // cmbTenLop
-            // 
-            this.cmbTenLop.DataSource = this.bdsLOP;
-            this.cmbTenLop.DisplayMember = "TENLOP";
-            this.cmbTenLop.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
-            this.cmbTenLop.FormattingEnabled = true;
-            this.cmbTenLop.Location = new System.Drawing.Point(135, 51);
-            this.cmbTenLop.Name = "cmbTenLop";
-            this.cmbTenLop.Size = new System.Drawing.Size(345, 21);
-            this.cmbTenLop.TabIndex = 5;
-            this.cmbTenLop.ValueMember = "MALOP";
-            this.cmbTenLop.SelectedIndexChanged += new System.EventHandler(this.cmbTenLop_SelectedIndexChanged);
-            // 
-            // cmbKhoa
-            // 
-            this.cmbKhoa.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
-            this.cmbKhoa.FormattingEnabled = true;
-            this.cmbKhoa.Location = new System.Drawing.Point(135, 16);
-            this.cmbKhoa.Name = "cmbKhoa";
-            this.cmbKhoa.Size = new System.Drawing.Size(457, 21);
-            this.cmbKhoa.TabIndex = 4;
-            this.cmbKhoa.SelectedIndexChanged += new System.EventHandler(this.cmbKhoa_SelectedIndexChanged);
-            // 
-            // label_TenMonHoc
-            // 
-            this.label_TenMonHoc.AutoSize = true;
-            this.label_TenMonHoc.Font = new System.Drawing.Font("Consolas", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label_TenMonHoc.Location = new System.Drawing.Point(38, 91);
-            this.label_TenMonHoc.Name = "label_TenMonHoc";
-            this.label_TenMonHoc.Size = new System.Drawing.Size(84, 15);
-            this.label_TenMonHoc.TabIndex = 2;
-            this.label_TenMonHoc.Text = "TÊN MÔN HỌC";
-            // 
-            // label_TenLop
-            // 
-            this.label_TenLop.AutoSize = true;
-            this.label_TenLop.Font = new System.Drawing.Font("Consolas", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label_TenLop.Location = new System.Drawing.Point(38, 55);
-            this.label_TenLop.Name = "label_TenLop";
-            this.label_TenLop.Size = new System.Drawing.Size(56, 15);
-            this.label_TenLop.TabIndex = 1;
-            this.label_TenLop.Text = "TÊN LỚP";
-            // 
-            // label_Khoa
-            // 
-            this.label_Khoa.AutoSize = true;
-            this.label_Khoa.Font = new System.Drawing.Font("Consolas", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label_Khoa.Location = new System.Drawing.Point(38, 19);
-            this.label_Khoa.Name = "label_Khoa";
-            this.label_Khoa.Size = new System.Drawing.Size(35, 15);
-            this.label_Khoa.TabIndex = 0;
-            this.label_Khoa.Text = "KHOA";
-            // 
-            // labelKhoa
-            // 
-            this.labelKhoa.AutoSize = true;
-            this.labelKhoa.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.labelKhoa.Location = new System.Drawing.Point(141, 19);
-            this.labelKhoa.Name = "labelKhoa";
-            this.labelKhoa.Size = new System.Drawing.Size(41, 13);
-            this.labelKhoa.TabIndex = 12;
-            this.labelKhoa.Text = "KHOA";
-            // 
-            // DS
-            // 
-            this.DS.DataSetName = "DS";
-            this.DS.SchemaSerializationMode = System.Data.SchemaSerializationMode.IncludeSchema;
-            // 
-            // bdsLOP
-            // 
-            this.bdsLOP.DataMember = "LOP";
-            this.bdsLOP.DataSource = this.DS;
-            // 
-            // LOPTableAdapter
-            // 
-            this.LOPTableAdapter.ClearBeforeFill = true;
             // 
             // bdsMONHOC
             // 
             this.bdsMONHOC.DataMember = "MONHOC";
             this.bdsMONHOC.DataSource = this.DS;
             // 
+            // DS
+            // 
+            this.DS.DataSetName = "DS";
+            this.DS.SchemaSerializationMode = System.Data.SchemaSerializationMode.IncludeSchema;
+            // 
+            // cmbTenLop
+            // 
+            this.cmbTenLop.DataSource = this.bdsLOP;
+            this.cmbTenLop.DisplayMember = "TENLOP";
+            this.cmbTenLop.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this.cmbTenLop.Font = new System.Drawing.Font("Consolas", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.cmbTenLop.FormattingEnabled = true;
+            this.cmbTenLop.Location = new System.Drawing.Point(190, 58);
+            this.cmbTenLop.Name = "cmbTenLop";
+            this.cmbTenLop.Size = new System.Drawing.Size(345, 23);
+            this.cmbTenLop.TabIndex = 5;
+            this.cmbTenLop.ValueMember = "MALOP";
+            this.cmbTenLop.SelectedIndexChanged += new System.EventHandler(this.cmbTenLop_SelectedIndexChanged);
+            // 
+            // bdsLOP
+            // 
+            this.bdsLOP.DataMember = "LOP";
+            this.bdsLOP.DataSource = this.DS;
+            // 
+            // cmbKhoa
+            // 
+            this.cmbKhoa.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this.cmbKhoa.Font = new System.Drawing.Font("Consolas", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.cmbKhoa.FormattingEnabled = true;
+            this.cmbKhoa.Location = new System.Drawing.Point(190, 23);
+            this.cmbKhoa.Name = "cmbKhoa";
+            this.cmbKhoa.Size = new System.Drawing.Size(457, 23);
+            this.cmbKhoa.TabIndex = 4;
+            this.cmbKhoa.SelectedIndexChanged += new System.EventHandler(this.cmbKhoa_SelectedIndexChanged);
+            // 
+            // label_TenMonHoc
+            // 
+            this.label_TenMonHoc.AutoSize = true;
+            this.label_TenMonHoc.Font = new System.Drawing.Font("Consolas", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label_TenMonHoc.Location = new System.Drawing.Point(57, 93);
+            this.label_TenMonHoc.Name = "label_TenMonHoc";
+            this.label_TenMonHoc.Size = new System.Drawing.Size(108, 19);
+            this.label_TenMonHoc.TabIndex = 2;
+            this.label_TenMonHoc.Text = "TÊN MÔN HỌC";
+            // 
+            // label_TenLop
+            // 
+            this.label_TenLop.AutoSize = true;
+            this.label_TenLop.Font = new System.Drawing.Font("Consolas", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label_TenLop.Location = new System.Drawing.Point(93, 62);
+            this.label_TenLop.Name = "label_TenLop";
+            this.label_TenLop.Size = new System.Drawing.Size(72, 19);
+            this.label_TenLop.TabIndex = 1;
+            this.label_TenLop.Text = "TÊN LỚP";
+            // 
+            // label_Khoa
+            // 
+            this.label_Khoa.AutoSize = true;
+            this.label_Khoa.Font = new System.Drawing.Font("Consolas", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label_Khoa.Location = new System.Drawing.Point(120, 26);
+            this.label_Khoa.Name = "label_Khoa";
+            this.label_Khoa.Size = new System.Drawing.Size(45, 19);
+            this.label_Khoa.TabIndex = 0;
+            this.label_Khoa.Text = "KHOA";
+            // 
+            // LOPTableAdapter
+            // 
+            this.LOPTableAdapter.ClearBeforeFill = true;
+            // 
             // MONHOCTableAdapter
             // 
             this.MONHOCTableAdapter.ClearBeforeFill = true;
-            // 
-            // txtMaMonHoc
-            // 
-            this.txtMaMonHoc.BackColor = System.Drawing.SystemColors.InactiveCaption;
-            this.txtMaMonHoc.Font = new System.Drawing.Font("Consolas", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.txtMaMonHoc.Location = new System.Drawing.Point(492, 87);
-            this.txtMaMonHoc.Name = "txtMaMonHoc";
-            this.txtMaMonHoc.Size = new System.Drawing.Size(100, 23);
-            this.txtMaMonHoc.TabIndex = 13;
-            // 
-            // cmbLan
-            // 
-            this.cmbLan.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
-            this.cmbLan.FormattingEnabled = true;
-            this.cmbLan.Location = new System.Drawing.Point(632, 87);
-            this.cmbLan.Name = "cmbLan";
-            this.cmbLan.Size = new System.Drawing.Size(38, 21);
-            this.cmbLan.TabIndex = 14;
-            // 
-            // label_LanThi
-            // 
-            this.label_LanThi.AutoSize = true;
-            this.label_LanThi.Font = new System.Drawing.Font("Consolas", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label_LanThi.Location = new System.Drawing.Point(598, 90);
-            this.label_LanThi.Name = "label_LanThi";
-            this.label_LanThi.Size = new System.Drawing.Size(28, 15);
-            this.label_LanThi.TabIndex = 15;
-            this.label_LanThi.Text = "LẦN";
             // 
             // BDMH
             // 
@@ -238,13 +247,13 @@
             this.ClientSize = new System.Drawing.Size(838, 487);
             this.Controls.Add(this.panelBDMH);
             this.Name = "BDMH";
-            this.Text = "BDMH";
+            this.Text = "BẢNG ĐIỂM MÔN HỌC";
             this.Load += new System.EventHandler(this.BDMH_Load);
             this.panelBDMH.ResumeLayout(false);
             this.panelBDMH.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.bdsMONHOC)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.DS)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.bdsLOP)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.bdsMONHOC)).EndInit();
             this.ResumeLayout(false);
 
         }

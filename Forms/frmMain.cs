@@ -22,7 +22,6 @@ namespace QLDSV
             InitializeComponent();
         }
 
-
         private void frmMain_Load(object sender, EventArgs e)
         {
             if (Program.MGroup == Program.NhomQuyen[2])// PKT
@@ -31,6 +30,7 @@ namespace QLDSV
                 this.barButtonItem_MonHoc.Enabled = false;
                 this.barButtonItem_SinhVien.Enabled = false;
                 this.barButtonItem_Diem.Enabled = false;
+                this.barButtonItem_ChuyenLop.Enabled = false;
 
                 this.barButton_DSDHP.Enabled = true;
                 this.barButton_DSSV.Enabled = false;
