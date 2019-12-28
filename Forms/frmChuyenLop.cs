@@ -20,7 +20,6 @@ namespace QLDSV.Forms
             InitializeComponent();
         }
 
-
         private void frmChuyenLop_Load(object sender, EventArgs e)
         {
 
@@ -50,7 +49,7 @@ namespace QLDSV.Forms
                 // OPEN CONNECTION
                 connection.Open();
 
-                QUERY = string.Format("SELECT MASV FROM dbo.SINHVIEN WHERE MASV = 'N16DCCN076'");
+                QUERY = string.Format("SELECT MASV FROM dbo.SINHVIEN WHERE MASV = '"+maSVTextBox+"'");
                 command = new SqlCommand(QUERY, connection);
                 command.CommandType = CommandType.Text;
 
@@ -70,7 +69,7 @@ namespace QLDSV.Forms
                     Console.WriteLine("Ma Sinh Vien : " + MASV);
 
                     // TODO : Đưa dữ liệu sinh viên vào đối tượng tạm - lát sau sửa lại MASV vs MALOP
-                    QUERY = string.Format("SELECT MASV,HO,TEN,MALOP,PHAI,NGAYSINH,NOISINH,DIACHI,GHICHU,NGHIHOC FROM dbo.SINHVIEN WHERE MASV = 'N16DCCN076'");
+                    QUERY = string.Format("SELECT MASV,HO,TEN,MALOP,PHAI,NGAYSINH,NOISINH,DIACHI,GHICHU,NGHIHOC FROM dbo.SINHVIEN WHERE MASV = '"+maSVTextBox+"'");
                     command = new SqlCommand(QUERY, connection);
                     dataReader = command.ExecuteReader();
                     SinhVien sinhvien = new SinhVien();
@@ -87,13 +86,13 @@ namespace QLDSV.Forms
                         sinhvien.setGHICHU(dataReader.GetValue(8).ToString());
                         sinhvien.setNGHIHOC(dataReader.GetValue(9).ToString());
                         
-                    } MessageBox.Show(sinhvien.ToStringSinhVien());
+                    } //MessageBox.Show(sinhvien.ToStringSinhVien());
                     // TODO : Must Close dataReader
                     dataReader.Close();
 
                     // TODO: Now Check MALOP IS EXIST ON SITE NOW
                     //QUERY = string.Format("SELECT MALOP FROM dbo.LOP WHERE MALOP = 'D16CQCN3'");// MALOP chuyen den cùng khoa
-                    QUERY = string.Format("SELECT MALOP FROM dbo.LOP WHERE MALOP = 'D16CQVT1'");// MALOP chuyen den khac khoa
+                    QUERY = string.Format("SELECT MALOP FROM dbo.LOP WHERE MALOP = '"+maLopChuyenDenTextBox+"'");// MALOP chuyen den khac khoa
                     command = new SqlCommand(QUERY, connection);
                     command.CommandType = CommandType.Text;
                     try
@@ -104,18 +103,18 @@ namespace QLDSV.Forms
 
                     if (MALOP != null) // TODO : Chuyển Lớp Cùng Khoa
                     {
-                        MessageBox.Show("LỚP TỒN TẠI Ở SITE HIỆN TẠI");
+                        //MessageBox.Show("LỚP TỒN TẠI Ở SITE HIỆN TẠI");
                         // TODO : Cập nhập mã lớp cho sinh viên ở chính site hiện tại
-                        QUERY = "Update SINHVIEN SET MALOP='D16CQCN3' WHERE MASV='N16DCCN076'";
+                        QUERY = "Update SINHVIEN SET MALOP='"+maLopChuyenDenTextBox+"' WHERE MASV='"+maSVTextBox+"'";
                         command = new SqlCommand(QUERY, connection);
                         adapter.UpdateCommand = new SqlCommand(QUERY, connection);
                         adapter.UpdateCommand.ExecuteNonQuery();
-                        XtraMessageBox.Show("Chuyển Sinh Viên Thành Công", "Info", MessageBoxButtons.OK);
+                        XtraMessageBox.Show("Chuyển Sinh Viên Cùng Khoa Thành Công", "Info", MessageBoxButtons.OK);
                         return;
                     }
                     else // TODO : Lên Site ROOT tìm mã lớp
                     {
-                        QUERY = "SELECT MALOP FROM LINK0.QLDSV.dbo.LOP WHERE MALOP = 'D16CQVT1'";// giả sử D16CQVT1 là mã lớp chuyển tới
+                        QUERY = "SELECT MALOP FROM LINK0.QLDSV.dbo.LOP WHERE MALOP = '"+maLopChuyenDenTextBox+"'";// giả sử D16CQVT1 là mã lớp chuyển tới
                         command = new SqlCommand(QUERY, connection);
                         command.CommandType = CommandType.Text;
                         try
@@ -127,10 +126,12 @@ namespace QLDSV.Forms
                         if (MALOP == null) // INFO : Mã lớp không tồn tại trong Cơ Sở Dữ Liệu
                         {
                             XtraMessageBox.Show("Mã Lớp Này Không Tồn Tại Trong Cơ Sở Dữ Liệu", "INFO", MessageBoxButtons.OK);
+                            this.txtMaLopChuyenDen.Focus();
+                            return;
                         }
                         if (MALOP != null) // TODO : MALOP tồn tại - Cập nhập Mã Sinh Viên mới và thay đổi mã lớp cho sinh viên sắp chuyển lớp
                         {
-                            QUERY = "SELECT TOP 1 MASV FROM dbo.SINHVIEN WHERE MALOP = 'D16CQVT1' ORDER BY MASV DESC";// giả sử D16CQCVT1 là mã lớp chuyển tới
+                            QUERY = "SELECT TOP 1 MASV FROM dbo.SINHVIEN WHERE MALOP = '"+maLopChuyenDenTextBox+"' ORDER BY MASV DESC";// giả sử D16CQCVT1 là mã lớp chuyển tới
                             command = new SqlCommand(QUERY, connection);
                             command.CommandType = CommandType.Text;
                             try
@@ -150,7 +151,7 @@ namespace QLDSV.Forms
                                 Console.WriteLine("MA SINH VIEN DUOC CAP MOI : " + sinhvien.getMASV());
 
                                 // TODO : Cập nhập trạng thái học của sinh viên đó tại khoa ban đầu thành nghỉ học
-                                QUERY = "Update SINHVIEN SET NGHIHOC=1 WHERE MASV='N16DCCN076'";
+                                QUERY = "Update SINHVIEN SET NGHIHOC=1 WHERE MASV='"+maSVTextBox+"'";
                                 command = new SqlCommand(QUERY, connection);
                                 adapter.UpdateCommand = new SqlCommand(QUERY, connection);
                                 adapter.UpdateCommand.ExecuteNonQuery();
@@ -178,7 +179,7 @@ namespace QLDSV.Forms
                                 Console.WriteLine("MA SINH VIEN DUOC CAP MOI : " + sinhvien.getMASV());
 
                                 // TODO : Cập nhập trạng thái học của sinh viên đó tại khoa ban đầu thành nghỉ học
-                                QUERY = "Update SINHVIEN SET NGHIHOC=1 WHERE MASV='N16DCCN076'";
+                                QUERY = "Update SINHVIEN SET NGHIHOC=1 WHERE MASV='"+maSVTextBox+"'";
                                 command = new SqlCommand(QUERY, connection);
                                 adapter.UpdateCommand = new SqlCommand(QUERY, connection);
                                 adapter.UpdateCommand.ExecuteNonQuery();

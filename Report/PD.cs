@@ -53,17 +53,6 @@ namespace QLDSV.Report
                 labelKhoa.Visible = true;
                 labelKhoa.Text = ((DataRowView)Program.Bds_Dspm[Program.MKhoa])["TENKHOA"].ToString();
             }
-
-            if (this.cmbTenSinhVien.SelectedValue != null)
-            {
-                this.txtMaSV.Text = this.cmbTenSinhVien.SelectedValue.ToString();
-            }
-            else
-            {
-                this.txtMaSV.Text = "Lớp Chưa Có Sinh Viên";
-            }
-            this.cmbTenSinhVien.Visible = false;
-
         }
 
         // ============================= EVENT ============================= //
@@ -77,34 +66,22 @@ namespace QLDSV.Report
                 MessageBox.Show("Lỗi kết nối về chi nhánh mới", "", MessageBoxButtons.OK);
             }
             loadInitializeData();
-            if (this.cmbTenSinhVien.SelectedValue != null)
-            {
-                this.txtMaSV.Text = this.cmbTenSinhVien.SelectedValue.ToString();
-            }
-            else
-            {
-                this.txtMaSV.Text = "Lớp Chưa Có Sinh Viên";
-            }
+
+            this.txtMaSV.Text = "";
+            this.cmbTenSinhVien.Visible = false;
         }
 
         private void cmbTenLop_SelectedIndexChanged(object sender, EventArgs e)
         {
             this.sINHVIENTableAdapter.Fill(this.DS.SINHVIEN);
-
-            if (this.cmbTenSinhVien.SelectedValue != null)
-            {
-                this.txtMaSV.Text = this.cmbTenSinhVien.SelectedValue.ToString();
-            }
-            else
-            {
-                this.txtMaSV.Text = "Lớp Chưa Có Sinh Viên";
-            }
+            this.txtMaSV.Text = "";
+            this.cmbTenSinhVien.Visible = false;
         }
 
         private void btnSelectSinhVien_Click(object sender, EventArgs e)
         {
             this.txtMaSV.Text = "";
-            this.txtMaSV.Visible = false;
+            //this.txtMaSV.Visible = false;
             if (this.cmbTenSinhVien.Visible == false)
             {
                 this.cmbTenSinhVien.Visible = true;
@@ -112,22 +89,15 @@ namespace QLDSV.Report
             {
                 this.cmbTenSinhVien.Visible = false;
             }
-            
         }
 
         private void cmbTenSinhVien_SelectedIndexChanged(object sender, EventArgs e)
         {
-            this.txtMaSV.Visible = true;
             if (this.cmbTenSinhVien.SelectedValue != null)
             {
                 this.txtMaSV.Text = this.cmbTenSinhVien.SelectedValue.ToString();
             }
-            else
-            {
-                this.txtMaSV.Text = "Lớp Chưa Có Sinh Viên";
-            }
         }
-
 
 
         private void button_IN_Click(object sender, EventArgs e)
