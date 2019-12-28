@@ -33,7 +33,6 @@
             this.pnLeftControl = new System.Windows.Forms.Panel();
             this.button1 = new System.Windows.Forms.Button();
             this.grbControl = new System.Windows.Forms.GroupBox();
-            this.btnHuy = new System.Windows.Forms.Button();
             this.btnLuu = new System.Windows.Forms.Button();
             this.btnNhap = new System.Windows.Forms.Button();
             this.grbDiem = new System.Windows.Forms.GroupBox();
@@ -69,6 +68,7 @@
             this.tableAdapterManager = new QLDSV.DSTableAdapters.TableAdapterManager();
             this.MONHOCTableAdapter = new QLDSV.DSTableAdapters.MONHOCTableAdapter();
             this.SP_BDMHTableAdapter = new QLDSV.DSTableAdapters.SP_BDMHTableAdapter();
+            this.errorProvider = new System.Windows.Forms.ErrorProvider(this.components);
             ((System.ComponentModel.ISupportInitialize)(this.repositoryItemTextEdit1)).BeginInit();
             this.pnLeftControl.SuspendLayout();
             this.grbControl.SuspendLayout();
@@ -88,6 +88,7 @@
             ((System.ComponentModel.ISupportInitialize)(this.gridControlSua)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.bdsSP_BDMH)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.gridViewSua)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.errorProvider)).BeginInit();
             this.SuspendLayout();
             // 
             // repositoryItemTextEdit1
@@ -105,7 +106,7 @@
             this.pnLeftControl.Dock = System.Windows.Forms.DockStyle.Left;
             this.pnLeftControl.Location = new System.Drawing.Point(0, 0);
             this.pnLeftControl.Name = "pnLeftControl";
-            this.pnLeftControl.Size = new System.Drawing.Size(437, 503);
+            this.pnLeftControl.Size = new System.Drawing.Size(521, 503);
             this.pnLeftControl.TabIndex = 0;
             // 
             // button1
@@ -119,7 +120,6 @@
             // 
             // grbControl
             // 
-            this.grbControl.Controls.Add(this.btnHuy);
             this.grbControl.Controls.Add(this.btnLuu);
             this.grbControl.Controls.Add(this.btnNhap);
             this.grbControl.Location = new System.Drawing.Point(65, 338);
@@ -127,16 +127,6 @@
             this.grbControl.Size = new System.Drawing.Size(221, 100);
             this.grbControl.TabIndex = 1;
             this.grbControl.TabStop = false;
-            // 
-            // btnHuy
-            // 
-            this.btnHuy.Location = new System.Drawing.Point(111, 62);
-            this.btnHuy.Name = "btnHuy";
-            this.btnHuy.Size = new System.Drawing.Size(75, 23);
-            this.btnHuy.TabIndex = 2;
-            this.btnHuy.Text = "Hủy";
-            this.btnHuy.UseVisualStyleBackColor = true;
-            this.btnHuy.Click += new System.EventHandler(this.btnHuy_Click);
             // 
             // btnLuu
             // 
@@ -176,7 +166,7 @@
             this.grbDiem.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.grbDiem.Location = new System.Drawing.Point(10, 10);
             this.grbDiem.Name = "grbDiem";
-            this.grbDiem.Size = new System.Drawing.Size(423, 309);
+            this.grbDiem.Size = new System.Drawing.Size(491, 309);
             this.grbDiem.TabIndex = 0;
             this.grbDiem.TabStop = false;
             this.grbDiem.Text = "Nhập điểm";
@@ -205,14 +195,14 @@
             this.txtTenMon.Location = new System.Drawing.Point(76, 226);
             this.txtTenMon.Name = "txtTenMon";
             this.txtTenMon.Properties.ReadOnly = true;
-            this.txtTenMon.Size = new System.Drawing.Size(317, 20);
+            this.txtTenMon.Size = new System.Drawing.Size(398, 20);
             this.txtTenMon.TabIndex = 14;
             // 
             // label5
             // 
             this.label5.AutoSize = true;
             this.label5.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label5.Location = new System.Drawing.Point(8, 228);
+            this.label5.Location = new System.Drawing.Point(9, 188);
             this.label5.Name = "label5";
             this.label5.Size = new System.Drawing.Size(57, 13);
             this.label5.TabIndex = 13;
@@ -235,10 +225,10 @@
             this.lookUpEditMaMon.Properties.Buttons.AddRange(new DevExpress.XtraEditors.Controls.EditorButton[] {
             new DevExpress.XtraEditors.Controls.EditorButton(DevExpress.XtraEditors.Controls.ButtonPredefines.Combo)});
             this.lookUpEditMaMon.Properties.DataSource = this.bdsMonhoc;
-            this.lookUpEditMaMon.Properties.DisplayMember = "MAMH";
-            this.lookUpEditMaMon.Properties.NullText = "Chọn mã môn";
-            this.lookUpEditMaMon.Properties.ValueMember = "TENMH";
-            this.lookUpEditMaMon.Size = new System.Drawing.Size(317, 20);
+            this.lookUpEditMaMon.Properties.DisplayMember = "TENMH";
+            this.lookUpEditMaMon.Properties.NullText = "Hãy chọn môn học";
+            this.lookUpEditMaMon.Properties.ValueMember = "MAMH";
+            this.lookUpEditMaMon.Size = new System.Drawing.Size(398, 20);
             this.lookUpEditMaMon.TabIndex = 10;
             this.lookUpEditMaMon.EditValueChanged += new System.EventHandler(this.lookUpEditMaMon_EditValueChanged);
             // 
@@ -257,7 +247,7 @@
             // 
             this.label3.AutoSize = true;
             this.label3.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label3.Location = new System.Drawing.Point(8, 188);
+            this.label3.Location = new System.Drawing.Point(9, 229);
             this.label3.Name = "label3";
             this.label3.Size = new System.Drawing.Size(51, 13);
             this.label3.TabIndex = 9;
@@ -270,10 +260,10 @@
             this.lookUpEditMalop.Properties.Buttons.AddRange(new DevExpress.XtraEditors.Controls.EditorButton[] {
             new DevExpress.XtraEditors.Controls.EditorButton(DevExpress.XtraEditors.Controls.ButtonPredefines.Combo)});
             this.lookUpEditMalop.Properties.DataSource = this.bdsLOP;
-            this.lookUpEditMalop.Properties.DisplayMember = "MALOP";
-            this.lookUpEditMalop.Properties.NullText = "Chọn mã lớp";
-            this.lookUpEditMalop.Properties.ValueMember = "TENLOP";
-            this.lookUpEditMalop.Size = new System.Drawing.Size(317, 20);
+            this.lookUpEditMalop.Properties.DisplayMember = "TENLOP";
+            this.lookUpEditMalop.Properties.NullText = "Hãy chọn lớp";
+            this.lookUpEditMalop.Properties.ValueMember = "MALOP";
+            this.lookUpEditMalop.Size = new System.Drawing.Size(398, 20);
             this.lookUpEditMalop.TabIndex = 8;
             this.lookUpEditMalop.EditValueChanged += new System.EventHandler(this.lookUpEditMalop_EditValueChanged);
             // 
@@ -287,14 +277,14 @@
             this.txtTenlop.Location = new System.Drawing.Point(76, 133);
             this.txtTenlop.Name = "txtTenlop";
             this.txtTenlop.Properties.ReadOnly = true;
-            this.txtTenlop.Size = new System.Drawing.Size(317, 20);
+            this.txtTenlop.Size = new System.Drawing.Size(398, 20);
             this.txtTenlop.TabIndex = 7;
             // 
             // label2
             // 
             this.label2.AutoSize = true;
             this.label2.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label2.Location = new System.Drawing.Point(8, 137);
+            this.label2.Location = new System.Drawing.Point(6, 87);
             this.label2.Name = "label2";
             this.label2.Size = new System.Drawing.Size(53, 13);
             this.label2.TabIndex = 6;
@@ -304,7 +294,7 @@
             // 
             this.label1.AutoSize = true;
             this.label1.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label1.Location = new System.Drawing.Point(8, 85);
+            this.label1.Location = new System.Drawing.Point(9, 136);
             this.label1.Name = "label1";
             this.label1.Size = new System.Drawing.Size(47, 13);
             this.label1.TabIndex = 4;
@@ -327,18 +317,18 @@
             this.cmbKhoa.FormattingEnabled = true;
             this.cmbKhoa.Location = new System.Drawing.Point(76, 41);
             this.cmbKhoa.Name = "cmbKhoa";
-            this.cmbKhoa.Size = new System.Drawing.Size(317, 21);
+            this.cmbKhoa.Size = new System.Drawing.Size(398, 21);
             this.cmbKhoa.TabIndex = 2;
             this.cmbKhoa.SelectedIndexChanged += new System.EventHandler(this.cmbKhoa_SelectedIndexChanged);
             // 
             // pnRight
             // 
-            this.pnRight.Controls.Add(this.gridControlNhap);
             this.pnRight.Controls.Add(this.gridControlSua);
+            this.pnRight.Controls.Add(this.gridControlNhap);
             this.pnRight.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.pnRight.Location = new System.Drawing.Point(437, 0);
+            this.pnRight.Location = new System.Drawing.Point(521, 0);
             this.pnRight.Name = "pnRight";
-            this.pnRight.Size = new System.Drawing.Size(549, 503);
+            this.pnRight.Size = new System.Drawing.Size(465, 503);
             this.pnRight.TabIndex = 1;
             // 
             // gridControlNhap
@@ -349,7 +339,7 @@
             this.gridControlNhap.Name = "gridControlNhap";
             this.gridControlNhap.RepositoryItems.AddRange(new DevExpress.XtraEditors.Repository.RepositoryItem[] {
             this.repositoryItemTextEditNhap});
-            this.gridControlNhap.Size = new System.Drawing.Size(549, 503);
+            this.gridControlNhap.Size = new System.Drawing.Size(465, 503);
             this.gridControlNhap.TabIndex = 0;
             this.gridControlNhap.ViewCollection.AddRange(new DevExpress.XtraGrid.Views.Base.BaseView[] {
             this.gridViewnNhap});
@@ -430,7 +420,7 @@
             this.gridControlSua.Location = new System.Drawing.Point(0, 0);
             this.gridControlSua.MainView = this.gridViewSua;
             this.gridControlSua.Name = "gridControlSua";
-            this.gridControlSua.Size = new System.Drawing.Size(549, 503);
+            this.gridControlSua.Size = new System.Drawing.Size(465, 503);
             this.gridControlSua.TabIndex = 2;
             this.gridControlSua.ViewCollection.AddRange(new DevExpress.XtraGrid.Views.Base.BaseView[] {
             this.gridViewSua});
@@ -519,6 +509,10 @@
             // 
             this.SP_BDMHTableAdapter.ClearBeforeFill = true;
             // 
+            // errorProvider
+            // 
+            this.errorProvider.ContainerControl = this;
+            // 
             // frmDiem
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -549,6 +543,7 @@
             ((System.ComponentModel.ISupportInitialize)(this.gridControlSua)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.bdsSP_BDMH)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.gridViewSua)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.errorProvider)).EndInit();
             this.ResumeLayout(false);
 
         }
@@ -570,7 +565,6 @@
         private DevExpress.XtraEditors.TextEdit txtTenMon;
         private System.Windows.Forms.Label label5;
         private System.Windows.Forms.GroupBox grbControl;
-        private System.Windows.Forms.Button btnHuy;
         private System.Windows.Forms.Button btnLuu;
         private System.Windows.Forms.Button btnNhap;
         private DS DS;
@@ -595,5 +589,6 @@
         private DevExpress.XtraGrid.Columns.GridColumn colMASV;
         private DevExpress.XtraGrid.Columns.GridColumn colDIEM;
         private DevExpress.XtraEditors.Repository.RepositoryItemTextEdit repositoryItemTextEditNhap;
+        private System.Windows.Forms.ErrorProvider errorProvider;
     }
 }

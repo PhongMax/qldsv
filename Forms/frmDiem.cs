@@ -10,6 +10,7 @@ using System.Windows.Forms;
 using DevExpress.XtraEditors;
 using DevExpress.XtraGrid.Views.Grid;
 using DevExpress.XtraGrid;
+using System.Data.SqlClient;
 
 namespace QLDSV.Forms
 {
@@ -18,7 +19,7 @@ namespace QLDSV.Forms
         BindingSource bdsSpDSSV_Diem = new BindingSource();
         private String lop = "";
         private String monhoc = "";
-        private int lanthi;
+        private short lanthi;
         public frmDiem()
         {
             InitializeComponent();
@@ -108,35 +109,47 @@ namespace QLDSV.Forms
 
         private void btnNhap_Click(object sender, EventArgs e)
         {
+
+           errorProvider.Clear();
+
            monhoc = (String)lookUpEditMaMon.EditValue;
-           lanthi = Convert.ToInt32(Math.Round(numericLanThi.Value, 0)); ;
+           lanthi = numericLanThi.Value == 1 ? (short)1 : (short)2;
            lop = (String)lookUpEditMalop.EditValue;
 
         
-          
-
-
-          //this.SP_BDMHTableAdapter.Connection.ConnectionString = Program.URL_Connect;
-          //this.SP_BDMHTableAdapter.Fill(this.DS.SP_BDMH, "d16cqc1", "csdl", 1);
-
-            //  visible và unvisible.
-            for (int i = 0; i < this.gridViewSua.Columns.Count; i++)
+          if(string.IsNullOrEmpty(monhoc) || string.IsNullOrEmpty(lop))
             {
-                this.gridViewSua.Columns[i].Visible = false;
-
+                errorProvider.SetError(this.btnNhap , "Các trường thông tin nhập điểm không được để trống !" );
+                return;
             }
+
+
+            this.SP_BDMHTableAdapter.Connection.ConnectionString = Program.URL_Connect;
+            this.SP_BDMHTableAdapter.Fill(this.DS.SP_BDMH, lop, monhoc, lanthi);
+
+            
 
 
             if (bdsSP_BDMH.Count > 0)
           {   // sửa
-               // this.gridControlSua.Visible = true;
-               // this.gridControlSua.();
+              // this.gridControlSua.Visible = true;
+              // this.gridControlSua.();
+              //  visible và invisible.
+              //for (int i = 0; i < this.gridViewSua.Columns.Count; i++)
+              //{
+              //    this.gridViewSua.Columns[i].Visible = false;
+
+                //}
+
+               this.gridControlSua.BringToFront();
 
             }
             else
             {
+                this.gridControlNhap.BringToFront();
 
-                DataTable tblDiem = Program.ExecSqlDataTable("EXEC	[dbo].[SP_DSSV_MH] @malop = N'd16cqc1'");
+                string cmd = "EXEC	[dbo].[SP_DSSV_MH] @malop = N'" + lop + "'";
+                DataTable tblDiem = Program.ExecSqlDataTable(cmd);
                 this.bdsSpDSSV_Diem.DataSource = tblDiem;
                 this.gridControlNhap.DataSource = this.bdsSpDSSV_Diem;
 
@@ -149,19 +162,54 @@ namespace QLDSV.Forms
 
         }
 
-        private void btnHuy_Click(object sender, EventArgs e)
-        {
-            this.gridControlSua.BringToFront();
-        }
-
         private void btnLuu_Click(object sender, EventArgs e)
         {
+            errorProvider.Clear();
+
             if (checkEmptyRow())
             {
+                errorProvider.SetError(this.btnLuu, "Bạn chưa nhập hết bản điểm cho sinh viên !");
                 return;
-            }else
+            }
+            else
             {
-                // làm tiếp...
+                // cập nhật con trỏ chuột...
+                bdsSpDSSV_Diem.EndEdit();
+                bdsSpDSSV_Diem.MoveFirst();
+
+                for (int i = 0; i < bdsSpDSSV_Diem.Count; i++)
+                {
+                    using (SqlConnection conn = new SqlConnection(Program.URL_Connect))
+                    {
+                        conn.Open();
+                        SqlCommand cmd = new SqlCommand("SP_INSERT_DIEM", conn);
+                        cmd.CommandType = CommandType.StoredProcedure;
+
+                        string masv = ((DataRowView)bdsSpDSSV_Diem[i])["MASV"].ToString();
+                        cmd.Parameters.Add(new SqlParameter("@MASV", masv));
+                        cmd.Parameters.Add(new SqlParameter("@MAMH", monhoc));
+                        cmd.Parameters.Add(new SqlParameter("@LAN", lanthi));
+
+                        float diem = float.Parse(((DataRowView)bdsSpDSSV_Diem[i])["DIEM"].ToString());
+                        cmd.Parameters.Add(new SqlParameter("@DIEM", diem));
+
+                        try
+                        {
+                            cmd.ExecuteNonQuery();
+                        }
+                        catch (Exception ex)
+                        {
+                            MessageBox.Show("Lỗi ghi điểm vào Database. Bạn hãy xem lại ! " + ex.Message, "", MessageBoxButtons.OK);
+                            conn.Close();
+                            return;
+
+                        }
+                        conn.Close();
+                    }
+                }
+
+                MessageBox.Show("Thao tác thành công!", "", MessageBoxButtons.OK);
+                return;
             }
         }
 
@@ -204,7 +252,7 @@ namespace QLDSV.Forms
             {
                 if (((DataRowView)bdsSpDSSV_Diem[i])["DIEM"].ToString() == "")
                 {
-                    MessageBox.Show("Bạn hãy nhập hết điểm trước khi cập nhật !", "", MessageBoxButtons.OK);
+                   
                     bdsSpDSSV_Diem.Position = i;
                     return true;
                 }
@@ -219,8 +267,7 @@ namespace QLDSV.Forms
             GridView view = sender as GridView;
             if (e.RowHandle == view.FocusedRowHandle)
             {
-                e.Appearance.BackColor = Color.Green;
-                //e.Appearance.ForeColor = Color.White;
+                e.Appearance.BackColor = Color.LawnGreen;
             }
         }
     }

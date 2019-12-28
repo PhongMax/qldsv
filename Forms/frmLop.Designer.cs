@@ -745,7 +745,7 @@
             this.colNGHIHOC.Caption = "Nghỉ học";
             this.colNGHIHOC.FieldName = "NGHIHOC";
             this.colNGHIHOC.Name = "colNGHIHOC";
-            this.colNGHIHOC.ToolTip = "(✔ Đang học) ";
+            this.colNGHIHOC.ToolTip = "(✔ nghĩ học) ";
             this.colNGHIHOC.Visible = true;
             this.colNGHIHOC.VisibleIndex = 9;
             // 
