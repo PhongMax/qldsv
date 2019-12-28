@@ -24,16 +24,13 @@ namespace QLDSV.Report
 
         }
 
-        // ============================= EVENT ============================= //
         private void button_IN_Click(object sender, EventArgs e)
         {
-            //// Chưa làm validate MASV có tồn tại không
             //XtraReport_BDTK report = new XtraReport_BDTK("D16CQCN2");
-
-            //report.lblMaLop.Text = "D16CQCN2";
-
             //ReportPrintTool print = new ReportPrintTool(report);
             //print.ShowPreviewDialog();
         }
+
+        // ============================= EVENT ============================= //
     }
 }
