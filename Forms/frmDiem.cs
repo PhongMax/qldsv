@@ -27,8 +27,6 @@ namespace QLDSV.Forms
             InitializeComponent();
         }
 
-     
-
         private void cmbKhoa_SelectedIndexChanged(object sender, EventArgs e)
         {
 
@@ -43,11 +41,11 @@ namespace QLDSV.Forms
             }
             else
             {
-               loadInitializeData();
+                loadInitializeData();
             }
         }
 
-      
+
 
         private void loadInitializeData()
         {
@@ -66,6 +64,9 @@ namespace QLDSV.Forms
         {
             // TODO: load data
             loadInitializeData();
+
+            this.btnLuu.Enabled = false;
+
             // đoạn code liên kết giữa bds với combo box
             // lọc phân mảnh trước
             Program.Bds_Dspm.Filter = "TENKHOA LIKE 'KHOA%'";
@@ -105,45 +106,29 @@ namespace QLDSV.Forms
 
         private void btnNhap_Click(object sender, EventArgs e)
         {
+            this.btnNhap.Enabled = false;
+            this.btnLuu.Enabled = true;
+            errorProvider.Clear();
 
-           errorProvider.Clear();
+            monhoc = (String)lookUpEditMaMon.EditValue;
+            lanthi = numericLanThi.Value == 1 ? (short)1 : (short)2;
+            lop = (String)lookUpEditMalop.EditValue;
 
-           monhoc = (String)lookUpEditMaMon.EditValue;
-           lanthi = numericLanThi.Value == 1 ? (short)1 : (short)2;
-           lop = (String)lookUpEditMalop.EditValue;
 
-        
-          if(string.IsNullOrEmpty(monhoc) || string.IsNullOrEmpty(lop))
+            if (string.IsNullOrEmpty(monhoc) || string.IsNullOrEmpty(lop))
             {
-                errorProvider.SetError(this.btnNhap , "Các trường thông tin nhập điểm không được để trống !" );
+                errorProvider.SetError(this.btnNhap, "Các trường thông tin nhập điểm không được để trống !");
                 return;
             }
 
 
 
 
-            if (lanthi == 2)
-            {
-                // check lần 1 có điểm hay chưa
-                string temp = "  EXEC[dbo].[SP_BDMH] " +
-                     " @malop = N'" + lop + "'," +
-                     " @mamh = N'" + monhoc + "'," +
-                        "@lan =" + 1;
-                 DataTable check = Program.ExecSqlDataTable(temp);
-                
-                if (check.Rows.Count <= 0)
-                {
-                    errorProvider.SetError(this.btnNhap, "Bạn chưa nhập điểm thi cho lần 1 ");
-                    return;
-                }
-
-            }
-
             // list ra bảng điểm danh sách sinh viên để sửa
             string cmd = "  EXEC[dbo].[SP_BDMH] " +
-                         " @malop = N'" +   lop + "'," +
-		                 " @mamh = N'" + monhoc + "'," +
-		                 "@lan =" + lanthi;
+                         " @malop = N'" + lop + "'," +
+                         " @mamh = N'" + monhoc + "'," +
+                         "@lan =" + lanthi;
             DataTable tblDiem_Sua = Program.ExecSqlDataTable(cmd);
             this.bdsBangDiem_Sua.DataSource = tblDiem_Sua;
 
@@ -152,7 +137,7 @@ namespace QLDSV.Forms
             string cmd1 = "EXEC	[dbo].[SP_DSSV_MH] @malop = N'" + lop + "'";
             DataTable tblDiem_Nhap = Program.ExecSqlDataTable(cmd1);
             this.bdsBangDiem_Nhap.DataSource = tblDiem_Nhap;
-           
+
             if (this.bdsBangDiem_Sua.Count > 0)
             {
                 // trường hợp sửa điểm
@@ -160,10 +145,52 @@ namespace QLDSV.Forms
             }
             else
             {
-               // trường hợp nhập điểm
+                // trường hợp nhập điểm cho lần thi thứ 2...
+
+                // lần 2 được nhập điểm nếu lần 1 đã nhập điểm
+                if (lanthi == 2)
+                {
+                    // check lần 1 có điểm hay chưa
+                    string temp = "  EXEC[dbo].[SP_BDMH] " +
+                         " @malop = N'" + lop + "'," +
+                         " @mamh = N'" + monhoc + "'," +
+                            "@lan =" + 1;
+                    DataTable dataTableCheck = Program.ExecSqlDataTable(temp);
+                    
+
+                    if (dataTableCheck.Rows.Count <= 0)
+                    {
+                        errorProvider.SetError(this.btnNhap, "Bạn chưa nhập điểm thi cho lần 1 ");
+                        return;
+                    }
+                    else
+                    {
+                        // nếu lần 1 đã có điểm thì thực hiện nhập điểm cho lần 2 với điều kiện là chỉ những sinh viên có điểm < 4.
+
+                        for(int i = dataTableCheck.Rows.Count - 1; i >= 0; i--)
+{
+                            DataRow dr = dataTableCheck.Rows[i];
+                            float checkDiem = float.Parse(dr["DIEM"] as string);
+                            if (checkDiem > 4)
+                                dr.Delete();
+                            else
+                            {
+                                dr["DIEM"] = "";
+                            }
+                        }
+                        dataTableCheck.AcceptChanges();
+                        this.bdsBangDiem_Nhap.DataSource = dataTableCheck;
+                        
+                    }
+                }
+
+
+                //trường hợp nhập điểm cho lần thi thứ nhất.
                 this.gridControlDiem.DataSource = this.bdsBangDiem_Nhap;
             }
+
         }
+    
 
         private void btnLuu_Click(object sender, EventArgs e)
         {
@@ -195,7 +222,7 @@ namespace QLDSV.Forms
                         SqlCommand cmd = new SqlCommand("SP_INSERT_DIEM", conn);
                         cmd.CommandType = CommandType.StoredProcedure;
 
-                        string masv = ((DataRowView)bdsBangDiem_Nhap[i])["MASV"].ToString();
+                        string masv = ((DataRowView)bdsTemp[i])["MASV"].ToString();
                         cmd.Parameters.Add(new SqlParameter("@MASV", masv));
                         cmd.Parameters.Add(new SqlParameter("@MAMH", monhoc));
                         cmd.Parameters.Add(new SqlParameter("@LAN", lanthi));
@@ -222,6 +249,8 @@ namespace QLDSV.Forms
                 }
 
                 MessageBox.Show("Thao tác thành công!", "", MessageBoxButtons.OK);
+                this.btnNhap.Enabled = true;
+                this.btnLuu.Enabled = false;
                 return;
             }
         }
@@ -259,12 +288,11 @@ namespace QLDSV.Forms
 
         private bool  checkEmptyRow()
         {
-            int slg = bdsBangDiem_Nhap.Count;
+            // get binding source từ gridcontrol
+            BindingSource bdsTemp = (BindingSource)this.gridControlDiem.DataSource;
+            int slg = bdsTemp.Count;
             for (int i = 0; i < slg; i++)
             {
-                // get binding source từ gridcontrol
-                BindingSource bdsTemp = (BindingSource)this.gridControlDiem.DataSource;
-                
                 if (((DataRowView)bdsTemp[i])["DIEM"].ToString() == "")
                 {
                    

@@ -31,7 +31,6 @@
             this.components = new System.ComponentModel.Container();
             this.repositoryItemTextEdit1 = new DevExpress.XtraEditors.Repository.RepositoryItemTextEdit();
             this.pnLeftControl = new System.Windows.Forms.Panel();
-            this.button1 = new System.Windows.Forms.Button();
             this.grbControl = new System.Windows.Forms.GroupBox();
             this.btnLuu = new System.Windows.Forms.Button();
             this.btnNhap = new System.Windows.Forms.Button();
@@ -90,7 +89,6 @@
             // 
             this.pnLeftControl.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(192)))), ((int)(((byte)(192)))), ((int)(((byte)(255)))));
             this.pnLeftControl.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D;
-            this.pnLeftControl.Controls.Add(this.button1);
             this.pnLeftControl.Controls.Add(this.grbControl);
             this.pnLeftControl.Controls.Add(this.grbDiem);
             this.pnLeftControl.Dock = System.Windows.Forms.DockStyle.Left;
@@ -99,28 +97,19 @@
             this.pnLeftControl.Size = new System.Drawing.Size(521, 503);
             this.pnLeftControl.TabIndex = 0;
             // 
-            // button1
-            // 
-            this.button1.Location = new System.Drawing.Point(239, 357);
-            this.button1.Name = "button1";
-            this.button1.Size = new System.Drawing.Size(75, 23);
-            this.button1.TabIndex = 3;
-            this.button1.Text = "Enable Edit";
-            this.button1.UseVisualStyleBackColor = true;
-            // 
             // grbControl
             // 
             this.grbControl.Controls.Add(this.btnLuu);
             this.grbControl.Controls.Add(this.btnNhap);
             this.grbControl.Location = new System.Drawing.Point(65, 338);
             this.grbControl.Name = "grbControl";
-            this.grbControl.Size = new System.Drawing.Size(221, 100);
+            this.grbControl.Size = new System.Drawing.Size(261, 100);
             this.grbControl.TabIndex = 1;
             this.grbControl.TabStop = false;
             // 
             // btnLuu
             // 
-            this.btnLuu.Location = new System.Drawing.Point(21, 62);
+            this.btnLuu.Location = new System.Drawing.Point(102, 60);
             this.btnLuu.Name = "btnLuu";
             this.btnLuu.Size = new System.Drawing.Size(75, 23);
             this.btnLuu.TabIndex = 1;
@@ -130,7 +119,7 @@
             // 
             // btnNhap
             // 
-            this.btnNhap.Location = new System.Drawing.Point(79, 4);
+            this.btnNhap.Location = new System.Drawing.Point(102, 19);
             this.btnNhap.Name = "btnNhap";
             this.btnNhap.Size = new System.Drawing.Size(75, 23);
             this.btnNhap.TabIndex = 0;
@@ -488,7 +477,6 @@
         private DSTableAdapters.MONHOCTableAdapter MONHOCTableAdapter;
         private System.Windows.Forms.BindingSource bdsMonhoc;
         private System.Windows.Forms.NumericUpDown numericLanThi;
-        private System.Windows.Forms.Button button1;
         private DevExpress.XtraGrid.GridControl gridControlDiem;
         private DevExpress.XtraGrid.Views.Grid.GridView gridViewDiem;
         private DevExpress.XtraEditors.Repository.RepositoryItemTextEdit repositoryItemTextEdit1;
