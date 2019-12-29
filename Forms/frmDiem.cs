@@ -16,7 +16,9 @@ namespace QLDSV.Forms
 {
     public partial class frmDiem : DevExpress.XtraEditors.XtraForm
     {
-        BindingSource bdsSpDSSV_Diem = new BindingSource();
+        private BindingSource bdsBangDiem_Nhap = new BindingSource();
+        private BindingSource bdsBangDiem_Sua = new BindingSource();
+
         private String lop = "";
         private String monhoc = "";
         private short lanthi;
@@ -45,13 +47,7 @@ namespace QLDSV.Forms
             }
         }
 
-        private void lOPBindingNavigatorSaveItem_Click(object sender, EventArgs e)
-        {
-            this.Validate();
-            this.bdsLOP.EndEdit();
-            this.tableAdapterManager.UpdateAll(this.DS);
-
-        }
+      
 
         private void loadInitializeData()
         {
@@ -124,34 +120,32 @@ namespace QLDSV.Forms
             }
 
 
-            this.SP_BDMHTableAdapter.Connection.ConnectionString = Program.URL_Connect;
-            this.SP_BDMHTableAdapter.Fill(this.DS.SP_BDMH, lop, monhoc, lanthi);
 
-            
+          // list ra bảng điểm danh sách sinh viên để sửa
+            string cmd = "  EXEC[dbo].[SP_BDMH] " +
+                         " @malop = N'" +   lop + "'," +
+		                 " @mamh = N'" + monhoc + "'," +
+		                 "@lan =" + lanthi;
+            DataTable tblDiem_Sua = Program.ExecSqlDataTable(cmd);
+            this.bdsBangDiem_Sua.DataSource = tblDiem_Sua;
 
 
-            if (bdsSP_BDMH.Count > 0)
-          {   // sửa
-              // this.gridControlSua.Visible = true;
-              // this.gridControlSua.();
-              //  visible và invisible.
-              //for (int i = 0; i < this.gridViewSua.Columns.Count; i++)
-              //{
-              //    this.gridViewSua.Columns[i].Visible = false;
-
-                //}
-
-               this.gridControlSua.BringToFront();
+            // list ra bảng điểm danh sách sinh viên để nhập
+            string cmd1 = "EXEC	[dbo].[SP_DSSV_MH] @malop = N'" + lop + "'";
+            DataTable tblDiem_Nhap = Program.ExecSqlDataTable(cmd1);
+            this.bdsBangDiem_Nhap.DataSource = tblDiem_Nhap;
+           
+            if (this.bdsBangDiem_Sua.Count > 0)
+            {
+                this.gridControlDiem.DataSource = this.bdsBangDiem_Sua;
 
             }
+
             else
             {
-                this.gridControlNhap.BringToFront();
 
-                string cmd = "EXEC	[dbo].[SP_DSSV_MH] @malop = N'" + lop + "'";
-                DataTable tblDiem = Program.ExecSqlDataTable(cmd);
-                this.bdsSpDSSV_Diem.DataSource = tblDiem;
-                this.gridControlNhap.DataSource = this.bdsSpDSSV_Diem;
+               
+                this.gridControlDiem.DataSource = this.bdsBangDiem_Nhap;
 
             }
           
@@ -174,10 +168,14 @@ namespace QLDSV.Forms
             else
             {
                 // cập nhật con trỏ chuột...
-                bdsSpDSSV_Diem.EndEdit();
-                bdsSpDSSV_Diem.MoveFirst();
+                bdsBangDiem_Nhap.EndEdit();
+                bdsBangDiem_Nhap.MoveFirst();
 
-                for (int i = 0; i < bdsSpDSSV_Diem.Count; i++)
+                // sửa dòng trên bằng cái này.
+                //this.Validate();
+                //this.bdsLOP.EndEdit();
+
+                for (int i = 0; i < bdsBangDiem_Nhap.Count; i++)
                 {
                     using (SqlConnection conn = new SqlConnection(Program.URL_Connect))
                     {
@@ -185,15 +183,16 @@ namespace QLDSV.Forms
                         SqlCommand cmd = new SqlCommand("SP_INSERT_DIEM", conn);
                         cmd.CommandType = CommandType.StoredProcedure;
 
-                        string masv = ((DataRowView)bdsSpDSSV_Diem[i])["MASV"].ToString();
+                        string masv = ((DataRowView)bdsBangDiem_Nhap[i])["MASV"].ToString();
                         cmd.Parameters.Add(new SqlParameter("@MASV", masv));
                         cmd.Parameters.Add(new SqlParameter("@MAMH", monhoc));
                         cmd.Parameters.Add(new SqlParameter("@LAN", lanthi));
 
-
+                        //get binding source từ gridcontrol
+                        BindingSource bdsTemp = (BindingSource)this.gridControlDiem.DataSource;
 
                         // chỗ này sửa cho bds update kia nữa.
-                        float diem = float.Parse(((DataRowView)bdsSpDSSV_Diem[i])["DIEM"].ToString());
+                        float diem = float.Parse(((DataRowView)bdsTemp[i])["DIEM"].ToString());
                         cmd.Parameters.Add(new SqlParameter("@DIEM", diem));
 
                         try
@@ -235,7 +234,8 @@ namespace QLDSV.Forms
             if (view.FocusedColumn.FieldName == "DIEM")
             {
                 float diem = 0;
-               
+                if (string.IsNullOrEmpty(e.Value as string))
+                    return;
                 diem = float.Parse(e.Value as String);
                 if (diem < 0 || diem > 10)
                 {
@@ -248,13 +248,16 @@ namespace QLDSV.Forms
 
         private bool  checkEmptyRow()
         {
-            int slg = bdsSpDSSV_Diem.Count;
+            int slg = bdsBangDiem_Nhap.Count;
             for (int i = 0; i < slg; i++)
             {
-                if (((DataRowView)bdsSpDSSV_Diem[i])["DIEM"].ToString() == "")
+                // get binding source từ gridcontrol
+                BindingSource bdsTemp = (BindingSource)this.gridControlDiem.DataSource;
+                
+                if (((DataRowView)bdsTemp[i])["DIEM"].ToString() == "")
                 {
                    
-                    bdsSpDSSV_Diem.Position = i;
+                    bdsBangDiem_Nhap.Position = i;
                     return true;
                 }
                
@@ -272,56 +275,7 @@ namespace QLDSV.Forms
             }
         }
 
-        private void gridViewSua_HiddenEditor(object sender, EventArgs e)
-        {
-
-            GridView View = sender as GridView;
-            if (View.FocusedRowHandle == GridControl.NewItemRowHandle) return;
-            if (View.FocusedRowHandle == View.RowCount - 1)
-                View.FocusedRowHandle = 0;
-            else
-                View.FocusedRowHandle++;
-            View.ShowEditor();
-        }
-
-        private void gridViewSua_ValidatingEditor(object sender, DevExpress.XtraEditors.Controls.BaseContainerValidateEditorEventArgs e)
-        {
-            GridView view = sender as GridView;
-            if (view.FocusedColumn.FieldName == "DIEM")
-            {
-
-                double price = 0;
-                price = double.Parse(e.Value as string);
-
-                if ( price < 0 || price > 10)
-                {
-                    e.Valid = false;
-                    e.ErrorText = "Điểm phải lớn hơn không và nhỏ hơn 10";
-                }
-                //try
-                //{
-                //    diem = float.Parse(e.Value as String);
-
-                //}
-                //catch (Exception)
-                //{
-                //    return;
-                // }
-                //if (e.Value < 0 || diem > 10)
-                //{
-                //    e.Valid = false;
-                //    e.ErrorText = "Điểm phải lớn hơn không và nhỏ hơn 10";
-                //}
-            }
-        }
-
-        private void gridViewSua_RowCellStyle(object sender, RowCellStyleEventArgs e)
-        {
-            GridView view = sender as GridView;
-            if (e.RowHandle == view.FocusedRowHandle)
-            {
-                e.Appearance.BackColor = Color.LawnGreen;
-            }
-        }
+      
+     
     }
 }
