@@ -117,6 +117,9 @@ namespace QLDSV.Forms
 
             if (string.IsNullOrEmpty(monhoc) || string.IsNullOrEmpty(lop))
             {
+                this.btnNhap.Enabled = true;
+                this.btnLuu.Enabled = false;
+
                 errorProvider.SetError(this.btnNhap, "Các trường thông tin nhập điểm không được để trống !");
                 return;
             }
@@ -198,6 +201,8 @@ namespace QLDSV.Forms
 
             if (checkEmptyRow())
             {
+                this.btnNhap.Enabled = false;
+                this.btnLuu.Enabled = true;
                 errorProvider.SetError(this.btnLuu, "Bạn chưa nhập hết bản điểm cho sinh viên !");
                 return;
             }
@@ -205,9 +210,7 @@ namespace QLDSV.Forms
             {
                 //get binding source từ gridcontrol
                 BindingSource bdsTemp = (BindingSource)this.gridControlDiem.DataSource;
-                //bdsBangDiem_Nhap.EndEdit();
-                //bdsBangDiem_Nhap.MoveFirst();
-
+             
                 // kết thúc việc cập nhật dữ liệu
                 this.Validate();
                 bdsTemp.EndEdit();
@@ -227,9 +230,6 @@ namespace QLDSV.Forms
                         cmd.Parameters.Add(new SqlParameter("@MAMH", monhoc));
                         cmd.Parameters.Add(new SqlParameter("@LAN", lanthi));
 
-                    
-                      
-                        // chỗ này sửa cho bds update kia nữa.
                         float diem = float.Parse(((DataRowView)bdsTemp[i])["DIEM"].ToString());
                         cmd.Parameters.Add(new SqlParameter("@DIEM", diem));
 
@@ -295,8 +295,7 @@ namespace QLDSV.Forms
             {
                 if (((DataRowView)bdsTemp[i])["DIEM"].ToString() == "")
                 {
-                   
-                    bdsBangDiem_Nhap.Position = i;
+                    bdsTemp.Position = i;
                     return true;
                 }
                
