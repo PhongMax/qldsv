@@ -74,7 +74,7 @@ namespace QLDSV.Forms
                     {
                         sqlcmd.ExecuteNonQuery();
                     }
-                    // lỗi từ sqlserver => mã tồn tại
+                    // lỗi từ sqlserver =>   mã tồn tại
                     catch (SqlException)
                     {
                         exist = false;
@@ -136,17 +136,38 @@ namespace QLDSV.Forms
 
             txtTenSV.Text = selectedSV.Row["HO"] + " " + selectedSV.Row["TEN"];
             txtMaLop.Text = selectedSV.Row["MALOP"].ToString();
+
             _position = this.bdsSinhVien.Find("MASV", selectedSV.Row["MASV"].ToString());
     
 
             loadInitializeData();
             this.bdsSinhVien.Position = _position;
 
+
+           
         }
 
 
         private void btnThem_ItemClick(object sender, DevExpress.XtraBars.ItemClickEventArgs e)
         {
+            try
+            {
+
+                // check sinh viên đã nghĩ học
+                if (((DataRowView)bdsSinhVien[_position])["NGHIHOC"].ToString() == "True")
+                {
+                    XtraMessageBox.Show("Sinh Viên này đã nghĩ học !", "", MessageBoxButtons.OK);
+                    return;
+                }
+
+            }
+            catch(Exception)
+            {
+
+            }
+            
+
+
             _position = bdsSinhVien.Position;
             bdsHocPhi.AddNew();
             EnableEditMode();

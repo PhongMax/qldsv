@@ -103,7 +103,7 @@
             this.pnRole.Controls.Add(this.rdoPGV);
             this.pnRole.Controls.Add(this.rdoKhoa);
             this.pnRole.Controls.Add(this.rdoPKeToan);
-            this.pnRole.Location = new System.Drawing.Point(90, 279);
+            this.pnRole.Location = new System.Drawing.Point(90, 277);
             this.pnRole.Name = "pnRole";
             this.pnRole.Size = new System.Drawing.Size(203, 50);
             this.pnRole.TabIndex = 23;
@@ -173,7 +173,7 @@
             // 
             // lookUpUser
             // 
-            this.lookUpUser.Location = new System.Drawing.Point(90, 246);
+            this.lookUpUser.Location = new System.Drawing.Point(90, 245);
             this.lookUpUser.Name = "lookUpUser";
             this.lookUpUser.Properties.Appearance.BackColor = System.Drawing.Color.Turquoise;
             this.lookUpUser.Properties.Appearance.Options.UseBackColor = true;
@@ -247,7 +247,7 @@
             // 
             this.label4.AutoSize = true;
             this.label4.Font = new System.Drawing.Font("Consolas", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label4.Location = new System.Drawing.Point(9, 247);
+            this.label4.Location = new System.Drawing.Point(5, 247);
             this.label4.Name = "label4";
             this.label4.Size = new System.Drawing.Size(77, 15);
             this.label4.TabIndex = 11;

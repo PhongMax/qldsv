@@ -306,6 +306,8 @@
             this.barBtnHocPhi.ImageOptions.LargeImage = ((System.Drawing.Image)(resources.GetObject("barBtnHocPhi.ImageOptions.LargeImage")));
             this.barBtnHocPhi.ItemAppearance.Disabled.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.barBtnHocPhi.ItemAppearance.Disabled.Options.UseFont = true;
+            this.barBtnHocPhi.ItemAppearance.Normal.Font = new System.Drawing.Font("Consolas", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.barBtnHocPhi.ItemAppearance.Normal.Options.UseFont = true;
             this.barBtnHocPhi.Name = "barBtnHocPhi";
             this.barBtnHocPhi.ItemClick += new DevExpress.XtraBars.ItemClickEventHandler(this.barBtnHocPhi_ItemClick);
             // 

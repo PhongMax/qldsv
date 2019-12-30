@@ -306,6 +306,8 @@
             // 
             // gvTTHocPhi
             // 
+            this.gvTTHocPhi.Appearance.FocusedRow.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(128)))), ((int)(((byte)(255)))), ((int)(((byte)(128)))));
+            this.gvTTHocPhi.Appearance.FocusedRow.Options.UseBackColor = true;
             this.gvTTHocPhi.Columns.AddRange(new DevExpress.XtraGrid.Columns.GridColumn[] {
             this.colMASV,
             this.colNIENKHOA,

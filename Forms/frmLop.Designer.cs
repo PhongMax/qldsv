@@ -125,9 +125,9 @@
             mAKHLabel.Font = new System.Drawing.Font("Times New Roman", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             mAKHLabel.Location = new System.Drawing.Point(5, 113);
             mAKHLabel.Name = "mAKHLabel";
-            mAKHLabel.Size = new System.Drawing.Size(44, 14);
+            mAKHLabel.Size = new System.Drawing.Size(48, 14);
             mAKHLabel.TabIndex = 4;
-            mAKHLabel.Text = "MAKH:";
+            mAKHLabel.Text = "Mã khoa";
             // 
             // tENLOPLabel
             // 
@@ -135,9 +135,9 @@
             tENLOPLabel.Font = new System.Drawing.Font("Times New Roman", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             tENLOPLabel.Location = new System.Drawing.Point(5, 77);
             tENLOPLabel.Name = "tENLOPLabel";
-            tENLOPLabel.Size = new System.Drawing.Size(55, 14);
+            tENLOPLabel.Size = new System.Drawing.Size(44, 14);
             tENLOPLabel.TabIndex = 2;
-            tENLOPLabel.Text = "TENLOP:";
+            tENLOPLabel.Text = "Tên lớp";
             // 
             // maLopLabel
             // 
@@ -145,9 +145,9 @@
             maLopLabel.Font = new System.Drawing.Font("Times New Roman", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             maLopLabel.Location = new System.Drawing.Point(5, 40);
             maLopLabel.Name = "maLopLabel";
-            maLopLabel.Size = new System.Drawing.Size(50, 14);
+            maLopLabel.Size = new System.Drawing.Size(40, 14);
             maLopLabel.TabIndex = 0;
-            maLopLabel.Text = "MALOP:";
+            maLopLabel.Text = "Mã lớp";
             // 
             // barManagerLop
             // 
@@ -771,7 +771,7 @@
             // 
             // pnControlLeft
             // 
-            this.pnControlLeft.BackColor = System.Drawing.Color.Silver;
+            this.pnControlLeft.BackColor = System.Drawing.Color.LightGray;
             this.pnControlLeft.Controls.Add(this.grbLop);
             this.pnControlLeft.Dock = System.Windows.Forms.DockStyle.Left;
             this.pnControlLeft.Location = new System.Drawing.Point(0, 0);

@@ -356,5 +356,20 @@ namespace QLDSV.Forms
                     new Rectangle(r.X + (r.Width - size.Width) / 2, r.Y + (r.Height - size.Height) / 2, size.Width, size.Height));
             brush.Dispose();
         }
+
+        private void mAMHLabel_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void txtTenMonHoc_EditValueChanged(object sender, EventArgs e)
+        {
+
+        }
+
+        private void tENMHLabel_Click(object sender, EventArgs e)
+        {
+
+        }
     }
 }
