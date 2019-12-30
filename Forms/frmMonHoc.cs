@@ -8,6 +8,7 @@ using System.Linq;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 using DevExpress.XtraEditors;
+using DevExpress.XtraGrid.Views.Grid;
 
 namespace QLDSV.Forms
 {
@@ -36,7 +37,6 @@ namespace QLDSV.Forms
             // kết nối trước rồi mới fill.
             this.MONHOCTableAdapter.Connection.ConnectionString = Program.URL_Connect;
             this.MONHOCTableAdapter.Fill(this.DS.MONHOC);
-
             // TODO: This line of code loads data into the 'DS.DIEM' table. You can move, or remove it, as needed.
             this.DIEMTableAdapter.Connection.ConnectionString = Program.URL_Connect;
             this.DIEMTableAdapter.Fill(this.DS.DIEM);
@@ -44,21 +44,14 @@ namespace QLDSV.Forms
 
         private void frmMonHoc_Load(object sender, EventArgs e)
         {
-           
             // TODO : Load Data
             errorProvider.Clear();
             loadInitializeData();
-
-            Program.Bds_Dspm.Filter = "TENKHOA LIKE 'KHOA%'";
-            Utils.BindingDataToComBo(cmbKhoa, Program.Bds_Dspm.DataSource);
 
             MONHOCGridControl.Enabled = true;
             // TODO : Role Action
             if(Program.MGroup == Program.NhomQuyen[0])// PGV
             {
-                cmbKhoa.Visible = true;
-                cmbKhoa.Enabled = true;
-
                 barBtnThem.Enabled
                    = barBtnXoa.Enabled
                    = barBtnSua.Enabled
@@ -69,9 +62,6 @@ namespace QLDSV.Forms
             }
             else if (Program.MGroup == Program.NhomQuyen[1]) // KHOA
             {
-                cmbKhoa.Visible = false;
-                lblTenKhoa.Text = ((DataRowView)Program.Bds_Dspm[Program.MKhoa])["TENKHOA"].ToString();
-
                 barBtnThem.Enabled
                     = barBtnXoa.Enabled
                     = barBtnSua.Enabled
@@ -86,26 +76,6 @@ namespace QLDSV.Forms
             groupBoxMonHoc.Enabled = false;
            
         }
-
-
-        private void cmbKhoa_SelectedIndexChanged(object sender, EventArgs e)
-        {
-            // TODO : Chuyển Bộ Phận
-            Utils.ComboboxHelper(this.cmbKhoa);
-
-            // kết nối database với dữ liệu ở đoạn code trên và fill dữ liệu, nếu như có lỗi thì thoát.
-            if (Program.KetNoi() == 0)
-            {
-                MessageBox.Show("Lỗi kết nối về chi nhánh mới", "", MessageBoxButtons.OK);
-            }
-            else
-            {
-                loadInitializeData();
-            }
-        }
-
-
-
         // ============================ EVENT BUTTON ============================ //
         private void barBtnThem_ItemClick(object sender, DevExpress.XtraBars.ItemClickEventArgs e)
         {
@@ -176,7 +146,6 @@ namespace QLDSV.Forms
                 = barBtnSua.Enabled
                 = barBtnUndo.Enabled
                 = barBtnLamMoi.Enabled = false;
-            cmbKhoa.Enabled = false;
         }
 
         private void barBtnUndo_ItemClick(object sender, DevExpress.XtraBars.ItemClickEventArgs e)
@@ -222,10 +191,6 @@ namespace QLDSV.Forms
             {
                 return;
             }
-
-            cmbKhoa.Visible = true;
-            cmbKhoa.Enabled = true;
-
         }
 
         private void barBtnHuy_ItemClick(object sender, DevExpress.XtraBars.ItemClickEventArgs e)
@@ -366,6 +331,15 @@ namespace QLDSV.Forms
             if (bdsMONHOC.Position > 0)
             {
                 _position = bdsMONHOC.Position;
+            }
+        }
+
+        private void gridView1_RowCellStyle(object sender, DevExpress.XtraGrid.Views.Grid.RowCellStyleEventArgs e)
+        {
+            GridView view = sender as GridView;
+            if (e.RowHandle == view.FocusedRowHandle)
+            {
+                e.Appearance.BackColor = Color.LawnGreen;
             }
         }
     }

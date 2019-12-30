@@ -8,19 +8,23 @@ using System.Linq;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 using DevExpress.XtraEditors;
+using DevExpress.XtraGrid.Views.Grid;
+using DevExpress.XtraGrid;
+using System.Data.SqlClient;
 
 namespace QLDSV.Forms
 {
     public partial class frmDiem : DevExpress.XtraEditors.XtraForm
     {
+        private BindingSource bdsBangDiem_Nhap = new BindingSource();
+        private BindingSource bdsBangDiem_Sua = new BindingSource();
+
+        private String lop = "";
+        private String monhoc = "";
+        private short lanthi;
         public frmDiem()
         {
             InitializeComponent();
-        }
-
-        private void lblTenKhoa_Click(object sender, EventArgs e)
-        {
-
         }
 
         private void cmbKhoa_SelectedIndexChanged(object sender, EventArgs e)
@@ -37,17 +41,11 @@ namespace QLDSV.Forms
             }
             else
             {
-               loadInitializeData();
+                loadInitializeData();
             }
         }
 
-        private void lOPBindingNavigatorSaveItem_Click(object sender, EventArgs e)
-        {
-            this.Validate();
-            this.bdsLOP.EndEdit();
-            this.tableAdapterManager.UpdateAll(this.DS);
 
-        }
 
         private void loadInitializeData()
         {
@@ -58,12 +56,17 @@ namespace QLDSV.Forms
             this.LOPTableAdapter.Fill(this.DS.LOP);
             this.MONHOCTableAdapter.Fill(this.DS.MONHOC);
 
+
+
         }
 
         private void frmDiem_Load(object sender, EventArgs e)
         {
             // TODO: load data
             loadInitializeData();
+
+            this.btnLuu.Enabled = false;
+
             // đoạn code liên kết giữa bds với combo box
             // lọc phân mảnh trước
             Program.Bds_Dspm.Filter = "TENKHOA LIKE 'KHOA%'";
@@ -74,20 +77,16 @@ namespace QLDSV.Forms
             {
                 cmbKhoa.Visible = true;
                 cmbKhoa.Enabled = true;
-
-
             }
             else if (Program.MGroup == Program.NhomQuyen[1]) // KHOA
             {
                 cmbKhoa.Visible = false;
                 lblTenKhoa.Text = ((DataRowView)Program.Bds_Dspm[Program.MKhoa])["TENKHOA"].ToString();
-                
             }
         }
 
         private void lookUpEditMalop_EditValueChanged(object sender, EventArgs e)
         {
-
             try
             {
                 this.txtTenlop.Text = (string)this.lookUpEditMalop.EditValue;
@@ -95,7 +94,6 @@ namespace QLDSV.Forms
             catch (Exception) { }
         }
 
-     
 
         private void lookUpEditMaMon_EditValueChanged(object sender, EventArgs e)
         {
@@ -105,5 +103,217 @@ namespace QLDSV.Forms
             }
             catch (Exception) { }
         }
+
+        private void btnNhap_Click(object sender, EventArgs e)
+        {
+            this.btnNhap.Enabled = false;
+            this.btnLuu.Enabled = true;
+            errorProvider.Clear();
+
+            monhoc = (String)lookUpEditMaMon.EditValue;
+            lanthi = numericLanThi.Value == 1 ? (short)1 : (short)2;
+            lop = (String)lookUpEditMalop.EditValue;
+
+
+            if (string.IsNullOrEmpty(monhoc) || string.IsNullOrEmpty(lop))
+            {
+                this.btnNhap.Enabled = true;
+                this.btnLuu.Enabled = false;
+
+                errorProvider.SetError(this.btnNhap, "Các trường thông tin nhập điểm không được để trống !");
+                return;
+            }
+
+
+
+
+            // list ra bảng điểm danh sách sinh viên để sửa
+            string cmd = "  EXEC[dbo].[SP_BDMH] " +
+                         " @malop = N'" + lop + "'," +
+                         " @mamh = N'" + monhoc + "'," +
+                         "@lan =" + lanthi;
+            DataTable tblDiem_Sua = Program.ExecSqlDataTable(cmd);
+            this.bdsBangDiem_Sua.DataSource = tblDiem_Sua;
+
+
+            // list ra bảng điểm danh sách sinh viên để nhập
+            string cmd1 = "EXEC	[dbo].[SP_DSSV_MH] @malop = N'" + lop + "'";
+            DataTable tblDiem_Nhap = Program.ExecSqlDataTable(cmd1);
+            this.bdsBangDiem_Nhap.DataSource = tblDiem_Nhap;
+
+            if (this.bdsBangDiem_Sua.Count > 0)
+            {
+                // trường hợp sửa điểm
+                this.gridControlDiem.DataSource = this.bdsBangDiem_Sua;
+            }
+            else
+            {
+                // trường hợp nhập điểm cho lần thi thứ 2...
+
+                // lần 2 được nhập điểm nếu lần 1 đã nhập điểm
+                if (lanthi == 2)
+                {
+                    // check lần 1 có điểm hay chưa
+                    string temp = "  EXEC[dbo].[SP_BDMH] " +
+                         " @malop = N'" + lop + "'," +
+                         " @mamh = N'" + monhoc + "'," +
+                            "@lan =" + 1;
+                    DataTable dataTableCheck = Program.ExecSqlDataTable(temp);
+                    
+
+                    if (dataTableCheck.Rows.Count <= 0)
+                    {
+                        errorProvider.SetError(this.btnNhap, "Bạn chưa nhập điểm thi cho lần 1 ");
+                        return;
+                    }
+                    else
+                    {
+                        // nếu lần 1 đã có điểm thì thực hiện nhập điểm cho lần 2 với điều kiện là chỉ những sinh viên có điểm < 4.
+
+                        for(int i = dataTableCheck.Rows.Count - 1; i >= 0; i--)
+{
+                            DataRow dr = dataTableCheck.Rows[i];
+                            float checkDiem = float.Parse(dr["DIEM"] as string);
+                            if (checkDiem > 4)
+                                dr.Delete();
+                            else
+                            {
+                                dr["DIEM"] = "";
+                            }
+                        }
+                        dataTableCheck.AcceptChanges();
+                        this.bdsBangDiem_Nhap.DataSource = dataTableCheck;
+                        
+                    }
+                }
+
+
+                //trường hợp nhập điểm cho lần thi thứ nhất.
+                this.gridControlDiem.DataSource = this.bdsBangDiem_Nhap;
+            }
+
+        }
+    
+
+        private void btnLuu_Click(object sender, EventArgs e)
+        {
+            errorProvider.Clear();
+
+            if (checkEmptyRow())
+            {
+                this.btnNhap.Enabled = false;
+                this.btnLuu.Enabled = true;
+                errorProvider.SetError(this.btnLuu, "Bạn chưa nhập hết bản điểm cho sinh viên !");
+                return;
+            }
+            else
+            {
+                //get binding source từ gridcontrol
+                BindingSource bdsTemp = (BindingSource)this.gridControlDiem.DataSource;
+             
+                // kết thúc việc cập nhật dữ liệu
+                this.Validate();
+                bdsTemp.EndEdit();
+
+
+
+                for (int i = 0; i < bdsBangDiem_Nhap.Count; i++)
+                {
+                    using (SqlConnection conn = new SqlConnection(Program.URL_Connect))
+                    {
+                        conn.Open();
+                        SqlCommand cmd = new SqlCommand("SP_INSERT_DIEM", conn);
+                        cmd.CommandType = CommandType.StoredProcedure;
+
+                        string masv = ((DataRowView)bdsTemp[i])["MASV"].ToString();
+                        cmd.Parameters.Add(new SqlParameter("@MASV", masv));
+                        cmd.Parameters.Add(new SqlParameter("@MAMH", monhoc));
+                        cmd.Parameters.Add(new SqlParameter("@LAN", lanthi));
+
+                        float diem = float.Parse(((DataRowView)bdsTemp[i])["DIEM"].ToString());
+                        cmd.Parameters.Add(new SqlParameter("@DIEM", diem));
+
+                        try
+                        {
+                            cmd.ExecuteNonQuery();
+                        }
+                        catch (Exception ex)
+                        {
+                            MessageBox.Show("Lỗi ghi điểm vào Database. Bạn hãy xem lại ! " + ex.Message, "", MessageBoxButtons.OK);
+                            conn.Close();
+                            return;
+
+                        }
+                        conn.Close();
+                    }
+                }
+
+                MessageBox.Show("Thao tác thành công!", "", MessageBoxButtons.OK);
+                this.btnNhap.Enabled = true;
+                this.btnLuu.Enabled = false;
+                return;
+            }
+        }
+
+        // sự kiện enter xuống dòng mới.
+        private void gridViewnNhap_HiddenEditor(object sender, EventArgs e)
+        {
+            GridView View = sender as GridView;
+            if (View.FocusedRowHandle == GridControl.NewItemRowHandle) return;
+            if (View.FocusedRowHandle == View.RowCount - 1)
+                View.FocusedRowHandle = 0;
+            else
+                View.FocusedRowHandle++;
+            View.ShowEditor();
+        }
+
+      
+        private void gridViewnNhap_ValidatingEditor(object sender, DevExpress.XtraEditors.Controls.BaseContainerValidateEditorEventArgs e)
+        {
+            GridView view = sender as GridView;
+            if (view.FocusedColumn.FieldName == "DIEM")
+            {
+                float diem = 0;
+                if (string.IsNullOrEmpty(e.Value as string))
+                    return;
+                diem = float.Parse(e.Value as String);
+                if (diem < 0 || diem > 10)
+                {
+                    e.Valid = false;
+                    e.ErrorText = "Điểm phải lớn hơn không và nhỏ hơn 10";
+                }
+            }
+        }
+
+
+        private bool  checkEmptyRow()
+        {
+            // get binding source từ gridcontrol
+            BindingSource bdsTemp = (BindingSource)this.gridControlDiem.DataSource;
+            int slg = bdsTemp.Count;
+            for (int i = 0; i < slg; i++)
+            {
+                if (((DataRowView)bdsTemp[i])["DIEM"].ToString() == "")
+                {
+                    bdsTemp.Position = i;
+                    return true;
+                }
+               
+            }
+
+            return false;
+        }
+
+        private void gridViewnNhap_RowCellStyle(object sender, RowCellStyleEventArgs e)
+        {
+            GridView view = sender as GridView;
+            if (e.RowHandle == view.FocusedRowHandle)
+            {
+                e.Appearance.BackColor = Color.LawnGreen;
+            }
+        }
+
+      
+     
     }
 }

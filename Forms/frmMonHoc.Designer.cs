@@ -48,8 +48,6 @@
             this.barDockControlLeft = new DevExpress.XtraBars.BarDockControl();
             this.barDockControlRight = new DevExpress.XtraBars.BarDockControl();
             this.panel1 = new System.Windows.Forms.Panel();
-            this.lblTenKhoa = new System.Windows.Forms.Label();
-            this.cmbKhoa = new System.Windows.Forms.ComboBox();
             this.labelKhoa = new System.Windows.Forms.Label();
             this.DS = new QLDSV.DS();
             this.bdsMONHOC = new System.Windows.Forms.BindingSource(this.components);
@@ -229,9 +227,9 @@
             // 
             this.barDockControlBottom.CausesValidation = false;
             this.barDockControlBottom.Dock = System.Windows.Forms.DockStyle.Bottom;
-            this.barDockControlBottom.Location = new System.Drawing.Point(0, 480);
+            this.barDockControlBottom.Location = new System.Drawing.Point(0, 483);
             this.barDockControlBottom.Manager = this.barManagerMonHoc;
-            this.barDockControlBottom.Size = new System.Drawing.Size(902, 23);
+            this.barDockControlBottom.Size = new System.Drawing.Size(902, 20);
             // 
             // barDockControlLeft
             // 
@@ -239,7 +237,7 @@
             this.barDockControlLeft.Dock = System.Windows.Forms.DockStyle.Left;
             this.barDockControlLeft.Location = new System.Drawing.Point(0, 24);
             this.barDockControlLeft.Manager = this.barManagerMonHoc;
-            this.barDockControlLeft.Size = new System.Drawing.Size(0, 456);
+            this.barDockControlLeft.Size = new System.Drawing.Size(0, 459);
             // 
             // barDockControlRight
             // 
@@ -247,38 +245,16 @@
             this.barDockControlRight.Dock = System.Windows.Forms.DockStyle.Right;
             this.barDockControlRight.Location = new System.Drawing.Point(902, 24);
             this.barDockControlRight.Manager = this.barManagerMonHoc;
-            this.barDockControlRight.Size = new System.Drawing.Size(0, 456);
+            this.barDockControlRight.Size = new System.Drawing.Size(0, 459);
             // 
             // panel1
             // 
-            this.panel1.Controls.Add(this.lblTenKhoa);
-            this.panel1.Controls.Add(this.cmbKhoa);
             this.panel1.Controls.Add(this.labelKhoa);
             this.panel1.Dock = System.Windows.Forms.DockStyle.Top;
             this.panel1.Location = new System.Drawing.Point(0, 24);
             this.panel1.Name = "panel1";
             this.panel1.Size = new System.Drawing.Size(902, 41);
             this.panel1.TabIndex = 4;
-            // 
-            // lblTenKhoa
-            // 
-            this.lblTenKhoa.AutoSize = true;
-            this.lblTenKhoa.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblTenKhoa.Location = new System.Drawing.Point(12, 14);
-            this.lblTenKhoa.Name = "lblTenKhoa";
-            this.lblTenKhoa.Size = new System.Drawing.Size(51, 17);
-            this.lblTenKhoa.TabIndex = 2;
-            this.lblTenKhoa.Text = "KHOA";
-            // 
-            // cmbKhoa
-            // 
-            this.cmbKhoa.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
-            this.cmbKhoa.FormattingEnabled = true;
-            this.cmbKhoa.Location = new System.Drawing.Point(66, 11);
-            this.cmbKhoa.Name = "cmbKhoa";
-            this.cmbKhoa.Size = new System.Drawing.Size(202, 21);
-            this.cmbKhoa.TabIndex = 1;
-            this.cmbKhoa.SelectedIndexChanged += new System.EventHandler(this.cmbKhoa_SelectedIndexChanged);
             // 
             // labelKhoa
             // 
@@ -308,10 +284,12 @@
             this.tableAdapterManager.BackupDataSetBeforeUpdate = false;
             this.tableAdapterManager.DIEMTableAdapter = null;
             this.tableAdapterManager.GIANGVIENTableAdapter = null;
+            this.tableAdapterManager.HOCPHITableAdapter = null;
             this.tableAdapterManager.KHOATableAdapter = null;
             this.tableAdapterManager.LOPTableAdapter = null;
             this.tableAdapterManager.MONHOCTableAdapter = this.MONHOCTableAdapter;
             this.tableAdapterManager.SINHVIENTableAdapter = null;
+            this.tableAdapterManager.THONGTINHOCPHICUASINHVIENTableAdapter = null;
             this.tableAdapterManager.UpdateOrder = QLDSV.DSTableAdapters.TableAdapterManager.UpdateOrderOption.InsertUpdateDelete;
             // 
             // MONHOCGridControl
@@ -334,14 +312,24 @@
             this.colTENMH});
             this.gridView1.GridControl = this.MONHOCGridControl;
             this.gridView1.Name = "gridView1";
+            this.gridView1.OptionsView.ShowGroupPanel = false;
+            this.gridView1.OptionsView.ShowViewCaption = true;
+            this.gridView1.ViewCaption = "DANH SÁCH MÔN HỌC";
+            this.gridView1.RowCellStyle += new DevExpress.XtraGrid.Views.Grid.RowCellStyleEventHandler(this.gridView1_RowCellStyle);
             this.gridView1.FocusedRowChanged += new DevExpress.XtraGrid.Views.Base.FocusedRowChangedEventHandler(this.gridView1_FocusedRowChanged);
             // 
             // colMAMH
             // 
             this.colMAMH.AppearanceCell.BackColor = System.Drawing.Color.White;
             this.colMAMH.AppearanceCell.Options.UseBackColor = true;
+            this.colMAMH.AppearanceCell.Options.UseTextOptions = true;
+            this.colMAMH.AppearanceCell.TextOptions.HAlignment = DevExpress.Utils.HorzAlignment.Center;
             this.colMAMH.AppearanceHeader.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(192)))), ((int)(((byte)(192)))));
+            this.colMAMH.AppearanceHeader.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.colMAMH.AppearanceHeader.Options.UseBackColor = true;
+            this.colMAMH.AppearanceHeader.Options.UseFont = true;
+            this.colMAMH.AppearanceHeader.Options.UseTextOptions = true;
+            this.colMAMH.AppearanceHeader.TextOptions.HAlignment = DevExpress.Utils.HorzAlignment.Center;
             this.colMAMH.Caption = "Mã Môn Học";
             this.colMAMH.FieldName = "MAMH";
             this.colMAMH.Name = "colMAMH";
@@ -352,8 +340,14 @@
             // 
             // colTENMH
             // 
+            this.colTENMH.AppearanceCell.Options.UseTextOptions = true;
+            this.colTENMH.AppearanceCell.TextOptions.HAlignment = DevExpress.Utils.HorzAlignment.Center;
             this.colTENMH.AppearanceHeader.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(192)))), ((int)(((byte)(192)))));
+            this.colTENMH.AppearanceHeader.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.colTENMH.AppearanceHeader.Options.UseBackColor = true;
+            this.colTENMH.AppearanceHeader.Options.UseFont = true;
+            this.colTENMH.AppearanceHeader.Options.UseTextOptions = true;
+            this.colTENMH.AppearanceHeader.TextOptions.HAlignment = DevExpress.Utils.HorzAlignment.Center;
             this.colTENMH.Caption = "Tên Môn Học";
             this.colTENMH.FieldName = "TENMH";
             this.colTENMH.Name = "colTENMH";
@@ -405,7 +399,7 @@
             this.groupBoxMonHoc.Dock = System.Windows.Forms.DockStyle.Fill;
             this.groupBoxMonHoc.Location = new System.Drawing.Point(0, 299);
             this.groupBoxMonHoc.Name = "groupBoxMonHoc";
-            this.groupBoxMonHoc.Size = new System.Drawing.Size(902, 181);
+            this.groupBoxMonHoc.Size = new System.Drawing.Size(902, 184);
             this.groupBoxMonHoc.TabIndex = 7;
             this.groupBoxMonHoc.TabStop = false;
             // 
@@ -469,8 +463,6 @@
         private System.Windows.Forms.Label labelKhoa;
         private DevExpress.XtraGrid.Columns.GridColumn colMAMH;
         private DevExpress.XtraGrid.Columns.GridColumn colTENMH;
-        private System.Windows.Forms.ComboBox cmbKhoa;
-        private System.Windows.Forms.Label lblTenKhoa;
         private System.Windows.Forms.ErrorProvider errorProvider;
         private System.Windows.Forms.BindingSource bdsDiem;
         private DSTableAdapters.DIEMTableAdapter DIEMTableAdapter;

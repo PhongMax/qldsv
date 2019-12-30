@@ -299,7 +299,6 @@
             // barButton_SinhVien
             // 
             this.barButton_SinhVien.Id = 9;
-            this.barButton_SinhVien.ImageOptions.Image = global::QLDSV.Properties.Resources.students;
             this.barButton_SinhVien.LargeWidth = 100;
             this.barButton_SinhVien.Name = "barButton_SinhVien";
             this.barButton_SinhVien.RibbonStyle = ((DevExpress.XtraBars.Ribbon.RibbonItemStyles)((DevExpress.XtraBars.Ribbon.RibbonItemStyles.Large | DevExpress.XtraBars.Ribbon.RibbonItemStyles.SmallWithText)));
