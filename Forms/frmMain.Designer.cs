@@ -66,6 +66,7 @@
             this.ribbonPage4 = new DevExpress.XtraBars.Ribbon.RibbonPage();
             this.ribbonPageGroup_CauHinh = new DevExpress.XtraBars.Ribbon.RibbonPageGroup();
             this.TableManager = new DevExpress.XtraTabbedMdi.XtraTabbedMdiManager(this.components);
+            this.barBtnHocPhi = new DevExpress.XtraBars.BarButtonItem();
             this.statusStrip.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.ribbonControl1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.TableManager)).BeginInit();
@@ -453,6 +454,17 @@
             // TableManager
             // 
             this.TableManager.MdiParent = this;
+            // 
+            // barBtnHocPhi
+            // 
+            this.barBtnHocPhi.Caption = "HỌC PHÍ";
+            this.barBtnHocPhi.Id = 25;
+            this.barBtnHocPhi.ImageOptions.Image = ((System.Drawing.Image)(resources.GetObject("barButtonItem5.ImageOptions.Image")));
+            this.barBtnHocPhi.ImageOptions.LargeImage = ((System.Drawing.Image)(resources.GetObject("barButtonItem5.ImageOptions.LargeImage")));
+            this.barBtnHocPhi.ItemAppearance.Disabled.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.barBtnHocPhi.ItemAppearance.Disabled.Options.UseFont = true;
+            this.barBtnHocPhi.Name = "barBtnHocPhi";
+            this.barBtnHocPhi.ItemClick += new DevExpress.XtraBars.ItemClickEventHandler(this.barBtnHocPhi_ItemClick);
             // 
             // frmMain
             // 
