@@ -539,6 +539,7 @@
             // 
             // conSua
             // 
+            this.conSua.Image = global::QLDSV.Properties.Resources.Text_Edit_icon_24;
             this.conSua.Name = "conSua";
             this.conSua.Size = new System.Drawing.Size(121, 22);
             this.conSua.Text = "Sửa";
@@ -546,6 +547,7 @@
             // 
             // conXoa
             // 
+            this.conXoa.Image = global::QLDSV.Properties.Resources.Delete_2_icon_24;
             this.conXoa.Name = "conXoa";
             this.conXoa.Size = new System.Drawing.Size(121, 22);
             this.conXoa.Text = "Xóa";
@@ -558,6 +560,7 @@
             // 
             // conGhi
             // 
+            this.conGhi.Image = global::QLDSV.Properties.Resources.check_48_icon;
             this.conGhi.Name = "conGhi";
             this.conGhi.Size = new System.Drawing.Size(121, 22);
             this.conGhi.Text = "Ghi";
@@ -570,6 +573,7 @@
             // 
             // conLamMoi
             // 
+            this.conLamMoi.Image = global::QLDSV.Properties.Resources.Button_Refresh_icon_48;
             this.conLamMoi.Name = "conLamMoi";
             this.conLamMoi.Size = new System.Drawing.Size(121, 22);
             this.conLamMoi.Text = "Làm mới";
@@ -619,6 +623,7 @@
             this.colMASV.Name = "colMASV";
             this.colMASV.Visible = true;
             this.colMASV.VisibleIndex = 0;
+            this.colMASV.Width = 86;
             // 
             // repositoryItemTextEditMaSV
             // 
@@ -639,6 +644,7 @@
             this.colHO.Name = "colHO";
             this.colHO.Visible = true;
             this.colHO.VisibleIndex = 1;
+            this.colHO.Width = 47;
             // 
             // colTEN
             // 
@@ -653,6 +659,7 @@
             this.colTEN.Name = "colTEN";
             this.colTEN.Visible = true;
             this.colTEN.VisibleIndex = 2;
+            this.colTEN.Width = 47;
             // 
             // colMALOP1
             // 
@@ -668,6 +675,7 @@
             this.colMALOP1.OptionsColumn.ReadOnly = true;
             this.colMALOP1.Visible = true;
             this.colMALOP1.VisibleIndex = 3;
+            this.colMALOP1.Width = 47;
             // 
             // colPHAI
             // 
@@ -683,6 +691,7 @@
             this.colPHAI.ToolTip = "(✔ Nam, ☐ Nữ) ";
             this.colPHAI.Visible = true;
             this.colPHAI.VisibleIndex = 4;
+            this.colPHAI.Width = 47;
             // 
             // colNGAYSINH
             // 
@@ -697,6 +706,7 @@
             this.colNGAYSINH.Name = "colNGAYSINH";
             this.colNGAYSINH.Visible = true;
             this.colNGAYSINH.VisibleIndex = 5;
+            this.colNGAYSINH.Width = 47;
             // 
             // colNOISINH
             // 
@@ -711,6 +721,7 @@
             this.colNOISINH.Name = "colNOISINH";
             this.colNOISINH.Visible = true;
             this.colNOISINH.VisibleIndex = 6;
+            this.colNOISINH.Width = 47;
             // 
             // colDIACHI
             // 
@@ -725,6 +736,7 @@
             this.colDIACHI.Name = "colDIACHI";
             this.colDIACHI.Visible = true;
             this.colDIACHI.VisibleIndex = 7;
+            this.colDIACHI.Width = 47;
             // 
             // colGHICHU
             // 
@@ -739,6 +751,7 @@
             this.colGHICHU.Name = "colGHICHU";
             this.colGHICHU.Visible = true;
             this.colGHICHU.VisibleIndex = 8;
+            this.colGHICHU.Width = 47;
             // 
             // colNGHIHOC
             // 
@@ -754,6 +767,7 @@
             this.colNGHIHOC.ToolTip = "(✔ nghĩ học) ";
             this.colNGHIHOC.Visible = true;
             this.colNGHIHOC.VisibleIndex = 9;
+            this.colNGHIHOC.Width = 46;
             // 
             // pnControlLeft
             // 

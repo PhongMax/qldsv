@@ -19,7 +19,7 @@ namespace QLDSV.Properties {
     // class via a tool like ResGen or Visual Studio.
     // To add or remove a member, edit your .ResX file then rerun ResGen
     // with the /str option, or rebuild your VS project.
-    [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Resources.Tools.StronglyTypedResourceBuilder", "4.0.0.0")]
+    [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Resources.Tools.StronglyTypedResourceBuilder", "15.0.0.0")]
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
     [global::System.Runtime.CompilerServices.CompilerGeneratedAttribute()]
     internal class Resources {
@@ -113,6 +113,26 @@ namespace QLDSV.Properties {
         /// <summary>
         ///   Looks up a localized resource of type System.Drawing.Bitmap.
         /// </summary>
+        internal static System.Drawing.Bitmap Button_Refresh_icon_48 {
+            get {
+                object obj = ResourceManager.GetObject("Button-Refresh-icon-48", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap check_48_icon {
+            get {
+                object obj = ResourceManager.GetObject("check-48-icon", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
         internal static System.Drawing.Bitmap Classroom_48_icon {
             get {
                 object obj = ResourceManager.GetObject("Classroom-48-icon", resourceCulture);
@@ -146,6 +166,16 @@ namespace QLDSV.Properties {
         internal static System.Drawing.Bitmap create_login_128 {
             get {
                 object obj = ResourceManager.GetObject("create-login-128", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap Delete_2_icon_24 {
+            get {
+                object obj = ResourceManager.GetObject("Delete-2-icon-24", resourceCulture);
                 return ((System.Drawing.Bitmap)(obj));
             }
         }
@@ -196,6 +226,16 @@ namespace QLDSV.Properties {
         internal static System.Drawing.Bitmap students {
             get {
                 object obj = ResourceManager.GetObject("students", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap Text_Edit_icon_24 {
+            get {
+                object obj = ResourceManager.GetObject("Text-Edit-icon-24", resourceCulture);
                 return ((System.Drawing.Bitmap)(obj));
             }
         }

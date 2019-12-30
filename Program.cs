@@ -8,6 +8,7 @@ using DevExpress.Skins;
 // sử dụng kiểu kết nối với Database là sqlclient
 using System.Data.SqlClient;
 using System.Data;
+using DevExpress.XtraEditors;
 
 namespace QLDSV
 {

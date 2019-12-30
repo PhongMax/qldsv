@@ -264,7 +264,7 @@ namespace QLDSV.Forms
                 int resultTen = Utils.CheckDataHelper(query2);
                 if (resultTen == -1)
                 {
-                    MessaXtraMessageBoxgeBox.Show("Lỗi kết nối với database. Mời bạn xem lại", "", MessageBoxButtons.OK);
+                  XtraMessageBox.Show("Lỗi kết nối với database. Mời bạn xem lại", "", MessageBoxButtons.OK);
                     this.Close();
                 }
                 if (resultTen == 1)

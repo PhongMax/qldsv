@@ -44,11 +44,7 @@ namespace QLDSV.Forms
         private void btnDangKy_Click(object sender, EventArgs e)
         {
 
-            if (Program.MLogin == "HTKN")
-            {
-                XtraMessageBox.Show("Bạn hãy quay về Khoa ban đầu trước khi thực hiên tạo tài khoản !", "", MessageBoxButtons.OK);
-                return;
-            }
+           
             bool check = this.ValidateInfo();
             if (check)
             {
@@ -71,7 +67,13 @@ namespace QLDSV.Forms
             String user = (String)lookUpUser.EditValue;
             String role = rdoKhoa.Checked ? Program.NhomQuyen[1] : (rdoPGV.Checked ? Program.NhomQuyen[0] : Program.NhomQuyen[2]);
 
-            String strLenh = " DECLARE @return_value int " +
+            // trường hợp tạo tài khoản cho pketoan thì phải dùng LINK1,LINK2 để link tới Site 3 tạo tài khoản cho pKeToan
+
+            if (role == (Program.NhomQuyen[2])  && Program.NhomQuyen.Equals() )
+
+
+            // trường hợp tạo tài khoản cho chỉ khoa và pgv
+                String strLenh = " DECLARE @return_value int " +
 
                             " EXEC    @return_value = [dbo].[SP_TAOLOGIN] " +
 

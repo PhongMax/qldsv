@@ -311,8 +311,12 @@
   </ItemGroup>
   <ItemGroup>
     <Content Include="Resources\942748.png" />
+    <None Include="Resources\Text-Edit-icon-24.png" />
+    <None Include="Resources\Button-Refresh-icon-48.png" />
     <Content Include="Resources\Capture1.PNG" />
+    <None Include="Resources\check-48-icon.png" />
     <Content Include="Resources\clipboard %281%29.png" />
+    <None Include="Resources\Delete-2-icon-24.png" />
     <Content Include="Resources\register-icon.png" />
   </ItemGroup>
   <ItemGroup>
