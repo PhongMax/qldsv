@@ -202,7 +202,10 @@ namespace QLDSV.Forms
             }
         }
 
-     
+        private void gcTTHocPhi_Click(object sender, EventArgs e)
+        {
+
+        }
     }
 
    

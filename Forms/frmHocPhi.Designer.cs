@@ -545,6 +545,7 @@
             this.gcTTHocPhi.TabIndex = 16;
             this.gcTTHocPhi.ViewCollection.AddRange(new DevExpress.XtraGrid.Views.Base.BaseView[] {
             this.gvTTHocPhi});
+            this.gcTTHocPhi.Click += new System.EventHandler(this.gcTTHocPhi_Click);
             // 
             // gvTTHocPhi
             // 
