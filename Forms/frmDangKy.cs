@@ -44,11 +44,7 @@ namespace QLDSV.Forms
         private void btnDangKy_Click(object sender, EventArgs e)
         {
 
-            if (Program.MLogin == "HTKN")
-            {
-                XtraMessageBox.Show("Bạn hãy quay về Khoa ban đầu trước khi thực hiên tạo tài khoản !", "", MessageBoxButtons.OK);
-                return;
-            }
+           
             bool check = this.ValidateInfo();
             if (check)
             {

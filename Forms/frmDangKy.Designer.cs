@@ -31,6 +31,10 @@
             this.components = new System.ComponentModel.Container();
             this.grbDangKy = new System.Windows.Forms.GroupBox();
             this.panel1 = new System.Windows.Forms.Panel();
+            this.panelControl1 = new DevExpress.XtraEditors.PanelControl();
+            this.rdoPGV = new System.Windows.Forms.RadioButton();
+            this.rdoKhoa = new System.Windows.Forms.RadioButton();
+            this.rdoPKeToan = new System.Windows.Forms.RadioButton();
             this.label5 = new System.Windows.Forms.Label();
             this.label2 = new System.Windows.Forms.Label();
             this.btnHuy = new System.Windows.Forms.Button();
@@ -39,11 +43,8 @@
             this.dS = new QLDSV.DS();
             this.btnDangKy = new System.Windows.Forms.Button();
             this.chkShowPass = new System.Windows.Forms.CheckBox();
-            this.rdoPKeToan = new System.Windows.Forms.RadioButton();
             this.txtConfirm = new DevExpress.XtraEditors.TextEdit();
-            this.rdoKhoa = new System.Windows.Forms.RadioButton();
             this.txtLogin = new DevExpress.XtraEditors.TextEdit();
-            this.rdoPGV = new System.Windows.Forms.RadioButton();
             this.label4 = new System.Windows.Forms.Label();
             this.label1 = new System.Windows.Forms.Label();
             this.lblConfirm = new System.Windows.Forms.Label();
@@ -53,9 +54,10 @@
             this.DSGVTableAdapter = new QLDSV.DSTableAdapters.GETDSGVTableAdapter();
             this.tableAdapterManager = new QLDSV.DSTableAdapters.TableAdapterManager();
             this.errorProvider = new System.Windows.Forms.ErrorProvider(this.components);
-            this.panelControl1 = new DevExpress.XtraEditors.PanelControl();
             this.grbDangKy.SuspendLayout();
             this.panel1.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.panelControl1)).BeginInit();
+            this.panelControl1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.lookUpUser.Properties)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.bdsDSGV)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.dS)).BeginInit();
@@ -63,8 +65,6 @@
             ((System.ComponentModel.ISupportInitialize)(this.txtLogin.Properties)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.txtPass.Properties)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.errorProvider)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.panelControl1)).BeginInit();
-            this.panelControl1.SuspendLayout();
             this.SuspendLayout();
             // 
             // grbDangKy
@@ -74,7 +74,7 @@
             this.grbDangKy.Dock = System.Windows.Forms.DockStyle.Fill;
             this.grbDangKy.Location = new System.Drawing.Point(0, 0);
             this.grbDangKy.Name = "grbDangKy";
-            this.grbDangKy.Size = new System.Drawing.Size(846, 580);
+            this.grbDangKy.Size = new System.Drawing.Size(1024, 580);
             this.grbDangKy.TabIndex = 0;
             this.grbDangKy.TabStop = false;
             // 
@@ -95,15 +95,58 @@
             this.panel1.Controls.Add(this.lblConfirm);
             this.panel1.Controls.Add(this.label3);
             this.panel1.Controls.Add(this.txtPass);
-            this.panel1.Location = new System.Drawing.Point(336, 19);
+            this.panel1.Location = new System.Drawing.Point(477, 19);
             this.panel1.Name = "panel1";
-            this.panel1.Size = new System.Drawing.Size(339, 425);
+            this.panel1.Size = new System.Drawing.Size(355, 425);
             this.panel1.TabIndex = 24;
+            // 
+            // panelControl1
+            // 
+            this.panelControl1.Controls.Add(this.rdoPGV);
+            this.panelControl1.Controls.Add(this.rdoKhoa);
+            this.panelControl1.Controls.Add(this.rdoPKeToan);
+            this.panelControl1.Location = new System.Drawing.Point(90, 279);
+            this.panelControl1.Name = "panelControl1";
+            this.panelControl1.Size = new System.Drawing.Size(203, 50);
+            this.panelControl1.TabIndex = 23;
+            // 
+            // rdoPGV
+            // 
+            this.rdoPGV.AutoSize = true;
+            this.rdoPGV.Location = new System.Drawing.Point(15, 19);
+            this.rdoPGV.Name = "rdoPGV";
+            this.rdoPGV.Size = new System.Drawing.Size(47, 17);
+            this.rdoPGV.TabIndex = 4;
+            this.rdoPGV.TabStop = true;
+            this.rdoPGV.Text = "PGV";
+            this.rdoPGV.UseVisualStyleBackColor = true;
+            // 
+            // rdoKhoa
+            // 
+            this.rdoKhoa.AutoSize = true;
+            this.rdoKhoa.Location = new System.Drawing.Point(68, 19);
+            this.rdoKhoa.Name = "rdoKhoa";
+            this.rdoKhoa.Size = new System.Drawing.Size(50, 17);
+            this.rdoKhoa.TabIndex = 5;
+            this.rdoKhoa.TabStop = true;
+            this.rdoKhoa.Text = "Khoa";
+            this.rdoKhoa.UseVisualStyleBackColor = true;
+            // 
+            // rdoPKeToan
+            // 
+            this.rdoPKeToan.AutoSize = true;
+            this.rdoPKeToan.Location = new System.Drawing.Point(126, 19);
+            this.rdoPKeToan.Name = "rdoPKeToan";
+            this.rdoPKeToan.Size = new System.Drawing.Size(70, 17);
+            this.rdoPKeToan.TabIndex = 6;
+            this.rdoPKeToan.TabStop = true;
+            this.rdoPKeToan.Text = "PKeToan";
+            this.rdoPKeToan.UseVisualStyleBackColor = true;
             // 
             // label5
             // 
             this.label5.Image = global::QLDSV.Properties.Resources.clipboard__1_;
-            this.label5.Location = new System.Drawing.Point(120, 17);
+            this.label5.Location = new System.Drawing.Point(131, 17);
             this.label5.Name = "label5";
             this.label5.Size = new System.Drawing.Size(125, 134);
             this.label5.TabIndex = 12;
@@ -122,7 +165,7 @@
             // 
             this.btnHuy.BackColor = System.Drawing.Color.DimGray;
             this.btnHuy.Font = new System.Drawing.Font("Consolas", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnHuy.Location = new System.Drawing.Point(172, 386);
+            this.btnHuy.Location = new System.Drawing.Point(189, 386);
             this.btnHuy.Name = "btnHuy";
             this.btnHuy.Size = new System.Drawing.Size(167, 39);
             this.btnHuy.TabIndex = 8;
@@ -132,7 +175,7 @@
             // 
             // lookUpUser
             // 
-            this.lookUpUser.Location = new System.Drawing.Point(90, 257);
+            this.lookUpUser.Location = new System.Drawing.Point(90, 246);
             this.lookUpUser.Name = "lookUpUser";
             this.lookUpUser.Properties.Appearance.BackColor = System.Drawing.Color.Turquoise;
             this.lookUpUser.Properties.Appearance.Options.UseBackColor = true;
@@ -143,7 +186,7 @@
             this.lookUpUser.Properties.DropDownRows = 10;
             this.lookUpUser.Properties.NullText = "Chọn mã giảng viên";
             this.lookUpUser.Properties.ValueMember = "MAGV";
-            this.lookUpUser.Size = new System.Drawing.Size(184, 20);
+            this.lookUpUser.Size = new System.Drawing.Size(201, 20);
             this.lookUpUser.TabIndex = 3;
             // 
             // bdsDSGV
@@ -171,7 +214,7 @@
             // chkShowPass
             // 
             this.chkShowPass.AutoSize = true;
-            this.chkShowPass.Location = new System.Drawing.Point(280, 218);
+            this.chkShowPass.Location = new System.Drawing.Point(298, 219);
             this.chkShowPass.Name = "chkShowPass";
             this.chkShowPass.Size = new System.Drawing.Size(51, 17);
             this.chkShowPass.TabIndex = 9;
@@ -179,20 +222,9 @@
             this.chkShowPass.UseVisualStyleBackColor = true;
             this.chkShowPass.CheckedChanged += new System.EventHandler(this.checkBox1_CheckedChanged);
             // 
-            // rdoPKeToan
-            // 
-            this.rdoPKeToan.AutoSize = true;
-            this.rdoPKeToan.Location = new System.Drawing.Point(126, 19);
-            this.rdoPKeToan.Name = "rdoPKeToan";
-            this.rdoPKeToan.Size = new System.Drawing.Size(70, 17);
-            this.rdoPKeToan.TabIndex = 6;
-            this.rdoPKeToan.TabStop = true;
-            this.rdoPKeToan.Text = "PKeToan";
-            this.rdoPKeToan.UseVisualStyleBackColor = true;
-            // 
             // txtConfirm
             // 
-            this.txtConfirm.Location = new System.Drawing.Point(73, 216);
+            this.txtConfirm.Location = new System.Drawing.Point(90, 216);
             this.txtConfirm.Name = "txtConfirm";
             this.txtConfirm.Properties.Appearance.BackColor = System.Drawing.Color.WhiteSmoke;
             this.txtConfirm.Properties.Appearance.Options.UseBackColor = true;
@@ -202,45 +234,22 @@
             this.txtConfirm.Size = new System.Drawing.Size(201, 20);
             this.txtConfirm.TabIndex = 2;
             // 
-            // rdoKhoa
-            // 
-            this.rdoKhoa.AutoSize = true;
-            this.rdoKhoa.Location = new System.Drawing.Point(68, 19);
-            this.rdoKhoa.Name = "rdoKhoa";
-            this.rdoKhoa.Size = new System.Drawing.Size(50, 17);
-            this.rdoKhoa.TabIndex = 5;
-            this.rdoKhoa.TabStop = true;
-            this.rdoKhoa.Text = "Khoa";
-            this.rdoKhoa.UseVisualStyleBackColor = true;
-            // 
             // txtLogin
             // 
-            this.txtLogin.Location = new System.Drawing.Point(73, 163);
+            this.txtLogin.Location = new System.Drawing.Point(90, 161);
             this.txtLogin.Name = "txtLogin";
             this.txtLogin.Properties.Appearance.BackColor = System.Drawing.Color.WhiteSmoke;
             this.txtLogin.Properties.Appearance.Options.UseBackColor = true;
             this.txtLogin.Properties.BorderStyle = DevExpress.XtraEditors.Controls.BorderStyles.UltraFlat;
             this.txtLogin.Properties.MaxLength = 25;
-            this.txtLogin.Properties.NullValuePromptShowForEmptyValue = true;
             this.txtLogin.Size = new System.Drawing.Size(201, 20);
             this.txtLogin.TabIndex = 0;
-            // 
-            // rdoPGV
-            // 
-            this.rdoPGV.AutoSize = true;
-            this.rdoPGV.Location = new System.Drawing.Point(15, 19);
-            this.rdoPGV.Name = "rdoPGV";
-            this.rdoPGV.Size = new System.Drawing.Size(47, 17);
-            this.rdoPGV.TabIndex = 4;
-            this.rdoPGV.TabStop = true;
-            this.rdoPGV.Text = "PGV";
-            this.rdoPGV.UseVisualStyleBackColor = true;
             // 
             // label4
             // 
             this.label4.AutoSize = true;
             this.label4.Font = new System.Drawing.Font("Consolas", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label4.Location = new System.Drawing.Point(3, 260);
+            this.label4.Location = new System.Drawing.Point(9, 247);
             this.label4.Name = "label4";
             this.label4.Size = new System.Drawing.Size(77, 15);
             this.label4.TabIndex = 11;
@@ -250,7 +259,7 @@
             // 
             this.label1.AutoSize = true;
             this.label1.Font = new System.Drawing.Font("Consolas", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label1.Location = new System.Drawing.Point(5, 313);
+            this.label1.Location = new System.Drawing.Point(25, 297);
             this.label1.Name = "label1";
             this.label1.Size = new System.Drawing.Size(35, 15);
             this.label1.TabIndex = 5;
@@ -278,7 +287,7 @@
             // 
             // txtPass
             // 
-            this.txtPass.Location = new System.Drawing.Point(73, 190);
+            this.txtPass.Location = new System.Drawing.Point(90, 190);
             this.txtPass.Name = "txtPass";
             this.txtPass.Properties.Appearance.BackColor = System.Drawing.Color.WhiteSmoke;
             this.txtPass.Properties.Appearance.Options.UseBackColor = true;
@@ -306,39 +315,35 @@
             this.tableAdapterManager.Connection = null;
             this.tableAdapterManager.DIEMTableAdapter = null;
             this.tableAdapterManager.GIANGVIENTableAdapter = null;
+            this.tableAdapterManager.HOCPHITableAdapter = null;
             this.tableAdapterManager.KHOATableAdapter = null;
             this.tableAdapterManager.LOPTableAdapter = null;
             this.tableAdapterManager.MONHOCTableAdapter = null;
             this.tableAdapterManager.SINHVIENTableAdapter = null;
+            this.tableAdapterManager.THONGTINHOCPHICUASINHVIENTableAdapter = null;
             this.tableAdapterManager.UpdateOrder = QLDSV.DSTableAdapters.TableAdapterManager.UpdateOrderOption.InsertUpdateDelete;
             // 
             // errorProvider
             // 
             this.errorProvider.ContainerControl = this;
             // 
-            // panelControl1
-            // 
-            this.panelControl1.Controls.Add(this.rdoPGV);
-            this.panelControl1.Controls.Add(this.rdoKhoa);
-            this.panelControl1.Controls.Add(this.rdoPKeToan);
-            this.panelControl1.Location = new System.Drawing.Point(73, 293);
-            this.panelControl1.Name = "panelControl1";
-            this.panelControl1.Size = new System.Drawing.Size(201, 53);
-            this.panelControl1.TabIndex = 23;
-            // 
             // frmDangKy
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(846, 580);
+            this.ClientSize = new System.Drawing.Size(1024, 580);
             this.Controls.Add(this.grbDangKy);
             this.Name = "frmDangKy";
             this.Text = "Đăng ký";
             this.Load += new System.EventHandler(this.frmĐangKy_Load);
+            this.Enter += new System.EventHandler(this.frmĐangKy_Load);
             this.grbDangKy.ResumeLayout(false);
             this.grbDangKy.PerformLayout();
             this.panel1.ResumeLayout(false);
             this.panel1.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.panelControl1)).EndInit();
+            this.panelControl1.ResumeLayout(false);
+            this.panelControl1.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.lookUpUser.Properties)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.bdsDSGV)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.dS)).EndInit();
@@ -346,9 +351,6 @@
             ((System.ComponentModel.ISupportInitialize)(this.txtLogin.Properties)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.txtPass.Properties)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.errorProvider)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.panelControl1)).EndInit();
-            this.panelControl1.ResumeLayout(false);
-            this.panelControl1.PerformLayout();
             this.ResumeLayout(false);
 
         }
