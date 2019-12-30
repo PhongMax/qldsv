@@ -127,9 +127,9 @@ namespace QLDSV
             Program.frmMain = new frmMain();
 
             // hiện thông tin tài khoản
-            Program.frmMain.lblMAGV.Text = "MÃ GIẢNG VIÊN : " + Program.UserName;
-            Program.frmMain.lblHOTEN.Text = " |  HỌ VÀ TÊN : " + Program.MHoten;
-            Program.frmMain.lblNHOM.Text = "|  NHÓM : " + Program.MGroup;
+            Program.frmMain.lblMAGV.Text = "MÃ GIẢNG VIÊN : " + Program.UserName.Trim();
+            Program.frmMain.lblHOTEN.Text = "HỌ VÀ TÊN : " + Program.MHoten.Trim();
+            Program.frmMain.lblNHOM.Text = "NHÓM : " + Program.MGroup;
 
             Program.frmMain.Show();
             Program.FrmDangNhap.Visible = false;

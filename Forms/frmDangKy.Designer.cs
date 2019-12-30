@@ -31,7 +31,7 @@
             this.components = new System.ComponentModel.Container();
             this.grbDangKy = new System.Windows.Forms.GroupBox();
             this.panel1 = new System.Windows.Forms.Panel();
-            this.panelControl1 = new DevExpress.XtraEditors.PanelControl();
+            this.pnRole = new DevExpress.XtraEditors.PanelControl();
             this.rdoPGV = new System.Windows.Forms.RadioButton();
             this.rdoKhoa = new System.Windows.Forms.RadioButton();
             this.rdoPKeToan = new System.Windows.Forms.RadioButton();
@@ -50,14 +50,13 @@
             this.lblConfirm = new System.Windows.Forms.Label();
             this.label3 = new System.Windows.Forms.Label();
             this.txtPass = new DevExpress.XtraEditors.TextEdit();
-            this.lblTrangThai = new System.Windows.Forms.Label();
             this.DSGVTableAdapter = new QLDSV.DSTableAdapters.GETDSGVTableAdapter();
             this.tableAdapterManager = new QLDSV.DSTableAdapters.TableAdapterManager();
             this.errorProvider = new System.Windows.Forms.ErrorProvider(this.components);
             this.grbDangKy.SuspendLayout();
             this.panel1.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.panelControl1)).BeginInit();
-            this.panelControl1.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.pnRole)).BeginInit();
+            this.pnRole.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.lookUpUser.Properties)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.bdsDSGV)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.dS)).BeginInit();
@@ -70,7 +69,6 @@
             // grbDangKy
             // 
             this.grbDangKy.Controls.Add(this.panel1);
-            this.grbDangKy.Controls.Add(this.lblTrangThai);
             this.grbDangKy.Dock = System.Windows.Forms.DockStyle.Fill;
             this.grbDangKy.Location = new System.Drawing.Point(0, 0);
             this.grbDangKy.Name = "grbDangKy";
@@ -81,7 +79,7 @@
             // panel1
             // 
             this.panel1.BackColor = System.Drawing.Color.Gainsboro;
-            this.panel1.Controls.Add(this.panelControl1);
+            this.panel1.Controls.Add(this.pnRole);
             this.panel1.Controls.Add(this.label5);
             this.panel1.Controls.Add(this.label2);
             this.panel1.Controls.Add(this.btnHuy);
@@ -100,15 +98,15 @@
             this.panel1.Size = new System.Drawing.Size(355, 425);
             this.panel1.TabIndex = 24;
             // 
-            // panelControl1
+            // pnRole
             // 
-            this.panelControl1.Controls.Add(this.rdoPGV);
-            this.panelControl1.Controls.Add(this.rdoKhoa);
-            this.panelControl1.Controls.Add(this.rdoPKeToan);
-            this.panelControl1.Location = new System.Drawing.Point(90, 279);
-            this.panelControl1.Name = "panelControl1";
-            this.panelControl1.Size = new System.Drawing.Size(203, 50);
-            this.panelControl1.TabIndex = 23;
+            this.pnRole.Controls.Add(this.rdoPGV);
+            this.pnRole.Controls.Add(this.rdoKhoa);
+            this.pnRole.Controls.Add(this.rdoPKeToan);
+            this.pnRole.Location = new System.Drawing.Point(90, 279);
+            this.pnRole.Name = "pnRole";
+            this.pnRole.Size = new System.Drawing.Size(203, 50);
+            this.pnRole.TabIndex = 23;
             // 
             // rdoPGV
             // 
@@ -146,7 +144,7 @@
             // label5
             // 
             this.label5.Image = global::QLDSV.Properties.Resources.clipboard__1_;
-            this.label5.Location = new System.Drawing.Point(131, 17);
+            this.label5.Location = new System.Drawing.Point(127, 17);
             this.label5.Name = "label5";
             this.label5.Size = new System.Drawing.Size(125, 134);
             this.label5.TabIndex = 12;
@@ -297,14 +295,6 @@
             this.txtPass.Size = new System.Drawing.Size(201, 20);
             this.txtPass.TabIndex = 1;
             // 
-            // lblTrangThai
-            // 
-            this.lblTrangThai.AutoSize = true;
-            this.lblTrangThai.Location = new System.Drawing.Point(696, 354);
-            this.lblTrangThai.Name = "lblTrangThai";
-            this.lblTrangThai.Size = new System.Drawing.Size(0, 13);
-            this.lblTrangThai.TabIndex = 23;
-            // 
             // DSGVTableAdapter
             // 
             this.DSGVTableAdapter.ClearBeforeFill = true;
@@ -336,14 +326,12 @@
             this.Name = "frmDangKy";
             this.Text = "Đăng ký";
             this.Load += new System.EventHandler(this.frmĐangKy_Load);
-            this.Enter += new System.EventHandler(this.frmĐangKy_Load);
             this.grbDangKy.ResumeLayout(false);
-            this.grbDangKy.PerformLayout();
             this.panel1.ResumeLayout(false);
             this.panel1.PerformLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.panelControl1)).EndInit();
-            this.panelControl1.ResumeLayout(false);
-            this.panelControl1.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.pnRole)).EndInit();
+            this.pnRole.ResumeLayout(false);
+            this.pnRole.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.lookUpUser.Properties)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.bdsDSGV)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.dS)).EndInit();
@@ -379,8 +367,7 @@
         private System.Windows.Forms.Label lblConfirm;
         private System.Windows.Forms.CheckBox chkShowPass;
         private System.Windows.Forms.ErrorProvider errorProvider;
-        private System.Windows.Forms.Label lblTrangThai;
         private System.Windows.Forms.Panel panel1;
-        private DevExpress.XtraEditors.PanelControl panelControl1;
+        private DevExpress.XtraEditors.PanelControl pnRole;
     }
 }

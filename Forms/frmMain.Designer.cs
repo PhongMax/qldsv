@@ -66,7 +66,6 @@
             this.ribbonPage4 = new DevExpress.XtraBars.Ribbon.RibbonPage();
             this.ribbonPageGroup_CauHinh = new DevExpress.XtraBars.Ribbon.RibbonPageGroup();
             this.TableManager = new DevExpress.XtraTabbedMdi.XtraTabbedMdiManager(this.components);
-            this.barBtnHocPhi = new DevExpress.XtraBars.BarButtonItem();
             this.statusStrip.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.ribbonControl1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.TableManager)).BeginInit();
@@ -78,28 +77,36 @@
             this.lblMAGV,
             this.lblHOTEN,
             this.lblNHOM});
-            this.statusStrip.Location = new System.Drawing.Point(0, 449);
+            this.statusStrip.Location = new System.Drawing.Point(0, 447);
             this.statusStrip.Name = "statusStrip";
-            this.statusStrip.Size = new System.Drawing.Size(1011, 22);
+            this.statusStrip.Size = new System.Drawing.Size(1011, 24);
             this.statusStrip.TabIndex = 1;
             this.statusStrip.Text = "statusStrip";
             // 
             // lblMAGV
             // 
+            this.lblMAGV.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(224)))), ((int)(((byte)(224)))), ((int)(((byte)(224)))));
             this.lblMAGV.Name = "lblMAGV";
-            this.lblMAGV.Size = new System.Drawing.Size(41, 17);
+            this.lblMAGV.Size = new System.Drawing.Size(41, 19);
             this.lblMAGV.Text = "MAGV";
+            this.lblMAGV.TextDirection = System.Windows.Forms.ToolStripTextDirection.Horizontal;
             // 
             // lblHOTEN
             // 
+            this.lblHOTEN.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(224)))), ((int)(((byte)(224)))), ((int)(((byte)(224)))));
+            this.lblHOTEN.BorderSides = System.Windows.Forms.ToolStripStatusLabelBorderSides.Left;
+            this.lblHOTEN.BorderStyle = System.Windows.Forms.Border3DStyle.Etched;
             this.lblHOTEN.Name = "lblHOTEN";
-            this.lblHOTEN.Size = new System.Drawing.Size(46, 17);
+            this.lblHOTEN.Size = new System.Drawing.Size(50, 19);
             this.lblHOTEN.Text = "HOTEN";
             // 
             // lblNHOM
             // 
+            this.lblNHOM.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(224)))), ((int)(((byte)(224)))), ((int)(((byte)(224)))));
+            this.lblNHOM.BorderSides = System.Windows.Forms.ToolStripStatusLabelBorderSides.Left;
+            this.lblNHOM.BorderStyle = System.Windows.Forms.Border3DStyle.Etched;
             this.lblNHOM.Name = "lblNHOM";
-            this.lblNHOM.Size = new System.Drawing.Size(45, 17);
+            this.lblNHOM.Size = new System.Drawing.Size(49, 19);
             this.lblNHOM.Text = "NHOM";
             // 
             // ribbonPage3
@@ -455,19 +462,10 @@
             // 
             this.TableManager.MdiParent = this;
             // 
-            // barBtnHocPhi
-            // 
-            this.barBtnHocPhi.Caption = "HỌC PHÍ";
-            this.barBtnHocPhi.Id = 25;
-            this.barBtnHocPhi.ImageOptions.Image = ((System.Drawing.Image)(resources.GetObject("barButtonItem5.ImageOptions.Image")));
-            this.barBtnHocPhi.ImageOptions.LargeImage = ((System.Drawing.Image)(resources.GetObject("barButtonItem5.ImageOptions.LargeImage")));
-            this.barBtnHocPhi.ItemAppearance.Disabled.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.barBtnHocPhi.ItemAppearance.Disabled.Options.UseFont = true;
-            this.barBtnHocPhi.Name = "barBtnHocPhi";
-            this.barBtnHocPhi.ItemClick += new DevExpress.XtraBars.ItemClickEventHandler(this.barBtnHocPhi_ItemClick);
-            // 
             // frmMain
             // 
+            this.Appearance.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(224)))), ((int)(((byte)(224)))), ((int)(((byte)(224)))));
+            this.Appearance.Options.UseBackColor = true;
             this.Appearance.Options.UseFont = true;
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 17F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
