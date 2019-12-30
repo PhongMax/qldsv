@@ -58,8 +58,6 @@ namespace QLDSV.Forms
         // TODO : Load Method
         private void frmLop_Load(object sender, EventArgs e)
         {
-            
-
             // TODO : Load Data
             loadInitializeData();
             errorProvider.Clear();
@@ -67,7 +65,6 @@ namespace QLDSV.Forms
             this.conGhi.Enabled = false;
 
             lOPGridControl.Enabled = true;
-       
 
             //this.grbLop.Enabled = true;
             // đoạn code liên kết giữa bds với combo box
@@ -89,7 +86,6 @@ namespace QLDSV.Forms
                    = barBtnGhi.Enabled
                    = barBtnHuy.Enabled
                    = barBtnLamMoi.Enabled = true;
-
             }
             else if (Program.MGroup == Program.NhomQuyen[1]) // KHOA
             {
@@ -109,12 +105,34 @@ namespace QLDSV.Forms
                 this.contextSinhVien.Enabled = false;
             }
 
-
             barBtnHuy.Enabled = barBtnGhi.Enabled = false;
 
             // TODO : Turn off input
             pnControlLeft.Enabled = false;
 
+            // testing
+            getMaSinhVien();
+
+        }
+
+
+        private void getMaSinhVien()
+        {
+            string result = "";
+            string lenh = string.Format("SELECT HO+' '+TEN AS HOTEN FROM dbo.SINHVIEN WHERE MASV = 'N16DCCN076'");
+            using (SqlConnection connection = new SqlConnection(Program.URL_Connect))
+            {
+                connection.Open();
+                SqlCommand sqlcmt = new SqlCommand(lenh, connection);
+                sqlcmt.CommandType = CommandType.Text;
+                try
+                {
+                    result = (String)sqlcmt.ExecuteScalar();
+
+                }
+                catch { }
+            }
+            Console.WriteLine("Ho Ten Sinh Vien : " + result);
         }
 
         private void cmbKhoa_SelectedIndexChanged(object sender, EventArgs e)
@@ -776,6 +794,37 @@ namespace QLDSV.Forms
         {
             // thường thành hoa
             repositoryItemTextEditMaSV.CharacterCasing = CharacterCasing.Upper;
+        }
+
+        private void gridView1_RowCellStyle(object sender, RowCellStyleEventArgs e)
+        {
+            GridView view = sender as GridView;
+            if (e.RowHandle == view.FocusedRowHandle)
+            {
+                e.Appearance.BackColor = Color.LawnGreen;
+            }
+        }
+
+        private void gridViewSinhVien_RowCellStyle(object sender, RowCellStyleEventArgs e)
+        {
+            GridView view = sender as GridView;
+            if (e.RowHandle == view.FocusedRowHandle)
+            {
+                e.Appearance.BackColor = Color.LawnGreen;
+            }
+        }
+
+        private void gridViewSinhVien_CustomDrawRowIndicator(object sender, RowIndicatorCustomDrawEventArgs e)
+        {
+            e.Handled = true;
+            SolidBrush brush = new SolidBrush(Color.FromArgb(0xC6, 0x64, 0xFF));
+            e.Graphics.FillRectangle(brush, e.Bounds);
+            e.Graphics.DrawRectangle(Pens.Black, new Rectangle(e.Bounds.X, e.Bounds.Y, e.Bounds.Width - 1, e.Bounds.Height));
+            Size size = ImageCollection.GetImageListSize(e.Info.ImageCollection);
+            Rectangle r = e.Bounds;
+            ImageCollection.DrawImageListImage(e.Cache, e.Info.ImageCollection, e.Info.ImageIndex,
+                    new Rectangle(r.X + (r.Width - size.Width) / 2, r.Y + (r.Height - size.Height) / 2, size.Width, size.Height));
+            brush.Dispose();
         }
     }
 }

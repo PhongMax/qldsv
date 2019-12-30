@@ -4383,11 +4383,11 @@ namespace QLDSV {
         [global::System.Xml.Serialization.XmlSchemaProviderAttribute("GetTypedTableSchema")]
         public partial class SP_REPORT_BDTKDataTable : global::System.Data.TypedTableBase<SP_REPORT_BDTKRow> {
             
-            private global::System.Data.DataColumn columnMA_HOTEN;
-            
-            private global::System.Data.DataColumn columnDIEM;
+            private global::System.Data.DataColumn columnHOTEN;
             
             private global::System.Data.DataColumn columnTENMH;
+            
+            private global::System.Data.DataColumn columnDIEM;
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
@@ -4424,17 +4424,9 @@ namespace QLDSV {
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
-            public global::System.Data.DataColumn MA_HOTENColumn {
+            public global::System.Data.DataColumn HOTENColumn {
                 get {
-                    return this.columnMA_HOTEN;
-                }
-            }
-            
-            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
-            public global::System.Data.DataColumn DIEMColumn {
-                get {
-                    return this.columnDIEM;
+                    return this.columnHOTEN;
                 }
             }
             
@@ -4443,6 +4435,14 @@ namespace QLDSV {
             public global::System.Data.DataColumn TENMHColumn {
                 get {
                     return this.columnTENMH;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
+            public global::System.Data.DataColumn DIEMColumn {
+                get {
+                    return this.columnDIEM;
                 }
             }
             
@@ -4483,12 +4483,12 @@ namespace QLDSV {
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
-            public SP_REPORT_BDTKRow AddSP_REPORT_BDTKRow(string MA_HOTEN, int DIEM, string TENMH) {
+            public SP_REPORT_BDTKRow AddSP_REPORT_BDTKRow(string HOTEN, string TENMH, double DIEM) {
                 SP_REPORT_BDTKRow rowSP_REPORT_BDTKRow = ((SP_REPORT_BDTKRow)(this.NewRow()));
                 object[] columnValuesArray = new object[] {
-                        MA_HOTEN,
-                        DIEM,
-                        TENMH};
+                        HOTEN,
+                        TENMH,
+                        DIEM};
                 rowSP_REPORT_BDTKRow.ItemArray = columnValuesArray;
                 this.Rows.Add(rowSP_REPORT_BDTKRow);
                 return rowSP_REPORT_BDTKRow;
@@ -4511,25 +4511,24 @@ namespace QLDSV {
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
             internal void InitVars() {
-                this.columnMA_HOTEN = base.Columns["MA_HOTEN"];
-                this.columnDIEM = base.Columns["DIEM"];
+                this.columnHOTEN = base.Columns["HOTEN"];
                 this.columnTENMH = base.Columns["TENMH"];
+                this.columnDIEM = base.Columns["DIEM"];
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
             private void InitClass() {
-                this.columnMA_HOTEN = new global::System.Data.DataColumn("MA_HOTEN", typeof(string), null, global::System.Data.MappingType.Element);
-                base.Columns.Add(this.columnMA_HOTEN);
-                this.columnDIEM = new global::System.Data.DataColumn("DIEM", typeof(int), null, global::System.Data.MappingType.Element);
-                base.Columns.Add(this.columnDIEM);
+                this.columnHOTEN = new global::System.Data.DataColumn("HOTEN", typeof(string), null, global::System.Data.MappingType.Element);
+                base.Columns.Add(this.columnHOTEN);
                 this.columnTENMH = new global::System.Data.DataColumn("TENMH", typeof(string), null, global::System.Data.MappingType.Element);
                 base.Columns.Add(this.columnTENMH);
-                this.columnMA_HOTEN.ReadOnly = true;
-                this.columnMA_HOTEN.MaxLength = 4;
+                this.columnDIEM = new global::System.Data.DataColumn("DIEM", typeof(double), null, global::System.Data.MappingType.Element);
+                base.Columns.Add(this.columnDIEM);
+                this.columnHOTEN.ReadOnly = true;
+                this.columnHOTEN.MaxLength = 65;
+                this.columnTENMH.MaxLength = 40;
                 this.columnDIEM.ReadOnly = true;
-                this.columnTENMH.ReadOnly = true;
-                this.columnTENMH.MaxLength = 6;
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
@@ -6498,33 +6497,17 @@ namespace QLDSV {
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
-            public string MA_HOTEN {
+            public string HOTEN {
                 get {
                     try {
-                        return ((string)(this[this.tableSP_REPORT_BDTK.MA_HOTENColumn]));
+                        return ((string)(this[this.tableSP_REPORT_BDTK.HOTENColumn]));
                     }
                     catch (global::System.InvalidCastException e) {
-                        throw new global::System.Data.StrongTypingException("The value for column \'MA_HOTEN\' in table \'SP_REPORT_BDTK\' is DBNull.", e);
+                        throw new global::System.Data.StrongTypingException("The value for column \'HOTEN\' in table \'SP_REPORT_BDTK\' is DBNull.", e);
                     }
                 }
                 set {
-                    this[this.tableSP_REPORT_BDTK.MA_HOTENColumn] = value;
-                }
-            }
-            
-            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
-            public int DIEM {
-                get {
-                    try {
-                        return ((int)(this[this.tableSP_REPORT_BDTK.DIEMColumn]));
-                    }
-                    catch (global::System.InvalidCastException e) {
-                        throw new global::System.Data.StrongTypingException("The value for column \'DIEM\' in table \'SP_REPORT_BDTK\' is DBNull.", e);
-                    }
-                }
-                set {
-                    this[this.tableSP_REPORT_BDTK.DIEMColumn] = value;
+                    this[this.tableSP_REPORT_BDTK.HOTENColumn] = value;
                 }
             }
             
@@ -6546,26 +6529,30 @@ namespace QLDSV {
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
-            public bool IsMA_HOTENNull() {
-                return this.IsNull(this.tableSP_REPORT_BDTK.MA_HOTENColumn);
+            public double DIEM {
+                get {
+                    try {
+                        return ((double)(this[this.tableSP_REPORT_BDTK.DIEMColumn]));
+                    }
+                    catch (global::System.InvalidCastException e) {
+                        throw new global::System.Data.StrongTypingException("The value for column \'DIEM\' in table \'SP_REPORT_BDTK\' is DBNull.", e);
+                    }
+                }
+                set {
+                    this[this.tableSP_REPORT_BDTK.DIEMColumn] = value;
+                }
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
-            public void SetMA_HOTENNull() {
-                this[this.tableSP_REPORT_BDTK.MA_HOTENColumn] = global::System.Convert.DBNull;
+            public bool IsHOTENNull() {
+                return this.IsNull(this.tableSP_REPORT_BDTK.HOTENColumn);
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
-            public bool IsDIEMNull() {
-                return this.IsNull(this.tableSP_REPORT_BDTK.DIEMColumn);
-            }
-            
-            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
-            public void SetDIEMNull() {
-                this[this.tableSP_REPORT_BDTK.DIEMColumn] = global::System.Convert.DBNull;
+            public void SetHOTENNull() {
+                this[this.tableSP_REPORT_BDTK.HOTENColumn] = global::System.Convert.DBNull;
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
@@ -6578,6 +6565,18 @@ namespace QLDSV {
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
             public void SetTENMHNull() {
                 this[this.tableSP_REPORT_BDTK.TENMHColumn] = global::System.Convert.DBNull;
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
+            public bool IsDIEMNull() {
+                return this.IsNull(this.tableSP_REPORT_BDTK.DIEMColumn);
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
+            public void SetDIEMNull() {
+                this[this.tableSP_REPORT_BDTK.DIEMColumn] = global::System.Convert.DBNull;
             }
         }
         
@@ -10960,9 +10959,9 @@ SELECT MASV, HO, TEN, MALOP, PHAI, NGAYSINH, NOISINH, DIACHI, GHICHU, NGHIHOC FR
             global::System.Data.Common.DataTableMapping tableMapping = new global::System.Data.Common.DataTableMapping();
             tableMapping.SourceTable = "Table";
             tableMapping.DataSetTable = "SP_REPORT_BDTK";
-            tableMapping.ColumnMappings.Add("MA_HOTEN", "MA_HOTEN");
-            tableMapping.ColumnMappings.Add("DIEM", "DIEM");
+            tableMapping.ColumnMappings.Add("HOTEN", "HOTEN");
             tableMapping.ColumnMappings.Add("TENMH", "TENMH");
+            tableMapping.ColumnMappings.Add("DIEM", "DIEM");
             this._adapter.TableMappings.Add(tableMapping);
         }
         
@@ -10982,7 +10981,7 @@ SELECT MASV, HO, TEN, MALOP, PHAI, NGAYSINH, NOISINH, DIACHI, GHICHU, NGHIHOC FR
             this._commandCollection[0].CommandText = "dbo.SP_REPORT_BDTK";
             this._commandCollection[0].CommandType = global::System.Data.CommandType.StoredProcedure;
             this._commandCollection[0].Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@RETURN_VALUE", global::System.Data.SqlDbType.Int, 4, global::System.Data.ParameterDirection.ReturnValue, 10, 0, null, global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
-            this._commandCollection[0].Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@MALOP", global::System.Data.SqlDbType.NVarChar, 15, global::System.Data.ParameterDirection.Input, 0, 0, null, global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
+            this._commandCollection[0].Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@MALOP", global::System.Data.SqlDbType.Char, 10, global::System.Data.ParameterDirection.Input, 0, 0, null, global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
         }
         
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]

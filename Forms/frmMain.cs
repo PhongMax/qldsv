@@ -22,12 +22,22 @@ namespace QLDSV
             InitializeComponent();
         }
 
-
         private void frmMain_Load(object sender, EventArgs e)
         {
             if (Program.MGroup == Program.NhomQuyen[2])// PKT
             {
+                this.barButtonItem_Lop.Enabled = false;
+                this.barButtonItem_MonHoc.Enabled = false;
+                this.barButtonItem_SinhVien.Enabled = false;
+                this.barButtonItem_Diem.Enabled = false;
+                this.barButtonItem_ChuyenLop.Enabled = false;
+
                 this.barButton_DSDHP.Enabled = true;
+                this.barButton_DSSV.Enabled = false;
+                this.barButton_DSTHM.Enabled = false;
+                this.barButton_BDMH.Enabled = false;
+                this.barButton_PD.Enabled = false;
+                this.barButton_BDTK.Enabled = false;
             }
             else
             {
@@ -55,30 +65,40 @@ namespace QLDSV
 
 
         // ============================ BUTTON EVENT ============================ //
-
-        private void barButton_Lop_ItemClick(object sender, DevExpress.XtraBars.ItemClickEventArgs e)
+        private void barButtonItem_Lop_ItemClick(object sender, DevExpress.XtraBars.ItemClickEventArgs e)
         {
             if (!(Program.MGroup == Program.NhomQuyen[2]))
             {
                 ShowMdiChildren(typeof(frmLop));
             }
         }
-        private void barButton_MonHoc_ItemClick(object sender, DevExpress.XtraBars.ItemClickEventArgs e)
+        private void barButtonItem_MonHoc_ItemClick(object sender, DevExpress.XtraBars.ItemClickEventArgs e)
         {
             if (!(Program.MGroup == Program.NhomQuyen[2]))
             {
                 ShowMdiChildren(typeof(frmMonHoc));
             }
         }
-      
-        private void barButton_Diem_ItemClick(object sender, DevExpress.XtraBars.ItemClickEventArgs e)
+        private void barButtonItem_SinhVien_ItemClick(object sender, DevExpress.XtraBars.ItemClickEventArgs e)
         {
             if (!(Program.MGroup == Program.NhomQuyen[2]))
             {
-                ShowMdiChildren(typeof(frmDiem));
+                ShowMdiChildren(typeof(frmSinhVien));
             }
-            
         }
+   
+        private void barButton_Diem_ItemClick(object sender, DevExpress.XtraBars.ItemClickEventArgs e)
+        {
+        }
+        private void barButtonItem_ChuyenLop_ItemClick(object sender, DevExpress.XtraBars.ItemClickEventArgs e)
+        {
+            if (!(Program.MGroup == Program.NhomQuyen[2]))
+            {
+                ShowMdiChildren(typeof(frmChuyenLop));
+            }
+        }
+
+
 
 
         // TODO : Close Event
@@ -145,9 +165,27 @@ namespace QLDSV
            
                 if ((Program.MGroup == Program.NhomQuyen[2]))
                 {
-                    ShowMdiChildren(typeof(frmHocPhi));
+                    ShowMdiChildren(typeof(frmDiem));
                 }
 
         }
+
+        private void barButtonItem_Diem_ItemClick(object sender, DevExpress.XtraBars.ItemClickEventArgs e)
+        {
+
+            if (!(Program.MGroup == Program.NhomQuyen[2]))
+            {
+                ShowMdiChildren(typeof(frmDiem));
+            }
+        }
+
+        private void barBtnHocPhi_ItemClick(object sender, DevExpress.XtraBars.ItemClickEventArgs e)
+        {
+            if ((Program.MGroup == Program.NhomQuyen[2]))
+            {
+                ShowMdiChildren(typeof(frmHocPhi));
+            }
+        }
     }
 }
+

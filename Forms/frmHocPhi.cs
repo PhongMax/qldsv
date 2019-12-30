@@ -9,8 +9,9 @@ using System.Threading.Tasks;
 using System.Windows.Forms;
 using DevExpress.XtraEditors;
 using System.Data.SqlClient;
-using QLDSV.Utility;
 using DevExpress.XtraGrid.Views.Base;
+using System.Globalization;
+using DevExpress.Utils;
 
 namespace QLDSV.Forms
 {
@@ -26,19 +27,15 @@ namespace QLDSV.Forms
         private void EnableEditMode()
         {
             btnThem.Enabled = btnLamMoi.Enabled = btnThoat.Enabled = false;
-
             btnGhi.Enabled = gbTTHocPhi.Enabled = true;
-
-            lkeSinhVien.ReadOnly = true;
+            cmbSinhVien.ReadOnly = true;
         }
 
         private void DisableEditMode()
         {
             btnThem.Enabled = btnLamMoi.Enabled = btnThoat.Enabled = true;
-
             btnGhi.Enabled = gbTTHocPhi.Enabled = false;
-
-            lkeSinhVien.ReadOnly = false;
+            cmbSinhVien.ReadOnly = false;
         }
 
         private void loadInitializeData()
@@ -48,9 +45,8 @@ namespace QLDSV.Forms
             this.SINHVIENTableAdapter.Connection.ConnectionString = Program.URL_Connect;
             this.SINHVIENTableAdapter.Fill(this.DS.SINHVIEN);
 
-            // TODO: This line of code loads data into the 'DS.DIEM' table. You can move, or remove it, as needed.
-            this.THONGTINHOCPHICUASINHVIENTableAdapter.Connection.ConnectionString = Program.URL_Connect;
-            this.THONGTINHOCPHICUASINHVIENTableAdapter.Fill(this.DS.THONGTINHOCPHICUASINHVIEN, lkeSinhVien.Text);
+            this.HOCPHITableAdapter.Connection.ConnectionString = Program.URL_Connect;
+            this.HOCPHITableAdapter.Fill(this.DS.HOCPHI);
          
         }
 
@@ -86,7 +82,7 @@ namespace QLDSV.Forms
                     // lỗi không biết
                     catch (Exception ex)
                     {
-                        MyHelper.ShowError(ex);
+                        MessageBox.Show(ex.ToString());
                     }
                 }
             }
@@ -98,9 +94,9 @@ namespace QLDSV.Forms
         {
             bool isSave = true;
 
-            if (KiemTraMaTrung(lkeSinhVien.Text, txtNienKhoa.Text, spiHocKy.EditValue.ToString()) == true)
+            if (KiemTraMaTrung(cmbSinhVien.Text, txtNienKhoa.Text, spiHocKy.EditValue.ToString()) == true)
             {
-                MyHelper.ShowErrorMsgBox("Sinh viên đã đóng học phí kỳ này.", MessageBoxButtons.OK);
+                 MessageBox.Show("Sinh viên đã đóng học phí kỳ này.","", MessageBoxButtons.OK);
                 txtNienKhoa.SelectAll();
                 isSave = false;
             }
@@ -112,22 +108,22 @@ namespace QLDSV.Forms
         private bool Save()
         {
             bool isSuccess = true;
-            dongHienTai = bdsTHONGTINHOCPHICUASINHVIEN.Position;
+            dongHienTai = bdsHocPhi.Position;
             try
             {
-                ((DataRowView)bdsTHONGTINHOCPHICUASINHVIEN.Current)["MASV"] = lkeSinhVien.Text;
-                bdsTHONGTINHOCPHICUASINHVIEN.EndEdit();
+                // ((DataRowView)bdsHocPhi.Current)["MASV"] = (String)cmbSinhVien.EditValue;
+                bdsHocPhi.EndEdit();
 
-                this.THONGTINHOCPHICUASINHVIENTableAdapter.Connection.ConnectionString = Program.URL_Connect;
-                this.THONGTINHOCPHICUASINHVIENTableAdapter.Update(lkeSinhVien.Text);
+                this.HOCPHITableAdapter.Connection.ConnectionString = Program.URL_Connect;
+                this.HOCPHITableAdapter.Update(this.DS.HOCPHI);
 
-                bdsTHONGTINHOCPHICUASINHVIEN.ResetCurrentItem();
+                this.bdsHocPhi.ResetCurrentItem();
                 DisableEditMode();
-                bdsTHONGTINHOCPHICUASINHVIEN.Position = dongHienTai;
+                this.bdsHocPhi.Position = dongHienTai;
             }
             catch (Exception ex)
             {
-                MyHelper.ShowError(ex);
+                MessageBox.Show(ex.ToString());
                 isSuccess = false;
             }
             return isSuccess;
@@ -135,31 +131,19 @@ namespace QLDSV.Forms
 
         private void lkeSinhVien_EditValueChanged(object sender, EventArgs e)
         {
-            var selectedSV = lkeSinhVien.GetSelectedDataRow() as DataRowView;
+            var selectedSV = cmbSinhVien.GetSelectedDataRow() as DataRowView;
 
             txtTenSV.Text = selectedSV.Row["HO"] + " " + selectedSV.Row["TEN"];
             txtMaLop.Text = selectedSV.Row["MALOP"].ToString();
 
-            this.THONGTINHOCPHICUASINHVIENTableAdapter.Fill(this.DS.THONGTINHOCPHICUASINHVIEN, lkeSinhVien.Text);
+            loadInitializeData();
         }
 
-        private void gvTTHocPhi_CustomColumnDisplayText(object sender, CustomColumnDisplayTextEventArgs e)
-        {
-            ColumnView view = sender as ColumnView;
-            if ((e.Column.FieldName == "HOCPHI" || e.Column.FieldName == "SOTIENDADONG") && e.ListSourceRowIndex != DevExpress.XtraGrid.GridControl.InvalidRowHandle)
-            {
-                if (!(e.Value is DBNull))
-                {
-                    decimal price = Convert.ToDecimal(e.Value);
-                    e.DisplayText = string.Format(MyHelper.CiVNI, "{0:c0}", price);
-                }
-            }
-        }
 
         private void btnThem_ItemClick(object sender, DevExpress.XtraBars.ItemClickEventArgs e)
         {
-            dongHienTai = bdsTHONGTINHOCPHICUASINHVIEN.Position;
-            bdsTHONGTINHOCPHICUASINHVIEN.AddNew();
+            dongHienTai = bdsHocPhi.Position;
+            bdsHocPhi.AddNew();
             EnableEditMode();
             txtNienKhoa.Focus();
         }
@@ -187,7 +171,6 @@ namespace QLDSV.Forms
         private void frmHocPhi_Load(object sender, EventArgs e)
         {
           
-
             loadInitializeData();
             DisableEditMode();
         }
@@ -198,13 +181,36 @@ namespace QLDSV.Forms
             if (!(e.Value is DBNull))
             {
                 decimal price = Convert.ToDecimal(e.Value);
-                e.DisplayText = string.Format(MyHelper.CiVNI, "{0:c0}", price);
+                CultureInfo CiVNI = new CultureInfo("vi-VN", false);
+                 e.DisplayText = string.Format(CiVNI, "{0:c0}", price);
             }
         }
 
-        private void gcTTHocPhi_Click(object sender, EventArgs e)
+        private void gvTTHocPhi_CustomColumnDisplayText_1(object sender, CustomColumnDisplayTextEventArgs e)
         {
+            ColumnView view = sender as ColumnView;
+            if ((e.Column.FieldName == "HOCPHI" || e.Column.FieldName == "SOTIENDADONG") && e.ListSourceRowIndex != DevExpress.XtraGrid.GridControl.InvalidRowHandle)
+            {
+                if (!(e.Value is DBNull))
+                {
+                    decimal price = Convert.ToDecimal(e.Value);
+                    CultureInfo CiVNI = new CultureInfo("vi-VN", false);
+                    e.DisplayText = string.Format(CiVNI, "{0:c0}", price);
+                }
+            }
+        }
 
+        private void gvTTHocPhi_CustomDrawRowIndicator(object sender, DevExpress.XtraGrid.Views.Grid.RowIndicatorCustomDrawEventArgs e)
+        {
+            e.Handled = true;
+            SolidBrush brush = new SolidBrush(Color.FromArgb(0xC6, 0x64, 0xFF));
+            e.Graphics.FillRectangle(brush, e.Bounds);
+            e.Graphics.DrawRectangle(Pens.Black, new Rectangle(e.Bounds.X, e.Bounds.Y, e.Bounds.Width - 1, e.Bounds.Height));
+            Size size = ImageCollection.GetImageListSize(e.Info.ImageCollection);
+            Rectangle r = e.Bounds;
+            ImageCollection.DrawImageListImage(e.Cache, e.Info.ImageCollection, e.Info.ImageIndex,
+                    new Rectangle(r.X + (r.Width - size.Width) / 2, r.Y + (r.Height - size.Height) / 2, size.Width, size.Height));
+            brush.Dispose();
         }
     }
 
