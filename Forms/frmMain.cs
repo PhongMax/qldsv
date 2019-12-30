@@ -87,6 +87,8 @@ namespace QLDSV
             }
         }
         private void barButtonItem_Diem_ItemClick(object sender, DevExpress.XtraBars.ItemClickEventArgs e)
+      
+        private void barButton_Diem_ItemClick(object sender, DevExpress.XtraBars.ItemClickEventArgs e)
         {
             if (!(Program.MGroup == Program.NhomQuyen[2]))
             {
@@ -161,6 +163,16 @@ namespace QLDSV
         private void barButton_BDTK_ItemClick(object sender, DevExpress.XtraBars.ItemClickEventArgs e)
         {
             ShowMdiChildren(typeof(Report.BDTK));
+        }
+
+        private void barButton_SinhVien_ItemClick(object sender, DevExpress.XtraBars.ItemClickEventArgs e)
+        {
+           
+                if ((Program.MGroup == Program.NhomQuyen[2]))
+                {
+                    ShowMdiChildren(typeof(frmHocPhi));
+                }
+
         }
 
 

@@ -13,3 +13,10 @@
         }
     }
 }
+
+namespace QLDSV.DSTableAdapters {
+    
+    
+    public partial class THONGTINHOCPHICUASINHVIENTableAdapter {
+    }
+}

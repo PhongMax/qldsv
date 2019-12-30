@@ -91,7 +91,7 @@
             // lblHOTEN
             // 
             this.lblHOTEN.Name = "lblHOTEN";
-            this.lblHOTEN.Size = new System.Drawing.Size(45, 17);
+            this.lblHOTEN.Size = new System.Drawing.Size(46, 17);
             this.lblHOTEN.Text = "HOTEN";
             // 
             // lblNHOM
@@ -295,11 +295,19 @@
             this.barButton_MonHoc.LargeWidth = 100;
             this.barButton_MonHoc.Name = "barButton_MonHoc";
             this.barButton_MonHoc.RibbonStyle = ((DevExpress.XtraBars.Ribbon.RibbonItemStyles)((DevExpress.XtraBars.Ribbon.RibbonItemStyles.Large | DevExpress.XtraBars.Ribbon.RibbonItemStyles.SmallWithText)));
+            this.barButton_MonHoc.ItemClick += new DevExpress.XtraBars.ItemClickEventHandler(this.barButton_MonHoc_ItemClick);
+            // 
+            // ribbonPageGroup1
+            // 
+            this.ribbonPageGroup1.ItemLinks.Add(this.barButton_SinhVien);
+            this.ribbonPageGroup1.Name = "ribbonPageGroup1";
+            this.ribbonPageGroup1.Text = "HỌC PHÍ";
             // 
             // barButton_SinhVien
             // 
             this.barButton_SinhVien.Id = 9;
-            this.barButton_SinhVien.ImageOptions.Image = global::QLDSV.Properties.Resources.students;
+            this.barButton_SinhVien.ImageOptions.Image = ((System.Drawing.Image)(resources.GetObject("barButton_SinhVien.ImageOptions.Image")));
+            this.barButton_SinhVien.ImageOptions.LargeImage = ((System.Drawing.Image)(resources.GetObject("barButton_SinhVien.ImageOptions.LargeImage")));
             this.barButton_SinhVien.LargeWidth = 100;
             this.barButton_SinhVien.Name = "barButton_SinhVien";
             this.barButton_SinhVien.RibbonStyle = ((DevExpress.XtraBars.Ribbon.RibbonItemStyles)((DevExpress.XtraBars.Ribbon.RibbonItemStyles.Large | DevExpress.XtraBars.Ribbon.RibbonItemStyles.SmallWithText)));

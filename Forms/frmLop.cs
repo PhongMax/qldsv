@@ -22,6 +22,7 @@ namespace QLDSV.Forms
         private string _flagOptionLop; // true = add ; false = update ; default of boolean = false
         private string _oldMaLop = "";
         private string _oldTenLop = "";
+        private string _oldMaSV;
 
         private Boolean _flagUpdateSV = false;
         private Boolean _flagSua = false;
@@ -544,6 +545,8 @@ namespace QLDSV.Forms
 
             _flagUpdateSV = true;
             _flagSua = true;
+
+            
         }
 
         private void conXoa_Click(object sender, EventArgs e)
@@ -673,6 +676,11 @@ namespace QLDSV.Forms
         private bool ValidateInfoSinhVien(int position)
         {
             string maSV = this.gridViewSinhVien.GetRowCellValue(position, "MASV").ToString();
+           
+            if (maSV == _oldMaSV)
+            {
+                return true;
+            }
             if(string.IsNullOrEmpty(maSV))
             {
                 XtraMessageBox.Show("Mã Sinh Viên không được để trống", "Cảnh báo", MessageBoxButtons.OK, MessageBoxIcon.Warning);
@@ -717,6 +725,8 @@ namespace QLDSV.Forms
 
             if (_flagSua)
             {
+                _positionSV = this.gridViewSinhVien.FocusedRowHandle;
+                _oldMaSV = ((DataRowView)bdsSV[this.gridViewSinhVien.FocusedRowHandle])["MASV"].ToString();
                 return;
             }
 
