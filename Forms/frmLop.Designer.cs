@@ -527,13 +527,13 @@
             this.toolStripSeparator2,
             this.conLamMoi});
             this.contextSinhVien.Name = "contextMenuStrip1";
-            this.contextSinhVien.Size = new System.Drawing.Size(122, 126);
+            this.contextSinhVien.Size = new System.Drawing.Size(181, 148);
             // 
             // conThem
             // 
             this.conThem.Image = global::QLDSV.Properties.Resources.add_user_32;
             this.conThem.Name = "conThem";
-            this.conThem.Size = new System.Drawing.Size(121, 22);
+            this.conThem.Size = new System.Drawing.Size(180, 22);
             this.conThem.Text = "Thêm";
             this.conThem.Click += new System.EventHandler(this.conThem_Click);
             // 
@@ -541,7 +541,7 @@
             // 
             this.conSua.Image = global::QLDSV.Properties.Resources.Text_Edit_icon_24;
             this.conSua.Name = "conSua";
-            this.conSua.Size = new System.Drawing.Size(121, 22);
+            this.conSua.Size = new System.Drawing.Size(180, 22);
             this.conSua.Text = "Sửa";
             this.conSua.Click += new System.EventHandler(this.conSua_Click);
             // 
@@ -549,33 +549,33 @@
             // 
             this.conXoa.Image = global::QLDSV.Properties.Resources.Delete_2_icon_24;
             this.conXoa.Name = "conXoa";
-            this.conXoa.Size = new System.Drawing.Size(121, 22);
+            this.conXoa.Size = new System.Drawing.Size(180, 22);
             this.conXoa.Text = "Xóa";
             this.conXoa.Click += new System.EventHandler(this.conXoa_Click);
             // 
             // toolStripSeparator1
             // 
             this.toolStripSeparator1.Name = "toolStripSeparator1";
-            this.toolStripSeparator1.Size = new System.Drawing.Size(118, 6);
+            this.toolStripSeparator1.Size = new System.Drawing.Size(177, 6);
             // 
             // conGhi
             // 
             this.conGhi.Image = global::QLDSV.Properties.Resources.check_48_icon;
             this.conGhi.Name = "conGhi";
-            this.conGhi.Size = new System.Drawing.Size(121, 22);
+            this.conGhi.Size = new System.Drawing.Size(180, 22);
             this.conGhi.Text = "Ghi";
             this.conGhi.Click += new System.EventHandler(this.conGhi_Click);
             // 
             // toolStripSeparator2
             // 
             this.toolStripSeparator2.Name = "toolStripSeparator2";
-            this.toolStripSeparator2.Size = new System.Drawing.Size(118, 6);
+            this.toolStripSeparator2.Size = new System.Drawing.Size(177, 6);
             // 
             // conLamMoi
             // 
             this.conLamMoi.Image = global::QLDSV.Properties.Resources.Button_Refresh_icon_48;
             this.conLamMoi.Name = "conLamMoi";
-            this.conLamMoi.Size = new System.Drawing.Size(121, 22);
+            this.conLamMoi.Size = new System.Drawing.Size(180, 22);
             this.conLamMoi.Text = "Làm mới";
             this.conLamMoi.Click += new System.EventHandler(this.conLamMoi_Click);
             // 
