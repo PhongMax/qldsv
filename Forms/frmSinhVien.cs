@@ -59,7 +59,7 @@ namespace QLDSV.Forms
             // thoát.
             if (Program.KetNoi() == 0)
             {
-                MessageBox.Show("Lỗi kết nối về chi nhánh mới", "", MessageBoxButtons.OK);
+                XtraMessageBox.Show("Lỗi kết nối về chi nhánh mới", "", MessageBoxButtons.OK);
             }
             else
             {

@@ -46,7 +46,7 @@ namespace QLDSV.Forms
 
             if (Program.MLogin == "HTKN")
             {
-                MessageBox.Show("Bạn hãy quay về Khoa ban đầu trước khi thực hiên tạo tài khoản !", "", MessageBoxButtons.OK);
+                XtraMessageBox.Show("Bạn hãy quay về Khoa ban đầu trước khi thực hiên tạo tài khoản !", "", MessageBoxButtons.OK);
                 return;
             }
             bool check = this.ValidateInfo();
@@ -85,7 +85,7 @@ namespace QLDSV.Forms
 
             if (resultCheckLogin == -1 )
             {
-                MessageBox.Show("Lỗi kết nối với database. Mời ban xem lại !", "", MessageBoxButtons.OK);
+                XtraMessageBox.Show("Lỗi kết nối với database. Mời ban xem lại !", "", MessageBoxButtons.OK);
                 this.Close();
             }
             if (resultCheckLogin == 1)
@@ -97,11 +97,11 @@ namespace QLDSV.Forms
 
             }else if(resultCheckLogin == 3)
             {
-                MessageBox.Show("Lỗi thực thi trong cơ sơ dữ liệu !", "", MessageBoxButtons.OK);
+                XtraMessageBox.Show("Lỗi thực thi trong cơ sơ dữ liệu !", "", MessageBoxButtons.OK);
             }
             else if (resultCheckLogin ==0)
             {
-                MessageBox.Show("Tạo tài khoản thành công !", "", MessageBoxButtons.OK);
+                XtraMessageBox.Show("Tạo tài khoản thành công !", "", MessageBoxButtons.OK);
                 
             }
            
@@ -205,7 +205,7 @@ namespace QLDSV.Forms
 
         private void btnHuy_Click(object sender, EventArgs e)
         {
-            DialogResult dr=   MessageBox.Show("Bạn thật sự muốn hủy thao tác đăng ký tài khoản?",
+            DialogResult dr = XtraMessageBox.Show("Bạn thật sự muốn hủy thao tác đăng ký tài khoản?",
                       "Xác thực", MessageBoxButtons.YesNo);
 
             if (dr == DialogResult.No)

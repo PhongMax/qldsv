@@ -340,6 +340,9 @@
             this.gridViewDiem.GridControl = this.gridControlDiem;
             this.gridViewDiem.Name = "gridViewDiem";
             this.gridViewDiem.OptionsView.ShowGroupPanel = false;
+            this.gridViewDiem.OptionsView.ShowViewCaption = true;
+            this.gridViewDiem.ViewCaption = "BẢNG ĐIỂM MÔN HỌC";
+            this.gridViewDiem.CustomDrawRowIndicator += new DevExpress.XtraGrid.Views.Grid.RowIndicatorCustomDrawEventHandler(this.gridViewDiem_CustomDrawRowIndicator);
             this.gridViewDiem.RowCellStyle += new DevExpress.XtraGrid.Views.Grid.RowCellStyleEventHandler(this.gridViewnNhap_RowCellStyle);
             this.gridViewDiem.HiddenEditor += new System.EventHandler(this.gridViewnNhap_HiddenEditor);
             this.gridViewDiem.ValidatingEditor += new DevExpress.XtraEditors.Controls.BaseContainerValidateEditorEventHandler(this.gridViewnNhap_ValidatingEditor);
@@ -405,10 +408,12 @@
             this.tableAdapterManager.BackupDataSetBeforeUpdate = false;
             this.tableAdapterManager.DIEMTableAdapter = null;
             this.tableAdapterManager.GIANGVIENTableAdapter = null;
+            this.tableAdapterManager.HOCPHITableAdapter = null;
             this.tableAdapterManager.KHOATableAdapter = null;
             this.tableAdapterManager.LOPTableAdapter = this.LOPTableAdapter;
             this.tableAdapterManager.MONHOCTableAdapter = this.MONHOCTableAdapter;
             this.tableAdapterManager.SINHVIENTableAdapter = null;
+            this.tableAdapterManager.THONGTINHOCPHICUASINHVIENTableAdapter = null;
             this.tableAdapterManager.UpdateOrder = QLDSV.DSTableAdapters.TableAdapterManager.UpdateOrderOption.InsertUpdateDelete;
             // 
             // MONHOCTableAdapter

@@ -1,4 +1,5 @@
-﻿using System;
+﻿using DevExpress.XtraEditors;
+using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
@@ -70,7 +71,7 @@ namespace QLDSV
 
             if (txtLogin.Text.Trim() == "" || txtPass.Text.Trim() == "")
             {
-                MessageBox.Show("Tài khoản đăng nhập không được trống", "Lỗi đăng nhập", MessageBoxButtons.OK);
+                XtraMessageBox.Show("Tài khoản đăng nhập không được trống", "Lỗi đăng nhập", MessageBoxButtons.OK);
 
                // trỏ con trỏ chuột về ô user...
                txtLogin.Focus();
@@ -103,7 +104,7 @@ namespace QLDSV
             Program.UserName = Program.MyReader.GetString(0);     // Lay user name
             if (Convert.IsDBNull(Program.UserName))
             {
-                MessageBox.Show("Login bạn nhập không có quyền truy cập dữ liệu\nBạn xem lại username, password", "", MessageBoxButtons.OK);
+                XtraMessageBox.Show("Login bạn nhập không có quyền truy cập dữ liệu\nBạn xem lại username, password", "", MessageBoxButtons.OK);
                 return;
             }
 
@@ -115,7 +116,7 @@ namespace QLDSV
             catch(Exception ex)
             {
                 Debug.WriteLine("---> Lỗi: " + ex.ToString());
-                MessageBox.Show("Login bạn nhập không có quyền truy cập vào chương trình", "", MessageBoxButtons.OK);
+                XtraMessageBox.Show("Login bạn nhập không có quyền truy cập vào chương trình", "", MessageBoxButtons.OK);
                 return;
             }
 

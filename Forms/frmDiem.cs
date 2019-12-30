@@ -11,6 +11,7 @@ using DevExpress.XtraEditors;
 using DevExpress.XtraGrid.Views.Grid;
 using DevExpress.XtraGrid;
 using System.Data.SqlClient;
+using DevExpress.Utils;
 
 namespace QLDSV.Forms
 {
@@ -37,7 +38,7 @@ namespace QLDSV.Forms
             // thoát.
             if (Program.KetNoi() == 0)
             {
-                MessageBox.Show("Lỗi kết nối về chi nhánh mới", "", MessageBoxButtons.OK);
+                XtraMessageBox.Show("Lỗi kết nối về chi nhánh mới", "", MessageBoxButtons.OK);
             }
             else
             {
@@ -239,7 +240,7 @@ namespace QLDSV.Forms
                         }
                         catch (Exception ex)
                         {
-                            MessageBox.Show("Lỗi ghi điểm vào Database. Bạn hãy xem lại ! " + ex.Message, "", MessageBoxButtons.OK);
+                            XtraMessageBox.Show("Lỗi ghi điểm vào Database. Bạn hãy xem lại ! " + ex.Message, "", MessageBoxButtons.OK);
                             conn.Close();
                             return;
 
@@ -248,7 +249,7 @@ namespace QLDSV.Forms
                     }
                 }
 
-                MessageBox.Show("Thao tác thành công!", "", MessageBoxButtons.OK);
+                XtraMessageBox.Show("Thao tác thành công!", "", MessageBoxButtons.OK);
                 this.btnNhap.Enabled = true;
                 this.btnLuu.Enabled = false;
                 return;
@@ -313,7 +314,17 @@ namespace QLDSV.Forms
             }
         }
 
-      
-     
+        private void gridViewDiem_CustomDrawRowIndicator(object sender, RowIndicatorCustomDrawEventArgs e)
+        {
+             e.Handled = true;
+            SolidBrush brush = new SolidBrush(Color.FromArgb(0xC6, 0x64, 0xFF));
+            e.Graphics.FillRectangle(brush, e.Bounds);
+            e.Graphics.DrawRectangle(Pens.Black, new Rectangle(e.Bounds.X, e.Bounds.Y, e.Bounds.Width - 1, e.Bounds.Height));
+            Size size = ImageCollection.GetImageListSize(e.Info.ImageCollection);
+            Rectangle r = e.Bounds;
+            ImageCollection.DrawImageListImage(e.Cache, e.Info.ImageCollection, e.Info.ImageIndex,
+                    new Rectangle(r.X + (r.Width - size.Width) / 2, r.Y + (r.Height - size.Height) / 2, size.Width, size.Height));
+            brush.Dispose();
+        }
     }
 }

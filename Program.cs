@@ -97,7 +97,7 @@ namespace QLDSV
 
             catch (Exception e)
             {
-                MessageBox.Show("---> Lỗi kết nối cơ sở dữ liệu.\n---> Bạn xem lại Username và Password.\n " + e.Message, string.Empty, MessageBoxButtons.OK);
+                XtraMessageBox.Show("---> Lỗi kết nối cơ sở dữ liệu.\n---> Bạn xem lại Username và Password.\n " + e.Message, string.Empty, MessageBoxButtons.OK);
                 return 0;
             }
         }
@@ -125,7 +125,7 @@ namespace QLDSV
             catch (SqlException ex)
             {
                 Program.Conn.Close();
-                MessageBox.Show(ex.Message);
+                XtraMessageBox.Show(ex.Message);
                 return null;
             }
         }
