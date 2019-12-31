@@ -88,7 +88,6 @@
             mAMHLabel.Size = new System.Drawing.Size(66, 13);
             mAMHLabel.TabIndex = 0;
             mAMHLabel.Text = "Mã môn học";
-            mAMHLabel.Click += new System.EventHandler(this.mAMHLabel_Click);
             // 
             // tENMHLabel
             // 
@@ -98,7 +97,6 @@
             tENMHLabel.Size = new System.Drawing.Size(70, 13);
             tENMHLabel.TabIndex = 2;
             tENMHLabel.Text = "Tên môn học";
-            tENMHLabel.Click += new System.EventHandler(this.tENMHLabel_Click);
             // 
             // barManagerMonHoc
             // 
@@ -394,7 +392,6 @@
             this.txtTenMonHoc.Properties.MaxLength = 50;
             this.txtTenMonHoc.Size = new System.Drawing.Size(256, 20);
             this.txtTenMonHoc.TabIndex = 3;
-            this.txtTenMonHoc.EditValueChanged += new System.EventHandler(this.txtTenMonHoc_EditValueChanged);
             // 
             // groupBoxMonHoc
             // 
