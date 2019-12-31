@@ -150,7 +150,7 @@ namespace QLDSV.Forms
             if (this.bdsBangDiem_Sua.Count > 0)
             {
                 // trường hợp sửa điểm
-                this.btnHuy.DataSource = this.bdsBangDiem_Sua;
+                this.gridControlDiem.DataSource = this.bdsBangDiem_Sua;
             }
             else
             {
@@ -195,7 +195,7 @@ namespace QLDSV.Forms
 
 
                 //trường hợp nhập điểm cho lần thi thứ nhất.
-                this.btnHuy.DataSource = this.bdsBangDiem_Nhap;
+                this.gridControlDiem.DataSource = this.bdsBangDiem_Nhap;
             }
 
         }
@@ -215,7 +215,7 @@ namespace QLDSV.Forms
             else
             {
                 //get binding source từ gridcontrol
-                BindingSource bdsTemp = (BindingSource)this.btnHuy.DataSource;
+                BindingSource bdsTemp = (BindingSource)this.gridControlDiem.DataSource;
              
                 // kết thúc việc cập nhật dữ liệu
                 this.Validate();
@@ -296,7 +296,7 @@ namespace QLDSV.Forms
         private bool  checkEmptyRow()
         {
             // get binding source từ gridcontrol
-            BindingSource bdsTemp = (BindingSource)this.btnHuy.DataSource;
+            BindingSource bdsTemp = (BindingSource)this.gridControlDiem.DataSource;
             int slg = bdsTemp.Count;
             for (int i = 0; i < slg; i++)
             {
@@ -337,6 +337,10 @@ namespace QLDSV.Forms
 
         private void btnHuyy_Click(object sender, EventArgs e)
         {
+            // get binding source từ gridcontrol
+            BindingSource bdsTemp = (BindingSource)this.gridControlDiem.DataSource;
+            bdsTemp.CancelEdit();
+            bdsTemp.ResetBindings(true);
             // gọi lại form load.
             frmDiem_Load(sender, e);
         }

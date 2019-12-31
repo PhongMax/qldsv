@@ -458,8 +458,11 @@
             this.spiSoTienDong.Name = "spiSoTienDong";
             this.spiSoTienDong.Properties.Buttons.AddRange(new DevExpress.XtraEditors.Controls.EditorButton[] {
             new DevExpress.XtraEditors.Controls.EditorButton(DevExpress.XtraEditors.Controls.ButtonPredefines.Combo)});
+            this.spiSoTienDong.Properties.IsFloatValue = false;
+            this.spiSoTienDong.Properties.Mask.EditMask = "N00";
             this.spiSoTienDong.Size = new System.Drawing.Size(100, 20);
             this.spiSoTienDong.TabIndex = 15;
+            this.spiSoTienDong.CustomDisplayText += new DevExpress.XtraEditors.Controls.CustomDisplayTextEventHandler(this.spiHocPhi_CustomDisplayText);
             // 
             // spiHocPhi
             // 
@@ -474,14 +477,17 @@
             this.spiHocPhi.Name = "spiHocPhi";
             this.spiHocPhi.Properties.Buttons.AddRange(new DevExpress.XtraEditors.Controls.EditorButton[] {
             new DevExpress.XtraEditors.Controls.EditorButton(DevExpress.XtraEditors.Controls.ButtonPredefines.Combo)});
+            this.spiHocPhi.Properties.IsFloatValue = false;
+            this.spiHocPhi.Properties.Mask.EditMask = "N00";
             this.spiHocPhi.Size = new System.Drawing.Size(100, 20);
             this.spiHocPhi.TabIndex = 13;
+            this.spiHocPhi.CustomDisplayText += new DevExpress.XtraEditors.Controls.CustomDisplayTextEventHandler(this.spiHocPhi_CustomDisplayText);
             // 
             // spiHocKy
             // 
             this.spiHocKy.DataBindings.Add(new System.Windows.Forms.Binding("EditValue", this.bdsHocPhi, "HOCKY", true));
             this.spiHocKy.EditValue = new decimal(new int[] {
-            0,
+            1,
             0,
             0,
             0});
@@ -490,6 +496,18 @@
             this.spiHocKy.Name = "spiHocKy";
             this.spiHocKy.Properties.Buttons.AddRange(new DevExpress.XtraEditors.Controls.EditorButton[] {
             new DevExpress.XtraEditors.Controls.EditorButton(DevExpress.XtraEditors.Controls.ButtonPredefines.Combo)});
+            this.spiHocKy.Properties.IsFloatValue = false;
+            this.spiHocKy.Properties.Mask.EditMask = "N00";
+            this.spiHocKy.Properties.MaxValue = new decimal(new int[] {
+            9,
+            0,
+            0,
+            0});
+            this.spiHocKy.Properties.MinValue = new decimal(new int[] {
+            1,
+            0,
+            0,
+            0});
             this.spiHocKy.Size = new System.Drawing.Size(100, 20);
             this.spiHocKy.TabIndex = 11;
             // 

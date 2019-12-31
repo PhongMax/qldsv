@@ -51,7 +51,7 @@
             this.MONHOCTableAdapter = new QLDSV.DSTableAdapters.MONHOCTableAdapter();
             this.errorProvider = new System.Windows.Forms.ErrorProvider(this.components);
             this.gridView1 = new DevExpress.XtraGrid.Views.Grid.GridView();
-            this.btnHuy = new DevExpress.XtraGrid.GridControl();
+            this.gridControlDiem = new DevExpress.XtraGrid.GridControl();
             this.gridViewDiem = new DevExpress.XtraGrid.Views.Grid.GridView();
             this.colHoTen = new DevExpress.XtraGrid.Columns.GridColumn();
             this.colMASV = new DevExpress.XtraGrid.Columns.GridColumn();
@@ -77,7 +77,7 @@
             ((System.ComponentModel.ISupportInitialize)(this.txtTenlop.Properties)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.errorProvider)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.gridView1)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.btnHuy)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.gridControlDiem)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.gridViewDiem)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.groupControlNhapDiem)).BeginInit();
             this.groupControlNhapDiem.SuspendLayout();
@@ -288,18 +288,18 @@
             // 
             // gridView1
             // 
-            this.gridView1.GridControl = this.btnHuy;
+            this.gridView1.GridControl = this.gridControlDiem;
             this.gridView1.Name = "gridView1";
             // 
-            // btnHuy
+            // gridControlDiem
             // 
-            this.btnHuy.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.btnHuy.Location = new System.Drawing.Point(0, 0);
-            this.btnHuy.MainView = this.gridViewDiem;
-            this.btnHuy.Name = "btnHuy";
-            this.btnHuy.Size = new System.Drawing.Size(986, 273);
-            this.btnHuy.TabIndex = 0;
-            this.btnHuy.ViewCollection.AddRange(new DevExpress.XtraGrid.Views.Base.BaseView[] {
+            this.gridControlDiem.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.gridControlDiem.Location = new System.Drawing.Point(0, 0);
+            this.gridControlDiem.MainView = this.gridViewDiem;
+            this.gridControlDiem.Name = "gridControlDiem";
+            this.gridControlDiem.Size = new System.Drawing.Size(986, 273);
+            this.gridControlDiem.TabIndex = 0;
+            this.gridControlDiem.ViewCollection.AddRange(new DevExpress.XtraGrid.Views.Base.BaseView[] {
             this.gridViewDiem,
             this.gridView1});
             // 
@@ -313,7 +313,7 @@
             this.colHoTen,
             this.colMASV,
             this.colDIEM});
-            this.gridViewDiem.GridControl = this.btnHuy;
+            this.gridViewDiem.GridControl = this.gridControlDiem;
             this.gridViewDiem.Name = "gridViewDiem";
             this.gridViewDiem.OptionsView.ShowGroupPanel = false;
             this.gridViewDiem.OptionsView.ShowViewCaption = true;
@@ -453,7 +453,7 @@
             // 
             // panel2
             // 
-            this.panel2.Controls.Add(this.btnHuy);
+            this.panel2.Controls.Add(this.gridControlDiem);
             this.panel2.Dock = System.Windows.Forms.DockStyle.Fill;
             this.panel2.Location = new System.Drawing.Point(0, 230);
             this.panel2.Name = "panel2";
@@ -482,7 +482,7 @@
             ((System.ComponentModel.ISupportInitialize)(this.txtTenlop.Properties)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.errorProvider)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.gridView1)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.btnHuy)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.gridControlDiem)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.gridViewDiem)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.groupControlNhapDiem)).EndInit();
             this.groupControlNhapDiem.ResumeLayout(false);
@@ -518,7 +518,7 @@
         private System.Windows.Forms.NumericUpDown numericLanThi;
         private DevExpress.XtraEditors.Repository.RepositoryItemTextEdit repositoryItemTextEdit1;
         private System.Windows.Forms.ErrorProvider errorProvider;
-        private DevExpress.XtraGrid.GridControl btnHuy;
+        private DevExpress.XtraGrid.GridControl gridControlDiem;
         private DevExpress.XtraGrid.Views.Grid.GridView gridViewDiem;
         private DevExpress.XtraGrid.Columns.GridColumn colHoTen;
         private DevExpress.XtraGrid.Columns.GridColumn colMASV;
