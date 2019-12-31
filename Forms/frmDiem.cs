@@ -63,10 +63,15 @@ namespace QLDSV.Forms
 
         private void frmDiem_Load(object sender, EventArgs e)
         {
+            errorProvider.Clear();
+
             // TODO: load data
             loadInitializeData();
 
+            this.btnNhap.Enabled = true;
             this.btnLuu.Enabled = false;
+            this.groupControlNhapDiem.Enabled = true;
+
 
             // đoạn code liên kết giữa bds với combo box
             // lọc phân mảnh trước
@@ -107,8 +112,7 @@ namespace QLDSV.Forms
 
         private void btnNhap_Click(object sender, EventArgs e)
         {
-            this.btnNhap.Enabled = false;
-            this.btnLuu.Enabled = true;
+           
             errorProvider.Clear();
 
             monhoc = (String)lookUpEditMaMon.EditValue;
@@ -125,8 +129,9 @@ namespace QLDSV.Forms
                 return;
             }
 
-
-
+            this.btnNhap.Enabled = false;
+            this.btnLuu.Enabled = true;
+            this.groupControlNhapDiem.Enabled = false;
 
             // list ra bảng điểm danh sách sinh viên để sửa
             string cmd = "  EXEC[dbo].[SP_BDMH] " +
@@ -252,6 +257,7 @@ namespace QLDSV.Forms
                 XtraMessageBox.Show("Thao tác thành công!", "", MessageBoxButtons.OK);
                 this.btnNhap.Enabled = true;
                 this.btnLuu.Enabled = false;
+                this.groupControlNhapDiem.Enabled = true;
                 return;
             }
         }
@@ -327,6 +333,12 @@ namespace QLDSV.Forms
             brush.Dispose();
         }
 
-        
+      
+
+        private void btnHuyy_Click(object sender, EventArgs e)
+        {
+            // gọi lại form load.
+            frmDiem_Load(sender, e);
+        }
     }
 }

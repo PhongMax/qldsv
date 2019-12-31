@@ -29,7 +29,7 @@
         private void InitializeComponent()
         {
             this.components = new System.ComponentModel.Container();
-            DevExpress.XtraEditors.Repository.RepositoryItemTextEdit repositoryItemTextEdit3 = new DevExpress.XtraEditors.Repository.RepositoryItemTextEdit();
+            this.repositoryItemTextEditNhap = new DevExpress.XtraEditors.Repository.RepositoryItemTextEdit();
             this.repositoryItemTextEdit1 = new DevExpress.XtraEditors.Repository.RepositoryItemTextEdit();
             this.numericLanThi = new System.Windows.Forms.NumericUpDown();
             this.txtTenMon = new DevExpress.XtraEditors.TextEdit();
@@ -51,20 +51,21 @@
             this.MONHOCTableAdapter = new QLDSV.DSTableAdapters.MONHOCTableAdapter();
             this.errorProvider = new System.Windows.Forms.ErrorProvider(this.components);
             this.gridView1 = new DevExpress.XtraGrid.Views.Grid.GridView();
+            this.btnHuy = new DevExpress.XtraGrid.GridControl();
             this.gridViewDiem = new DevExpress.XtraGrid.Views.Grid.GridView();
             this.colHoTen = new DevExpress.XtraGrid.Columns.GridColumn();
             this.colMASV = new DevExpress.XtraGrid.Columns.GridColumn();
             this.colDIEM = new DevExpress.XtraGrid.Columns.GridColumn();
-            this.btnHuy = new DevExpress.XtraGrid.GridControl();
             this.groupControlNhapDiem = new DevExpress.XtraEditors.GroupControl();
             this.groupControl1 = new DevExpress.XtraEditors.GroupControl();
-            this.btnNhap = new DevExpress.XtraEditors.SimpleButton();
+            this.btnHuyy = new DevExpress.XtraEditors.SimpleButton();
             this.btnLuu = new DevExpress.XtraEditors.SimpleButton();
-            this.simpleButton3 = new DevExpress.XtraEditors.SimpleButton();
+            this.btnNhap = new DevExpress.XtraEditors.SimpleButton();
             this.panel1 = new System.Windows.Forms.Panel();
-            this.panel2 = new System.Windows.Forms.Panel();
-            this.panel3 = new System.Windows.Forms.Panel();
             this.panel4 = new System.Windows.Forms.Panel();
+            this.panel3 = new System.Windows.Forms.Panel();
+            this.panel2 = new System.Windows.Forms.Panel();
+            ((System.ComponentModel.ISupportInitialize)(this.repositoryItemTextEditNhap)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.repositoryItemTextEdit1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.numericLanThi)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.txtTenMon.Properties)).BeginInit();
@@ -76,18 +77,29 @@
             ((System.ComponentModel.ISupportInitialize)(this.txtTenlop.Properties)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.errorProvider)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.gridView1)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.gridViewDiem)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(repositoryItemTextEdit3)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.btnHuy)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.gridViewDiem)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.groupControlNhapDiem)).BeginInit();
             this.groupControlNhapDiem.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.groupControl1)).BeginInit();
             this.groupControl1.SuspendLayout();
             this.panel1.SuspendLayout();
-            this.panel2.SuspendLayout();
-            this.panel3.SuspendLayout();
             this.panel4.SuspendLayout();
+            this.panel3.SuspendLayout();
+            this.panel2.SuspendLayout();
             this.SuspendLayout();
+            // 
+            // repositoryItemTextEditNhap
+            // 
+            this.repositoryItemTextEditNhap.AutoHeight = false;
+            this.repositoryItemTextEditNhap.DisplayFormat.FormatType = DevExpress.Utils.FormatType.Numeric;
+            this.repositoryItemTextEditNhap.EditFormat.FormatType = DevExpress.Utils.FormatType.Numeric;
+            this.repositoryItemTextEditNhap.Mask.BeepOnError = true;
+            this.repositoryItemTextEditNhap.Mask.EditMask = "f";
+            this.repositoryItemTextEditNhap.Mask.MaskType = DevExpress.XtraEditors.Mask.MaskType.Numeric;
+            this.repositoryItemTextEditNhap.Mask.UseMaskAsDisplayFormat = true;
+            this.repositoryItemTextEditNhap.MaxLength = 5;
+            this.repositoryItemTextEditNhap.Name = "repositoryItemTextEditNhap";
             // 
             // repositoryItemTextEdit1
             // 
@@ -279,6 +291,18 @@
             this.gridView1.GridControl = this.btnHuy;
             this.gridView1.Name = "gridView1";
             // 
+            // btnHuy
+            // 
+            this.btnHuy.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.btnHuy.Location = new System.Drawing.Point(0, 0);
+            this.btnHuy.MainView = this.gridViewDiem;
+            this.btnHuy.Name = "btnHuy";
+            this.btnHuy.Size = new System.Drawing.Size(986, 273);
+            this.btnHuy.TabIndex = 0;
+            this.btnHuy.ViewCollection.AddRange(new DevExpress.XtraGrid.Views.Base.BaseView[] {
+            this.gridViewDiem,
+            this.gridView1});
+            // 
             // gridViewDiem
             // 
             this.gridViewDiem.Appearance.FocusedRow.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(128)))), ((int)(((byte)(255)))), ((int)(((byte)(128)))));
@@ -332,33 +356,12 @@
             this.colDIEM.AppearanceHeader.Options.UseTextOptions = true;
             this.colDIEM.AppearanceHeader.TextOptions.HAlignment = DevExpress.Utils.HorzAlignment.Center;
             this.colDIEM.Caption = "Điểm";
-            repositoryItemTextEdit3.AutoHeight = false;
-            repositoryItemTextEdit3.DisplayFormat.FormatType = DevExpress.Utils.FormatType.Numeric;
-            repositoryItemTextEdit3.EditFormat.FormatType = DevExpress.Utils.FormatType.Numeric;
-            repositoryItemTextEdit3.Mask.BeepOnError = true;
-            repositoryItemTextEdit3.Mask.EditMask = "f";
-            repositoryItemTextEdit3.Mask.MaskType = DevExpress.XtraEditors.Mask.MaskType.Numeric;
-            repositoryItemTextEdit3.Mask.UseMaskAsDisplayFormat = true;
-            repositoryItemTextEdit3.MaxLength = 5;
-            repositoryItemTextEdit3.Name = "repositoryItemTextEditNhap";
-            this.colDIEM.ColumnEdit = repositoryItemTextEdit3;
+            this.colDIEM.ColumnEdit = this.repositoryItemTextEditNhap;
             this.colDIEM.DisplayFormat.FormatType = DevExpress.Utils.FormatType.Numeric;
             this.colDIEM.FieldName = "DIEM";
             this.colDIEM.Name = "colDIEM";
             this.colDIEM.Visible = true;
             this.colDIEM.VisibleIndex = 2;
-            // 
-            // btnHuy
-            // 
-            this.btnHuy.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.btnHuy.Location = new System.Drawing.Point(0, 0);
-            this.btnHuy.MainView = this.gridViewDiem;
-            this.btnHuy.Name = "btnHuy";
-            this.btnHuy.Size = new System.Drawing.Size(986, 273);
-            this.btnHuy.TabIndex = 0;
-            this.btnHuy.ViewCollection.AddRange(new DevExpress.XtraGrid.Views.Base.BaseView[] {
-            this.gridViewDiem,
-            this.gridView1});
             // 
             // groupControlNhapDiem
             // 
@@ -383,7 +386,7 @@
             // 
             // groupControl1
             // 
-            this.groupControl1.Controls.Add(this.simpleButton3);
+            this.groupControl1.Controls.Add(this.btnHuyy);
             this.groupControl1.Controls.Add(this.btnLuu);
             this.groupControl1.Controls.Add(this.btnNhap);
             this.groupControl1.Dock = System.Windows.Forms.DockStyle.Fill;
@@ -393,6 +396,24 @@
             this.groupControl1.TabIndex = 2;
             this.groupControl1.Text = "Điều khiển";
             // 
+            // btnHuyy
+            // 
+            this.btnHuyy.Location = new System.Drawing.Point(194, 37);
+            this.btnHuyy.Name = "btnHuyy";
+            this.btnHuyy.Size = new System.Drawing.Size(75, 23);
+            this.btnHuyy.TabIndex = 2;
+            this.btnHuyy.Text = "Cancel";
+            this.btnHuyy.Click += new System.EventHandler(this.btnHuyy_Click);
+            // 
+            // btnLuu
+            // 
+            this.btnLuu.Location = new System.Drawing.Point(95, 37);
+            this.btnLuu.Name = "btnLuu";
+            this.btnLuu.Size = new System.Drawing.Size(75, 23);
+            this.btnLuu.TabIndex = 1;
+            this.btnLuu.Text = "Cập nhật";
+            this.btnLuu.Click += new System.EventHandler(this.btnLuu_Click);
+            // 
             // btnNhap
             // 
             this.btnNhap.Location = new System.Drawing.Point(12, 37);
@@ -401,23 +422,6 @@
             this.btnNhap.TabIndex = 0;
             this.btnNhap.Text = "Bắt đầu";
             this.btnNhap.Click += new System.EventHandler(this.btnNhap_Click);
-            // 
-            // btnLuu
-            // 
-            this.btnLuu.Location = new System.Drawing.Point(110, 37);
-            this.btnLuu.Name = "btnLuu";
-            this.btnLuu.Size = new System.Drawing.Size(75, 23);
-            this.btnLuu.TabIndex = 1;
-            this.btnLuu.Text = "Cập nhật";
-            this.btnLuu.Click += new System.EventHandler(this.btnLuu_Click);
-            // 
-            // simpleButton3
-            // 
-            this.simpleButton3.Location = new System.Drawing.Point(213, 37);
-            this.simpleButton3.Name = "simpleButton3";
-            this.simpleButton3.Size = new System.Drawing.Size(75, 23);
-            this.simpleButton3.TabIndex = 2;
-            this.simpleButton3.Text = "Cancel";
             // 
             // panel1
             // 
@@ -429,14 +433,14 @@
             this.panel1.Size = new System.Drawing.Size(986, 230);
             this.panel1.TabIndex = 3;
             // 
-            // panel2
+            // panel4
             // 
-            this.panel2.Controls.Add(this.btnHuy);
-            this.panel2.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.panel2.Location = new System.Drawing.Point(0, 230);
-            this.panel2.Name = "panel2";
-            this.panel2.Size = new System.Drawing.Size(986, 273);
-            this.panel2.TabIndex = 4;
+            this.panel4.Controls.Add(this.groupControl1);
+            this.panel4.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.panel4.Location = new System.Drawing.Point(0, 161);
+            this.panel4.Name = "panel4";
+            this.panel4.Size = new System.Drawing.Size(986, 69);
+            this.panel4.TabIndex = 1;
             // 
             // panel3
             // 
@@ -447,14 +451,14 @@
             this.panel3.Size = new System.Drawing.Size(986, 161);
             this.panel3.TabIndex = 0;
             // 
-            // panel4
+            // panel2
             // 
-            this.panel4.Controls.Add(this.groupControl1);
-            this.panel4.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.panel4.Location = new System.Drawing.Point(0, 161);
-            this.panel4.Name = "panel4";
-            this.panel4.Size = new System.Drawing.Size(986, 69);
-            this.panel4.TabIndex = 1;
+            this.panel2.Controls.Add(this.btnHuy);
+            this.panel2.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.panel2.Location = new System.Drawing.Point(0, 230);
+            this.panel2.Name = "panel2";
+            this.panel2.Size = new System.Drawing.Size(986, 273);
+            this.panel2.TabIndex = 4;
             // 
             // frmDiem
             // 
@@ -466,6 +470,7 @@
             this.Name = "frmDiem";
             this.Text = "Quản lý điểm";
             this.Load += new System.EventHandler(this.frmDiem_Load);
+            ((System.ComponentModel.ISupportInitialize)(this.repositoryItemTextEditNhap)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.repositoryItemTextEdit1)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.numericLanThi)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.txtTenMon.Properties)).EndInit();
@@ -477,18 +482,17 @@
             ((System.ComponentModel.ISupportInitialize)(this.txtTenlop.Properties)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.errorProvider)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.gridView1)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.gridViewDiem)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(repositoryItemTextEdit3)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.btnHuy)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.gridViewDiem)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.groupControlNhapDiem)).EndInit();
             this.groupControlNhapDiem.ResumeLayout(false);
             this.groupControlNhapDiem.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.groupControl1)).EndInit();
             this.groupControl1.ResumeLayout(false);
             this.panel1.ResumeLayout(false);
-            this.panel2.ResumeLayout(false);
-            this.panel3.ResumeLayout(false);
             this.panel4.ResumeLayout(false);
+            this.panel3.ResumeLayout(false);
+            this.panel2.ResumeLayout(false);
             this.ResumeLayout(false);
 
         }
@@ -525,9 +529,10 @@
         private System.Windows.Forms.Panel panel1;
         private System.Windows.Forms.Panel panel4;
         private DevExpress.XtraEditors.GroupControl groupControl1;
-        private DevExpress.XtraEditors.SimpleButton simpleButton3;
+        private DevExpress.XtraEditors.SimpleButton btnHuyy;
         private DevExpress.XtraEditors.SimpleButton btnLuu;
         private DevExpress.XtraEditors.SimpleButton btnNhap;
         private System.Windows.Forms.Panel panel3;
+        private DevExpress.XtraEditors.Repository.RepositoryItemTextEdit repositoryItemTextEditNhap;
     }
 }
