@@ -34,7 +34,7 @@ namespace QLDSV.Forms
 
         private void DisableEditMode()
         {
-            btnThem.Enabled = btnLamMoi.Enabled = btnThoat.Enabled = true;
+             btnLamMoi.Enabled = btnThoat.Enabled = true;
             btnGhi.Enabled = gbTTHocPhi.Enabled = false;
             cmbSinhVien.ReadOnly = false;
         }
@@ -96,19 +96,18 @@ namespace QLDSV.Forms
               
                 // remove current
                 bdsSinhVien.RemoveCurrent();
-                bdsSinhVien.Position = bdsHocPhi.Find("MASV", cmbSinhVien.Text.Trim());
-
+               
                 if (dr == DialogResult.No)
                 {
                     return false;
                 }
                 else if (dr == DialogResult.Yes)
                 {
-                    this.colHOCPHI.OptionsColumn.ReadOnly = true;
-                    this.colSOTIENDADONG.OptionsColumn.ReadOnly = true;
+                    this.colHOCPHI.OptionsColumn.ReadOnly = false;
+                    this.colSOTIENDADONG.OptionsColumn.ReadOnly = false;
 
                   
-                    return true;
+                    return false;
 
                 }
                
@@ -157,13 +156,9 @@ namespace QLDSV.Forms
             txtMaLop.Text = selectedSV.Row["MALOP"].ToString();
 
             _position = this.bdsSinhVien.Find("MASV", selectedSV.Row["MASV"].ToString());
-    
-
+            this.btnThem.Enabled = true;
             loadInitializeData();
             this.bdsSinhVien.Position = _position;
-
-
-           
         }
 
 
@@ -219,8 +214,11 @@ namespace QLDSV.Forms
                     XtraMessageBox.Show("Lỗi  !", "", MessageBoxButtons.OK);
                 }
             }
-           
 
+            XtraMessageBox.Show("Ghi thông tin đóng học phí thành công !"  + bdsSinhVien.Position, "", MessageBoxButtons.OK);
+
+            this.HOCPHITableAdapter.Connection.ConnectionString = Program.URL_Connect;
+            this.HOCPHITableAdapter.Fill(DS.HOCPHI);
         }
 
         private void btnLamMoi_ItemClick(object sender, DevExpress.XtraBars.ItemClickEventArgs e)
@@ -254,6 +252,7 @@ namespace QLDSV.Forms
 
         private void frmHocPhi_Load(object sender, EventArgs e)
         {
+            btnThem.Enabled = false;
             this.SINHVIENTableAdapter.Connection.ConnectionString = Program.URL_Connect;
             this.SINHVIENTableAdapter.Fill(this.DS.SINHVIEN);
             DisableEditMode();
