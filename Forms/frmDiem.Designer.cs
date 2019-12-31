@@ -29,12 +29,8 @@
         private void InitializeComponent()
         {
             this.components = new System.ComponentModel.Container();
+            DevExpress.XtraEditors.Repository.RepositoryItemTextEdit repositoryItemTextEdit3 = new DevExpress.XtraEditors.Repository.RepositoryItemTextEdit();
             this.repositoryItemTextEdit1 = new DevExpress.XtraEditors.Repository.RepositoryItemTextEdit();
-            this.pnLeftControl = new System.Windows.Forms.Panel();
-            this.grbControl = new System.Windows.Forms.GroupBox();
-            this.btnLuu = new System.Windows.Forms.Button();
-            this.btnNhap = new System.Windows.Forms.Button();
-            this.grbDiem = new System.Windows.Forms.GroupBox();
             this.numericLanThi = new System.Windows.Forms.NumericUpDown();
             this.txtTenMon = new DevExpress.XtraEditors.TextEdit();
             this.label5 = new System.Windows.Forms.Label();
@@ -50,21 +46,26 @@
             this.label1 = new System.Windows.Forms.Label();
             this.lblTenKhoa = new System.Windows.Forms.Label();
             this.cmbKhoa = new System.Windows.Forms.ComboBox();
-            this.pnRight = new System.Windows.Forms.Panel();
-            this.gridControlDiem = new DevExpress.XtraGrid.GridControl();
-            this.gridViewDiem = new DevExpress.XtraGrid.Views.Grid.GridView();
-            this.colHoTen = new DevExpress.XtraGrid.Columns.GridColumn();
-            this.colMASV = new DevExpress.XtraGrid.Columns.GridColumn();
-            this.colDIEM = new DevExpress.XtraGrid.Columns.GridColumn();
-            this.repositoryItemTextEditNhap = new DevExpress.XtraEditors.Repository.RepositoryItemTextEdit();
             this.LOPTableAdapter = new QLDSV.DSTableAdapters.LOPTableAdapter();
             this.tableAdapterManager = new QLDSV.DSTableAdapters.TableAdapterManager();
             this.MONHOCTableAdapter = new QLDSV.DSTableAdapters.MONHOCTableAdapter();
             this.errorProvider = new System.Windows.Forms.ErrorProvider(this.components);
+            this.gridView1 = new DevExpress.XtraGrid.Views.Grid.GridView();
+            this.gridViewDiem = new DevExpress.XtraGrid.Views.Grid.GridView();
+            this.colHoTen = new DevExpress.XtraGrid.Columns.GridColumn();
+            this.colMASV = new DevExpress.XtraGrid.Columns.GridColumn();
+            this.colDIEM = new DevExpress.XtraGrid.Columns.GridColumn();
+            this.btnHuy = new DevExpress.XtraGrid.GridControl();
+            this.groupControlNhapDiem = new DevExpress.XtraEditors.GroupControl();
+            this.groupControl1 = new DevExpress.XtraEditors.GroupControl();
+            this.btnNhap = new DevExpress.XtraEditors.SimpleButton();
+            this.btnLuu = new DevExpress.XtraEditors.SimpleButton();
+            this.simpleButton3 = new DevExpress.XtraEditors.SimpleButton();
+            this.panel1 = new System.Windows.Forms.Panel();
+            this.panel2 = new System.Windows.Forms.Panel();
+            this.panel3 = new System.Windows.Forms.Panel();
+            this.panel4 = new System.Windows.Forms.Panel();
             ((System.ComponentModel.ISupportInitialize)(this.repositoryItemTextEdit1)).BeginInit();
-            this.pnLeftControl.SuspendLayout();
-            this.grbControl.SuspendLayout();
-            this.grbDiem.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.numericLanThi)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.txtTenMon.Properties)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.lookUpEditMaMon.Properties)).BeginInit();
@@ -73,11 +74,19 @@
             ((System.ComponentModel.ISupportInitialize)(this.lookUpEditMalop.Properties)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.bdsLOP)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.txtTenlop.Properties)).BeginInit();
-            this.pnRight.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.gridControlDiem)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.gridViewDiem)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.repositoryItemTextEditNhap)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.errorProvider)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.gridView1)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.gridViewDiem)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(repositoryItemTextEdit3)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.btnHuy)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.groupControlNhapDiem)).BeginInit();
+            this.groupControlNhapDiem.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.groupControl1)).BeginInit();
+            this.groupControl1.SuspendLayout();
+            this.panel1.SuspendLayout();
+            this.panel2.SuspendLayout();
+            this.panel3.SuspendLayout();
+            this.panel4.SuspendLayout();
             this.SuspendLayout();
             // 
             // repositoryItemTextEdit1
@@ -85,76 +94,11 @@
             this.repositoryItemTextEdit1.AutoHeight = false;
             this.repositoryItemTextEdit1.Name = "repositoryItemTextEdit1";
             // 
-            // pnLeftControl
-            // 
-            this.pnLeftControl.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(192)))), ((int)(((byte)(192)))), ((int)(((byte)(255)))));
-            this.pnLeftControl.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D;
-            this.pnLeftControl.Controls.Add(this.grbControl);
-            this.pnLeftControl.Controls.Add(this.grbDiem);
-            this.pnLeftControl.Dock = System.Windows.Forms.DockStyle.Left;
-            this.pnLeftControl.Location = new System.Drawing.Point(0, 0);
-            this.pnLeftControl.Name = "pnLeftControl";
-            this.pnLeftControl.Size = new System.Drawing.Size(521, 503);
-            this.pnLeftControl.TabIndex = 0;
-            // 
-            // grbControl
-            // 
-            this.grbControl.Controls.Add(this.btnLuu);
-            this.grbControl.Controls.Add(this.btnNhap);
-            this.grbControl.Location = new System.Drawing.Point(65, 338);
-            this.grbControl.Name = "grbControl";
-            this.grbControl.Size = new System.Drawing.Size(261, 100);
-            this.grbControl.TabIndex = 1;
-            this.grbControl.TabStop = false;
-            // 
-            // btnLuu
-            // 
-            this.btnLuu.Location = new System.Drawing.Point(102, 60);
-            this.btnLuu.Name = "btnLuu";
-            this.btnLuu.Size = new System.Drawing.Size(75, 23);
-            this.btnLuu.TabIndex = 1;
-            this.btnLuu.Text = "Lưu";
-            this.btnLuu.UseVisualStyleBackColor = true;
-            this.btnLuu.Click += new System.EventHandler(this.btnLuu_Click);
-            // 
-            // btnNhap
-            // 
-            this.btnNhap.Location = new System.Drawing.Point(102, 19);
-            this.btnNhap.Name = "btnNhap";
-            this.btnNhap.Size = new System.Drawing.Size(75, 23);
-            this.btnNhap.TabIndex = 0;
-            this.btnNhap.Text = "Start";
-            this.btnNhap.UseVisualStyleBackColor = true;
-            this.btnNhap.Click += new System.EventHandler(this.btnNhap_Click);
-            // 
-            // grbDiem
-            // 
-            this.grbDiem.Controls.Add(this.numericLanThi);
-            this.grbDiem.Controls.Add(this.txtTenMon);
-            this.grbDiem.Controls.Add(this.label5);
-            this.grbDiem.Controls.Add(this.lblLanthi);
-            this.grbDiem.Controls.Add(this.lookUpEditMaMon);
-            this.grbDiem.Controls.Add(this.label3);
-            this.grbDiem.Controls.Add(this.lookUpEditMalop);
-            this.grbDiem.Controls.Add(this.txtTenlop);
-            this.grbDiem.Controls.Add(this.label2);
-            this.grbDiem.Controls.Add(this.label1);
-            this.grbDiem.Controls.Add(this.lblTenKhoa);
-            this.grbDiem.Controls.Add(this.cmbKhoa);
-            this.grbDiem.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
-            this.grbDiem.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.grbDiem.Location = new System.Drawing.Point(10, 10);
-            this.grbDiem.Name = "grbDiem";
-            this.grbDiem.Size = new System.Drawing.Size(491, 309);
-            this.grbDiem.TabIndex = 0;
-            this.grbDiem.TabStop = false;
-            this.grbDiem.Text = "Nhập điểm";
-            // 
             // numericLanThi
             // 
             this.numericLanThi.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.numericLanThi.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.numericLanThi.Location = new System.Drawing.Point(166, 269);
+            this.numericLanThi.Location = new System.Drawing.Point(91, 126);
             this.numericLanThi.Maximum = new decimal(new int[] {
             2,
             0,
@@ -176,7 +120,7 @@
             // 
             // txtTenMon
             // 
-            this.txtTenMon.Location = new System.Drawing.Point(76, 226);
+            this.txtTenMon.Location = new System.Drawing.Point(571, 99);
             this.txtTenMon.Name = "txtTenMon";
             this.txtTenMon.Properties.ReadOnly = true;
             this.txtTenMon.Size = new System.Drawing.Size(398, 20);
@@ -186,7 +130,7 @@
             // 
             this.label5.AutoSize = true;
             this.label5.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label5.Location = new System.Drawing.Point(9, 188);
+            this.label5.Location = new System.Drawing.Point(21, 106);
             this.label5.Name = "label5";
             this.label5.Size = new System.Drawing.Size(57, 13);
             this.label5.TabIndex = 13;
@@ -196,7 +140,7 @@
             // 
             this.lblLanthi.AutoSize = true;
             this.lblLanthi.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblLanthi.Location = new System.Drawing.Point(31, 276);
+            this.lblLanthi.Location = new System.Drawing.Point(24, 131);
             this.lblLanthi.Name = "lblLanthi";
             this.lblLanthi.Size = new System.Drawing.Size(49, 13);
             this.lblLanthi.TabIndex = 11;
@@ -204,7 +148,7 @@
             // 
             // lookUpEditMaMon
             // 
-            this.lookUpEditMaMon.Location = new System.Drawing.Point(76, 185);
+            this.lookUpEditMaMon.Location = new System.Drawing.Point(91, 100);
             this.lookUpEditMaMon.Name = "lookUpEditMaMon";
             this.lookUpEditMaMon.Properties.Buttons.AddRange(new DevExpress.XtraEditors.Controls.EditorButton[] {
             new DevExpress.XtraEditors.Controls.EditorButton(DevExpress.XtraEditors.Controls.ButtonPredefines.Combo)});
@@ -231,7 +175,7 @@
             // 
             this.label3.AutoSize = true;
             this.label3.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label3.Location = new System.Drawing.Point(9, 229);
+            this.label3.Location = new System.Drawing.Point(504, 102);
             this.label3.Name = "label3";
             this.label3.Size = new System.Drawing.Size(51, 13);
             this.label3.TabIndex = 9;
@@ -239,7 +183,7 @@
             // 
             // lookUpEditMalop
             // 
-            this.lookUpEditMalop.Location = new System.Drawing.Point(76, 80);
+            this.lookUpEditMalop.Location = new System.Drawing.Point(91, 67);
             this.lookUpEditMalop.Name = "lookUpEditMalop";
             this.lookUpEditMalop.Properties.Buttons.AddRange(new DevExpress.XtraEditors.Controls.EditorButton[] {
             new DevExpress.XtraEditors.Controls.EditorButton(DevExpress.XtraEditors.Controls.ButtonPredefines.Combo)});
@@ -258,7 +202,7 @@
             // 
             // txtTenlop
             // 
-            this.txtTenlop.Location = new System.Drawing.Point(76, 133);
+            this.txtTenlop.Location = new System.Drawing.Point(570, 66);
             this.txtTenlop.Name = "txtTenlop";
             this.txtTenlop.Properties.ReadOnly = true;
             this.txtTenlop.Size = new System.Drawing.Size(398, 20);
@@ -268,7 +212,7 @@
             // 
             this.label2.AutoSize = true;
             this.label2.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label2.Location = new System.Drawing.Point(6, 87);
+            this.label2.Location = new System.Drawing.Point(21, 70);
             this.label2.Name = "label2";
             this.label2.Size = new System.Drawing.Size(53, 13);
             this.label2.TabIndex = 6;
@@ -278,7 +222,7 @@
             // 
             this.label1.AutoSize = true;
             this.label1.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label1.Location = new System.Drawing.Point(9, 136);
+            this.label1.Location = new System.Drawing.Point(503, 69);
             this.label1.Name = "label1";
             this.label1.Size = new System.Drawing.Size(47, 13);
             this.label1.TabIndex = 4;
@@ -288,7 +232,7 @@
             // 
             this.lblTenKhoa.AutoSize = true;
             this.lblTenKhoa.Font = new System.Drawing.Font("Times New Roman", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblTenKhoa.Location = new System.Drawing.Point(9, 44);
+            this.lblTenKhoa.Location = new System.Drawing.Point(24, 39);
             this.lblTenKhoa.Name = "lblTenKhoa";
             this.lblTenKhoa.Size = new System.Drawing.Size(39, 14);
             this.lblTenKhoa.TabIndex = 3;
@@ -299,33 +243,41 @@
             this.cmbKhoa.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.cmbKhoa.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.cmbKhoa.FormattingEnabled = true;
-            this.cmbKhoa.Location = new System.Drawing.Point(76, 41);
+            this.cmbKhoa.Location = new System.Drawing.Point(91, 32);
             this.cmbKhoa.Name = "cmbKhoa";
             this.cmbKhoa.Size = new System.Drawing.Size(398, 21);
             this.cmbKhoa.TabIndex = 2;
             this.cmbKhoa.SelectedIndexChanged += new System.EventHandler(this.cmbKhoa_SelectedIndexChanged);
             // 
-            // pnRight
+            // LOPTableAdapter
             // 
-            this.pnRight.Controls.Add(this.gridControlDiem);
-            this.pnRight.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.pnRight.Location = new System.Drawing.Point(521, 0);
-            this.pnRight.Name = "pnRight";
-            this.pnRight.Size = new System.Drawing.Size(465, 503);
-            this.pnRight.TabIndex = 1;
+            this.LOPTableAdapter.ClearBeforeFill = true;
             // 
-            // gridControlDiem
+            // tableAdapterManager
             // 
-            this.gridControlDiem.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.gridControlDiem.Location = new System.Drawing.Point(0, 0);
-            this.gridControlDiem.MainView = this.gridViewDiem;
-            this.gridControlDiem.Name = "gridControlDiem";
-            this.gridControlDiem.RepositoryItems.AddRange(new DevExpress.XtraEditors.Repository.RepositoryItem[] {
-            this.repositoryItemTextEditNhap});
-            this.gridControlDiem.Size = new System.Drawing.Size(465, 503);
-            this.gridControlDiem.TabIndex = 0;
-            this.gridControlDiem.ViewCollection.AddRange(new DevExpress.XtraGrid.Views.Base.BaseView[] {
-            this.gridViewDiem});
+            this.tableAdapterManager.BackupDataSetBeforeUpdate = false;
+            this.tableAdapterManager.DIEMTableAdapter = null;
+            this.tableAdapterManager.GIANGVIENTableAdapter = null;
+            this.tableAdapterManager.HOCPHITableAdapter = null;
+            this.tableAdapterManager.KHOATableAdapter = null;
+            this.tableAdapterManager.LOPTableAdapter = this.LOPTableAdapter;
+            this.tableAdapterManager.MONHOCTableAdapter = this.MONHOCTableAdapter;
+            this.tableAdapterManager.SINHVIENTableAdapter = null;
+            this.tableAdapterManager.THONGTINHOCPHICUASINHVIENTableAdapter = null;
+            this.tableAdapterManager.UpdateOrder = QLDSV.DSTableAdapters.TableAdapterManager.UpdateOrderOption.InsertUpdateDelete;
+            // 
+            // MONHOCTableAdapter
+            // 
+            this.MONHOCTableAdapter.ClearBeforeFill = true;
+            // 
+            // errorProvider
+            // 
+            this.errorProvider.ContainerControl = this;
+            // 
+            // gridView1
+            // 
+            this.gridView1.GridControl = this.btnHuy;
+            this.gridView1.Name = "gridView1";
             // 
             // gridViewDiem
             // 
@@ -337,7 +289,7 @@
             this.colHoTen,
             this.colMASV,
             this.colDIEM});
-            this.gridViewDiem.GridControl = this.gridControlDiem;
+            this.gridViewDiem.GridControl = this.btnHuy;
             this.gridViewDiem.Name = "gridViewDiem";
             this.gridViewDiem.OptionsView.ShowGroupPanel = false;
             this.gridViewDiem.OptionsView.ShowViewCaption = true;
@@ -380,65 +332,141 @@
             this.colDIEM.AppearanceHeader.Options.UseTextOptions = true;
             this.colDIEM.AppearanceHeader.TextOptions.HAlignment = DevExpress.Utils.HorzAlignment.Center;
             this.colDIEM.Caption = "Điểm";
-            this.colDIEM.ColumnEdit = this.repositoryItemTextEditNhap;
+            repositoryItemTextEdit3.AutoHeight = false;
+            repositoryItemTextEdit3.DisplayFormat.FormatType = DevExpress.Utils.FormatType.Numeric;
+            repositoryItemTextEdit3.EditFormat.FormatType = DevExpress.Utils.FormatType.Numeric;
+            repositoryItemTextEdit3.Mask.BeepOnError = true;
+            repositoryItemTextEdit3.Mask.EditMask = "f";
+            repositoryItemTextEdit3.Mask.MaskType = DevExpress.XtraEditors.Mask.MaskType.Numeric;
+            repositoryItemTextEdit3.Mask.UseMaskAsDisplayFormat = true;
+            repositoryItemTextEdit3.MaxLength = 5;
+            repositoryItemTextEdit3.Name = "repositoryItemTextEditNhap";
+            this.colDIEM.ColumnEdit = repositoryItemTextEdit3;
             this.colDIEM.DisplayFormat.FormatType = DevExpress.Utils.FormatType.Numeric;
             this.colDIEM.FieldName = "DIEM";
             this.colDIEM.Name = "colDIEM";
             this.colDIEM.Visible = true;
             this.colDIEM.VisibleIndex = 2;
             // 
-            // repositoryItemTextEditNhap
+            // btnHuy
             // 
-            this.repositoryItemTextEditNhap.AutoHeight = false;
-            this.repositoryItemTextEditNhap.DisplayFormat.FormatType = DevExpress.Utils.FormatType.Numeric;
-            this.repositoryItemTextEditNhap.EditFormat.FormatType = DevExpress.Utils.FormatType.Numeric;
-            this.repositoryItemTextEditNhap.Mask.BeepOnError = true;
-            this.repositoryItemTextEditNhap.Mask.EditMask = "f";
-            this.repositoryItemTextEditNhap.Mask.MaskType = DevExpress.XtraEditors.Mask.MaskType.Numeric;
-            this.repositoryItemTextEditNhap.Mask.UseMaskAsDisplayFormat = true;
-            this.repositoryItemTextEditNhap.MaxLength = 5;
-            this.repositoryItemTextEditNhap.Name = "repositoryItemTextEditNhap";
+            this.btnHuy.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.btnHuy.Location = new System.Drawing.Point(0, 0);
+            this.btnHuy.MainView = this.gridViewDiem;
+            this.btnHuy.Name = "btnHuy";
+            this.btnHuy.Size = new System.Drawing.Size(986, 273);
+            this.btnHuy.TabIndex = 0;
+            this.btnHuy.ViewCollection.AddRange(new DevExpress.XtraGrid.Views.Base.BaseView[] {
+            this.gridViewDiem,
+            this.gridView1});
             // 
-            // LOPTableAdapter
+            // groupControlNhapDiem
             // 
-            this.LOPTableAdapter.ClearBeforeFill = true;
+            this.groupControlNhapDiem.Controls.Add(this.numericLanThi);
+            this.groupControlNhapDiem.Controls.Add(this.lblLanthi);
+            this.groupControlNhapDiem.Controls.Add(this.cmbKhoa);
+            this.groupControlNhapDiem.Controls.Add(this.txtTenMon);
+            this.groupControlNhapDiem.Controls.Add(this.lblTenKhoa);
+            this.groupControlNhapDiem.Controls.Add(this.label3);
+            this.groupControlNhapDiem.Controls.Add(this.label5);
+            this.groupControlNhapDiem.Controls.Add(this.lookUpEditMalop);
+            this.groupControlNhapDiem.Controls.Add(this.label2);
+            this.groupControlNhapDiem.Controls.Add(this.lookUpEditMaMon);
+            this.groupControlNhapDiem.Controls.Add(this.txtTenlop);
+            this.groupControlNhapDiem.Controls.Add(this.label1);
+            this.groupControlNhapDiem.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.groupControlNhapDiem.Location = new System.Drawing.Point(0, 0);
+            this.groupControlNhapDiem.Name = "groupControlNhapDiem";
+            this.groupControlNhapDiem.Size = new System.Drawing.Size(986, 161);
+            this.groupControlNhapDiem.TabIndex = 1;
+            this.groupControlNhapDiem.Text = "Thông tin";
             // 
-            // tableAdapterManager
+            // groupControl1
             // 
-            this.tableAdapterManager.BackupDataSetBeforeUpdate = false;
-            this.tableAdapterManager.DIEMTableAdapter = null;
-            this.tableAdapterManager.GIANGVIENTableAdapter = null;
-            this.tableAdapterManager.HOCPHITableAdapter = null;
-            this.tableAdapterManager.KHOATableAdapter = null;
-            this.tableAdapterManager.LOPTableAdapter = this.LOPTableAdapter;
-            this.tableAdapterManager.MONHOCTableAdapter = this.MONHOCTableAdapter;
-            this.tableAdapterManager.SINHVIENTableAdapter = null;
-            this.tableAdapterManager.THONGTINHOCPHICUASINHVIENTableAdapter = null;
-            this.tableAdapterManager.UpdateOrder = QLDSV.DSTableAdapters.TableAdapterManager.UpdateOrderOption.InsertUpdateDelete;
+            this.groupControl1.Controls.Add(this.simpleButton3);
+            this.groupControl1.Controls.Add(this.btnLuu);
+            this.groupControl1.Controls.Add(this.btnNhap);
+            this.groupControl1.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.groupControl1.Location = new System.Drawing.Point(0, 0);
+            this.groupControl1.Name = "groupControl1";
+            this.groupControl1.Size = new System.Drawing.Size(986, 69);
+            this.groupControl1.TabIndex = 2;
+            this.groupControl1.Text = "Điều khiển";
             // 
-            // MONHOCTableAdapter
+            // btnNhap
             // 
-            this.MONHOCTableAdapter.ClearBeforeFill = true;
+            this.btnNhap.Location = new System.Drawing.Point(12, 37);
+            this.btnNhap.Name = "btnNhap";
+            this.btnNhap.Size = new System.Drawing.Size(66, 23);
+            this.btnNhap.TabIndex = 0;
+            this.btnNhap.Text = "Bắt đầu";
+            this.btnNhap.Click += new System.EventHandler(this.btnNhap_Click);
             // 
-            // errorProvider
+            // btnLuu
             // 
-            this.errorProvider.ContainerControl = this;
+            this.btnLuu.Location = new System.Drawing.Point(110, 37);
+            this.btnLuu.Name = "btnLuu";
+            this.btnLuu.Size = new System.Drawing.Size(75, 23);
+            this.btnLuu.TabIndex = 1;
+            this.btnLuu.Text = "Cập nhật";
+            this.btnLuu.Click += new System.EventHandler(this.btnLuu_Click);
+            // 
+            // simpleButton3
+            // 
+            this.simpleButton3.Location = new System.Drawing.Point(213, 37);
+            this.simpleButton3.Name = "simpleButton3";
+            this.simpleButton3.Size = new System.Drawing.Size(75, 23);
+            this.simpleButton3.TabIndex = 2;
+            this.simpleButton3.Text = "Cancel";
+            // 
+            // panel1
+            // 
+            this.panel1.Controls.Add(this.panel4);
+            this.panel1.Controls.Add(this.panel3);
+            this.panel1.Dock = System.Windows.Forms.DockStyle.Top;
+            this.panel1.Location = new System.Drawing.Point(0, 0);
+            this.panel1.Name = "panel1";
+            this.panel1.Size = new System.Drawing.Size(986, 230);
+            this.panel1.TabIndex = 3;
+            // 
+            // panel2
+            // 
+            this.panel2.Controls.Add(this.btnHuy);
+            this.panel2.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.panel2.Location = new System.Drawing.Point(0, 230);
+            this.panel2.Name = "panel2";
+            this.panel2.Size = new System.Drawing.Size(986, 273);
+            this.panel2.TabIndex = 4;
+            // 
+            // panel3
+            // 
+            this.panel3.Controls.Add(this.groupControlNhapDiem);
+            this.panel3.Dock = System.Windows.Forms.DockStyle.Top;
+            this.panel3.Location = new System.Drawing.Point(0, 0);
+            this.panel3.Name = "panel3";
+            this.panel3.Size = new System.Drawing.Size(986, 161);
+            this.panel3.TabIndex = 0;
+            // 
+            // panel4
+            // 
+            this.panel4.Controls.Add(this.groupControl1);
+            this.panel4.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.panel4.Location = new System.Drawing.Point(0, 161);
+            this.panel4.Name = "panel4";
+            this.panel4.Size = new System.Drawing.Size(986, 69);
+            this.panel4.TabIndex = 1;
             // 
             // frmDiem
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(986, 503);
-            this.Controls.Add(this.pnRight);
-            this.Controls.Add(this.pnLeftControl);
+            this.Controls.Add(this.panel2);
+            this.Controls.Add(this.panel1);
             this.Name = "frmDiem";
             this.Text = "Quản lý điểm";
             this.Load += new System.EventHandler(this.frmDiem_Load);
             ((System.ComponentModel.ISupportInitialize)(this.repositoryItemTextEdit1)).EndInit();
-            this.pnLeftControl.ResumeLayout(false);
-            this.grbControl.ResumeLayout(false);
-            this.grbDiem.ResumeLayout(false);
-            this.grbDiem.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.numericLanThi)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.txtTenMon.Properties)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.lookUpEditMaMon.Properties)).EndInit();
@@ -447,20 +475,25 @@
             ((System.ComponentModel.ISupportInitialize)(this.lookUpEditMalop.Properties)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.bdsLOP)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.txtTenlop.Properties)).EndInit();
-            this.pnRight.ResumeLayout(false);
-            ((System.ComponentModel.ISupportInitialize)(this.gridControlDiem)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.gridViewDiem)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.repositoryItemTextEditNhap)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.errorProvider)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.gridView1)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.gridViewDiem)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(repositoryItemTextEdit3)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.btnHuy)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.groupControlNhapDiem)).EndInit();
+            this.groupControlNhapDiem.ResumeLayout(false);
+            this.groupControlNhapDiem.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.groupControl1)).EndInit();
+            this.groupControl1.ResumeLayout(false);
+            this.panel1.ResumeLayout(false);
+            this.panel2.ResumeLayout(false);
+            this.panel3.ResumeLayout(false);
+            this.panel4.ResumeLayout(false);
             this.ResumeLayout(false);
 
         }
 
         #endregion
-
-        private System.Windows.Forms.Panel pnLeftControl;
-        private System.Windows.Forms.Panel pnRight;
-        private System.Windows.Forms.GroupBox grbDiem;
         private System.Windows.Forms.Label lblTenKhoa;
         private System.Windows.Forms.ComboBox cmbKhoa;
         private System.Windows.Forms.Label lblLanthi;
@@ -472,9 +505,6 @@
         private System.Windows.Forms.Label label1;
         private DevExpress.XtraEditors.TextEdit txtTenMon;
         private System.Windows.Forms.Label label5;
-        private System.Windows.Forms.GroupBox grbControl;
-        private System.Windows.Forms.Button btnLuu;
-        private System.Windows.Forms.Button btnNhap;
         private DS DS;
         private System.Windows.Forms.BindingSource bdsLOP;
         private DSTableAdapters.LOPTableAdapter LOPTableAdapter;
@@ -482,13 +512,22 @@
         private DSTableAdapters.MONHOCTableAdapter MONHOCTableAdapter;
         private System.Windows.Forms.BindingSource bdsMonhoc;
         private System.Windows.Forms.NumericUpDown numericLanThi;
-        private DevExpress.XtraGrid.GridControl gridControlDiem;
-        private DevExpress.XtraGrid.Views.Grid.GridView gridViewDiem;
         private DevExpress.XtraEditors.Repository.RepositoryItemTextEdit repositoryItemTextEdit1;
+        private System.Windows.Forms.ErrorProvider errorProvider;
+        private DevExpress.XtraGrid.GridControl btnHuy;
+        private DevExpress.XtraGrid.Views.Grid.GridView gridViewDiem;
         private DevExpress.XtraGrid.Columns.GridColumn colHoTen;
         private DevExpress.XtraGrid.Columns.GridColumn colMASV;
         private DevExpress.XtraGrid.Columns.GridColumn colDIEM;
-        private DevExpress.XtraEditors.Repository.RepositoryItemTextEdit repositoryItemTextEditNhap;
-        private System.Windows.Forms.ErrorProvider errorProvider;
+        private DevExpress.XtraGrid.Views.Grid.GridView gridView1;
+        private DevExpress.XtraEditors.GroupControl groupControlNhapDiem;
+        private System.Windows.Forms.Panel panel2;
+        private System.Windows.Forms.Panel panel1;
+        private System.Windows.Forms.Panel panel4;
+        private DevExpress.XtraEditors.GroupControl groupControl1;
+        private DevExpress.XtraEditors.SimpleButton simpleButton3;
+        private DevExpress.XtraEditors.SimpleButton btnLuu;
+        private DevExpress.XtraEditors.SimpleButton btnNhap;
+        private System.Windows.Forms.Panel panel3;
     }
 }
