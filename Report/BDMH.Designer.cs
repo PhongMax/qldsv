@@ -73,14 +73,14 @@
             this.panelBDMH.Dock = System.Windows.Forms.DockStyle.Top;
             this.panelBDMH.Location = new System.Drawing.Point(0, 0);
             this.panelBDMH.Name = "panelBDMH";
-            this.panelBDMH.Size = new System.Drawing.Size(838, 187);
+            this.panelBDMH.Size = new System.Drawing.Size(1049, 187);
             this.panelBDMH.TabIndex = 0;
             // 
             // label_LanThi
             // 
             this.label_LanThi.AutoSize = true;
             this.label_LanThi.Font = new System.Drawing.Font("Consolas", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label_LanThi.Location = new System.Drawing.Point(653, 97);
+            this.label_LanThi.Location = new System.Drawing.Point(823, 97);
             this.label_LanThi.Name = "label_LanThi";
             this.label_LanThi.Size = new System.Drawing.Size(36, 19);
             this.label_LanThi.TabIndex = 15;
@@ -91,7 +91,7 @@
             this.cmbLan.BackColor = System.Drawing.Color.Gold;
             this.cmbLan.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.cmbLan.FormattingEnabled = true;
-            this.cmbLan.Location = new System.Drawing.Point(695, 96);
+            this.cmbLan.Location = new System.Drawing.Point(865, 96);
             this.cmbLan.Name = "cmbLan";
             this.cmbLan.Size = new System.Drawing.Size(38, 21);
             this.cmbLan.TabIndex = 14;
@@ -100,7 +100,7 @@
             // 
             this.txtMaMonHoc.BackColor = System.Drawing.SystemColors.InactiveCaption;
             this.txtMaMonHoc.Font = new System.Drawing.Font("Consolas", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.txtMaMonHoc.Location = new System.Drawing.Point(547, 94);
+            this.txtMaMonHoc.Location = new System.Drawing.Point(717, 94);
             this.txtMaMonHoc.Name = "txtMaMonHoc";
             this.txtMaMonHoc.Size = new System.Drawing.Size(100, 26);
             this.txtMaMonHoc.TabIndex = 13;
@@ -109,7 +109,7 @@
             // 
             this.labelKhoa.AutoSize = true;
             this.labelKhoa.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.labelKhoa.Location = new System.Drawing.Point(196, 26);
+            this.labelKhoa.Location = new System.Drawing.Point(366, 26);
             this.labelKhoa.Name = "labelKhoa";
             this.labelKhoa.Size = new System.Drawing.Size(41, 13);
             this.labelKhoa.TabIndex = 12;
@@ -119,7 +119,7 @@
             // 
             this.button_Thoat.BackColor = System.Drawing.Color.LightCoral;
             this.button_Thoat.Font = new System.Drawing.Font("Consolas", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.button_Thoat.Location = new System.Drawing.Point(462, 126);
+            this.button_Thoat.Location = new System.Drawing.Point(632, 126);
             this.button_Thoat.Name = "button_Thoat";
             this.button_Thoat.Size = new System.Drawing.Size(73, 37);
             this.button_Thoat.TabIndex = 11;
@@ -131,7 +131,7 @@
             // 
             this.button_IN.BackColor = System.Drawing.Color.DodgerBlue;
             this.button_IN.Font = new System.Drawing.Font("Consolas", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.button_IN.Location = new System.Drawing.Point(383, 126);
+            this.button_IN.Location = new System.Drawing.Point(553, 126);
             this.button_IN.Name = "button_IN";
             this.button_IN.Size = new System.Drawing.Size(73, 37);
             this.button_IN.TabIndex = 10;
@@ -143,7 +143,7 @@
             // 
             this.txtMaLop.BackColor = System.Drawing.SystemColors.InactiveCaption;
             this.txtMaLop.Font = new System.Drawing.Font("Consolas", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.txtMaLop.Location = new System.Drawing.Point(547, 58);
+            this.txtMaLop.Location = new System.Drawing.Point(717, 58);
             this.txtMaLop.Name = "txtMaLop";
             this.txtMaLop.Size = new System.Drawing.Size(100, 26);
             this.txtMaLop.TabIndex = 8;
@@ -155,7 +155,7 @@
             this.cmbTenMonHoc.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.cmbTenMonHoc.Font = new System.Drawing.Font("Consolas", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.cmbTenMonHoc.FormattingEnabled = true;
-            this.cmbTenMonHoc.Location = new System.Drawing.Point(190, 93);
+            this.cmbTenMonHoc.Location = new System.Drawing.Point(360, 93);
             this.cmbTenMonHoc.Name = "cmbTenMonHoc";
             this.cmbTenMonHoc.Size = new System.Drawing.Size(345, 23);
             this.cmbTenMonHoc.TabIndex = 6;
@@ -179,7 +179,7 @@
             this.cmbTenLop.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.cmbTenLop.Font = new System.Drawing.Font("Consolas", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.cmbTenLop.FormattingEnabled = true;
-            this.cmbTenLop.Location = new System.Drawing.Point(190, 58);
+            this.cmbTenLop.Location = new System.Drawing.Point(360, 58);
             this.cmbTenLop.Name = "cmbTenLop";
             this.cmbTenLop.Size = new System.Drawing.Size(345, 23);
             this.cmbTenLop.TabIndex = 5;
@@ -196,7 +196,7 @@
             this.cmbKhoa.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.cmbKhoa.Font = new System.Drawing.Font("Consolas", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.cmbKhoa.FormattingEnabled = true;
-            this.cmbKhoa.Location = new System.Drawing.Point(190, 23);
+            this.cmbKhoa.Location = new System.Drawing.Point(360, 23);
             this.cmbKhoa.Name = "cmbKhoa";
             this.cmbKhoa.Size = new System.Drawing.Size(457, 23);
             this.cmbKhoa.TabIndex = 4;
@@ -206,7 +206,7 @@
             // 
             this.label_TenMonHoc.AutoSize = true;
             this.label_TenMonHoc.Font = new System.Drawing.Font("Consolas", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label_TenMonHoc.Location = new System.Drawing.Point(57, 93);
+            this.label_TenMonHoc.Location = new System.Drawing.Point(227, 93);
             this.label_TenMonHoc.Name = "label_TenMonHoc";
             this.label_TenMonHoc.Size = new System.Drawing.Size(108, 19);
             this.label_TenMonHoc.TabIndex = 2;
@@ -216,7 +216,7 @@
             // 
             this.label_TenLop.AutoSize = true;
             this.label_TenLop.Font = new System.Drawing.Font("Consolas", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label_TenLop.Location = new System.Drawing.Point(93, 62);
+            this.label_TenLop.Location = new System.Drawing.Point(227, 61);
             this.label_TenLop.Name = "label_TenLop";
             this.label_TenLop.Size = new System.Drawing.Size(72, 19);
             this.label_TenLop.TabIndex = 1;
@@ -226,7 +226,7 @@
             // 
             this.label_Khoa.AutoSize = true;
             this.label_Khoa.Font = new System.Drawing.Font("Consolas", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label_Khoa.Location = new System.Drawing.Point(120, 26);
+            this.label_Khoa.Location = new System.Drawing.Point(227, 23);
             this.label_Khoa.Name = "label_Khoa";
             this.label_Khoa.Size = new System.Drawing.Size(45, 19);
             this.label_Khoa.TabIndex = 0;
@@ -244,7 +244,7 @@
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(838, 487);
+            this.ClientSize = new System.Drawing.Size(1049, 487);
             this.Controls.Add(this.panelBDMH);
             this.Name = "BDMH";
             this.Text = "BẢNG ĐIỂM MÔN HỌC";

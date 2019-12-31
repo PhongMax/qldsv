@@ -69,7 +69,7 @@
             // 
             this.labelKhoa.AutoSize = true;
             this.labelKhoa.Font = new System.Drawing.Font("Consolas", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.labelKhoa.Location = new System.Drawing.Point(339, 24);
+            this.labelKhoa.Location = new System.Drawing.Point(447, 24);
             this.labelKhoa.Name = "labelKhoa";
             this.labelKhoa.Size = new System.Drawing.Size(45, 19);
             this.labelKhoa.TabIndex = 9;
@@ -79,7 +79,7 @@
             // 
             this.txtMaLop.BackColor = System.Drawing.Color.DarkTurquoise;
             this.txtMaLop.Font = new System.Drawing.Font("Consolas", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.txtMaLop.Location = new System.Drawing.Point(339, 85);
+            this.txtMaLop.Location = new System.Drawing.Point(447, 85);
             this.txtMaLop.Name = "txtMaLop";
             this.txtMaLop.ReadOnly = true;
             this.txtMaLop.Size = new System.Drawing.Size(324, 26);
@@ -89,7 +89,7 @@
             // 
             this.button_THOAT.BackColor = System.Drawing.Color.LightCoral;
             this.button_THOAT.Font = new System.Drawing.Font("Consolas", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.button_THOAT.Location = new System.Drawing.Point(588, 120);
+            this.button_THOAT.Location = new System.Drawing.Point(696, 120);
             this.button_THOAT.Name = "button_THOAT";
             this.button_THOAT.Size = new System.Drawing.Size(75, 36);
             this.button_THOAT.TabIndex = 7;
@@ -101,7 +101,7 @@
             // 
             this.button_IN.BackColor = System.Drawing.Color.DodgerBlue;
             this.button_IN.Font = new System.Drawing.Font("Consolas", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.button_IN.Location = new System.Drawing.Point(507, 120);
+            this.button_IN.Location = new System.Drawing.Point(615, 120);
             this.button_IN.Name = "button_IN";
             this.button_IN.Size = new System.Drawing.Size(75, 36);
             this.button_IN.TabIndex = 6;
@@ -114,7 +114,7 @@
             this.label_MaLop.AutoSize = true;
             this.label_MaLop.BackColor = System.Drawing.Color.White;
             this.label_MaLop.Font = new System.Drawing.Font("Consolas", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label_MaLop.Location = new System.Drawing.Point(267, 87);
+            this.label_MaLop.Location = new System.Drawing.Point(366, 88);
             this.label_MaLop.Name = "label_MaLop";
             this.label_MaLop.Size = new System.Drawing.Size(63, 19);
             this.label_MaLop.TabIndex = 4;
@@ -127,7 +127,7 @@
             this.cmbTenLop.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.cmbTenLop.Font = new System.Drawing.Font("Consolas", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.cmbTenLop.FormattingEnabled = true;
-            this.cmbTenLop.Location = new System.Drawing.Point(339, 56);
+            this.cmbTenLop.Location = new System.Drawing.Point(447, 56);
             this.cmbTenLop.Name = "cmbTenLop";
             this.cmbTenLop.Size = new System.Drawing.Size(324, 23);
             this.cmbTenLop.TabIndex = 3;
@@ -150,7 +150,7 @@
             this.label_TenLop.AutoSize = true;
             this.label_TenLop.BackColor = System.Drawing.Color.White;
             this.label_TenLop.Font = new System.Drawing.Font("Consolas", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label_TenLop.Location = new System.Drawing.Point(258, 55);
+            this.label_TenLop.Location = new System.Drawing.Point(366, 55);
             this.label_TenLop.Name = "label_TenLop";
             this.label_TenLop.Size = new System.Drawing.Size(72, 19);
             this.label_TenLop.TabIndex = 2;
@@ -161,7 +161,7 @@
             this.cmbKhoa.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.cmbKhoa.Font = new System.Drawing.Font("Consolas", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.cmbKhoa.FormattingEnabled = true;
-            this.cmbKhoa.Location = new System.Drawing.Point(339, 21);
+            this.cmbKhoa.Location = new System.Drawing.Point(447, 21);
             this.cmbKhoa.Name = "cmbKhoa";
             this.cmbKhoa.Size = new System.Drawing.Size(324, 23);
             this.cmbKhoa.TabIndex = 1;
@@ -172,7 +172,7 @@
             this.label_Khoa.AutoSize = true;
             this.label_Khoa.BackColor = System.Drawing.Color.White;
             this.label_Khoa.Font = new System.Drawing.Font("Consolas", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label_Khoa.Location = new System.Drawing.Point(285, 24);
+            this.label_Khoa.Location = new System.Drawing.Point(366, 24);
             this.label_Khoa.Name = "label_Khoa";
             this.label_Khoa.Size = new System.Drawing.Size(45, 19);
             this.label_Khoa.TabIndex = 0;

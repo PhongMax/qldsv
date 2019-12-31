@@ -69,14 +69,14 @@
             this.panelPD.Dock = System.Windows.Forms.DockStyle.Top;
             this.panelPD.Location = new System.Drawing.Point(0, 0);
             this.panelPD.Name = "panelPD";
-            this.panelPD.Size = new System.Drawing.Size(802, 193);
+            this.panelPD.Size = new System.Drawing.Size(1014, 193);
             this.panelPD.TabIndex = 0;
             // 
             // btnSelectSinhVien
             // 
             this.btnSelectSinhVien.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(192)))), ((int)(((byte)(255)))), ((int)(((byte)(192)))));
             this.btnSelectSinhVien.Font = new System.Drawing.Font("Consolas", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnSelectSinhVien.Location = new System.Drawing.Point(470, 128);
+            this.btnSelectSinhVien.Location = new System.Drawing.Point(621, 128);
             this.btnSelectSinhVien.Name = "btnSelectSinhVien";
             this.btnSelectSinhVien.Size = new System.Drawing.Size(169, 41);
             this.btnSelectSinhVien.TabIndex = 10;
@@ -91,7 +91,7 @@
             this.cmbTenSinhVien.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.cmbTenSinhVien.Font = new System.Drawing.Font("Consolas", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.cmbTenSinhVien.FormattingEnabled = true;
-            this.cmbTenSinhVien.Location = new System.Drawing.Point(470, 99);
+            this.cmbTenSinhVien.Location = new System.Drawing.Point(621, 99);
             this.cmbTenSinhVien.Name = "cmbTenSinhVien";
             this.cmbTenSinhVien.Size = new System.Drawing.Size(169, 23);
             this.cmbTenSinhVien.TabIndex = 9;
@@ -117,7 +117,7 @@
             // 
             this.labelKhoa.AutoSize = true;
             this.labelKhoa.Font = new System.Drawing.Font("Consolas", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.labelKhoa.Location = new System.Drawing.Point(282, 23);
+            this.labelKhoa.Location = new System.Drawing.Point(433, 23);
             this.labelKhoa.Name = "labelKhoa";
             this.labelKhoa.Size = new System.Drawing.Size(45, 19);
             this.labelKhoa.TabIndex = 8;
@@ -127,7 +127,7 @@
             // 
             this.button_THOAT.BackColor = System.Drawing.Color.LightCoral;
             this.button_THOAT.Font = new System.Drawing.Font("Consolas", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.button_THOAT.Location = new System.Drawing.Point(379, 127);
+            this.button_THOAT.Location = new System.Drawing.Point(530, 127);
             this.button_THOAT.Name = "button_THOAT";
             this.button_THOAT.Size = new System.Drawing.Size(75, 42);
             this.button_THOAT.TabIndex = 7;
@@ -139,7 +139,7 @@
             // 
             this.button_IN.BackColor = System.Drawing.Color.DodgerBlue;
             this.button_IN.Font = new System.Drawing.Font("Consolas", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.button_IN.Location = new System.Drawing.Point(286, 127);
+            this.button_IN.Location = new System.Drawing.Point(437, 127);
             this.button_IN.Name = "button_IN";
             this.button_IN.Size = new System.Drawing.Size(75, 42);
             this.button_IN.TabIndex = 6;
@@ -151,7 +151,7 @@
             // 
             this.labelMaSV.AutoSize = true;
             this.labelMaSV.Font = new System.Drawing.Font("Consolas", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.labelMaSV.Location = new System.Drawing.Point(157, 102);
+            this.labelMaSV.Location = new System.Drawing.Point(308, 102);
             this.labelMaSV.Name = "labelMaSV";
             this.labelMaSV.Size = new System.Drawing.Size(117, 19);
             this.labelMaSV.TabIndex = 5;
@@ -160,7 +160,7 @@
             // txtMaSV
             // 
             this.txtMaSV.Font = new System.Drawing.Font("Consolas", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.txtMaSV.Location = new System.Drawing.Point(286, 95);
+            this.txtMaSV.Location = new System.Drawing.Point(437, 95);
             this.txtMaSV.Name = "txtMaSV";
             this.txtMaSV.Size = new System.Drawing.Size(168, 26);
             this.txtMaSV.TabIndex = 4;
@@ -169,7 +169,7 @@
             // 
             this.label_TenLop.AutoSize = true;
             this.label_TenLop.Font = new System.Drawing.Font("Consolas", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label_TenLop.Location = new System.Drawing.Point(157, 64);
+            this.label_TenLop.Location = new System.Drawing.Point(308, 64);
             this.label_TenLop.Name = "label_TenLop";
             this.label_TenLop.Size = new System.Drawing.Size(72, 19);
             this.label_TenLop.TabIndex = 3;
@@ -179,7 +179,7 @@
             // 
             this.label_Khoa.AutoSize = true;
             this.label_Khoa.Font = new System.Drawing.Font("Consolas", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label_Khoa.Location = new System.Drawing.Point(157, 26);
+            this.label_Khoa.Location = new System.Drawing.Point(308, 26);
             this.label_Khoa.Name = "label_Khoa";
             this.label_Khoa.Size = new System.Drawing.Size(45, 19);
             this.label_Khoa.TabIndex = 2;
@@ -192,7 +192,7 @@
             this.cmbTenLop.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.cmbTenLop.Font = new System.Drawing.Font("Consolas", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.cmbTenLop.FormattingEnabled = true;
-            this.cmbTenLop.Location = new System.Drawing.Point(286, 61);
+            this.cmbTenLop.Location = new System.Drawing.Point(437, 61);
             this.cmbTenLop.Name = "cmbTenLop";
             this.cmbTenLop.Size = new System.Drawing.Size(353, 23);
             this.cmbTenLop.TabIndex = 1;
@@ -204,7 +204,7 @@
             this.cmbKhoa.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.cmbKhoa.Font = new System.Drawing.Font("Consolas", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.cmbKhoa.FormattingEnabled = true;
-            this.cmbKhoa.Location = new System.Drawing.Point(286, 23);
+            this.cmbKhoa.Location = new System.Drawing.Point(437, 23);
             this.cmbKhoa.Name = "cmbKhoa";
             this.cmbKhoa.Size = new System.Drawing.Size(353, 23);
             this.cmbKhoa.TabIndex = 0;
@@ -222,7 +222,7 @@
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(802, 474);
+            this.ClientSize = new System.Drawing.Size(1014, 474);
             this.Controls.Add(this.panelPD);
             this.Name = "PD";
             this.Text = "PHIẾU ĐIỂM";
