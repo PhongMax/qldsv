@@ -81,7 +81,6 @@ namespace QLDSV.Forms
             return false;
         }
 
-        // chỗ này cần kiểm tra sinh viên có nghĩ học nữa...
         private bool CanSave()
         {
             
@@ -95,10 +94,11 @@ namespace QLDSV.Forms
 
               
                 // remove current
-                bdsSinhVien.RemoveCurrent();
+                bdsHocPhi.RemoveCurrent();
                
                 if (dr == DialogResult.No)
                 {
+                    DisableEditMode();
                     return false;
                 }
                 else if (dr == DialogResult.Yes)
@@ -131,11 +131,11 @@ namespace QLDSV.Forms
                 //}
                 ((DataRowView)bdsHocPhi.Current)["MASV"] = (String)cmbSinhVien.EditValue;
                 bdsHocPhi.EndEdit();
+                this.bdsHocPhi.ResetCurrentItem();
 
                 this.HOCPHITableAdapter.Connection.ConnectionString = Program.URL_Connect;
                 this.HOCPHITableAdapter.Update(this.DS.HOCPHI);
 
-                this.bdsHocPhi.ResetCurrentItem();
                 DisableEditMode();
 
                 //this.bdsHocPhi.Position = _position;
@@ -215,10 +215,10 @@ namespace QLDSV.Forms
                 }
             }
 
-            XtraMessageBox.Show("Ghi thông tin đóng học phí thành công !"  + bdsSinhVien.Position, "", MessageBoxButtons.OK);
+            //XtraMessageBox.Show("Ghi thông tin đóng học phí thành công !"  + bdsSinhVien.Position, "", MessageBoxButtons.OK);
 
-            this.HOCPHITableAdapter.Connection.ConnectionString = Program.URL_Connect;
-            this.HOCPHITableAdapter.Fill(DS.HOCPHI);
+            //this.HOCPHITableAdapter.Connection.ConnectionString = Program.URL_Connect;
+            //this.HOCPHITableAdapter.Fill(DS.HOCPHI);
         }
 
         private void btnLamMoi_ItemClick(object sender, DevExpress.XtraBars.ItemClickEventArgs e)
@@ -228,6 +228,7 @@ namespace QLDSV.Forms
 
         private void btnThoat_ItemClick(object sender, DevExpress.XtraBars.ItemClickEventArgs e)
         {
+          
             // trường hợp đang thêm dữ liệu
             if (btnGhi.Enabled)
             {
