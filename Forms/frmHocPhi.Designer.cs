@@ -320,12 +320,14 @@
             this.gvTTHocPhi.OptionsView.ShowViewCaption = true;
             this.gvTTHocPhi.ViewCaption = "THÔNG TIN ĐÓNG HỌC PHÍ CỦA SINH VIÊN";
             this.gvTTHocPhi.CustomDrawRowIndicator += new DevExpress.XtraGrid.Views.Grid.RowIndicatorCustomDrawEventHandler(this.gvTTHocPhi_CustomDrawRowIndicator);
+            this.gvTTHocPhi.RowCellStyle += new DevExpress.XtraGrid.Views.Grid.RowCellStyleEventHandler(this.gvTTHocPhi_RowCellStyle);
             this.gvTTHocPhi.CustomColumnDisplayText += new DevExpress.XtraGrid.Views.Base.CustomColumnDisplayTextEventHandler(this.gvTTHocPhi_CustomColumnDisplayText_1);
             // 
             // colMASV
             // 
             this.colMASV.FieldName = "MASV";
             this.colMASV.Name = "colMASV";
+            this.colMASV.OptionsColumn.AllowEdit = false;
             // 
             // colNIENKHOA
             // 
@@ -336,6 +338,7 @@
             this.colNIENKHOA.Caption = "NIÊN KHÓA";
             this.colNIENKHOA.FieldName = "NIENKHOA";
             this.colNIENKHOA.Name = "colNIENKHOA";
+            this.colNIENKHOA.OptionsColumn.AllowEdit = false;
             this.colNIENKHOA.Visible = true;
             this.colNIENKHOA.VisibleIndex = 0;
             // 
@@ -348,6 +351,7 @@
             this.colHOCKY.Caption = "HỌC KỲ";
             this.colHOCKY.FieldName = "HOCKY";
             this.colHOCKY.Name = "colHOCKY";
+            this.colHOCKY.OptionsColumn.AllowEdit = false;
             this.colHOCKY.Visible = true;
             this.colHOCKY.VisibleIndex = 1;
             // 
@@ -360,6 +364,7 @@
             this.colHOCPHI.Caption = "HỌC PHÍ";
             this.colHOCPHI.FieldName = "HOCPHI";
             this.colHOCPHI.Name = "colHOCPHI";
+            this.colHOCPHI.OptionsColumn.AllowEdit = false;
             this.colHOCPHI.Visible = true;
             this.colHOCPHI.VisibleIndex = 2;
             // 
@@ -372,6 +377,7 @@
             this.colSOTIENDADONG.Caption = "SỐ TIỀN ĐÃ ĐÓNG";
             this.colSOTIENDADONG.FieldName = "SOTIENDADONG";
             this.colSOTIENDADONG.Name = "colSOTIENDADONG";
+            this.colSOTIENDADONG.OptionsColumn.AllowEdit = false;
             this.colSOTIENDADONG.Visible = true;
             this.colSOTIENDADONG.VisibleIndex = 3;
             // 
@@ -458,8 +464,6 @@
             this.spiSoTienDong.Name = "spiSoTienDong";
             this.spiSoTienDong.Properties.Buttons.AddRange(new DevExpress.XtraEditors.Controls.EditorButton[] {
             new DevExpress.XtraEditors.Controls.EditorButton(DevExpress.XtraEditors.Controls.ButtonPredefines.Combo)});
-            this.spiSoTienDong.Properties.IsFloatValue = false;
-            this.spiSoTienDong.Properties.Mask.EditMask = "N00";
             this.spiSoTienDong.Size = new System.Drawing.Size(100, 20);
             this.spiSoTienDong.TabIndex = 15;
             this.spiSoTienDong.CustomDisplayText += new DevExpress.XtraEditors.Controls.CustomDisplayTextEventHandler(this.spiHocPhi_CustomDisplayText);
@@ -477,8 +481,6 @@
             this.spiHocPhi.Name = "spiHocPhi";
             this.spiHocPhi.Properties.Buttons.AddRange(new DevExpress.XtraEditors.Controls.EditorButton[] {
             new DevExpress.XtraEditors.Controls.EditorButton(DevExpress.XtraEditors.Controls.ButtonPredefines.Combo)});
-            this.spiHocPhi.Properties.IsFloatValue = false;
-            this.spiHocPhi.Properties.Mask.EditMask = "N00";
             this.spiHocPhi.Size = new System.Drawing.Size(100, 20);
             this.spiHocPhi.TabIndex = 13;
             this.spiHocPhi.CustomDisplayText += new DevExpress.XtraEditors.Controls.CustomDisplayTextEventHandler(this.spiHocPhi_CustomDisplayText);

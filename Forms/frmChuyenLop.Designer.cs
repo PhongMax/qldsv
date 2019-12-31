@@ -50,14 +50,14 @@
             this.panel.Dock = System.Windows.Forms.DockStyle.Top;
             this.panel.Location = new System.Drawing.Point(0, 0);
             this.panel.Name = "panel";
-            this.panel.Size = new System.Drawing.Size(724, 236);
+            this.panel.Size = new System.Drawing.Size(1081, 236);
             this.panel.TabIndex = 0;
             // 
             // buttonCancel
             // 
             this.buttonCancel.BackColor = System.Drawing.Color.LightCoral;
             this.buttonCancel.Font = new System.Drawing.Font("Consolas", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.buttonCancel.Location = new System.Drawing.Point(468, 170);
+            this.buttonCancel.Location = new System.Drawing.Point(585, 170);
             this.buttonCancel.Name = "buttonCancel";
             this.buttonCancel.Size = new System.Drawing.Size(130, 38);
             this.buttonCancel.TabIndex = 5;
@@ -69,7 +69,7 @@
             // 
             this.buttonOK.BackColor = System.Drawing.Color.DodgerBlue;
             this.buttonOK.Font = new System.Drawing.Font("Consolas", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.buttonOK.Location = new System.Drawing.Point(468, 126);
+            this.buttonOK.Location = new System.Drawing.Point(585, 126);
             this.buttonOK.Name = "buttonOK";
             this.buttonOK.Size = new System.Drawing.Size(130, 38);
             this.buttonOK.TabIndex = 4;
@@ -81,7 +81,7 @@
             // 
             this.txtMaLopChuyenDen.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.txtMaLopChuyenDen.Font = new System.Drawing.Font("Consolas", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.txtMaLopChuyenDen.Location = new System.Drawing.Point(359, 80);
+            this.txtMaLopChuyenDen.Location = new System.Drawing.Point(476, 80);
             this.txtMaLopChuyenDen.Name = "txtMaLopChuyenDen";
             this.txtMaLopChuyenDen.Size = new System.Drawing.Size(239, 26);
             this.txtMaLopChuyenDen.TabIndex = 3;
@@ -90,7 +90,7 @@
             // 
             this.txtMaSV.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.txtMaSV.Font = new System.Drawing.Font("Consolas", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.txtMaSV.Location = new System.Drawing.Point(359, 37);
+            this.txtMaSV.Location = new System.Drawing.Point(476, 37);
             this.txtMaSV.Name = "txtMaSV";
             this.txtMaSV.Size = new System.Drawing.Size(239, 26);
             this.txtMaSV.TabIndex = 2;
@@ -99,7 +99,7 @@
             // 
             this.labelMaLop.AutoSize = true;
             this.labelMaLop.Font = new System.Drawing.Font("Consolas", 11.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.labelMaLop.Location = new System.Drawing.Point(218, 85);
+            this.labelMaLop.Location = new System.Drawing.Point(335, 85);
             this.labelMaLop.Name = "labelMaLop";
             this.labelMaLop.Size = new System.Drawing.Size(144, 18);
             this.labelMaLop.TabIndex = 1;
@@ -109,7 +109,7 @@
             // 
             this.labelMaSV.AutoSize = true;
             this.labelMaSV.Font = new System.Drawing.Font("Consolas", 11.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.labelMaSV.Location = new System.Drawing.Point(218, 42);
+            this.labelMaSV.Location = new System.Drawing.Point(335, 42);
             this.labelMaSV.Name = "labelMaSV";
             this.labelMaSV.Size = new System.Drawing.Size(144, 18);
             this.labelMaSV.TabIndex = 0;
@@ -119,7 +119,7 @@
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(724, 408);
+            this.ClientSize = new System.Drawing.Size(1081, 408);
             this.Controls.Add(this.panel);
             this.Name = "frmChuyenLop";
             this.Text = "Chuyển lớp";
