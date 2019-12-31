@@ -23,8 +23,6 @@ namespace QLDSV.Forms
         private string _oldMaLop = "";
         private string _oldTenLop = "";
 
-        private Boolean _flagUpdateSV = false;
-        private Boolean _flagSua = false;
 
   
 
@@ -54,6 +52,8 @@ namespace QLDSV.Forms
         // TODO : Load Method
         private void frmSinhVien_Load(object sender, EventArgs e)
         {
+
+ 
             // TODO : Load Data
             loadInitializeData();
             errorProvider.Clear();
@@ -131,10 +131,9 @@ namespace QLDSV.Forms
         // ============================ EVENT BUTTON ============================ //
         private void barBtnThem_ItemClick(object sender, DevExpress.XtraBars.ItemClickEventArgs e)
         {
-
+           
             _flagOptionLop = "ADD";//  Add action
 
-      
 
             barBtnGhi.Enabled = barBtnHuy.Enabled = true;
             barBtnXoa.Enabled = barBtnThem.Enabled
@@ -181,6 +180,7 @@ namespace QLDSV.Forms
 
 
             barBtnLamMoi.Enabled = true;
+            grbNhapSV.Enabled = false;
 
             if (_positionLop > 0)
             {
@@ -197,7 +197,7 @@ namespace QLDSV.Forms
 
             // TODO: Display To handle
             lOPGridControl.Enabled = false;
-
+            grbNhapSV.Enabled = true;
             barBtnGhi.Enabled = barBtnHuy.Enabled = true;
 
             barBtnThem.Enabled
@@ -291,7 +291,7 @@ namespace QLDSV.Forms
 
         private void barBtnThoat_ItemClick(object sender, DevExpress.XtraBars.ItemClickEventArgs e)
         {
-            if ( _flagUpdateSV)
+            if ( this.grbNhapSV.Enabled)
             {
                 
                 String notifi = " Dữ liệu LỚP chưa lưu vào Database. \n Bạn có chắc muốn thoát !";
@@ -447,27 +447,9 @@ namespace QLDSV.Forms
             txtMaLop.Properties.CharacterCasing = CharacterCasing.Upper;
         }
 
-        private void gridView1_CustomDrawRowIndicator(object sender, RowIndicatorCustomDrawEventArgs e)
-        {
-            e.Handled = true;
-            SolidBrush brush = new SolidBrush(Color.FromArgb(0xC6, 0x64, 0xFF));
-            e.Graphics.FillRectangle(brush, e.Bounds);
-            e.Graphics.DrawRectangle(Pens.Black, new Rectangle(e.Bounds.X, e.Bounds.Y, e.Bounds.Width - 1, e.Bounds.Height));
-            Size size = ImageCollection.GetImageListSize(e.Info.ImageCollection);
-            Rectangle r = e.Bounds;
-            ImageCollection.DrawImageListImage(e.Cache, e.Info.ImageCollection, e.Info.ImageIndex,
-                    new Rectangle(r.X + (r.Width - size.Width) / 2, r.Y + (r.Height - size.Height) / 2, size.Width, size.Height));
-            brush.Dispose();
-        }
+       
 
-        private void gridView1_FocusedRowChanged(object sender, DevExpress.XtraGrid.Views.Base.FocusedRowChangedEventArgs e)
-        {
-            if (bdsLOP.Position > 0)
-            {
-                _positionLop = bdsLOP.Position;
-            }
-        }
-
+    
 
 
      
@@ -478,14 +460,6 @@ namespace QLDSV.Forms
 
        
 
-        private void gridView1_RowCellStyle(object sender, RowCellStyleEventArgs e)
-        {
-            GridView view = sender as GridView;
-            if (e.RowHandle == view.FocusedRowHandle)
-            {
-                e.Appearance.BackColor = Color.LawnGreen;
-            }
-        }
 
         private void gridView1_CustomDrawRowIndicator_1(object sender, RowIndicatorCustomDrawEventArgs e)
         {
@@ -506,6 +480,15 @@ namespace QLDSV.Forms
             if (e.RowHandle == view.FocusedRowHandle)
             {
                 e.Appearance.BackColor = Color.LawnGreen;
+            }
+        }
+
+        private void gridView1_FocusedRowChanged_1(object sender, DevExpress.XtraGrid.Views.Base.FocusedRowChangedEventArgs e)
+        {
+
+            if (bdsLOP.Position > 0)
+            {
+                _positionLop = bdsLOP.Position;
             }
         }
     }

@@ -81,7 +81,7 @@ namespace QLDSV.Forms
         private void barBtnThem_ItemClick(object sender, DevExpress.XtraBars.ItemClickEventArgs e)
         {
             flagOption = "ADD";//  Add action
-            
+
             barBtnGhi.Enabled = barBtnHuy.Enabled = true;
             barBtnThem.Enabled
                 = barBtnXoa.Enabled
@@ -131,7 +131,6 @@ namespace QLDSV.Forms
 
         private void barBtnSua_ItemClick(object sender, DevExpress.XtraBars.ItemClickEventArgs e)
         {
-            
             flagOption = "UPDATE";//  Update action
             oldMaMonHoc = this.txtMaMonHoc.Text.Trim().ToString();
             oldTenMonHoc = this.txtTenMonHoc.Text.Trim().ToString();
@@ -214,7 +213,30 @@ namespace QLDSV.Forms
 
         private void barBtnDong_ItemClick(object sender, DevExpress.XtraBars.ItemClickEventArgs e)
         {
-            this.Close();
+
+            if (this.groupBoxMonHoc.Enabled)
+            {
+                String notifi = " Dữ liệu Môn Học chưa lưu vào Database. \n Bạn có chắc muốn thoát !";
+
+                DialogResult dr = XtraMessageBox.Show(notifi, "Cảnh báo", MessageBoxButtons.YesNo, MessageBoxIcon.Warning);
+
+                if (dr == DialogResult.No)
+                {
+                    return;
+                }
+                else if (dr == DialogResult.Yes)
+                {
+                    this.Close();
+
+                }
+            }
+            else
+            {
+                this.Close();
+                return;
+            }
+
+
         }
 
         // ====================== SUPPORT VALIDATION ====================== //

@@ -140,7 +140,7 @@ namespace QLDSV.Forms
         // ============================ EVENT BUTTON ============================ //
         private void barBtnThem_ItemClick(object sender, DevExpress.XtraBars.ItemClickEventArgs e)
         {
-      
+            this.txtMaLop.Focus();
             _flagOptionLop = "ADD";//  Add action
 
             // bật groupbox nhập lớp
@@ -199,6 +199,7 @@ namespace QLDSV.Forms
 
         private void barBtnSua_ItemClick(object sender, DevExpress.XtraBars.ItemClickEventArgs e)
         {
+            this.txtMaLop.Focus();
         
             _flagOptionLop = "UPDATE";//  Update action
             _oldMaLop = this.txtMaLop.Text.Trim().ToString();
