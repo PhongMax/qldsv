@@ -9,6 +9,7 @@ using System.Threading.Tasks;
 using System.Windows.Forms;
 using DevExpress.XtraEditors;
 using DevExpress.XtraReports.UI;
+using System.Data.SqlClient;
 
 namespace QLDSV.Report
 {
@@ -68,48 +69,63 @@ namespace QLDSV.Report
             loadInitializeData();
 
             this.txtMaSV.Text = "";
-            this.cmbTenSinhVien.Visible = false;
         }
 
         private void cmbTenLop_SelectedIndexChanged(object sender, EventArgs e)
         {
             this.sINHVIENTableAdapter.Fill(this.DS.SINHVIEN);
             this.txtMaSV.Text = "";
-            this.cmbTenSinhVien.Visible = false;
         }
 
-        private void btnSelectSinhVien_Click(object sender, EventArgs e)
-        {
-            this.txtMaSV.Text = "";
-            //this.txtMaSV.Visible = false;
-            if (this.cmbTenSinhVien.Visible == false)
-            {
-                this.cmbTenSinhVien.Visible = true;
-            } else
-            {
-                this.cmbTenSinhVien.Visible = false;
-            }
-        }
 
-        private void cmbTenSinhVien_SelectedIndexChanged(object sender, EventArgs e)
+
+        private void lookUpEditMaSinhVien_EditValueChanged(object sender, EventArgs e)
         {
-            if (this.cmbTenSinhVien.SelectedValue != null)
+            try
             {
-                this.txtMaSV.Text = this.cmbTenSinhVien.SelectedValue.ToString();
+                this.txtMaSV.Text = (string)this.lookUpEditMaSinhVien.EditValue;
             }
+            catch (Exception) { }
         }
 
 
         private void button_IN_Click(object sender, EventArgs e)
         {
-            // Chưa làm validate MASV có tồn tại không
-            XtraReport_PD report = new XtraReport_PD(this.txtMaSV.Text.Trim().ToString());
+            string TenSinhVien = "";
+            SqlCommand command;
 
-            report.lblTenLop.Text = this.cmbTenLop.Text;
-            report.lblHoVaTen.Text = this.cmbTenSinhVien.Text;
+            using (SqlConnection connection = new SqlConnection(Program.URL_Connect))
+            {
+                // OPEN CONNECTION
+                connection.Open();
+                string QUERY = string.Format("SELECT HO+' '+TEN AS HOTEN FROM dbo.SINHVIEN WHERE MASV = '" + this.txtMaSV.Text.Trim().ToString() + "'");
+                command = new SqlCommand(QUERY, connection);
+                command.CommandType = CommandType.Text;
+                try
+                {
+                    TenSinhVien = (String)command.ExecuteScalar();
+                }
+                catch { }
+                command.Dispose();
+                connection.Close();
+            }
 
-            ReportPrintTool print = new ReportPrintTool(report);
-            print.ShowPreviewDialog();
+            if (TenSinhVien == null)
+            {
+                XtraMessageBox.Show("Mã Sinh Viên Không Tồn Tại,vui lòng kiểm tra lại!");
+                txtMaSV.Focus();
+                return;
+            }
+            else
+            {
+                XtraReport_PD report = new XtraReport_PD(this.txtMaSV.Text.Trim().ToString());
+
+                report.lblHoVaTen.Text = TenSinhVien;
+                report.lblTenLop.Text = this.cmbTenLop.Text;
+
+                ReportPrintTool print = new ReportPrintTool(report);
+                print.ShowPreviewDialog();
+            }
         }
 
         private void button_THOAT_Click(object sender, EventArgs e)
