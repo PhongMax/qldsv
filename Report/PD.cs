@@ -122,6 +122,7 @@ namespace QLDSV.Report
 
                 report.lblHoVaTen.Text = TenSinhVien;
                 report.lblTenLop.Text = this.cmbTenLop.Text;
+                report.lblAuthor.Text = "Người In Ấn : " + Program.MHoten;
 
                 ReportPrintTool print = new ReportPrintTool(report);
                 print.ShowPreviewDialog();

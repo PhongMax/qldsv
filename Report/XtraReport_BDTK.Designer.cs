@@ -33,8 +33,10 @@
             DevExpress.DataAccess.Sql.QueryParameter queryParameter1 = new DevExpress.DataAccess.Sql.QueryParameter();
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(XtraReport_BDTK));
             DevExpress.XtraReports.UI.CrossTab.CrossTabColumnDefinition crossTabColumnDefinition1 = new DevExpress.XtraReports.UI.CrossTab.CrossTabColumnDefinition(100F);
+            DevExpress.XtraReports.UI.CrossTab.CrossTabColumnDefinition crossTabColumnDefinition2 = new DevExpress.XtraReports.UI.CrossTab.CrossTabColumnDefinition(100F);
             DevExpress.XtraReports.UI.CrossTab.CrossTabColumnField crossTabColumnField1 = new DevExpress.XtraReports.UI.CrossTab.CrossTabColumnField();
             DevExpress.XtraReports.UI.CrossTab.CrossTabDataField crossTabDataField1 = new DevExpress.XtraReports.UI.CrossTab.CrossTabDataField();
+            DevExpress.XtraReports.UI.CrossTab.CrossTabRowDefinition crossTabRowDefinition1 = new DevExpress.XtraReports.UI.CrossTab.CrossTabRowDefinition(25F);
             DevExpress.XtraReports.UI.CrossTab.CrossTabRowField crossTabRowField1 = new DevExpress.XtraReports.UI.CrossTab.CrossTabRowField();
             this.sqlDataSource1 = new DevExpress.DataAccess.Sql.SqlDataSource(this.components);
             this.crossTabGeneralStyle = new DevExpress.XtraReports.UI.XRControlStyle();
@@ -54,12 +56,12 @@
             this.xrCrossTabCell7 = new DevExpress.XtraReports.UI.CrossTab.XRCrossTabCell();
             this.xrCrossTabCell8 = new DevExpress.XtraReports.UI.CrossTab.XRCrossTabCell();
             this.xrCrossTabCell9 = new DevExpress.XtraReports.UI.CrossTab.XRCrossTabCell();
+            this.sP_REPORT_BDTKTableAdapter1 = new QLDSV.DSTableAdapters.SP_REPORT_BDTKTableAdapter();
+            this.ds1 = new QLDSV.DS();
             this.TopMargin = new DevExpress.XtraReports.UI.TopMarginBand();
             this.BottomMargin = new DevExpress.XtraReports.UI.BottomMarginBand();
             this.TitleStyle = new DevExpress.XtraReports.UI.XRControlStyle();
-            this.ds1 = new QLDSV.DS();
-            this.dIEMTableAdapter = new QLDSV.DSTableAdapters.DIEMTableAdapter();
-            this.sP_REPORT_BDTKTableAdapter = new QLDSV.DSTableAdapters.SP_REPORT_BDTKTableAdapter();
+            this.lblAuthor = new DevExpress.XtraReports.UI.XRLabel();
             ((System.ComponentModel.ISupportInitialize)(this.crossTab1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.ds1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this)).BeginInit();
@@ -71,6 +73,7 @@
             storedProcQuery1.Name = "SP_REPORT_BDTK";
             queryParameter1.Name = "@MALOP";
             queryParameter1.Type = typeof(string);
+            queryParameter1.ValueInfo = "D16CQCN2";
             storedProcQuery1.Parameters.Add(queryParameter1);
             storedProcQuery1.StoredProcName = "SP_REPORT_BDTK";
             this.sqlDataSource1.Queries.AddRange(new DevExpress.DataAccess.Sql.SqlQuery[] {
@@ -142,13 +145,15 @@
             this.xrCrossTabCell8,
             this.xrCrossTabCell9});
             crossTabColumnDefinition1.AutoWidthMode = DevExpress.XtraReports.UI.AutoSizeMode.ShrinkAndGrow;
+            crossTabColumnDefinition2.Visible = false;
             this.crossTab1.ColumnDefinitions.AddRange(new DevExpress.XtraReports.UI.CrossTab.CrossTabColumnDefinition[] {
             crossTabColumnDefinition1,
             new DevExpress.XtraReports.UI.CrossTab.CrossTabColumnDefinition(100F),
-            new DevExpress.XtraReports.UI.CrossTab.CrossTabColumnDefinition(100F)});
+            crossTabColumnDefinition2});
             crossTabColumnField1.FieldName = "TENMH";
             this.crossTab1.ColumnFields.AddRange(new DevExpress.XtraReports.UI.CrossTab.CrossTabColumnField[] {
             crossTabColumnField1});
+            this.crossTab1.DataAdapter = this.sP_REPORT_BDTKTableAdapter1;
             this.crossTab1.DataAreaStyleName = "crossTabDataStyle";
             crossTabDataField1.FieldName = "DIEM";
             this.crossTab1.DataFields.AddRange(new DevExpress.XtraReports.UI.CrossTab.CrossTabDataField[] {
@@ -159,10 +164,11 @@
             this.crossTab1.HeaderAreaStyleName = "crossTabHeaderStyle";
             this.crossTab1.LocationFloat = new DevExpress.Utils.PointFloat(0F, 0F);
             this.crossTab1.Name = "crossTab1";
+            crossTabRowDefinition1.Visible = false;
             this.crossTab1.RowDefinitions.AddRange(new DevExpress.XtraReports.UI.CrossTab.CrossTabRowDefinition[] {
             new DevExpress.XtraReports.UI.CrossTab.CrossTabRowDefinition(25F),
             new DevExpress.XtraReports.UI.CrossTab.CrossTabRowDefinition(25F),
-            new DevExpress.XtraReports.UI.CrossTab.CrossTabRowDefinition(25F)});
+            crossTabRowDefinition1});
             crossTabRowField1.FieldName = "HOTEN";
             this.crossTab1.RowFields.AddRange(new DevExpress.XtraReports.UI.CrossTab.CrossTabRowField[] {
             crossTabRowField1});
@@ -226,13 +232,26 @@
             this.xrCrossTabCell9.Name = "xrCrossTabCell9";
             this.xrCrossTabCell9.RowIndex = 2;
             // 
+            // sP_REPORT_BDTKTableAdapter1
+            // 
+            this.sP_REPORT_BDTKTableAdapter1.ClearBeforeFill = true;
+            // 
+            // ds1
+            // 
+            this.ds1.DataSetName = "DS";
+            this.ds1.SchemaSerializationMode = System.Data.SchemaSerializationMode.IncludeSchema;
+            // 
             // TopMargin
             // 
             this.TopMargin.Name = "TopMargin";
             // 
             // BottomMargin
             // 
+            this.BottomMargin.Controls.AddRange(new DevExpress.XtraReports.UI.XRControl[] {
+            this.lblAuthor});
+            this.BottomMargin.Font = new System.Drawing.Font("Consolas", 12F, System.Drawing.FontStyle.Italic, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.BottomMargin.Name = "BottomMargin";
+            this.BottomMargin.StylePriority.UseFont = false;
             // 
             // TitleStyle
             // 
@@ -240,18 +259,14 @@
             this.TitleStyle.Name = "TitleStyle";
             this.TitleStyle.Padding = new DevExpress.XtraPrinting.PaddingInfo(2, 2, 0, 0, 100F);
             // 
-            // ds1
+            // lblAuthor
             // 
-            this.ds1.DataSetName = "DS";
-            this.ds1.SchemaSerializationMode = System.Data.SchemaSerializationMode.IncludeSchema;
-            // 
-            // dIEMTableAdapter
-            // 
-            this.dIEMTableAdapter.ClearBeforeFill = true;
-            // 
-            // sP_REPORT_BDTKTableAdapter
-            // 
-            this.sP_REPORT_BDTKTableAdapter.ClearBeforeFill = true;
+            this.lblAuthor.LocationFloat = new DevExpress.Utils.PointFloat(10.00001F, 22.52862F);
+            this.lblAuthor.Multiline = true;
+            this.lblAuthor.Name = "lblAuthor";
+            this.lblAuthor.Padding = new DevExpress.XtraPrinting.PaddingInfo(2, 2, 0, 0, 96F);
+            this.lblAuthor.SizeF = new System.Drawing.SizeF(290F, 23F);
+            this.lblAuthor.Text = "lblAuthor";
             // 
             // XtraReport_BDTK
             // 
@@ -263,9 +278,6 @@
             this.ComponentStorage.AddRange(new System.ComponentModel.IComponent[] {
             this.sqlDataSource1,
             this.ds1});
-            this.DataAdapter = this.dIEMTableAdapter;
-            this.DataMember = "SP_REPORT_BDTK";
-            this.DataSource = this.ds1;
             this.Font = new System.Drawing.Font("Arial", 9.75F);
             this.HorizontalContentSplitting = DevExpress.XtraPrinting.HorizontalContentSplitting.Smart;
             this.Landscape = true;
@@ -305,11 +317,11 @@
         private DevExpress.XtraReports.UI.CrossTab.XRCrossTabCell xrCrossTabCell7;
         private DevExpress.XtraReports.UI.CrossTab.XRCrossTabCell xrCrossTabCell8;
         private DevExpress.XtraReports.UI.CrossTab.XRCrossTabCell xrCrossTabCell9;
+        private DS ds1;
         private DevExpress.XtraReports.UI.TopMarginBand TopMargin;
         private DevExpress.XtraReports.UI.BottomMarginBand BottomMargin;
         private DevExpress.XtraReports.UI.XRControlStyle TitleStyle;
-        private DS ds1;
-        private DSTableAdapters.DIEMTableAdapter dIEMTableAdapter;
-        private DSTableAdapters.SP_REPORT_BDTKTableAdapter sP_REPORT_BDTKTableAdapter;
+        private DSTableAdapters.SP_REPORT_BDTKTableAdapter sP_REPORT_BDTKTableAdapter1;
+        public DevExpress.XtraReports.UI.XRLabel lblAuthor;
     }
 }

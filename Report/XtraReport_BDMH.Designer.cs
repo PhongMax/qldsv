@@ -42,6 +42,7 @@
             this.PageInfo = new DevExpress.XtraReports.UI.XRControlStyle();
             this.TopMargin = new DevExpress.XtraReports.UI.TopMarginBand();
             this.BottomMargin = new DevExpress.XtraReports.UI.BottomMarginBand();
+            this.lblAuthor = new DevExpress.XtraReports.UI.XRLabel();
             this.pageInfo1 = new DevExpress.XtraReports.UI.XRPageInfo();
             this.pageInfo2 = new DevExpress.XtraReports.UI.XRPageInfo();
             this.ReportHeader = new DevExpress.XtraReports.UI.ReportHeaderBand();
@@ -55,17 +56,17 @@
             this.GroupHeader1 = new DevExpress.XtraReports.UI.GroupHeaderBand();
             this.table1 = new DevExpress.XtraReports.UI.XRTable();
             this.tableRow1 = new DevExpress.XtraReports.UI.XRTableRow();
+            this.cellSTT = new DevExpress.XtraReports.UI.XRTableCell();
             this.cellHoVaTen = new DevExpress.XtraReports.UI.XRTableCell();
             this.cellDiem = new DevExpress.XtraReports.UI.XRTableCell();
             this.Detail = new DevExpress.XtraReports.UI.DetailBand();
             this.table2 = new DevExpress.XtraReports.UI.XRTable();
             this.tableRow2 = new DevExpress.XtraReports.UI.XRTableRow();
+            this.cell0 = new DevExpress.XtraReports.UI.XRTableCell();
             this.cell1 = new DevExpress.XtraReports.UI.XRTableCell();
             this.cell2 = new DevExpress.XtraReports.UI.XRTableCell();
             this.ds1 = new QLDSV.DS();
             this.sP_REPORT_BDMHTableAdapter = new QLDSV.DSTableAdapters.SP_REPORT_BDMHTableAdapter();
-            this.cellSTT = new DevExpress.XtraReports.UI.XRTableCell();
-            this.cell0 = new DevExpress.XtraReports.UI.XRTableCell();
             ((System.ComponentModel.ISupportInitialize)(this.table1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.table2)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.ds1)).BeginInit();
@@ -154,10 +155,22 @@
             // BottomMargin
             // 
             this.BottomMargin.Controls.AddRange(new DevExpress.XtraReports.UI.XRControl[] {
+            this.lblAuthor,
             this.pageInfo1,
             this.pageInfo2});
             this.BottomMargin.HeightF = 245.3333F;
             this.BottomMargin.Name = "BottomMargin";
+            // 
+            // lblAuthor
+            // 
+            this.lblAuthor.Font = new System.Drawing.Font("Consolas", 12F, System.Drawing.FontStyle.Italic, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblAuthor.LocationFloat = new DevExpress.Utils.PointFloat(10.00001F, 45.29174F);
+            this.lblAuthor.Multiline = true;
+            this.lblAuthor.Name = "lblAuthor";
+            this.lblAuthor.Padding = new DevExpress.XtraPrinting.PaddingInfo(2, 2, 0, 0, 100F);
+            this.lblAuthor.SizeF = new System.Drawing.SizeF(390.625F, 23F);
+            this.lblAuthor.StylePriority.UseFont = false;
+            this.lblAuthor.Text = "lblAuthor";
             // 
             // pageInfo1
             // 
@@ -292,6 +305,22 @@
             this.tableRow1.Name = "tableRow1";
             this.tableRow1.Weight = 1D;
             // 
+            // cellSTT
+            // 
+            this.cellSTT.BorderColor = System.Drawing.Color.Black;
+            this.cellSTT.Borders = ((DevExpress.XtraPrinting.BorderSide)((((DevExpress.XtraPrinting.BorderSide.Left | DevExpress.XtraPrinting.BorderSide.Top) 
+            | DevExpress.XtraPrinting.BorderSide.Right) 
+            | DevExpress.XtraPrinting.BorderSide.Bottom)));
+            this.cellSTT.Multiline = true;
+            this.cellSTT.Name = "cellSTT";
+            this.cellSTT.StyleName = "DetailCaption1";
+            this.cellSTT.StylePriority.UseBorderColor = false;
+            this.cellSTT.StylePriority.UseBorders = false;
+            this.cellSTT.StylePriority.UseTextAlignment = false;
+            this.cellSTT.Text = "STT";
+            this.cellSTT.TextAlignment = DevExpress.XtraPrinting.TextAlignment.MiddleCenter;
+            this.cellSTT.Weight = 0.5591143329326923D;
+            // 
             // cellHoVaTen
             // 
             this.cellHoVaTen.BorderColor = System.Drawing.Color.Black;
@@ -347,6 +376,24 @@
             this.tableRow2.Name = "tableRow2";
             this.tableRow2.Weight = 11.5D;
             // 
+            // cell0
+            // 
+            this.cell0.BorderColor = System.Drawing.Color.Black;
+            this.cell0.Borders = ((DevExpress.XtraPrinting.BorderSide)(((DevExpress.XtraPrinting.BorderSide.Left | DevExpress.XtraPrinting.BorderSide.Right) 
+            | DevExpress.XtraPrinting.BorderSide.Bottom)));
+            this.cell0.ExpressionBindings.AddRange(new DevExpress.XtraReports.UI.ExpressionBinding[] {
+            new DevExpress.XtraReports.UI.ExpressionBinding("BeforePrint", "Text", "sumRecordNumber()")});
+            this.cell0.Multiline = true;
+            this.cell0.Name = "cell0";
+            this.cell0.StyleName = "DetailData1";
+            this.cell0.StylePriority.UseBorderColor = false;
+            this.cell0.StylePriority.UseBorders = false;
+            this.cell0.StylePriority.UseTextAlignment = false;
+            xrSummary1.Running = DevExpress.XtraReports.UI.SummaryRunning.Report;
+            this.cell0.Summary = xrSummary1;
+            this.cell0.TextAlignment = DevExpress.XtraPrinting.TextAlignment.MiddleCenter;
+            this.cell0.Weight = 0.55911437988281254D;
+            // 
             // cell1
             // 
             this.cell1.BorderColor = System.Drawing.Color.Black;
@@ -386,40 +433,6 @@
             // 
             this.sP_REPORT_BDMHTableAdapter.ClearBeforeFill = true;
             // 
-            // cellSTT
-            // 
-            this.cellSTT.BorderColor = System.Drawing.Color.Black;
-            this.cellSTT.Borders = ((DevExpress.XtraPrinting.BorderSide)((((DevExpress.XtraPrinting.BorderSide.Left | DevExpress.XtraPrinting.BorderSide.Top) 
-            | DevExpress.XtraPrinting.BorderSide.Right) 
-            | DevExpress.XtraPrinting.BorderSide.Bottom)));
-            this.cellSTT.Multiline = true;
-            this.cellSTT.Name = "cellSTT";
-            this.cellSTT.StyleName = "DetailCaption1";
-            this.cellSTT.StylePriority.UseBorderColor = false;
-            this.cellSTT.StylePriority.UseBorders = false;
-            this.cellSTT.StylePriority.UseTextAlignment = false;
-            this.cellSTT.Text = "STT";
-            this.cellSTT.TextAlignment = DevExpress.XtraPrinting.TextAlignment.MiddleCenter;
-            this.cellSTT.Weight = 0.5591143329326923D;
-            // 
-            // cell0
-            // 
-            this.cell0.BorderColor = System.Drawing.Color.Black;
-            this.cell0.Borders = ((DevExpress.XtraPrinting.BorderSide)(((DevExpress.XtraPrinting.BorderSide.Left | DevExpress.XtraPrinting.BorderSide.Right) 
-            | DevExpress.XtraPrinting.BorderSide.Bottom)));
-            this.cell0.ExpressionBindings.AddRange(new DevExpress.XtraReports.UI.ExpressionBinding[] {
-            new DevExpress.XtraReports.UI.ExpressionBinding("BeforePrint", "Text", "sumRecordNumber()")});
-            this.cell0.Multiline = true;
-            this.cell0.Name = "cell0";
-            this.cell0.StyleName = "DetailData1";
-            this.cell0.StylePriority.UseBorderColor = false;
-            this.cell0.StylePriority.UseBorders = false;
-            this.cell0.StylePriority.UseTextAlignment = false;
-            xrSummary1.Running = DevExpress.XtraReports.UI.SummaryRunning.Report;
-            this.cell0.Summary = xrSummary1;
-            this.cell0.TextAlignment = DevExpress.XtraPrinting.TextAlignment.MiddleCenter;
-            this.cell0.Weight = 0.55911437988281254D;
-            // 
             // XtraReport_BDMH
             // 
             this.Bands.AddRange(new DevExpress.XtraReports.UI.Band[] {
@@ -442,7 +455,7 @@
             this.DetailData1,
             this.DetailData3_Odd,
             this.PageInfo});
-            this.Version = "19.1";
+            this.Version = "19.2";
             ((System.ComponentModel.ISupportInitialize)(this.table1)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.table2)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.ds1)).EndInit();
@@ -484,5 +497,6 @@
         public DevExpress.XtraReports.UI.XRLabel lblTenLop;
         private DevExpress.XtraReports.UI.XRTableCell cellSTT;
         private DevExpress.XtraReports.UI.XRTableCell cell0;
+        public DevExpress.XtraReports.UI.XRLabel lblAuthor;
     }
 }
