@@ -191,11 +191,11 @@
     <Compile Include="Report\XtraReport_DSDHP.Designer.cs">
       <DependentUpon>XtraReport_DSDHP.cs</DependentUpon>
     </Compile>
-    <Compile Include="Report\XtraReport_DSSV_TheoLop.cs">
+    <Compile Include="Report\XtraReport_DSSV.cs">
       <SubType>Component</SubType>
     </Compile>
-    <Compile Include="Report\XtraReport_DSSV_TheoLop.Designer.cs">
-      <DependentUpon>XtraReport_DSSV_TheoLop.cs</DependentUpon>
+    <Compile Include="Report\XtraReport_DSSV.Designer.cs">
+      <DependentUpon>XtraReport_DSSV.cs</DependentUpon>
     </Compile>
     <Compile Include="Report\XtraReport_DSTHM.cs">
       <SubType>Component</SubType>
@@ -276,8 +276,8 @@
     <EmbeddedResource Include="Report\XtraReport_DSDHP.resx">
       <DependentUpon>XtraReport_DSDHP.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="Report\XtraReport_DSSV_TheoLop.resx">
-      <DependentUpon>XtraReport_DSSV_TheoLop.cs</DependentUpon>
+    <EmbeddedResource Include="Report\XtraReport_DSSV.resx">
+      <DependentUpon>XtraReport_DSSV.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Report\XtraReport_DSTHM.resx">
       <DependentUpon>XtraReport_DSTHM.cs</DependentUpon>

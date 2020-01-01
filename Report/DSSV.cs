@@ -75,7 +75,7 @@ namespace QLDSV.Report
 
         private void button_IN_Click(object sender, EventArgs e)
         {
-            XtraReport_DSSV_TheoLop report = new XtraReport_DSSV_TheoLop(this.cmbTenLop.SelectedValue.ToString());
+            XtraReport_DSSV report = new XtraReport_DSSV(this.cmbTenLop.SelectedValue.ToString());
             report.lblTenLop.Text = cmbTenLop.Text;
             report.lblAuthor.Text = "Người In Ấn : " + Program.MHoten;
             ReportPrintTool print = new ReportPrintTool(report);

@@ -6,9 +6,9 @@ using DevExpress.XtraReports.UI;
 
 namespace QLDSV.Report
 {
-    public partial class XtraReport_DSSV_TheoLop : DevExpress.XtraReports.UI.XtraReport
+    public partial class XtraReport_DSSV : DevExpress.XtraReports.UI.XtraReport
     {
-        public XtraReport_DSSV_TheoLop(string MALOP)
+        public XtraReport_DSSV(string MALOP)
         {
             InitializeComponent();
             ds1.EnforceConstraints = false;
