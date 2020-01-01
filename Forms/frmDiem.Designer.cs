@@ -327,6 +327,8 @@
             // 
             this.colHoTen.AppearanceCell.Options.UseTextOptions = true;
             this.colHoTen.AppearanceCell.TextOptions.HAlignment = DevExpress.Utils.HorzAlignment.Center;
+            this.colHoTen.AppearanceHeader.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(192)))), ((int)(((byte)(192)))));
+            this.colHoTen.AppearanceHeader.Options.UseBackColor = true;
             this.colHoTen.AppearanceHeader.Options.UseTextOptions = true;
             this.colHoTen.AppearanceHeader.TextOptions.HAlignment = DevExpress.Utils.HorzAlignment.Center;
             this.colHoTen.Caption = "Họ và Tên";
@@ -340,6 +342,8 @@
             // 
             this.colMASV.AppearanceCell.Options.UseTextOptions = true;
             this.colMASV.AppearanceCell.TextOptions.HAlignment = DevExpress.Utils.HorzAlignment.Center;
+            this.colMASV.AppearanceHeader.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(192)))), ((int)(((byte)(192)))));
+            this.colMASV.AppearanceHeader.Options.UseBackColor = true;
             this.colMASV.AppearanceHeader.Options.UseTextOptions = true;
             this.colMASV.AppearanceHeader.TextOptions.HAlignment = DevExpress.Utils.HorzAlignment.Center;
             this.colMASV.Caption = "Mã sinh viên";
@@ -353,6 +357,8 @@
             // 
             this.colDIEM.AppearanceCell.Options.UseTextOptions = true;
             this.colDIEM.AppearanceCell.TextOptions.HAlignment = DevExpress.Utils.HorzAlignment.Center;
+            this.colDIEM.AppearanceHeader.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(192)))), ((int)(((byte)(192)))));
+            this.colDIEM.AppearanceHeader.Options.UseBackColor = true;
             this.colDIEM.AppearanceHeader.Options.UseTextOptions = true;
             this.colDIEM.AppearanceHeader.TextOptions.HAlignment = DevExpress.Utils.HorzAlignment.Center;
             this.colDIEM.Caption = "Điểm";

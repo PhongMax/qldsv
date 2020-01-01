@@ -57,6 +57,7 @@
             this.SINHVIENTableAdapter = new QLDSV.DSTableAdapters.SINHVIENTableAdapter();
             this.pnLop = new DevExpress.XtraEditors.PanelControl();
             this.grbNhapSV = new System.Windows.Forms.GroupBox();
+            this.picture = new System.Windows.Forms.PictureBox();
             this.txtMaLop = new DevExpress.XtraEditors.TextEdit();
             this.txtMaKhoa = new DevExpress.XtraEditors.TextEdit();
             this.txtTenLop = new DevExpress.XtraEditors.TextEdit();
@@ -68,7 +69,6 @@
             this.colTENLOP = new DevExpress.XtraGrid.Columns.GridColumn();
             this.colMAKH = new DevExpress.XtraGrid.Columns.GridColumn();
             this.errorProvider = new System.Windows.Forms.ErrorProvider(this.components);
-            this.picture = new System.Windows.Forms.PictureBox();
             tENLOPLabel = new System.Windows.Forms.Label();
             mAKHLabel = new System.Windows.Forms.Label();
             mALOPLabel = new System.Windows.Forms.Label();
@@ -79,6 +79,7 @@
             ((System.ComponentModel.ISupportInitialize)(this.pnLop)).BeginInit();
             this.pnLop.SuspendLayout();
             this.grbNhapSV.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.picture)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.txtMaLop.Properties)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.txtMaKhoa.Properties)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.txtTenLop.Properties)).BeginInit();
@@ -87,7 +88,6 @@
             ((System.ComponentModel.ISupportInitialize)(this.lOPGridControl)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.gridView1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.errorProvider)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.picture)).BeginInit();
             this.SuspendLayout();
             // 
             // tENLOPLabel
@@ -341,6 +341,16 @@
             this.grbNhapSV.TabStop = false;
             this.grbNhapSV.Text = "Nhập thông tin lớp";
             // 
+            // picture
+            // 
+            this.picture.Image = ((System.Drawing.Image)(resources.GetObject("picture.Image")));
+            this.picture.Location = new System.Drawing.Point(6, 19);
+            this.picture.Name = "picture";
+            this.picture.Size = new System.Drawing.Size(138, 134);
+            this.picture.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
+            this.picture.TabIndex = 6;
+            this.picture.TabStop = false;
+            // 
             // txtMaLop
             // 
             this.txtMaLop.DataBindings.Add(new System.Windows.Forms.Binding("EditValue", this.bdsLOP, "MALOP", true));
@@ -434,7 +444,9 @@
             // 
             // colMALOP
             // 
+            this.colMALOP.AppearanceHeader.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(192)))), ((int)(((byte)(192)))));
             this.colMALOP.AppearanceHeader.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.colMALOP.AppearanceHeader.Options.UseBackColor = true;
             this.colMALOP.AppearanceHeader.Options.UseFont = true;
             this.colMALOP.Caption = "Mã Lớp";
             this.colMALOP.FieldName = "MALOP";
@@ -452,7 +464,9 @@
             // 
             this.colTENLOP.AppearanceCell.Options.UseTextOptions = true;
             this.colTENLOP.AppearanceCell.TextOptions.HAlignment = DevExpress.Utils.HorzAlignment.Near;
+            this.colTENLOP.AppearanceHeader.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(192)))), ((int)(((byte)(192)))));
             this.colTENLOP.AppearanceHeader.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.colTENLOP.AppearanceHeader.Options.UseBackColor = true;
             this.colTENLOP.AppearanceHeader.Options.UseFont = true;
             this.colTENLOP.AppearanceHeader.Options.UseTextOptions = true;
             this.colTENLOP.AppearanceHeader.TextOptions.HAlignment = DevExpress.Utils.HorzAlignment.Center;
@@ -467,7 +481,9 @@
             // 
             // colMAKH
             // 
+            this.colMAKH.AppearanceHeader.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(192)))), ((int)(((byte)(192)))));
             this.colMAKH.AppearanceHeader.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.colMAKH.AppearanceHeader.Options.UseBackColor = true;
             this.colMAKH.AppearanceHeader.Options.UseFont = true;
             this.colMAKH.Caption = "Mã Khoa";
             this.colMAKH.FieldName = "MAKH";
@@ -481,16 +497,6 @@
             // errorProvider
             // 
             this.errorProvider.ContainerControl = this;
-            // 
-            // picture
-            // 
-            this.picture.Image = ((System.Drawing.Image)(resources.GetObject("picture.Image")));
-            this.picture.Location = new System.Drawing.Point(6, 19);
-            this.picture.Name = "picture";
-            this.picture.Size = new System.Drawing.Size(138, 134);
-            this.picture.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
-            this.picture.TabIndex = 6;
-            this.picture.TabStop = false;
             // 
             // frmLop
             // 
@@ -516,6 +522,7 @@
             this.pnLop.ResumeLayout(false);
             this.grbNhapSV.ResumeLayout(false);
             this.grbNhapSV.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.picture)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.txtMaLop.Properties)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.txtMaKhoa.Properties)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.txtTenLop.Properties)).EndInit();
@@ -524,7 +531,6 @@
             ((System.ComponentModel.ISupportInitialize)(this.lOPGridControl)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.gridView1)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.errorProvider)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.picture)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 

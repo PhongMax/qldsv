@@ -315,6 +315,8 @@
             // 
             // colMASV
             // 
+            this.colMASV.AppearanceHeader.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(192)))), ((int)(((byte)(192)))));
+            this.colMASV.AppearanceHeader.Options.UseBackColor = true;
             this.colMASV.FieldName = "MASV";
             this.colMASV.Name = "colMASV";
             this.colMASV.OptionsColumn.AllowEdit = false;
@@ -323,6 +325,8 @@
             // 
             this.colNIENKHOA.AppearanceCell.Options.UseTextOptions = true;
             this.colNIENKHOA.AppearanceCell.TextOptions.HAlignment = DevExpress.Utils.HorzAlignment.Center;
+            this.colNIENKHOA.AppearanceHeader.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(192)))), ((int)(((byte)(192)))));
+            this.colNIENKHOA.AppearanceHeader.Options.UseBackColor = true;
             this.colNIENKHOA.AppearanceHeader.Options.UseTextOptions = true;
             this.colNIENKHOA.AppearanceHeader.TextOptions.HAlignment = DevExpress.Utils.HorzAlignment.Center;
             this.colNIENKHOA.Caption = "NIÊN KHÓA";
@@ -336,6 +340,8 @@
             // 
             this.colHOCKY.AppearanceCell.Options.UseTextOptions = true;
             this.colHOCKY.AppearanceCell.TextOptions.HAlignment = DevExpress.Utils.HorzAlignment.Center;
+            this.colHOCKY.AppearanceHeader.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(192)))), ((int)(((byte)(192)))));
+            this.colHOCKY.AppearanceHeader.Options.UseBackColor = true;
             this.colHOCKY.AppearanceHeader.Options.UseTextOptions = true;
             this.colHOCKY.AppearanceHeader.TextOptions.HAlignment = DevExpress.Utils.HorzAlignment.Center;
             this.colHOCKY.Caption = "HỌC KỲ";
@@ -349,6 +355,8 @@
             // 
             this.colHOCPHI.AppearanceCell.Options.UseTextOptions = true;
             this.colHOCPHI.AppearanceCell.TextOptions.HAlignment = DevExpress.Utils.HorzAlignment.Center;
+            this.colHOCPHI.AppearanceHeader.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(192)))), ((int)(((byte)(192)))));
+            this.colHOCPHI.AppearanceHeader.Options.UseBackColor = true;
             this.colHOCPHI.AppearanceHeader.Options.UseTextOptions = true;
             this.colHOCPHI.AppearanceHeader.TextOptions.HAlignment = DevExpress.Utils.HorzAlignment.Center;
             this.colHOCPHI.Caption = "HỌC PHÍ";
@@ -362,6 +370,8 @@
             // 
             this.colSOTIENDADONG.AppearanceCell.Options.UseTextOptions = true;
             this.colSOTIENDADONG.AppearanceCell.TextOptions.HAlignment = DevExpress.Utils.HorzAlignment.Center;
+            this.colSOTIENDADONG.AppearanceHeader.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(192)))), ((int)(((byte)(192)))));
+            this.colSOTIENDADONG.AppearanceHeader.Options.UseBackColor = true;
             this.colSOTIENDADONG.AppearanceHeader.Options.UseTextOptions = true;
             this.colSOTIENDADONG.AppearanceHeader.TextOptions.HAlignment = DevExpress.Utils.HorzAlignment.Center;
             this.colSOTIENDADONG.Caption = "SỐ TIỀN ĐÃ ĐÓNG";

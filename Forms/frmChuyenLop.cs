@@ -25,6 +25,10 @@ namespace QLDSV.Forms
 
         private void frmChuyenLop_Load(object sender, EventArgs e)
         {
+            // TODO: This line of code loads data into the 'dS.SINHVIEN' table. You can move, or remove it, as needed.
+            this.SINHVIENTableAdapter.Fill(this.DS.SINHVIEN);
+            // TODO: This line of code loads data into the 'dS.SINHVIEN' table. You can move, or remove it, as needed.
+            this.SINHVIENTableAdapter.Fill(this.DS.SINHVIEN);
             this.buttonOK.Visible = false;
             this.labelMaSVMoi.Visible = false;
             this.txtMaSVMoi.Visible = false;
@@ -46,7 +50,6 @@ namespace QLDSV.Forms
             string QUERY = "";
 
             string MASV = "";
-            string MALOP = "";
 
             SqlCommand command;
             SqlDataReader dataReader;
@@ -419,6 +422,14 @@ namespace QLDSV.Forms
 
         }
 
+        private void lookUpEditChuyenLop_EditValueChanged(object sender, EventArgs e)
+        {
+            var selectedSV = lookUpEditChuyenLop.GetSelectedDataRow() as DataRowView;
 
+            txtTenSV.Text = selectedSV.Row["HO"] + " " + selectedSV.Row["TEN"];
+            txtMaLop.Text = selectedSV.Row["MALOP"].ToString();
+            txtMaSV.Text = selectedSV.Row["MASV"].ToString().Trim();
+            
+        }
     }
 }

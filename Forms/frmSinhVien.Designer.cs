@@ -394,7 +394,9 @@
             // 
             // colMALOP
             // 
+            this.colMALOP.AppearanceHeader.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(192)))), ((int)(((byte)(192)))));
             this.colMALOP.AppearanceHeader.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.colMALOP.AppearanceHeader.Options.UseBackColor = true;
             this.colMALOP.AppearanceHeader.Options.UseFont = true;
             this.colMALOP.Caption = "Mã Lớp";
             this.colMALOP.FieldName = "MALOP";
@@ -412,7 +414,9 @@
             // 
             this.colTENLOP.AppearanceCell.Options.UseTextOptions = true;
             this.colTENLOP.AppearanceCell.TextOptions.HAlignment = DevExpress.Utils.HorzAlignment.Near;
+            this.colTENLOP.AppearanceHeader.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(192)))), ((int)(((byte)(192)))));
             this.colTENLOP.AppearanceHeader.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.colTENLOP.AppearanceHeader.Options.UseBackColor = true;
             this.colTENLOP.AppearanceHeader.Options.UseFont = true;
             this.colTENLOP.AppearanceHeader.Options.UseTextOptions = true;
             this.colTENLOP.AppearanceHeader.TextOptions.HAlignment = DevExpress.Utils.HorzAlignment.Center;
@@ -427,7 +431,9 @@
             // 
             // colMAKH
             // 
+            this.colMAKH.AppearanceHeader.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(192)))), ((int)(((byte)(192)))));
             this.colMAKH.AppearanceHeader.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.colMAKH.AppearanceHeader.Options.UseBackColor = true;
             this.colMAKH.AppearanceHeader.Options.UseFont = true;
             this.colMAKH.Caption = "Mã Khoa";
             this.colMAKH.FieldName = "MAKH";
@@ -613,7 +619,9 @@
             // 
             this.colMASV.AppearanceCell.Options.UseTextOptions = true;
             this.colMASV.AppearanceCell.TextOptions.HAlignment = DevExpress.Utils.HorzAlignment.Center;
+            this.colMASV.AppearanceHeader.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(192)))), ((int)(((byte)(192)))));
             this.colMASV.AppearanceHeader.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.colMASV.AppearanceHeader.Options.UseBackColor = true;
             this.colMASV.AppearanceHeader.Options.UseFont = true;
             this.colMASV.AppearanceHeader.Options.UseTextOptions = true;
             this.colMASV.AppearanceHeader.TextOptions.HAlignment = DevExpress.Utils.HorzAlignment.Center;
@@ -635,7 +643,9 @@
             // 
             this.colHO.AppearanceCell.Options.UseTextOptions = true;
             this.colHO.AppearanceCell.TextOptions.HAlignment = DevExpress.Utils.HorzAlignment.Center;
+            this.colHO.AppearanceHeader.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(192)))), ((int)(((byte)(192)))));
             this.colHO.AppearanceHeader.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.colHO.AppearanceHeader.Options.UseBackColor = true;
             this.colHO.AppearanceHeader.Options.UseFont = true;
             this.colHO.AppearanceHeader.Options.UseTextOptions = true;
             this.colHO.AppearanceHeader.TextOptions.HAlignment = DevExpress.Utils.HorzAlignment.Center;
@@ -650,7 +660,9 @@
             // 
             this.colTEN.AppearanceCell.Options.UseTextOptions = true;
             this.colTEN.AppearanceCell.TextOptions.HAlignment = DevExpress.Utils.HorzAlignment.Center;
+            this.colTEN.AppearanceHeader.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(192)))), ((int)(((byte)(192)))));
             this.colTEN.AppearanceHeader.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.colTEN.AppearanceHeader.Options.UseBackColor = true;
             this.colTEN.AppearanceHeader.Options.UseFont = true;
             this.colTEN.AppearanceHeader.Options.UseTextOptions = true;
             this.colTEN.AppearanceHeader.TextOptions.HAlignment = DevExpress.Utils.HorzAlignment.Center;
@@ -665,7 +677,9 @@
             // 
             this.colMALOP1.AppearanceCell.Options.UseTextOptions = true;
             this.colMALOP1.AppearanceCell.TextOptions.HAlignment = DevExpress.Utils.HorzAlignment.Center;
+            this.colMALOP1.AppearanceHeader.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(192)))), ((int)(((byte)(192)))));
             this.colMALOP1.AppearanceHeader.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.colMALOP1.AppearanceHeader.Options.UseBackColor = true;
             this.colMALOP1.AppearanceHeader.Options.UseFont = true;
             this.colMALOP1.AppearanceHeader.Options.UseTextOptions = true;
             this.colMALOP1.AppearanceHeader.TextOptions.HAlignment = DevExpress.Utils.HorzAlignment.Center;
@@ -681,7 +695,9 @@
             // 
             this.colPHAI.AppearanceCell.Options.UseTextOptions = true;
             this.colPHAI.AppearanceCell.TextOptions.HAlignment = DevExpress.Utils.HorzAlignment.Center;
+            this.colPHAI.AppearanceHeader.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(192)))), ((int)(((byte)(192)))));
             this.colPHAI.AppearanceHeader.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.colPHAI.AppearanceHeader.Options.UseBackColor = true;
             this.colPHAI.AppearanceHeader.Options.UseFont = true;
             this.colPHAI.AppearanceHeader.Options.UseTextOptions = true;
             this.colPHAI.AppearanceHeader.TextOptions.HAlignment = DevExpress.Utils.HorzAlignment.Center;
@@ -697,7 +713,9 @@
             // 
             this.colNGAYSINH.AppearanceCell.Options.UseTextOptions = true;
             this.colNGAYSINH.AppearanceCell.TextOptions.HAlignment = DevExpress.Utils.HorzAlignment.Center;
+            this.colNGAYSINH.AppearanceHeader.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(192)))), ((int)(((byte)(192)))));
             this.colNGAYSINH.AppearanceHeader.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.colNGAYSINH.AppearanceHeader.Options.UseBackColor = true;
             this.colNGAYSINH.AppearanceHeader.Options.UseFont = true;
             this.colNGAYSINH.AppearanceHeader.Options.UseTextOptions = true;
             this.colNGAYSINH.AppearanceHeader.TextOptions.HAlignment = DevExpress.Utils.HorzAlignment.Center;
@@ -712,7 +730,9 @@
             // 
             this.colNOISINH.AppearanceCell.Options.UseTextOptions = true;
             this.colNOISINH.AppearanceCell.TextOptions.HAlignment = DevExpress.Utils.HorzAlignment.Center;
+            this.colNOISINH.AppearanceHeader.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(192)))), ((int)(((byte)(192)))));
             this.colNOISINH.AppearanceHeader.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.colNOISINH.AppearanceHeader.Options.UseBackColor = true;
             this.colNOISINH.AppearanceHeader.Options.UseFont = true;
             this.colNOISINH.AppearanceHeader.Options.UseTextOptions = true;
             this.colNOISINH.AppearanceHeader.TextOptions.HAlignment = DevExpress.Utils.HorzAlignment.Center;
@@ -727,7 +747,9 @@
             // 
             this.colDIACHI.AppearanceCell.Options.UseTextOptions = true;
             this.colDIACHI.AppearanceCell.TextOptions.HAlignment = DevExpress.Utils.HorzAlignment.Center;
+            this.colDIACHI.AppearanceHeader.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(192)))), ((int)(((byte)(192)))));
             this.colDIACHI.AppearanceHeader.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.colDIACHI.AppearanceHeader.Options.UseBackColor = true;
             this.colDIACHI.AppearanceHeader.Options.UseFont = true;
             this.colDIACHI.AppearanceHeader.Options.UseTextOptions = true;
             this.colDIACHI.AppearanceHeader.TextOptions.HAlignment = DevExpress.Utils.HorzAlignment.Center;
@@ -742,7 +764,9 @@
             // 
             this.colGHICHU.AppearanceCell.Options.UseTextOptions = true;
             this.colGHICHU.AppearanceCell.TextOptions.HAlignment = DevExpress.Utils.HorzAlignment.Center;
+            this.colGHICHU.AppearanceHeader.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(192)))), ((int)(((byte)(192)))));
             this.colGHICHU.AppearanceHeader.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.colGHICHU.AppearanceHeader.Options.UseBackColor = true;
             this.colGHICHU.AppearanceHeader.Options.UseFont = true;
             this.colGHICHU.AppearanceHeader.Options.UseTextOptions = true;
             this.colGHICHU.AppearanceHeader.TextOptions.HAlignment = DevExpress.Utils.HorzAlignment.Center;
@@ -757,7 +781,9 @@
             // 
             this.colNGHIHOC.AppearanceCell.Options.UseTextOptions = true;
             this.colNGHIHOC.AppearanceCell.TextOptions.HAlignment = DevExpress.Utils.HorzAlignment.Center;
+            this.colNGHIHOC.AppearanceHeader.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(192)))), ((int)(((byte)(192)))));
             this.colNGHIHOC.AppearanceHeader.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.colNGHIHOC.AppearanceHeader.Options.UseBackColor = true;
             this.colNGHIHOC.AppearanceHeader.Options.UseFont = true;
             this.colNGHIHOC.AppearanceHeader.Options.UseTextOptions = true;
             this.colNGHIHOC.AppearanceHeader.TextOptions.HAlignment = DevExpress.Utils.HorzAlignment.Center;
