@@ -13,12 +13,15 @@ using DevExpress.XtraGrid.Views.Base;
 using System.Globalization;
 using DevExpress.Utils;
 using DevExpress.XtraGrid.Views.Grid;
+using DevExpress.XtraGrid.Columns;
+using DevExpress.XtraEditors.Controls;
 
 namespace QLDSV.Forms
 {
     public partial class frmHocPhi : DevExpress.XtraEditors.XtraForm
     {
         private int _position ;
+        private Boolean _flagEdit = false;
         public frmHocPhi()
         {
             InitializeComponent();
@@ -27,14 +30,14 @@ namespace QLDSV.Forms
 
         private void EnableEditMode()
         {
-            btnThem.Enabled = btnLamMoi.Enabled = false;
+            btnThem.Enabled =  false;
             btnGhi.Enabled = gbTTHocPhi.Enabled = true;
             cmbSinhVien.ReadOnly = true;
         }
 
         private void DisableEditMode()
         {
-             btnLamMoi.Enabled = btnThoat.Enabled = true;
+            btnThoat.Enabled = true;
             btnGhi.Enabled = gbTTHocPhi.Enabled = false;
             cmbSinhVien.ReadOnly = false;
         }
@@ -54,6 +57,9 @@ namespace QLDSV.Forms
      
         private bool KiemTraMaTrung(string maSV, string nienKhoa, string hocKy)
         {
+
+          
+
             string query1 = " DECLARE @return_value int "  + 
 
                             " EXEC    @return_value = [dbo].[SP_CHECKIDHOCPHI] " + 
@@ -83,18 +89,26 @@ namespace QLDSV.Forms
 
         private bool CanSave()
         {
-            
+            // trường hợp đặc biệt nếu như sửa học phí thì sẽ cho save --> true
+            if (_flagEdit)
+                return true;
 
-            if (KiemTraMaTrung(cmbSinhVien.Text, txtNienKhoa.Text, spiHocKy.EditValue.ToString()) == true)
+
+            if (KiemTraMaTrung(cmbSinhVien.Text, txtNienKhoa.Text, spiHocKy.EditValue.ToString()) == true  )
             {
                 String notifi = "Sinh viên này đã đóng học phí trong học kỳ. Bạn có muốn chỉnh sửa !";
 
                 DialogResult dr = XtraMessageBox.Show(notifi, "Cảnh báo", MessageBoxButtons.YesNo, MessageBoxIcon.Information);
 
 
+
+                // cancel edit dòng hiện tại.
               
-                // remove current
-                bdsHocPhi.RemoveCurrent();
+                if (this.gvTTHocPhi.IsNewItemRow(this.gvTTHocPhi.FocusedRowHandle))
+                {
+                    bdsHocPhi.CancelEdit();
+       
+                }
                
                 if (dr == DialogResult.No)
                 {
@@ -103,10 +117,10 @@ namespace QLDSV.Forms
                 }
                 else if (dr == DialogResult.Yes)
                 {
-                    this.colHOCPHI.OptionsColumn.ReadOnly = false;
-                    this.colSOTIENDADONG.OptionsColumn.ReadOnly = false;
+                    _flagEdit = true;
 
-                  
+                    XtraMessageBox.Show("Bạn hãy chỉnh sửa ở lưới này ", "", MessageBoxButtons.OK);
+
                     return false;
 
                 }
@@ -120,19 +134,22 @@ namespace QLDSV.Forms
         private bool Save()
         {
             bool isSuccess = true;
-            // _position = bdsSinhVien.Position;
+          
             try
             {
-                // trường hợp thêm mới ...
-                //if (this.colSOTIENDADONG.ReadOnly == true)
-                //{
-                //    ((DataRowView)bdsHocPhi.Current)["MASV"] = (String)cmbSinhVien.EditValue;
-                //    bdsHocPhi.EndEdit();
-                //}
-                ((DataRowView)bdsHocPhi.Current)["MASV"] = (String)cmbSinhVien.EditValue;
+               
+
+
+                // phục vụ cho việc ghi mới dữ liệu nếu _flagEdit = false
+                if(!_flagEdit)
+                {
+                    ((DataRowView)bdsHocPhi.Current)["MASV"] = (String)cmbSinhVien.EditValue;
+                   
+                }
+
+                // cập nhật dữ liệu.
                 bdsHocPhi.EndEdit();
                 this.bdsHocPhi.ResetCurrentItem();
-
                 this.HOCPHITableAdapter.Connection.ConnectionString = Program.URL_Connect;
                 this.HOCPHITableAdapter.Update(this.DS.HOCPHI);
 
@@ -180,10 +197,8 @@ namespace QLDSV.Forms
 
             }
 
-            // nghiệp vụ
-            this.colHOCPHI.OptionsColumn.ReadOnly = false;
-            this.colSOTIENDADONG.OptionsColumn.ReadOnly = false;
-
+         
+           
             _position = bdsSinhVien.Position;
             bdsHocPhi.AddNew();
             EnableEditMode();
@@ -203,29 +218,38 @@ namespace QLDSV.Forms
                 bdsHocPhi.RemoveCurrent();
                 return;
             }
-            if (CanSave())
+
+            try
             {
-                if  (Save())
+                if (CanSave())
                 {
-                    XtraMessageBox.Show("Ghi thông tin đóng học phí thành công !", "", MessageBoxButtons.OK);
+                    if (Save())
+                    {
+                        XtraMessageBox.Show("Ghi thông tin đóng học phí thành công !", "", MessageBoxButtons.OK);
+                    }
+                    else
+                    {
+                        XtraMessageBox.Show("Lỗi  !", "", MessageBoxButtons.OK);
+                    }
                 }
                 else
                 {
-                    XtraMessageBox.Show("Lỗi  !", "", MessageBoxButtons.OK);
+                    return;
                 }
+
+
+            }
+            catch (Exception)
+            {
+
             }
 
-            //XtraMessageBox.Show("Ghi thông tin đóng học phí thành công !"  + bdsSinhVien.Position, "", MessageBoxButtons.OK);
+            //nghiệp vụ
+            _flagEdit = false;
 
-            //this.HOCPHITableAdapter.Connection.ConnectionString = Program.URL_Connect;
-            //this.HOCPHITableAdapter.Fill(DS.HOCPHI);
         }
 
-        private void btnLamMoi_ItemClick(object sender, DevExpress.XtraBars.ItemClickEventArgs e)
-        {
-            loadInitializeData();
-        }
-
+       
         private void btnThoat_ItemClick(object sender, DevExpress.XtraBars.ItemClickEventArgs e)
         {
           
@@ -257,6 +281,9 @@ namespace QLDSV.Forms
             this.SINHVIENTableAdapter.Connection.ConnectionString = Program.URL_Connect;
             this.SINHVIENTableAdapter.Fill(this.DS.SINHVIEN);
             DisableEditMode();
+
+          
+       
         }
 
    
@@ -305,6 +332,48 @@ namespace QLDSV.Forms
                 e.Appearance.BackColor = Color.LawnGreen;
             }
         }
+
+        private void gvTTHocPhi_FocusedRowChanged(object sender, FocusedRowChangedEventArgs e)
+        {
+            if (_flagEdit)
+            {
+                this.colHOCPHI.OptionsColumn.AllowEdit = true;
+                this.colHOCPHI.OptionsColumn.ReadOnly = false;
+                this.colSOTIENDADONG.OptionsColumn.AllowEdit = true;
+                this.colSOTIENDADONG.OptionsColumn.ReadOnly = false;
+            }
+            else
+            {
+                this.colHOCPHI.OptionsColumn.AllowEdit = false;
+                this.colSOTIENDADONG.OptionsColumn.AllowEdit = false;
+            }
+
+        }
+
+        private void gvTTHocPhi_ValidateRow(object sender, ValidateRowEventArgs e)
+        {
+            GridView view = sender as GridView;
+            GridColumn colHocPhi = view.Columns["HOCPHI"];
+            GridColumn colTienDaDong = view.Columns["SOTIENDADONG"];
+
+            double soHocPhi = double.Parse(view.GetRowCellValue(e.RowHandle, colHocPhi).ToString());
+            double soDaDong = double.Parse(view.GetRowCellValue(e.RowHandle, colTienDaDong).ToString());
+
+            //Validity criterion 
+            if (soHocPhi < soDaDong)
+            {
+                e.Valid = false;
+                view.SetColumnError(colHocPhi, "Số tiền học phí phải lớn hơn hoặc bằng số tiền đã đóng");
+                view.SetColumnError(colTienDaDong, "Số tiền đã đóng phải nhỏ hơn hoặc bằng số tiền học phí");
+            }
+        }
+
+        private void gvTTHocPhi_InvalidRowException(object sender, InvalidRowExceptionEventArgs e)
+        {
+
+            e.ExceptionMode = ExceptionMode.NoAction;
+        }
+
     }
 
    

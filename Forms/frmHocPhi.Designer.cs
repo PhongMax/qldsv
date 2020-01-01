@@ -37,7 +37,6 @@
             this.bar2 = new DevExpress.XtraBars.Bar();
             this.btnThem = new DevExpress.XtraBars.BarButtonItem();
             this.btnGhi = new DevExpress.XtraBars.BarButtonItem();
-            this.btnLamMoi = new DevExpress.XtraBars.BarButtonItem();
             this.btnThoat = new DevExpress.XtraBars.BarButtonItem();
             this.barDockControlTop = new DevExpress.XtraBars.BarDockControl();
             this.barDockControlBottom = new DevExpress.XtraBars.BarDockControl();
@@ -127,7 +126,6 @@
             this.barManager.Items.AddRange(new DevExpress.XtraBars.BarItem[] {
             this.btnThem,
             this.btnGhi,
-            this.btnLamMoi,
             this.btnThoat});
             this.barManager.MainMenu = this.bar2;
             this.barManager.MaxItemId = 7;
@@ -142,7 +140,6 @@
             this.bar2.LinksPersistInfo.AddRange(new DevExpress.XtraBars.LinkPersistInfo[] {
             new DevExpress.XtraBars.LinkPersistInfo(this.btnThem),
             new DevExpress.XtraBars.LinkPersistInfo(this.btnGhi),
-            new DevExpress.XtraBars.LinkPersistInfo(this.btnLamMoi),
             new DevExpress.XtraBars.LinkPersistInfo(this.btnThoat)});
             this.bar2.OptionsBar.MultiLine = true;
             this.bar2.OptionsBar.UseWholeRow = true;
@@ -167,16 +164,6 @@
             this.btnGhi.Name = "btnGhi";
             this.btnGhi.PaintStyle = DevExpress.XtraBars.BarItemPaintStyle.CaptionGlyph;
             this.btnGhi.ItemClick += new DevExpress.XtraBars.ItemClickEventHandler(this.btnGhi_ItemClick);
-            // 
-            // btnLamMoi
-            // 
-            this.btnLamMoi.Caption = "LÀM MỚI";
-            this.btnLamMoi.Id = 5;
-            this.btnLamMoi.ImageOptions.Image = ((System.Drawing.Image)(resources.GetObject("btnLamMoi.ImageOptions.Image")));
-            this.btnLamMoi.ImageOptions.LargeImage = ((System.Drawing.Image)(resources.GetObject("btnLamMoi.ImageOptions.LargeImage")));
-            this.btnLamMoi.Name = "btnLamMoi";
-            this.btnLamMoi.PaintStyle = DevExpress.XtraBars.BarItemPaintStyle.CaptionGlyph;
-            this.btnLamMoi.ItemClick += new DevExpress.XtraBars.ItemClickEventHandler(this.btnLamMoi_ItemClick);
             // 
             // btnThoat
             // 
@@ -321,6 +308,9 @@
             this.gvTTHocPhi.ViewCaption = "THÔNG TIN ĐÓNG HỌC PHÍ CỦA SINH VIÊN";
             this.gvTTHocPhi.CustomDrawRowIndicator += new DevExpress.XtraGrid.Views.Grid.RowIndicatorCustomDrawEventHandler(this.gvTTHocPhi_CustomDrawRowIndicator);
             this.gvTTHocPhi.RowCellStyle += new DevExpress.XtraGrid.Views.Grid.RowCellStyleEventHandler(this.gvTTHocPhi_RowCellStyle);
+            this.gvTTHocPhi.FocusedRowChanged += new DevExpress.XtraGrid.Views.Base.FocusedRowChangedEventHandler(this.gvTTHocPhi_FocusedRowChanged);
+            this.gvTTHocPhi.InvalidRowException += new DevExpress.XtraGrid.Views.Base.InvalidRowExceptionEventHandler(this.gvTTHocPhi_InvalidRowException);
+            this.gvTTHocPhi.ValidateRow += new DevExpress.XtraGrid.Views.Base.ValidateRowEventHandler(this.gvTTHocPhi_ValidateRow);
             this.gvTTHocPhi.CustomColumnDisplayText += new DevExpress.XtraGrid.Views.Base.CustomColumnDisplayTextEventHandler(this.gvTTHocPhi_CustomColumnDisplayText_1);
             // 
             // colMASV
@@ -567,7 +557,6 @@
         private DevExpress.XtraBars.Bar bar2;
         private DevExpress.XtraBars.BarButtonItem btnThem;
         private DevExpress.XtraBars.BarButtonItem btnGhi;
-        private DevExpress.XtraBars.BarButtonItem btnLamMoi;
         private DevExpress.XtraBars.BarButtonItem btnThoat;
         private DevExpress.XtraBars.BarDockControl barDockControlTop;
         private DevExpress.XtraBars.BarDockControl barDockControlBottom;
