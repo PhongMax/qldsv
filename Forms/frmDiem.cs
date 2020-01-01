@@ -11,6 +11,7 @@ using DevExpress.XtraEditors;
 using DevExpress.XtraGrid.Views.Grid;
 using DevExpress.XtraGrid;
 using System.Data.SqlClient;
+using DevExpress.Utils;
 
 namespace QLDSV.Forms
 {
@@ -37,7 +38,7 @@ namespace QLDSV.Forms
             // thoát.
             if (Program.KetNoi() == 0)
             {
-                MessageBox.Show("Lỗi kết nối về chi nhánh mới", "", MessageBoxButtons.OK);
+                XtraMessageBox.Show("Lỗi kết nối về chi nhánh mới", "", MessageBoxButtons.OK);
             }
             else
             {
@@ -62,10 +63,15 @@ namespace QLDSV.Forms
 
         private void frmDiem_Load(object sender, EventArgs e)
         {
+            errorProvider.Clear();
+
             // TODO: load data
             loadInitializeData();
 
+            this.btnNhap.Enabled = true;
             this.btnLuu.Enabled = false;
+            this.groupControlNhapDiem.Enabled = true;
+
 
             // đoạn code liên kết giữa bds với combo box
             // lọc phân mảnh trước
@@ -106,8 +112,7 @@ namespace QLDSV.Forms
 
         private void btnNhap_Click(object sender, EventArgs e)
         {
-            this.btnNhap.Enabled = false;
-            this.btnLuu.Enabled = true;
+           
             errorProvider.Clear();
 
             monhoc = (String)lookUpEditMaMon.EditValue;
@@ -124,8 +129,9 @@ namespace QLDSV.Forms
                 return;
             }
 
-
-
+            this.btnNhap.Enabled = false;
+            this.btnLuu.Enabled = true;
+            this.groupControlNhapDiem.Enabled = false;
 
             // list ra bảng điểm danh sách sinh viên để sửa
             string cmd = "  EXEC[dbo].[SP_BDMH] " +
@@ -239,7 +245,7 @@ namespace QLDSV.Forms
                         }
                         catch (Exception ex)
                         {
-                            MessageBox.Show("Lỗi ghi điểm vào Database. Bạn hãy xem lại ! " + ex.Message, "", MessageBoxButtons.OK);
+                            XtraMessageBox.Show("Lỗi ghi điểm vào Database. Bạn hãy xem lại ! " + ex.Message, "", MessageBoxButtons.OK);
                             conn.Close();
                             return;
 
@@ -248,9 +254,10 @@ namespace QLDSV.Forms
                     }
                 }
 
-                MessageBox.Show("Thao tác thành công!", "", MessageBoxButtons.OK);
+                XtraMessageBox.Show("Thao tác thành công!", "", MessageBoxButtons.OK);
                 this.btnNhap.Enabled = true;
                 this.btnLuu.Enabled = false;
+                this.groupControlNhapDiem.Enabled = true;
                 return;
             }
         }
@@ -313,7 +320,29 @@ namespace QLDSV.Forms
             }
         }
 
+        private void gridViewDiem_CustomDrawRowIndicator(object sender, RowIndicatorCustomDrawEventArgs e)
+        {
+             e.Handled = true;
+            SolidBrush brush = new SolidBrush(Color.FromArgb(0xC6, 0x64, 0xFF));
+            e.Graphics.FillRectangle(brush, e.Bounds);
+            e.Graphics.DrawRectangle(Pens.Black, new Rectangle(e.Bounds.X, e.Bounds.Y, e.Bounds.Width - 1, e.Bounds.Height));
+            Size size = ImageCollection.GetImageListSize(e.Info.ImageCollection);
+            Rectangle r = e.Bounds;
+            ImageCollection.DrawImageListImage(e.Cache, e.Info.ImageCollection, e.Info.ImageIndex,
+                    new Rectangle(r.X + (r.Width - size.Width) / 2, r.Y + (r.Height - size.Height) / 2, size.Width, size.Height));
+            brush.Dispose();
+        }
+
       
-     
+
+        private void btnHuyy_Click(object sender, EventArgs e)
+        {
+            // get binding source từ gridcontrol
+            BindingSource bdsTemp = (BindingSource)this.gridControlDiem.DataSource;
+            bdsTemp.CancelEdit();
+            bdsTemp.ResetBindings(true);
+            // gọi lại form load.
+            frmDiem_Load(sender, e);
+        }
     }
 }

@@ -31,6 +31,7 @@ namespace QLDSV
                 this.barButtonItem_SinhVien.Enabled = false;
                 this.barButtonItem_Diem.Enabled = false;
                 this.barButtonItem_ChuyenLop.Enabled = false;
+                this.barBtnHocPhi.Enabled = true;
 
                 this.barButton_DSDHP.Enabled = true;
                 this.barButton_DSSV.Enabled = false;
@@ -42,6 +43,7 @@ namespace QLDSV
             else
             {
                 this.barButton_DSDHP.Enabled = false;
+                this.barBtnHocPhi.Enabled = false;
             }
 
         }
@@ -106,7 +108,7 @@ namespace QLDSV
         {
             if (!dangxuat)
             {
-                if (MessageBox.Show("Bạn có thực sự muốn thoát?", "Xác nhận", MessageBoxButtons.YesNo) == DialogResult.No)
+                if (XtraMessageBox.Show("Bạn có thực sự muốn thoát?", "Xác nhận", MessageBoxButtons.YesNo) == DialogResult.No)
                 {
                     e.Cancel = true;
                     return;
@@ -176,6 +178,14 @@ namespace QLDSV
             if (!(Program.MGroup == Program.NhomQuyen[2]))
             {
                 ShowMdiChildren(typeof(frmDiem));
+            }
+        }
+
+        private void barBtnHocPhi_ItemClick(object sender, DevExpress.XtraBars.ItemClickEventArgs e)
+        {
+            if ((Program.MGroup == Program.NhomQuyen[2]))
+            {
+                ShowMdiChildren(typeof(frmHocPhi));
             }
         }
     }

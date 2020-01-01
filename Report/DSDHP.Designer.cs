@@ -54,14 +54,14 @@
             this.panel1.Dock = System.Windows.Forms.DockStyle.Top;
             this.panel1.Location = new System.Drawing.Point(0, 0);
             this.panel1.Name = "panel1";
-            this.panel1.Size = new System.Drawing.Size(674, 163);
+            this.panel1.Size = new System.Drawing.Size(991, 163);
             this.panel1.TabIndex = 0;
             // 
             // labelHocKi
             // 
             this.labelHocKi.AutoSize = true;
             this.labelHocKi.Font = new System.Drawing.Font("Consolas", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.labelHocKi.Location = new System.Drawing.Point(174, 76);
+            this.labelHocKi.Location = new System.Drawing.Point(376, 76);
             this.labelHocKi.Name = "labelHocKi";
             this.labelHocKi.Size = new System.Drawing.Size(63, 19);
             this.labelHocKi.TabIndex = 7;
@@ -71,7 +71,7 @@
             // 
             this.labelNienKhoa.AutoSize = true;
             this.labelNienKhoa.Font = new System.Drawing.Font("Consolas", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.labelNienKhoa.Location = new System.Drawing.Point(174, 50);
+            this.labelNienKhoa.Location = new System.Drawing.Point(376, 50);
             this.labelNienKhoa.Name = "labelNienKhoa";
             this.labelNienKhoa.Size = new System.Drawing.Size(90, 19);
             this.labelNienKhoa.TabIndex = 6;
@@ -81,7 +81,7 @@
             // 
             this.labelMaLop.AutoSize = true;
             this.labelMaLop.Font = new System.Drawing.Font("Consolas", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.labelMaLop.Location = new System.Drawing.Point(174, 21);
+            this.labelMaLop.Location = new System.Drawing.Point(376, 21);
             this.labelMaLop.Name = "labelMaLop";
             this.labelMaLop.Size = new System.Drawing.Size(63, 19);
             this.labelMaLop.TabIndex = 5;
@@ -91,7 +91,7 @@
             // 
             this.button_THOAT.BackColor = System.Drawing.Color.LightCoral;
             this.button_THOAT.Font = new System.Drawing.Font("Consolas", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.button_THOAT.Location = new System.Drawing.Point(452, 110);
+            this.button_THOAT.Location = new System.Drawing.Point(654, 110);
             this.button_THOAT.Name = "button_THOAT";
             this.button_THOAT.Size = new System.Drawing.Size(75, 33);
             this.button_THOAT.TabIndex = 4;
@@ -102,7 +102,7 @@
             // txtHocKi
             // 
             this.txtHocKi.Font = new System.Drawing.Font("Consolas", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.txtHocKi.Location = new System.Drawing.Point(269, 73);
+            this.txtHocKi.Location = new System.Drawing.Point(471, 73);
             this.txtHocKi.Name = "txtHocKi";
             this.txtHocKi.Size = new System.Drawing.Size(258, 23);
             this.txtHocKi.TabIndex = 3;
@@ -110,7 +110,7 @@
             // txtNienKhoa
             // 
             this.txtNienKhoa.Font = new System.Drawing.Font("Consolas", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.txtNienKhoa.Location = new System.Drawing.Point(269, 47);
+            this.txtNienKhoa.Location = new System.Drawing.Point(471, 47);
             this.txtNienKhoa.Name = "txtNienKhoa";
             this.txtNienKhoa.Size = new System.Drawing.Size(258, 23);
             this.txtNienKhoa.TabIndex = 2;
@@ -118,7 +118,7 @@
             // txtMaLop
             // 
             this.txtMaLop.Font = new System.Drawing.Font("Consolas", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.txtMaLop.Location = new System.Drawing.Point(269, 21);
+            this.txtMaLop.Location = new System.Drawing.Point(471, 21);
             this.txtMaLop.Name = "txtMaLop";
             this.txtMaLop.Size = new System.Drawing.Size(258, 23);
             this.txtMaLop.TabIndex = 1;
@@ -127,7 +127,7 @@
             // 
             this.button_IN.BackColor = System.Drawing.Color.DodgerBlue;
             this.button_IN.Font = new System.Drawing.Font("Consolas", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.button_IN.Location = new System.Drawing.Point(371, 110);
+            this.button_IN.Location = new System.Drawing.Point(573, 110);
             this.button_IN.Name = "button_IN";
             this.button_IN.Size = new System.Drawing.Size(75, 33);
             this.button_IN.TabIndex = 0;
@@ -139,7 +139,7 @@
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(674, 393);
+            this.ClientSize = new System.Drawing.Size(991, 393);
             this.Controls.Add(this.panel1);
             this.Name = "DSDHP";
             this.Text = "DANH SÁCH ĐÓNG HỌC PHÍ";

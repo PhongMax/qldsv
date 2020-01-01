@@ -87,7 +87,6 @@
     <Compile Include="Forms\frmChuyenLop.Designer.cs">
       <DependentUpon>frmChuyenLop.cs</DependentUpon>
     </Compile>
-    <Compile Include="EditState.cs" />
     <Compile Include="Forms\frmDangNhap.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -106,11 +105,11 @@
     <Compile Include="Forms\frmHocPhi.Designer.cs">
       <DependentUpon>frmHocPhi.cs</DependentUpon>
     </Compile>
-    <Compile Include="Forms\frmLop.cs">
+    <Compile Include="Forms\frmSinhVien.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="Forms\frmLop.Designer.cs">
-      <DependentUpon>frmLop.cs</DependentUpon>
+    <Compile Include="Forms\frmSinhVien.Designer.cs">
+      <DependentUpon>frmSinhVien.cs</DependentUpon>
     </Compile>
     <Compile Include="Forms\frmMain.cs">
       <SubType>Form</SubType>
@@ -124,11 +123,11 @@
     <Compile Include="Forms\frmMonHoc.Designer.cs">
       <DependentUpon>frmMonHoc.cs</DependentUpon>
     </Compile>
-    <Compile Include="Forms\frmSinhVien.cs">
+    <Compile Include="Forms\frmLop.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="Forms\frmSinhVien.Designer.cs">
-      <DependentUpon>frmSinhVien.cs</DependentUpon>
+    <Compile Include="Forms\frmLop.Designer.cs">
+      <DependentUpon>frmLop.cs</DependentUpon>
     </Compile>
     <Compile Include="Forms\frmDangKy.cs">
       <SubType>Form</SubType>
@@ -136,7 +135,6 @@
     <Compile Include="Forms\frmDangKy.Designer.cs">
       <DependentUpon>frmDangKy.cs</DependentUpon>
     </Compile>
-    <Compile Include="MyHelper.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Report\BDMH.cs">
@@ -221,8 +219,11 @@
     <EmbeddedResource Include="Forms\frmDiem.resx">
       <DependentUpon>frmDiem.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="Forms\frmLop.resx">
-      <DependentUpon>frmLop.cs</DependentUpon>
+    <EmbeddedResource Include="Forms\frmHocPhi.resx">
+      <DependentUpon>frmHocPhi.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Forms\frmSinhVien.resx">
+      <DependentUpon>frmSinhVien.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Forms\frmMain.resx">
       <DependentUpon>frmMain.cs</DependentUpon>
@@ -234,8 +235,8 @@
     <EmbeddedResource Include="Forms\frmMonHoc.resx">
       <DependentUpon>frmMonHoc.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="Forms\frmSinhVien.resx">
-      <DependentUpon>frmSinhVien.cs</DependentUpon>
+    <EmbeddedResource Include="Forms\frmLop.resx">
+      <DependentUpon>frmLop.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Properties\licenses.licx" />
     <EmbeddedResource Include="Properties\Resources.resx">
@@ -310,8 +311,14 @@
   </ItemGroup>
   <ItemGroup>
     <Content Include="Resources\942748.png" />
+    <None Include="Resources\Text-Edit-icon-24.png" />
+    <None Include="Resources\Button-Refresh-icon-48.png" />
     <Content Include="Resources\Capture1.PNG" />
+    <None Include="Resources\check-48-icon.png" />
+    <Content Include="Resources\classroom.png" />
     <Content Include="Resources\clipboard %281%29.png" />
+    <None Include="Resources\Delete-2-icon-24.png" />
+    <Content Include="Resources\icon_subject.png" />
     <Content Include="Resources\register-icon.png" />
   </ItemGroup>
   <ItemGroup>

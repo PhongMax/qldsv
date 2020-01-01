@@ -50,6 +50,7 @@
             this.barButtonItem_SinhVien = new DevExpress.XtraBars.BarButtonItem();
             this.barButtonItem_Diem = new DevExpress.XtraBars.BarButtonItem();
             this.barButtonItem_ChuyenLop = new DevExpress.XtraBars.BarButtonItem();
+            this.barBtnHocPhi = new DevExpress.XtraBars.BarButtonItem();
             this.barButton_MonHoc = new DevExpress.XtraBars.BarButtonItem();
             this.barButton_SinhVien = new DevExpress.XtraBars.BarButtonItem();
             this.barButton_Diem = new DevExpress.XtraBars.BarButtonItem();
@@ -76,28 +77,36 @@
             this.lblMAGV,
             this.lblHOTEN,
             this.lblNHOM});
-            this.statusStrip.Location = new System.Drawing.Point(0, 449);
+            this.statusStrip.Location = new System.Drawing.Point(0, 447);
             this.statusStrip.Name = "statusStrip";
-            this.statusStrip.Size = new System.Drawing.Size(1011, 22);
+            this.statusStrip.Size = new System.Drawing.Size(1011, 24);
             this.statusStrip.TabIndex = 1;
             this.statusStrip.Text = "statusStrip";
             // 
             // lblMAGV
             // 
+            this.lblMAGV.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(224)))), ((int)(((byte)(224)))), ((int)(((byte)(224)))));
             this.lblMAGV.Name = "lblMAGV";
-            this.lblMAGV.Size = new System.Drawing.Size(41, 17);
+            this.lblMAGV.Size = new System.Drawing.Size(41, 19);
             this.lblMAGV.Text = "MAGV";
+            this.lblMAGV.TextDirection = System.Windows.Forms.ToolStripTextDirection.Horizontal;
             // 
             // lblHOTEN
             // 
+            this.lblHOTEN.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(224)))), ((int)(((byte)(224)))), ((int)(((byte)(224)))));
+            this.lblHOTEN.BorderSides = System.Windows.Forms.ToolStripStatusLabelBorderSides.Left;
+            this.lblHOTEN.BorderStyle = System.Windows.Forms.Border3DStyle.Etched;
             this.lblHOTEN.Name = "lblHOTEN";
-            this.lblHOTEN.Size = new System.Drawing.Size(45, 17);
+            this.lblHOTEN.Size = new System.Drawing.Size(49, 19);
             this.lblHOTEN.Text = "HOTEN";
             // 
             // lblNHOM
             // 
+            this.lblNHOM.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(224)))), ((int)(((byte)(224)))), ((int)(((byte)(224)))));
+            this.lblNHOM.BorderSides = System.Windows.Forms.ToolStripStatusLabelBorderSides.Left;
+            this.lblNHOM.BorderStyle = System.Windows.Forms.Border3DStyle.Etched;
             this.lblNHOM.Name = "lblNHOM";
-            this.lblNHOM.Size = new System.Drawing.Size(45, 17);
+            this.lblNHOM.Size = new System.Drawing.Size(49, 19);
             this.lblNHOM.Text = "NHOM";
             // 
             // ribbonPage3
@@ -222,6 +231,7 @@
             this.ribbonPageGroup_QuanTri.ItemLinks.Add(this.barButtonItem_SinhVien);
             this.ribbonPageGroup_QuanTri.ItemLinks.Add(this.barButtonItem_Diem);
             this.ribbonPageGroup_QuanTri.ItemLinks.Add(this.barButtonItem_ChuyenLop);
+            this.ribbonPageGroup_QuanTri.ItemLinks.Add(this.barBtnHocPhi);
             this.ribbonPageGroup_QuanTri.Name = "ribbonPageGroup_QuanTri";
             this.ribbonPageGroup_QuanTri.Text = "QUẢN LÝ DỮ LIỆU";
             // 
@@ -287,6 +297,20 @@
             this.barButtonItem_ChuyenLop.LargeWidth = 75;
             this.barButtonItem_ChuyenLop.Name = "barButtonItem_ChuyenLop";
             this.barButtonItem_ChuyenLop.ItemClick += new DevExpress.XtraBars.ItemClickEventHandler(this.barButtonItem_ChuyenLop_ItemClick);
+            // 
+            // barBtnHocPhi
+            // 
+            this.barBtnHocPhi.Caption = "HỌC PHÍ";
+            this.barBtnHocPhi.Id = 25;
+            this.barBtnHocPhi.ImageOptions.Image = ((System.Drawing.Image)(resources.GetObject("barBtnHocPhi.ImageOptions.Image")));
+            this.barBtnHocPhi.ImageOptions.LargeImage = ((System.Drawing.Image)(resources.GetObject("barBtnHocPhi.ImageOptions.LargeImage")));
+            this.barBtnHocPhi.ItemAppearance.Disabled.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.barBtnHocPhi.ItemAppearance.Disabled.Options.UseFont = true;
+            this.barBtnHocPhi.ItemAppearance.Normal.Font = new System.Drawing.Font("Consolas", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.barBtnHocPhi.ItemAppearance.Normal.Options.UseFont = true;
+            this.barBtnHocPhi.LargeWidth = 75;
+            this.barBtnHocPhi.Name = "barBtnHocPhi";
+            this.barBtnHocPhi.ItemClick += new DevExpress.XtraBars.ItemClickEventHandler(this.barBtnHocPhi_ItemClick);
             // 
             // barButton_MonHoc
             // 
@@ -370,10 +394,11 @@
             this.barButtonItem_MonHoc,
             this.barButtonItem_SinhVien,
             this.barButtonItem_Diem,
-            this.barButtonItem_ChuyenLop});
+            this.barButtonItem_ChuyenLop,
+            this.barBtnHocPhi});
             this.ribbonControl1.Location = new System.Drawing.Point(0, 0);
             this.ribbonControl1.Margin = new System.Windows.Forms.Padding(4);
-            this.ribbonControl1.MaxItemId = 25;
+            this.ribbonControl1.MaxItemId = 26;
             this.ribbonControl1.Name = "ribbonControl1";
             this.ribbonControl1.Pages.AddRange(new DevExpress.XtraBars.Ribbon.RibbonPage[] {
             this.ribbonPage1,
@@ -388,7 +413,7 @@
             this.barButton_Register.ImageOptions.SvgImage = ((DevExpress.Utils.Svg.SvgImage)(resources.GetObject("barButton_Register.ImageOptions.SvgImage")));
             this.barButton_Register.ItemAppearance.Normal.Font = new System.Drawing.Font("Consolas", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.barButton_Register.ItemAppearance.Normal.Options.UseFont = true;
-            this.barButton_Register.LargeWidth = 70;
+            this.barButton_Register.LargeWidth = 100;
             this.barButton_Register.Name = "barButton_Register";
             this.barButton_Register.RibbonStyle = ((DevExpress.XtraBars.Ribbon.RibbonItemStyles)((DevExpress.XtraBars.Ribbon.RibbonItemStyles.Large | DevExpress.XtraBars.Ribbon.RibbonItemStyles.SmallWithText)));
             this.barButton_Register.ItemClick += new DevExpress.XtraBars.ItemClickEventHandler(this.barButton_Register_ItemClick);
@@ -400,7 +425,7 @@
             this.barButton_Logout.ImageOptions.Image = global::QLDSV.Properties.Resources.turn_off_32;
             this.barButton_Logout.ItemAppearance.Normal.Font = new System.Drawing.Font("Consolas", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.barButton_Logout.ItemAppearance.Normal.Options.UseFont = true;
-            this.barButton_Logout.LargeWidth = 70;
+            this.barButton_Logout.LargeWidth = 100;
             this.barButton_Logout.Name = "barButton_Logout";
             this.barButton_Logout.RibbonStyle = DevExpress.XtraBars.Ribbon.RibbonItemStyles.Large;
             this.barButton_Logout.ItemClick += new DevExpress.XtraBars.ItemClickEventHandler(this.barButton_Logout_ItemClick);
@@ -442,6 +467,8 @@
             // 
             // frmMain
             // 
+            this.Appearance.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(224)))), ((int)(((byte)(224)))), ((int)(((byte)(224)))));
+            this.Appearance.Options.UseBackColor = true;
             this.Appearance.Options.UseFont = true;
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 17F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
@@ -504,6 +531,7 @@
         private DevExpress.XtraBars.BarButtonItem barButtonItem_SinhVien;
         private DevExpress.XtraBars.BarButtonItem barButtonItem_Diem;
         private DevExpress.XtraBars.BarButtonItem barButtonItem_ChuyenLop;
+        private DevExpress.XtraBars.BarButtonItem barBtnHocPhi;
     }
 }
 

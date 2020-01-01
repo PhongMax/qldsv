@@ -1,5 +1,6 @@
 ﻿using DevExpress.XtraEditors;
 using System;
+using System.Data;
 using System.Data.SqlClient;
 using System.Linq;
 using System.Windows.Forms;
@@ -44,11 +45,7 @@ namespace QLDSV.Forms
         private void btnDangKy_Click(object sender, EventArgs e)
         {
 
-            if (Program.MLogin == "HTKN")
-            {
-                MessageBox.Show("Bạn hãy quay về Khoa ban đầu trước khi thực hiên tạo tài khoản !", "", MessageBoxButtons.OK);
-                return;
-            }
+           
             bool check = this.ValidateInfo();
             if (check)
             {
@@ -71,21 +68,45 @@ namespace QLDSV.Forms
             String user = (String)lookUpUser.EditValue;
             String role = rdoKhoa.Checked ? Program.NhomQuyen[1] : (rdoPGV.Checked ? Program.NhomQuyen[0] : Program.NhomQuyen[2]);
 
-            String strLenh = " DECLARE @return_value int " +
-
-                            " EXEC    @return_value = [dbo].[SP_TAOLOGIN] " +
+            String subLenh = " EXEC    @return_value = [dbo].[SP_TAOLOGIN] " +
 
                             " @LGNAME = N'" + login + "', " +
                             " @PASS = N'" + pass + "', " +
                             " @USERNAME = N'" + user + "', " +
-                            " @ROLE = N'" + role + "' " +
+                            " @ROLE = N'" + role + "' ";
 
-                            " SELECT  'Return Value' = @return_value ";
+         
+            // trường hợp tạo tài khoản cho pketoan thì phải dùng LINK1,LINK2 để link tới Site 3 tạo tài khoản cho pKeToan
+            if (role == (Program.NhomQuyen[2]) && Program.ServerName == ((DataRowView)Program.Bds_Dspm[0])["TENSERVER"].ToString())
+            {
+                // site 1 ---> sử dụng LINK2
+                subLenh = " EXEC    @return_value = LINK2.QLDSV.[dbo].[SP_TAOLOGIN] " +
+
+                            " @LGNAME = N'" + login + "', " +
+                            " @PASS = N'" + pass + "', " +
+                            " @USERNAME = N'" + user + "', " +
+                            " @ROLE = N'" + role + "' ";
+            } else if (role == (Program.NhomQuyen[2]) && Program.ServerName == ((DataRowView)Program.Bds_Dspm[1])["TENSERVER"].ToString())
+
+            {
+                subLenh = " EXEC    @return_value = LINK1.QLDSV.[dbo].[SP_TAOLOGIN] " +
+
+                           " @LGNAME = N'" + login + "', " +
+                           " @PASS = N'" + pass + "', " +
+                           " @USERNAME = N'" + user + "', " +
+                           " @ROLE = N'" + role + "' ";
+            }
+
+            // trường hợp tạo tài khoản cho chỉ khoa và pgv
+
+            String strLenh = " DECLARE @return_value int " + subLenh +
+                         " SELECT  'Return Value' = @return_value ";
+
             int resultCheckLogin = Utils.CheckDataHelper(strLenh);
 
             if (resultCheckLogin == -1 )
             {
-                MessageBox.Show("Lỗi kết nối với database. Mời ban xem lại !", "", MessageBoxButtons.OK);
+                XtraMessageBox.Show("Lỗi kết nối với database. Mời ban xem lại !", "", MessageBoxButtons.OK);
                 this.Close();
             }
             if (resultCheckLogin == 1)
@@ -97,14 +118,13 @@ namespace QLDSV.Forms
 
             }else if(resultCheckLogin == 3)
             {
-                MessageBox.Show("Lỗi thực thi trong cơ sơ dữ liệu !", "", MessageBoxButtons.OK);
+                XtraMessageBox.Show("Lỗi thực thi trong cơ sơ dữ liệu !", "", MessageBoxButtons.OK);
             }
             else if (resultCheckLogin ==0)
             {
-                MessageBox.Show("Tạo tài khoản thành công !", "", MessageBoxButtons.OK);
+                XtraMessageBox.Show("Tạo tài khoản thành công !", "", MessageBoxButtons.OK);
                 
             }
-           
 
             return;
         }
@@ -113,51 +133,43 @@ namespace QLDSV.Forms
         private Boolean isEmptyorNullTextEdits()
         {
             Boolean check = true;
+
+
             //check từng textedit
-            foreach (Control c in this.grbDangKy.Controls)
-            {
-                if (c is TextEdit)
-                {
-                    if (string.IsNullOrEmpty(c.Text))
+
+            if (string.IsNullOrEmpty(this.txtLogin.Text))
                     {
-                        errorProvider.SetError(c, "Trường dữ liệu không được để trống !");
+                        errorProvider.SetError(this.txtLogin, "Trường dữ liệu không được để trống !");
                         check = false;
                     }
-                    else
+                    if (string.IsNullOrEmpty(this.txtPass.Text))
                     {
-                        errorProvider.SetError(c, null);
+                        errorProvider.SetError(this.txtPass, "Trường dữ liệu không được để trống !");
+                        check = false;
                     }
-                }
-            }
+
+                    if (string.IsNullOrEmpty(this.txtConfirm.Text))
+                    {
+                       errorProvider.SetError(this.txtConfirm, "Trường dữ liệu không được để trống !");
+                        check = false;
+                     }
+
+
             return check;
         }
 
-        // true :đã chọn, false : ko chọn
-        private Boolean checkRadioButton(RadioButton rd)
-        {
-            return rd.Checked;
-        }
-
+      
         // true: ko empty, false : empty
         private Boolean isEmptyorNullRadioButtons()
         {
             //check từng radiobutton
-            foreach (Control c in this.grbDangKy.Controls)
-            {
-                if (c is RadioButton)
-                {
-
-                    if (checkRadioButton((RadioButton)c))
+          
+                    if (this.rdoKhoa.Checked || this.rdoPGV.Checked || this.rdoPKeToan.Checked)
                     {
-                        errorProvider.SetError(c, null);
                         return true;
                     }
-                   
-                }
 
-            }
-
-            errorProvider.SetError(this.lblTrangThai, "Bạn chưa chọn nhóm quyền !");
+            errorProvider.SetError(this.pnRole, "Bạn chưa chọn nhóm quyền !");
 
             return false;
 

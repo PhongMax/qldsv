@@ -9,6 +9,7 @@ using System.Threading.Tasks;
 using System.Windows.Forms;
 using DevExpress.XtraEditors;
 using DevExpress.XtraGrid.Views.Grid;
+using DevExpress.Utils;
 
 namespace QLDSV.Forms
 {
@@ -80,7 +81,7 @@ namespace QLDSV.Forms
         private void barBtnThem_ItemClick(object sender, DevExpress.XtraBars.ItemClickEventArgs e)
         {
             flagOption = "ADD";//  Add action
-            
+
             barBtnGhi.Enabled = barBtnHuy.Enabled = true;
             barBtnThem.Enabled
                 = barBtnXoa.Enabled
@@ -100,10 +101,10 @@ namespace QLDSV.Forms
         {
             if (bdsDiem.Count > 0)
             {
-                MessageBox.Show("Không thể xóa môn học này vì đang chứa điểm.", "", MessageBoxButtons.OK);
+                XtraMessageBox.Show("Không thể xóa môn học này vì đang chứa điểm.", "", MessageBoxButtons.OK);
                 return;
             }
-            if (MessageBox.Show("Bạn có thực sự muốn xóa Lớp này??", "Xác nhận.", MessageBoxButtons.OKCancel) == DialogResult.OK)
+            if (XtraMessageBox.Show("Bạn có thực sự muốn xóa Lớp này??", "Xác nhận.", MessageBoxButtons.OKCancel) == DialogResult.OK)
             {
                 try
                 {
@@ -114,7 +115,7 @@ namespace QLDSV.Forms
                 }
                 catch (Exception ex)
                 {
-                    MessageBox.Show("Lỗi xóa môn học.\nBạn hãy xem lại\n" + ex.Message, "", MessageBoxButtons.OK);
+                    XtraMessageBox.Show("Lỗi xóa môn học.\nBạn hãy xem lại\n" + ex.Message, "", MessageBoxButtons.OK);
                 }
        
 
@@ -130,7 +131,6 @@ namespace QLDSV.Forms
 
         private void barBtnSua_ItemClick(object sender, DevExpress.XtraBars.ItemClickEventArgs e)
         {
-            
             flagOption = "UPDATE";//  Update action
             oldMaMonHoc = this.txtMaMonHoc.Text.Trim().ToString();
             oldTenMonHoc = this.txtTenMonHoc.Text.Trim().ToString();
@@ -159,7 +159,7 @@ namespace QLDSV.Forms
             bool check = ValidateInfoMONHOC();
             if (check)
             {
-                DialogResult dr = MessageBox.Show("Bạn có chắc muốn ghi dữ liệu vào Database?", "Thông báo",
+                DialogResult dr = XtraMessageBox.Show("Bạn có chắc muốn ghi dữ liệu vào Database?", "Thông báo",
                     MessageBoxButtons.OKCancel, MessageBoxIcon.Question);
                 if (dr == DialogResult.OK)
                 {
@@ -181,7 +181,7 @@ namespace QLDSV.Forms
                     } catch (Exception ex)
                     {
                         bdsMONHOC.RemoveCurrent();
-                        MessageBox.Show("Ghi dữ liệu thất lại. Vui lòng kiểm tra lại!\n" + ex.Message, "Error",
+                        XtraMessageBox.Show("Ghi dữ liệu thất lại. Vui lòng kiểm tra lại!\n" + ex.Message, "Error",
                             MessageBoxButtons.OK, MessageBoxIcon.Error);
                     }
                 }
@@ -208,12 +208,35 @@ namespace QLDSV.Forms
         {
            
             frmMonHoc_Load(sender, e);
-            MessageBox.Show("Làm mới dữ liệu thành công", "", MessageBoxButtons.OK);
+            XtraMessageBox.Show("Làm mới dữ liệu thành công", "", MessageBoxButtons.OK);
         }
 
         private void barBtnDong_ItemClick(object sender, DevExpress.XtraBars.ItemClickEventArgs e)
         {
-            this.Close();
+
+            if (this.groupBoxMonHoc.Enabled)
+            {
+                String notifi = " Dữ liệu Môn Học chưa lưu vào Database. \n Bạn có chắc muốn thoát !";
+
+                DialogResult dr = XtraMessageBox.Show(notifi, "Cảnh báo", MessageBoxButtons.YesNo, MessageBoxIcon.Warning);
+
+                if (dr == DialogResult.No)
+                {
+                    return;
+                }
+                else if (dr == DialogResult.Yes)
+                {
+                    this.Close();
+
+                }
+            }
+            else
+            {
+                this.Close();
+                return;
+            }
+
+
         }
 
         // ====================== SUPPORT VALIDATION ====================== //
@@ -245,7 +268,7 @@ namespace QLDSV.Forms
                 int resultMa = Utils.CheckDataHelper(query1);
                 if (resultMa == -1)
                 {
-                    MessageBox.Show("Lỗi kết nối với database. Mời bạn xem lại", "", MessageBoxButtons.OK);
+                    XtraMessageBox.Show("Lỗi kết nối với database. Mời bạn xem lại", "", MessageBoxButtons.OK);
                     this.Close();
                 }
                 if (resultMa == 1)
@@ -263,7 +286,7 @@ namespace QLDSV.Forms
                 int resultTen = Utils.CheckDataHelper(query2);
                 if (resultTen == -1)
                 {
-                    MessageBox.Show("Lỗi kết nối với database. Mời bạn xem lại", "", MessageBoxButtons.OK);
+                  XtraMessageBox.Show("Lỗi kết nối với database. Mời bạn xem lại", "", MessageBoxButtons.OK);
                     this.Close();
                 }
                 if (resultTen == 1)
@@ -286,7 +309,7 @@ namespace QLDSV.Forms
                     int resultMa = Utils.CheckDataHelper(query1);
                     if (resultMa == -1)
                     {
-                        MessageBox.Show("Lỗi kết nối với database. Mời bạn xem lại", "", MessageBoxButtons.OK);
+                        XtraMessageBox.Show("Lỗi kết nối với database. Mời bạn xem lại", "", MessageBoxButtons.OK);
                         this.Close();
                     }
                     if (resultMa == 1)
@@ -306,7 +329,7 @@ namespace QLDSV.Forms
                     int resultTen = Utils.CheckDataHelper(query2);
                     if (resultTen == -1)
                     {
-                        MessageBox.Show("Lỗi kết nối với database. Mời bạn xem lại", "", MessageBoxButtons.OK);
+                        XtraMessageBox.Show("Lỗi kết nối với database. Mời bạn xem lại", "", MessageBoxButtons.OK);
                         this.Close();
                     }
                     if (resultTen == 1)
@@ -342,5 +365,21 @@ namespace QLDSV.Forms
                 e.Appearance.BackColor = Color.LawnGreen;
             }
         }
+
+        private void gridView1_CustomDrawRowIndicator(object sender, RowIndicatorCustomDrawEventArgs e)
+        {
+            e.Handled = true;
+            SolidBrush brush = new SolidBrush(Color.FromArgb(0xC6, 0x64, 0xFF));
+            e.Graphics.FillRectangle(brush, e.Bounds);
+            e.Graphics.DrawRectangle(Pens.Black, new Rectangle(e.Bounds.X, e.Bounds.Y, e.Bounds.Width - 1, e.Bounds.Height));
+            Size size = ImageCollection.GetImageListSize(e.Info.ImageCollection);
+            Rectangle r = e.Bounds;
+            ImageCollection.DrawImageListImage(e.Cache, e.Info.ImageCollection, e.Info.ImageIndex,
+                    new Rectangle(r.X + (r.Width - size.Width) / 2, r.Y + (r.Height - size.Height) / 2, size.Width, size.Height));
+            brush.Dispose();
+        }
+
+
+
     }
 }
