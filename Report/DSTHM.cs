@@ -93,7 +93,7 @@ namespace QLDSV.Report
             report.lblTenLop.Text = this.cmbTenLop.Text;
             report.lblTenMonHoc.Text = this.cmbTenMonHoc.Text;
             report.lblThoiGianThi.Text = this.dateTimePicker.Value.ToString("dd-MM-yyyy");
-
+            report.lblAuthor.Text = "Người In Ấn : " + Program.MHoten;
             ReportPrintTool print = new ReportPrintTool(report);
             print.ShowPreviewDialog();
         }

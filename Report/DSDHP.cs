@@ -32,7 +32,7 @@ namespace QLDSV.Report
             report.lblTenLop.Text = this.txtMaLop.Text.Trim().ToString();
             report.lblNienKhoa.Text = this.txtNienKhoa.Text.Trim().ToString();
             report.lblHocKi.Text = this.txtHocKi.Text.Trim().ToString();
-
+            report.lblAuthor.Text = "Người In Ấn : " + Program.MHoten;
             ReportPrintTool print = new ReportPrintTool(report);
             print.ShowPreviewDialog();
         }

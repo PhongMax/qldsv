@@ -12,9 +12,8 @@ namespace QLDSV.Report
         {
             InitializeComponent();
             ds1.EnforceConstraints = false;
-
-            this.sP_REPORT_BDTKTableAdapter.Connection.ConnectionString = Program.URL_Connect;
-            this.sP_REPORT_BDTKTableAdapter.Fill(ds1.SP_REPORT_BDTK, MALOP);
+            this.sP_REPORT_BDTKTableAdapter1.Connection.ConnectionString = Program.URL_Connect;
+            this.sP_REPORT_BDTKTableAdapter1.Fill(ds1.SP_REPORT_BDTK, MALOP);
         }
 
     }

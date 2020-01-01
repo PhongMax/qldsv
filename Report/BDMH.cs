@@ -98,6 +98,8 @@ namespace QLDSV.Report
             report.lblTenLop.Text = this.cmbTenLop.Text;
             report.lblTenMonHoc.Text = this.cmbTenMonHoc.Text;
             report.lblLanThi.Text = this.cmbLan.SelectedItem.ToString();
+            report.lblAuthor.Text = "Người In Ấn : " + Program.MHoten;
+
             ReportPrintTool print = new ReportPrintTool(report);
             print.ShowPreviewDialog();
         }

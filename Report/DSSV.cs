@@ -77,7 +77,7 @@ namespace QLDSV.Report
         {
             XtraReport_DSSV_TheoLop report = new XtraReport_DSSV_TheoLop(this.cmbTenLop.SelectedValue.ToString());
             report.lblTenLop.Text = cmbTenLop.Text;
-
+            report.lblAuthor.Text = "Người In Ấn : " + Program.MHoten;
             ReportPrintTool print = new ReportPrintTool(report);
             print.ShowPreviewDialog();
         }
