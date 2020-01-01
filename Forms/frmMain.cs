@@ -31,6 +31,7 @@ namespace QLDSV
                 this.barButtonItem_SinhVien.Enabled = false;
                 this.barButtonItem_Diem.Enabled = false;
                 this.barButtonItem_ChuyenLop.Enabled = false;
+                this.barBtnHocPhi.Enabled = true;
 
                 this.barButton_DSDHP.Enabled = true;
                 this.barButton_DSSV.Enabled = false;
@@ -42,6 +43,7 @@ namespace QLDSV
             else
             {
                 this.barButton_DSDHP.Enabled = false;
+                this.barBtnHocPhi.Enabled = false;
             }
 
         }

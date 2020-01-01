@@ -123,7 +123,7 @@
             0});
             this.numericLanThi.Name = "numericLanThi";
             this.numericLanThi.Size = new System.Drawing.Size(55, 20);
-            this.numericLanThi.TabIndex = 15;
+            this.numericLanThi.TabIndex = 3;
             this.numericLanThi.Value = new decimal(new int[] {
             1,
             0,
@@ -169,7 +169,7 @@
             this.lookUpEditMaMon.Properties.NullText = "Hãy chọn môn học";
             this.lookUpEditMaMon.Properties.ValueMember = "MAMH";
             this.lookUpEditMaMon.Size = new System.Drawing.Size(398, 20);
-            this.lookUpEditMaMon.TabIndex = 10;
+            this.lookUpEditMaMon.TabIndex = 2;
             this.lookUpEditMaMon.EditValueChanged += new System.EventHandler(this.lookUpEditMaMon_EditValueChanged);
             // 
             // bdsMonhoc
@@ -204,7 +204,7 @@
             this.lookUpEditMalop.Properties.NullText = "Hãy chọn lớp";
             this.lookUpEditMalop.Properties.ValueMember = "MALOP";
             this.lookUpEditMalop.Size = new System.Drawing.Size(398, 20);
-            this.lookUpEditMalop.TabIndex = 8;
+            this.lookUpEditMalop.TabIndex = 1;
             this.lookUpEditMalop.EditValueChanged += new System.EventHandler(this.lookUpEditMalop_EditValueChanged);
             // 
             // bdsLOP
@@ -258,7 +258,7 @@
             this.cmbKhoa.Location = new System.Drawing.Point(91, 32);
             this.cmbKhoa.Name = "cmbKhoa";
             this.cmbKhoa.Size = new System.Drawing.Size(398, 21);
-            this.cmbKhoa.TabIndex = 2;
+            this.cmbKhoa.TabIndex = 0;
             this.cmbKhoa.SelectedIndexChanged += new System.EventHandler(this.cmbKhoa_SelectedIndexChanged);
             // 
             // LOPTableAdapter
@@ -401,7 +401,7 @@
             this.btnHuyy.Location = new System.Drawing.Point(194, 37);
             this.btnHuyy.Name = "btnHuyy";
             this.btnHuyy.Size = new System.Drawing.Size(75, 23);
-            this.btnHuyy.TabIndex = 2;
+            this.btnHuyy.TabIndex = 1;
             this.btnHuyy.Text = "Cancel";
             this.btnHuyy.Click += new System.EventHandler(this.btnHuyy_Click);
             // 
@@ -410,7 +410,7 @@
             this.btnLuu.Location = new System.Drawing.Point(95, 37);
             this.btnLuu.Name = "btnLuu";
             this.btnLuu.Size = new System.Drawing.Size(75, 23);
-            this.btnLuu.TabIndex = 1;
+            this.btnLuu.TabIndex = 2;
             this.btnLuu.Text = "Cập nhật";
             this.btnLuu.Click += new System.EventHandler(this.btnLuu_Click);
             // 

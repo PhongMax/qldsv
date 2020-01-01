@@ -68,6 +68,7 @@
             this.colTENLOP = new DevExpress.XtraGrid.Columns.GridColumn();
             this.colMAKH = new DevExpress.XtraGrid.Columns.GridColumn();
             this.errorProvider = new System.Windows.Forms.ErrorProvider(this.components);
+            this.picture = new System.Windows.Forms.PictureBox();
             tENLOPLabel = new System.Windows.Forms.Label();
             mAKHLabel = new System.Windows.Forms.Label();
             mALOPLabel = new System.Windows.Forms.Label();
@@ -86,32 +87,33 @@
             ((System.ComponentModel.ISupportInitialize)(this.lOPGridControl)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.gridView1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.errorProvider)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.picture)).BeginInit();
             this.SuspendLayout();
             // 
             // tENLOPLabel
             // 
             tENLOPLabel.AutoSize = true;
-            tENLOPLabel.Location = new System.Drawing.Point(102, 67);
+            tENLOPLabel.Location = new System.Drawing.Point(158, 67);
             tENLOPLabel.Name = "tENLOPLabel";
-            tENLOPLabel.Size = new System.Drawing.Size(43, 13);
+            tENLOPLabel.Size = new System.Drawing.Size(56, 15);
             tENLOPLabel.TabIndex = 2;
             tENLOPLabel.Text = "Tên lớp";
             // 
             // mAKHLabel
             // 
             mAKHLabel.AutoSize = true;
-            mAKHLabel.Location = new System.Drawing.Point(102, 93);
+            mAKHLabel.Location = new System.Drawing.Point(158, 93);
             mAKHLabel.Name = "mAKHLabel";
-            mAKHLabel.Size = new System.Drawing.Size(49, 13);
+            mAKHLabel.Size = new System.Drawing.Size(56, 15);
             mAKHLabel.TabIndex = 4;
             mAKHLabel.Text = "Mã khoa";
             // 
             // mALOPLabel
             // 
             mALOPLabel.AutoSize = true;
-            mALOPLabel.Location = new System.Drawing.Point(102, 41);
+            mALOPLabel.Location = new System.Drawing.Point(158, 41);
             mALOPLabel.Name = "mALOPLabel";
-            mALOPLabel.Size = new System.Drawing.Size(39, 13);
+            mALOPLabel.Size = new System.Drawing.Size(49, 15);
             mALOPLabel.TabIndex = 0;
             mALOPLabel.Text = "Mã lớp";
             // 
@@ -324,23 +326,25 @@
             // 
             // grbNhapSV
             // 
+            this.grbNhapSV.Controls.Add(this.picture);
             this.grbNhapSV.Controls.Add(this.txtMaLop);
             this.grbNhapSV.Controls.Add(mALOPLabel);
             this.grbNhapSV.Controls.Add(this.txtMaKhoa);
             this.grbNhapSV.Controls.Add(mAKHLabel);
             this.grbNhapSV.Controls.Add(tENLOPLabel);
             this.grbNhapSV.Controls.Add(this.txtTenLop);
-            this.grbNhapSV.Location = new System.Drawing.Point(306, 18);
+            this.grbNhapSV.Font = new System.Drawing.Font("Consolas", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.grbNhapSV.Location = new System.Drawing.Point(163, 18);
             this.grbNhapSV.Name = "grbNhapSV";
-            this.grbNhapSV.Size = new System.Drawing.Size(601, 159);
+            this.grbNhapSV.Size = new System.Drawing.Size(744, 159);
             this.grbNhapSV.TabIndex = 6;
             this.grbNhapSV.TabStop = false;
-            this.grbNhapSV.Text = "Nhập thông tin sinh viên";
+            this.grbNhapSV.Text = "Nhập thông tin lớp";
             // 
             // txtMaLop
             // 
             this.txtMaLop.DataBindings.Add(new System.Windows.Forms.Binding("EditValue", this.bdsLOP, "MALOP", true));
-            this.txtMaLop.Location = new System.Drawing.Point(161, 38);
+            this.txtMaLop.Location = new System.Drawing.Point(217, 38);
             this.txtMaLop.MenuManager = this.barManagerSinhVien;
             this.txtMaLop.Name = "txtMaLop";
             this.txtMaLop.Properties.MaxLength = 8;
@@ -351,7 +355,7 @@
             // txtMaKhoa
             // 
             this.txtMaKhoa.DataBindings.Add(new System.Windows.Forms.Binding("EditValue", this.bdsLOP, "MAKH", true));
-            this.txtMaKhoa.Location = new System.Drawing.Point(161, 90);
+            this.txtMaKhoa.Location = new System.Drawing.Point(217, 90);
             this.txtMaKhoa.MenuManager = this.barManagerSinhVien;
             this.txtMaKhoa.Name = "txtMaKhoa";
             this.txtMaKhoa.Properties.ReadOnly = true;
@@ -361,7 +365,7 @@
             // txtTenLop
             // 
             this.txtTenLop.DataBindings.Add(new System.Windows.Forms.Binding("EditValue", this.bdsLOP, "TENLOP", true));
-            this.txtTenLop.Location = new System.Drawing.Point(161, 64);
+            this.txtTenLop.Location = new System.Drawing.Point(217, 64);
             this.txtTenLop.MenuManager = this.barManagerSinhVien;
             this.txtTenLop.Name = "txtTenLop";
             this.txtTenLop.Properties.MaxLength = 100;
@@ -478,6 +482,16 @@
             // 
             this.errorProvider.ContainerControl = this;
             // 
+            // picture
+            // 
+            this.picture.Image = ((System.Drawing.Image)(resources.GetObject("picture.Image")));
+            this.picture.Location = new System.Drawing.Point(6, 19);
+            this.picture.Name = "picture";
+            this.picture.Size = new System.Drawing.Size(138, 134);
+            this.picture.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
+            this.picture.TabIndex = 6;
+            this.picture.TabStop = false;
+            // 
             // frmLop
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -510,6 +524,7 @@
             ((System.ComponentModel.ISupportInitialize)(this.lOPGridControl)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.gridView1)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.errorProvider)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.picture)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -552,5 +567,6 @@
         private DevExpress.XtraEditors.TextEdit txtMaLop;
         private DevExpress.XtraEditors.TextEdit txtMaKhoa;
         private DevExpress.XtraEditors.TextEdit txtTenLop;
+        private System.Windows.Forms.PictureBox picture;
     }
 }

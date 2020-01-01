@@ -97,7 +97,7 @@
             this.lblHOTEN.BorderSides = System.Windows.Forms.ToolStripStatusLabelBorderSides.Left;
             this.lblHOTEN.BorderStyle = System.Windows.Forms.Border3DStyle.Etched;
             this.lblHOTEN.Name = "lblHOTEN";
-            this.lblHOTEN.Size = new System.Drawing.Size(50, 19);
+            this.lblHOTEN.Size = new System.Drawing.Size(49, 19);
             this.lblHOTEN.Text = "HOTEN";
             // 
             // lblNHOM
@@ -308,6 +308,7 @@
             this.barBtnHocPhi.ItemAppearance.Disabled.Options.UseFont = true;
             this.barBtnHocPhi.ItemAppearance.Normal.Font = new System.Drawing.Font("Consolas", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.barBtnHocPhi.ItemAppearance.Normal.Options.UseFont = true;
+            this.barBtnHocPhi.LargeWidth = 75;
             this.barBtnHocPhi.Name = "barBtnHocPhi";
             this.barBtnHocPhi.ItemClick += new DevExpress.XtraBars.ItemClickEventHandler(this.barBtnHocPhi_ItemClick);
             // 

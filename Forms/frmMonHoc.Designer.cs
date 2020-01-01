@@ -64,6 +64,7 @@
             this.txtTenMonHoc = new DevExpress.XtraEditors.TextEdit();
             this.groupBoxMonHoc = new System.Windows.Forms.GroupBox();
             this.groupBox1 = new System.Windows.Forms.GroupBox();
+            this.picture = new System.Windows.Forms.PictureBox();
             mAMHLabel = new System.Windows.Forms.Label();
             tENMHLabel = new System.Windows.Forms.Label();
             ((System.ComponentModel.ISupportInitialize)(this.barManagerMonHoc)).BeginInit();
@@ -78,23 +79,24 @@
             ((System.ComponentModel.ISupportInitialize)(this.txtTenMonHoc.Properties)).BeginInit();
             this.groupBoxMonHoc.SuspendLayout();
             this.groupBox1.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.picture)).BeginInit();
             this.SuspendLayout();
             // 
             // mAMHLabel
             // 
             mAMHLabel.AutoSize = true;
-            mAMHLabel.Location = new System.Drawing.Point(114, 47);
+            mAMHLabel.Location = new System.Drawing.Point(138, 48);
             mAMHLabel.Name = "mAMHLabel";
-            mAMHLabel.Size = new System.Drawing.Size(66, 13);
+            mAMHLabel.Size = new System.Drawing.Size(77, 15);
             mAMHLabel.TabIndex = 0;
             mAMHLabel.Text = "Mã môn học";
             // 
             // tENMHLabel
             // 
             tENMHLabel.AutoSize = true;
-            tENMHLabel.Location = new System.Drawing.Point(114, 75);
+            tENMHLabel.Location = new System.Drawing.Point(131, 77);
             tENMHLabel.Name = "tENMHLabel";
-            tENMHLabel.Size = new System.Drawing.Size(70, 13);
+            tENMHLabel.Size = new System.Drawing.Size(84, 15);
             tENMHLabel.TabIndex = 2;
             tENMHLabel.Text = "Tên môn học";
             // 
@@ -375,7 +377,7 @@
             // txtMaMonHoc
             // 
             this.txtMaMonHoc.DataBindings.Add(new System.Windows.Forms.Binding("EditValue", this.bdsMONHOC, "MAMH", true));
-            this.txtMaMonHoc.Location = new System.Drawing.Point(197, 40);
+            this.txtMaMonHoc.Location = new System.Drawing.Point(221, 46);
             this.txtMaMonHoc.MenuManager = this.barManagerMonHoc;
             this.txtMaMonHoc.Name = "txtMaMonHoc";
             this.txtMaMonHoc.Properties.MaxLength = 15;
@@ -386,7 +388,7 @@
             // txtTenMonHoc
             // 
             this.txtTenMonHoc.DataBindings.Add(new System.Windows.Forms.Binding("EditValue", this.bdsMONHOC, "TENMH", true));
-            this.txtTenMonHoc.Location = new System.Drawing.Point(197, 72);
+            this.txtTenMonHoc.Location = new System.Drawing.Point(221, 75);
             this.txtTenMonHoc.MenuManager = this.barManagerMonHoc;
             this.txtTenMonHoc.Name = "txtTenMonHoc";
             this.txtTenMonHoc.Properties.MaxLength = 50;
@@ -405,16 +407,28 @@
             // 
             // groupBox1
             // 
+            this.groupBox1.Controls.Add(this.picture);
             this.groupBox1.Controls.Add(this.txtMaMonHoc);
             this.groupBox1.Controls.Add(tENMHLabel);
             this.groupBox1.Controls.Add(mAMHLabel);
             this.groupBox1.Controls.Add(this.txtTenMonHoc);
-            this.groupBox1.Location = new System.Drawing.Point(411, 22);
+            this.groupBox1.Font = new System.Drawing.Font("Consolas", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.groupBox1.Location = new System.Drawing.Point(349, 22);
             this.groupBox1.Name = "groupBox1";
-            this.groupBox1.Size = new System.Drawing.Size(572, 133);
+            this.groupBox1.Size = new System.Drawing.Size(500, 133);
             this.groupBox1.TabIndex = 4;
             this.groupBox1.TabStop = false;
             this.groupBox1.Text = "Nhập thông tin môn học";
+            // 
+            // picture
+            // 
+            this.picture.Image = ((System.Drawing.Image)(resources.GetObject("picture.Image")));
+            this.picture.Location = new System.Drawing.Point(19, 23);
+            this.picture.Name = "picture";
+            this.picture.Size = new System.Drawing.Size(105, 110);
+            this.picture.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
+            this.picture.TabIndex = 4;
+            this.picture.TabStop = false;
             // 
             // frmMonHoc
             // 
@@ -445,6 +459,7 @@
             this.groupBoxMonHoc.ResumeLayout(false);
             this.groupBox1.ResumeLayout(false);
             this.groupBox1.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.picture)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -484,5 +499,6 @@
         private DevExpress.XtraEditors.TextEdit txtTenMonHoc;
         private DevExpress.XtraEditors.TextEdit txtMaMonHoc;
         private System.Windows.Forms.GroupBox groupBox1;
+        private System.Windows.Forms.PictureBox picture;
     }
 }
