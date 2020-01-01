@@ -9,14 +9,19 @@ using System.Threading.Tasks;
 using System.Windows.Forms;
 using DevExpress.XtraEditors;
 using System.Data.SqlClient;
-using QLDSV.Utility;
 using DevExpress.XtraGrid.Views.Base;
+using System.Globalization;
+using DevExpress.Utils;
+using DevExpress.XtraGrid.Views.Grid;
+using DevExpress.XtraGrid.Columns;
+using DevExpress.XtraEditors.Controls;
 
 namespace QLDSV.Forms
 {
     public partial class frmHocPhi : DevExpress.XtraEditors.XtraForm
     {
-        private int dongHienTai;
+        private int _position ;
+        private Boolean _flagEdit = false;
         public frmHocPhi()
         {
             InitializeComponent();
@@ -25,109 +30,136 @@ namespace QLDSV.Forms
 
         private void EnableEditMode()
         {
-            btnThem.Enabled = btnLamMoi.Enabled = btnThoat.Enabled = false;
-
+            btnThem.Enabled =  false;
             btnGhi.Enabled = gbTTHocPhi.Enabled = true;
-
-            lkeSinhVien.ReadOnly = true;
+            cmbSinhVien.ReadOnly = true;
         }
 
         private void DisableEditMode()
         {
-            btnThem.Enabled = btnLamMoi.Enabled = btnThoat.Enabled = true;
-
+            btnThoat.Enabled = true;
             btnGhi.Enabled = gbTTHocPhi.Enabled = false;
-
-            lkeSinhVien.ReadOnly = false;
+            cmbSinhVien.ReadOnly = false;
         }
 
         private void loadInitializeData()
         {
             // kết nối trước rồi mới fill.
-            this.DS.EnforceConstraints = false;
+           
             this.SINHVIENTableAdapter.Connection.ConnectionString = Program.URL_Connect;
             this.SINHVIENTableAdapter.Fill(this.DS.SINHVIEN);
 
-            // TODO: This line of code loads data into the 'DS.DIEM' table. You can move, or remove it, as needed.
-            this.THONGTINHOCPHICUASINHVIENTableAdapter.Connection.ConnectionString = Program.URL_Connect;
-            this.THONGTINHOCPHICUASINHVIENTableAdapter.Fill(this.DS.THONGTINHOCPHICUASINHVIEN, lkeSinhVien.Text);
-         
+            this.HOCPHITableAdapter.Connection.ConnectionString = Program.URL_Connect;
+            this.HOCPHITableAdapter.Fill(this.DS.HOCPHI);
+
         }
 
-        /// <summary>
-        /// Dùng sp kiểm tra trong database sinh viên đã đóng học phí cho học kỳ chưa
-        /// </summary>
-        /// <param name="maSV">Mã sinh viên</param>
-        /// <param name="nienKhoa">Niên khóa</param>
-        /// <param name="hocKy">Học kỳ</param>
-        /// <returns>true nếu sv đã đóng học phí</returns>
+     
         private bool KiemTraMaTrung(string maSV, string nienKhoa, string hocKy)
         {
-            bool exist = true;
 
-            using (var connection = new SqlConnection(Program.URL_Connect))
+          
+
+            string query1 = " DECLARE @return_value int "  + 
+
+                            " EXEC    @return_value = [dbo].[SP_CHECKIDHOCPHI] " + 
+
+                            " @masv = N'" + maSV +    "', " +
+		                    
+                            " @nienkhoa = N'" + nienKhoa  + "', " + 
+		                
+                            " @hoky =" + hocKy  + 
+
+                            " SELECT  'Return Value' = @return_value ";
+            int resultMa = Utils.CheckDataHelper(query1);
+            if (resultMa == -1)
             {
-                connection.Open();
-                using (var sqlcmd = new SqlCommand("sp_TIMMONHOCBYID", connection))
-                {
-                    sqlcmd.CommandType = CommandType.StoredProcedure;
-                    sqlcmd.Parameters.AddWithValue("@masv", maSV);
-                    sqlcmd.Parameters.AddWithValue("@nienkhoa", nienKhoa);
-                    sqlcmd.Parameters.AddWithValue("@hocky", hocKy);
-                    try
-                    {
-                        sqlcmd.ExecuteNonQuery();
-                    }
-                    // lỗi từ sqlserver => mã tồn tại
-                    catch (SqlException)
-                    {
-                        exist = false;
-                    }
-                    // lỗi không biết
-                    catch (Exception ex)
-                    {
-                        MyHelper.ShowError(ex);
-                    }
-                }
+                XtraMessageBox.Show("Lỗi kết nối với database. Mời bạn xem lại", "", MessageBoxButtons.OK);
+                this.Close();
             }
-            return exist;
-        }
+            if (resultMa == 1)
+            {
+                // trùng
+                return true;
+            }
 
+            // ko trùng
+            return false;
+        }
 
         private bool CanSave()
         {
-            bool isSave = true;
+            // trường hợp đặc biệt nếu như sửa học phí thì sẽ cho save --> true
+            if (_flagEdit)
+                return true;
 
-            if (KiemTraMaTrung(lkeSinhVien.Text, txtNienKhoa.Text, spiHocKy.EditValue.ToString()) == true)
+
+            if (KiemTraMaTrung(cmbSinhVien.Text, txtNienKhoa.Text, spiHocKy.EditValue.ToString()) == true  )
             {
-                MyHelper.ShowErrorMsgBox("Sinh viên đã đóng học phí kỳ này.", MessageBoxButtons.OK);
-                txtNienKhoa.SelectAll();
-                isSave = false;
+                String notifi = "Sinh viên này đã đóng học phí trong học kỳ. Bạn có muốn chỉnh sửa !";
+
+                DialogResult dr = XtraMessageBox.Show(notifi, "Cảnh báo", MessageBoxButtons.YesNo, MessageBoxIcon.Information);
+
+
+
+                // cancel edit dòng hiện tại.
+              
+                if (this.gvTTHocPhi.IsNewItemRow(this.gvTTHocPhi.FocusedRowHandle))
+                {
+                    bdsHocPhi.CancelEdit();
+       
+                }
+               
+                if (dr == DialogResult.No)
+                {
+                    DisableEditMode();
+                    return false;
+                }
+                else if (dr == DialogResult.Yes)
+                {
+                    _flagEdit = true;
+
+                    XtraMessageBox.Show("Bạn hãy chỉnh sửa ở lưới này ", "", MessageBoxButtons.OK);
+
+                    return false;
+
+                }
+               
             }
 
-            return isSave;
+            return true;
         }
 
 
         private bool Save()
         {
             bool isSuccess = true;
-            dongHienTai = bdsTHONGTINHOCPHICUASINHVIEN.Position;
+          
             try
             {
-                ((DataRowView)bdsTHONGTINHOCPHICUASINHVIEN.Current)["MASV"] = lkeSinhVien.Text;
-                bdsTHONGTINHOCPHICUASINHVIEN.EndEdit();
+               
 
-                this.THONGTINHOCPHICUASINHVIENTableAdapter.Connection.ConnectionString = Program.URL_Connect;
-                this.THONGTINHOCPHICUASINHVIENTableAdapter.Update(lkeSinhVien.Text);
 
-                bdsTHONGTINHOCPHICUASINHVIEN.ResetCurrentItem();
+                // phục vụ cho việc ghi mới dữ liệu nếu _flagEdit = false
+                if(!_flagEdit)
+                {
+                    ((DataRowView)bdsHocPhi.Current)["MASV"] = (String)cmbSinhVien.EditValue;
+                   
+                }
+
+                // cập nhật dữ liệu.
+                bdsHocPhi.EndEdit();
+                this.bdsHocPhi.ResetCurrentItem();
+                this.HOCPHITableAdapter.Connection.ConnectionString = Program.URL_Connect;
+                this.HOCPHITableAdapter.Update(this.DS.HOCPHI);
+
                 DisableEditMode();
-                bdsTHONGTINHOCPHICUASINHVIEN.Position = dongHienTai;
+
+                //this.bdsHocPhi.Position = _position;
             }
             catch (Exception ex)
             {
-                MyHelper.ShowError(ex);
+                XtraMessageBox.Show(ex.ToString());
                 isSuccess = false;
             }
             return isSuccess;
@@ -135,50 +167,109 @@ namespace QLDSV.Forms
 
         private void lkeSinhVien_EditValueChanged(object sender, EventArgs e)
         {
-            var selectedSV = lkeSinhVien.GetSelectedDataRow() as DataRowView;
+            var selectedSV = cmbSinhVien.GetSelectedDataRow() as DataRowView;
 
             txtTenSV.Text = selectedSV.Row["HO"] + " " + selectedSV.Row["TEN"];
             txtMaLop.Text = selectedSV.Row["MALOP"].ToString();
 
-            this.THONGTINHOCPHICUASINHVIENTableAdapter.Fill(this.DS.THONGTINHOCPHICUASINHVIEN, lkeSinhVien.Text);
+            _position = this.bdsSinhVien.Find("MASV", selectedSV.Row["MASV"].ToString());
+            this.btnThem.Enabled = true;
+            loadInitializeData();
+            this.bdsSinhVien.Position = _position;
         }
 
-        private void gvTTHocPhi_CustomColumnDisplayText(object sender, CustomColumnDisplayTextEventArgs e)
-        {
-            ColumnView view = sender as ColumnView;
-            if ((e.Column.FieldName == "HOCPHI" || e.Column.FieldName == "SOTIENDADONG") && e.ListSourceRowIndex != DevExpress.XtraGrid.GridControl.InvalidRowHandle)
-            {
-                if (!(e.Value is DBNull))
-                {
-                    decimal price = Convert.ToDecimal(e.Value);
-                    e.DisplayText = string.Format(MyHelper.CiVNI, "{0:c0}", price);
-                }
-            }
-        }
 
         private void btnThem_ItemClick(object sender, DevExpress.XtraBars.ItemClickEventArgs e)
         {
-            dongHienTai = bdsTHONGTINHOCPHICUASINHVIEN.Position;
-            bdsTHONGTINHOCPHICUASINHVIEN.AddNew();
+            try
+            {
+
+                // check sinh viên đã nghĩ học
+                if (((DataRowView)bdsSinhVien[_position])["NGHIHOC"].ToString() == "True")
+                {
+                    XtraMessageBox.Show("Sinh Viên này đã nghĩ học !", "", MessageBoxButtons.OK);
+                    return;
+                }
+
+            }
+            catch(Exception)
+            {
+
+            }
+
+         
+           
+            _position = bdsSinhVien.Position;
+            bdsHocPhi.AddNew();
             EnableEditMode();
             txtNienKhoa.Focus();
         }
 
         private void btnGhi_ItemClick(object sender, DevExpress.XtraBars.ItemClickEventArgs e)
         {
-            if (CanSave())
+
+            // check giá trị trước khi add
+            float soTienDong = float.Parse(this.spiSoTienDong.Value.ToString());
+            float soHocPhi = float.Parse(this.spiHocPhi.Value.ToString());
+            
+            if (soTienDong > soHocPhi)
             {
-                Save();
+                XtraMessageBox.Show("Số tiền đóng không được lớn hơn học phí !", "", MessageBoxButtons.OK);
+                bdsHocPhi.RemoveCurrent();
+                return;
             }
+
+            try
+            {
+                if (CanSave())
+                {
+                    if (Save())
+                    {
+                        XtraMessageBox.Show("Ghi thông tin đóng học phí thành công !", "", MessageBoxButtons.OK);
+                    }
+                    else
+                    {
+                        XtraMessageBox.Show("Lỗi  !", "", MessageBoxButtons.OK);
+                    }
+                }
+                else
+                {
+                    return;
+                }
+
+
+            }
+            catch (Exception)
+            {
+
+            }
+
+            //nghiệp vụ
+            _flagEdit = false;
+
         }
 
-        private void btnLamMoi_ItemClick(object sender, DevExpress.XtraBars.ItemClickEventArgs e)
-        {
-            loadInitializeData();
-        }
-
+       
         private void btnThoat_ItemClick(object sender, DevExpress.XtraBars.ItemClickEventArgs e)
         {
+          
+            // trường hợp đang thêm dữ liệu
+            if (btnGhi.Enabled)
+            {
+                String notifi = " Dữ liệu Học phí chưa lưu vào Database.  Bạn có chắc muốn thoát !";
+
+                DialogResult dr = XtraMessageBox.Show(notifi, "Cảnh báo", MessageBoxButtons.YesNo, MessageBoxIcon.Warning);
+
+                if (dr == DialogResult.No)
+                {
+                    return;
+                }
+                else if (dr == DialogResult.Yes)
+                {
+                    this.Close();
+
+                }
+            }
             this.Close();
         }
 
@@ -186,10 +277,13 @@ namespace QLDSV.Forms
 
         private void frmHocPhi_Load(object sender, EventArgs e)
         {
-          
-
-            loadInitializeData();
+            btnThem.Enabled = false;
+            this.SINHVIENTableAdapter.Connection.ConnectionString = Program.URL_Connect;
+            this.SINHVIENTableAdapter.Fill(this.DS.SINHVIEN);
             DisableEditMode();
+
+          
+       
         }
 
    
@@ -198,11 +292,88 @@ namespace QLDSV.Forms
             if (!(e.Value is DBNull))
             {
                 decimal price = Convert.ToDecimal(e.Value);
-                e.DisplayText = string.Format(MyHelper.CiVNI, "{0:c0}", price);
+                CultureInfo CiVNI = new CultureInfo("vi-VN", false);
+                 e.DisplayText = string.Format(CiVNI, "{0:c0}", price);
             }
         }
 
-     
+        private void gvTTHocPhi_CustomColumnDisplayText_1(object sender, CustomColumnDisplayTextEventArgs e)
+        {
+            ColumnView view = sender as ColumnView;
+            if ((e.Column.FieldName == "HOCPHI" || e.Column.FieldName == "SOTIENDADONG") && e.ListSourceRowIndex != DevExpress.XtraGrid.GridControl.InvalidRowHandle)
+            {
+                if (!(e.Value is DBNull))
+                {
+                    decimal price = Convert.ToDecimal(e.Value);
+                    CultureInfo CiVNI = new CultureInfo("vi-VN", false);
+                    e.DisplayText = string.Format(CiVNI, "{0:c0}", price);
+                }
+            }
+        }
+
+        private void gvTTHocPhi_CustomDrawRowIndicator(object sender, DevExpress.XtraGrid.Views.Grid.RowIndicatorCustomDrawEventArgs e)
+        {
+            e.Handled = true;
+            SolidBrush brush = new SolidBrush(Color.FromArgb(0xC6, 0x64, 0xFF));
+            e.Graphics.FillRectangle(brush, e.Bounds);
+            e.Graphics.DrawRectangle(Pens.Black, new Rectangle(e.Bounds.X, e.Bounds.Y, e.Bounds.Width - 1, e.Bounds.Height));
+            Size size = ImageCollection.GetImageListSize(e.Info.ImageCollection);
+            Rectangle r = e.Bounds;
+            ImageCollection.DrawImageListImage(e.Cache, e.Info.ImageCollection, e.Info.ImageIndex,
+                    new Rectangle(r.X + (r.Width - size.Width) / 2, r.Y + (r.Height - size.Height) / 2, size.Width, size.Height));
+            brush.Dispose();
+        }
+
+        private void gvTTHocPhi_RowCellStyle(object sender, DevExpress.XtraGrid.Views.Grid.RowCellStyleEventArgs e)
+        {
+            GridView view = sender as GridView;
+            if (e.RowHandle == view.FocusedRowHandle)
+            {
+                e.Appearance.BackColor = Color.LawnGreen;
+            }
+        }
+
+        private void gvTTHocPhi_FocusedRowChanged(object sender, FocusedRowChangedEventArgs e)
+        {
+            if (_flagEdit)
+            {
+                this.colHOCPHI.OptionsColumn.AllowEdit = true;
+                this.colHOCPHI.OptionsColumn.ReadOnly = false;
+                this.colSOTIENDADONG.OptionsColumn.AllowEdit = true;
+                this.colSOTIENDADONG.OptionsColumn.ReadOnly = false;
+            }
+            else
+            {
+                this.colHOCPHI.OptionsColumn.AllowEdit = false;
+                this.colSOTIENDADONG.OptionsColumn.AllowEdit = false;
+            }
+
+        }
+
+        private void gvTTHocPhi_ValidateRow(object sender, ValidateRowEventArgs e)
+        {
+            GridView view = sender as GridView;
+            GridColumn colHocPhi = view.Columns["HOCPHI"];
+            GridColumn colTienDaDong = view.Columns["SOTIENDADONG"];
+
+            double soHocPhi = double.Parse(view.GetRowCellValue(e.RowHandle, colHocPhi).ToString());
+            double soDaDong = double.Parse(view.GetRowCellValue(e.RowHandle, colTienDaDong).ToString());
+
+            //Validity criterion 
+            if (soHocPhi < soDaDong)
+            {
+                e.Valid = false;
+                view.SetColumnError(colHocPhi, "Số tiền học phí phải lớn hơn hoặc bằng số tiền đã đóng");
+                view.SetColumnError(colTienDaDong, "Số tiền đã đóng phải nhỏ hơn hoặc bằng số tiền học phí");
+            }
+        }
+
+        private void gvTTHocPhi_InvalidRowException(object sender, InvalidRowExceptionEventArgs e)
+        {
+
+            e.ExceptionMode = ExceptionMode.NoAction;
+        }
+
     }
 
    

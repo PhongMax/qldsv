@@ -106,7 +106,7 @@ namespace QLDSV
         {
             if (!dangxuat)
             {
-                if (MessageBox.Show("Bạn có thực sự muốn thoát?", "Xác nhận", MessageBoxButtons.YesNo) == DialogResult.No)
+                if (XtraMessageBox.Show("Bạn có thực sự muốn thoát?", "Xác nhận", MessageBoxButtons.YesNo) == DialogResult.No)
                 {
                     e.Cancel = true;
                     return;
@@ -176,6 +176,14 @@ namespace QLDSV
             if (!(Program.MGroup == Program.NhomQuyen[2]))
             {
                 ShowMdiChildren(typeof(frmDiem));
+            }
+        }
+
+        private void barBtnHocPhi_ItemClick(object sender, DevExpress.XtraBars.ItemClickEventArgs e)
+        {
+            if ((Program.MGroup == Program.NhomQuyen[2]))
+            {
+                ShowMdiChildren(typeof(frmHocPhi));
             }
         }
     }
