@@ -75,6 +75,7 @@
             this.cell3 = new DevExpress.XtraReports.UI.XRTableCell();
             this.ds1 = new QLDSV.DS();
             this.sP_REPORT_DSDHPTableAdapter = new QLDSV.DSTableAdapters.SP_REPORT_DSDHPTableAdapter();
+            this.lblAuthor = new DevExpress.XtraReports.UI.XRLabel();
             ((System.ComponentModel.ISupportInitialize)(this.table1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.table2)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.ds1)).BeginInit();
@@ -161,6 +162,7 @@
             // BottomMargin
             // 
             this.BottomMargin.Controls.AddRange(new DevExpress.XtraReports.UI.XRControl[] {
+            this.lblAuthor,
             this.lblTongTienHocPhi,
             this.lblTongTien,
             this.lblTongSinhVien,
@@ -478,6 +480,17 @@
             // 
             this.sP_REPORT_DSDHPTableAdapter.ClearBeforeFill = true;
             // 
+            // lblAuthor
+            // 
+            this.lblAuthor.Font = new System.Drawing.Font("Consolas", 12F, System.Drawing.FontStyle.Italic, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblAuthor.LocationFloat = new DevExpress.Utils.PointFloat(25F, 108.1667F);
+            this.lblAuthor.Multiline = true;
+            this.lblAuthor.Name = "lblAuthor";
+            this.lblAuthor.Padding = new DevExpress.XtraPrinting.PaddingInfo(2, 2, 0, 0, 96F);
+            this.lblAuthor.SizeF = new System.Drawing.SizeF(370.231F, 22.99999F);
+            this.lblAuthor.StylePriority.UseFont = false;
+            this.lblAuthor.Text = "lblAuthor";
+            // 
             // XtraReport_DSDHP
             // 
             this.Bands.AddRange(new DevExpress.XtraReports.UI.Band[] {
@@ -500,7 +513,7 @@
             this.DetailData1,
             this.DetailData3_Odd,
             this.PageInfo});
-            this.Version = "19.1";
+            this.Version = "19.2";
             ((System.ComponentModel.ISupportInitialize)(this.table1)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.table2)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.ds1)).EndInit();
@@ -548,5 +561,6 @@
         private DevExpress.XtraReports.UI.XRLabel lblTongTien;
         public DevExpress.XtraReports.UI.XRLabel lblTongSinhVien;
         private DevExpress.XtraReports.UI.XRLabel lblTongSV;
+        public DevExpress.XtraReports.UI.XRLabel lblAuthor;
     }
 }
