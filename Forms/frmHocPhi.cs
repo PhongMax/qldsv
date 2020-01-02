@@ -208,19 +208,27 @@ namespace QLDSV.Forms
         private void btnGhi_ItemClick(object sender, DevExpress.XtraBars.ItemClickEventArgs e)
         {
 
-            // check giá trị trước khi add
-            float soTienDong = float.Parse(this.spiSoTienDong.Value.ToString());
-            float soHocPhi = float.Parse(this.spiHocPhi.Value.ToString());
-            
-            if (soTienDong > soHocPhi)
-            {
-                XtraMessageBox.Show("Số tiền đóng không được lớn hơn học phí !", "", MessageBoxButtons.OK);
-                bdsHocPhi.RemoveCurrent();
-                return;
-            }
-
+           
             try
             {
+
+                // check giá trị trước khi add
+                float soTienDong = float.Parse(this.spiSoTienDong.Value.ToString());
+                float soHocPhi = float.Parse(this.spiHocPhi.Value.ToString());
+
+                if (soTienDong > soHocPhi)
+                {
+                    XtraMessageBox.Show("Số tiền đóng không được lớn hơn học phí !", "", MessageBoxButtons.OK);
+                    return;
+                }
+                if (spiHocKy.Value == 0 || spiHocPhi.Value == 0)
+                {
+                    XtraMessageBox.Show("Dữ liệu không được để trống !", "", MessageBoxButtons.OK);
+                    return;
+                }
+
+
+
                 if (CanSave())
                 {
                     if (Save())

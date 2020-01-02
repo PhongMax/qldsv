@@ -297,7 +297,7 @@
             this.ClientSize = new System.Drawing.Size(1049, 408);
             this.Controls.Add(this.panel);
             this.Name = "frmChuyenLop";
-            this.Text = "frmChuyenLop";
+            this.Text = "Chuyển lớp";
             this.Load += new System.EventHandler(this.frmChuyenLop_Load);
             this.panel.ResumeLayout(false);
             this.panel.PerformLayout();

@@ -530,14 +530,48 @@ namespace QLDSV.Forms
 
             
         }
+        private bool KiemTraDongHocPhi(string maSV)
+        {
 
+
+
+            string query1 = " DECLARE @return_value int " +
+
+                            " EXEC    @return_value = [dbo].[SP_CHECKIDHOCPHIBYMASV] " +
+
+                            " @masv = N'" + maSV  + "'" +
+
+                            " SELECT  'Return Value' = @return_value ";
+            int resultMa = Utils.CheckDataHelper(query1);
+            if (resultMa == -1)
+            {
+                XtraMessageBox.Show("Lỗi kết nối với database. Mời bạn xem lại", "", MessageBoxButtons.OK);
+                this.Close();
+            }
+            if (resultMa == 1)
+            {
+                // trùng
+                return true;
+            }
+
+            // ko trùng
+            return false;
+        }
         private void conXoa_Click(object sender, EventArgs e)
         {
             if (bdsDiemSV.Count > 0)
             {
-                XtraMessageBox.Show("Không thể xóa Sinh Viên này..từ từ tính tiếp.  .", "", MessageBoxButtons.OK);
+                XtraMessageBox.Show("Sinh viên này có dữ liệu, Không được xóa !", "", MessageBoxButtons.OK);
                 return;
             }
+
+            String maSVCurrent = ((DataRowView)bdsSV[this.gridViewSinhVien.FocusedRowHandle])["MASV"].ToString();
+            if (KiemTraDongHocPhi(maSVCurrent))
+            {
+                XtraMessageBox.Show("Sinh viên này có dữ liệu, Không được xóa !", "", MessageBoxButtons.OK);
+                return;
+            }
+
             if (XtraMessageBox.Show("Bạn có thực sự muốn xóa Sinh Viên này??", "Xác nhận.", MessageBoxButtons.OKCancel) == DialogResult.OK)
             {
                 try
