@@ -205,6 +205,16 @@ namespace QLDSV.Forms
         {
             errorProvider.Clear();
 
+            if (string.IsNullOrEmpty(monhoc) || string.IsNullOrEmpty(lop))
+            {
+                this.btnNhap.Enabled = true;
+                this.btnLuu.Enabled = false;
+
+                errorProvider.SetError(this.btnNhap, "Các trường thông tin nhập điểm không được để trống !");
+                return;
+            }
+
+
             if (checkEmptyRow())
             {
                 this.btnNhap.Enabled = false;
@@ -222,15 +232,28 @@ namespace QLDSV.Forms
                 bdsTemp.EndEdit();
 
 
+                // bắt đầu ghi dữ liệu
+                SqlConnection conn = new SqlConnection(Program.URL_Connect);
+                // bắt đầu transaction
+                SqlTransaction tran;
 
-                for (int i = 0; i < bdsBangDiem_Nhap.Count; i++)
+                conn.Open();
+                tran = conn.BeginTransaction();
+
+                try
                 {
-                    using (SqlConnection conn = new SqlConnection(Program.URL_Connect))
-                    {
-                        conn.Open();
-                        SqlCommand cmd = new SqlCommand("SP_INSERT_DIEM", conn);
-                        cmd.CommandType = CommandType.StoredProcedure;
 
+                   
+                    for (int i = 0; i < bdsBangDiem_Nhap.Count ; i++)
+                    {
+
+                        SqlCommand cmd = new SqlCommand("SP_INSERT_DIEM", conn);
+                        cmd.Connection = conn;
+                        cmd.Transaction = tran;
+
+
+
+                        cmd.CommandType = CommandType.StoredProcedure;
                         string masv = ((DataRowView)bdsTemp[i])["MASV"].ToString();
                         cmd.Parameters.Add(new SqlParameter("@MASV", masv));
                         cmd.Parameters.Add(new SqlParameter("@MAMH", monhoc));
@@ -239,20 +262,38 @@ namespace QLDSV.Forms
                         float diem = float.Parse(((DataRowView)bdsTemp[i])["DIEM"].ToString());
                         cmd.Parameters.Add(new SqlParameter("@DIEM", diem));
 
-                        try
-                        {
-                            cmd.ExecuteNonQuery();
-                        }
-                        catch (Exception ex)
-                        {
-                            XtraMessageBox.Show("Lỗi ghi điểm vào Database. Bạn hãy xem lại ! " + ex.Message, "", MessageBoxButtons.OK);
-                            conn.Close();
-                            return;
+                         cmd.ExecuteNonQuery();
+                  
 
-                        }
-                        conn.Close();
                     }
+
+
+                    tran.Commit();
                 }
+                catch (SqlException sqlex)
+                {
+                    try
+                    {
+
+                        tran.Rollback();
+                        XtraMessageBox.Show("Lỗi ghi toàn bộ điểm vào Database. Bạn hãy xem lại ! " + sqlex.Message, "", MessageBoxButtons.OK);
+
+                    }
+                    catch (Exception ex2)
+                    {
+                        Console.WriteLine("Rollback Exception Type: {0}", ex2.GetType());
+                        Console.WriteLine("  Message: {0}", ex2.Message);
+                    }
+                    conn.Close();
+                    return;
+                }
+                finally
+                {
+                    conn.Close();
+                }
+
+
+             
 
                 XtraMessageBox.Show("Thao tác thành công!", "", MessageBoxButtons.OK);
                 this.btnNhap.Enabled = true;
