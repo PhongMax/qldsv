@@ -48,11 +48,9 @@ namespace QLDSV.Forms
             string maLopChuyenDenTextBox = this.txtMaLopChuyenDen.Text.Trim().ToString();
 
             string QUERY = "";
-
             string MASV = "";
 
             SqlCommand command;
-            SqlDataReader dataReader;
             SqlDataAdapter adapter = new SqlDataAdapter();
 
             using (SqlConnection connection = new SqlConnection(Program.URL_Connect))
@@ -76,63 +74,37 @@ namespace QLDSV.Forms
                     return;
                 }
 
-                // TODO : Đưa dữ liệu sinh viên vào đối tượng tạm - lát sau sửa lại MASV vs MALOP
-                QUERY = string.Format("SELECT MASV,HO,TEN,MALOP,PHAI,NGAYSINH,NOISINH,DIACHI,GHICHU,NGHIHOC FROM dbo.SINHVIEN WHERE MASV = '" + maSVTextBox + "'");
-                command = new SqlCommand(QUERY, connection);
-                dataReader = command.ExecuteReader();
-                SinhVien sinhvien = new SinhVien();
-                while (dataReader.Read())
+                if (STATE == 2) // INFO : CHUYỂN LỚP KHÁC KHOA -LỚP ĐÓ ĐANG TRỐNG
                 {
-                    sinhvien.setMASV(dataReader.GetValue(0).ToString());
-                    sinhvien.setHO(dataReader.GetValue(1).ToString());
-                    sinhvien.setTEN(dataReader.GetValue(2).ToString());
-                    sinhvien.setMALOP(dataReader.GetValue(3).ToString());
-                    sinhvien.setPHAI(dataReader.GetValue(4).ToString());
-                    sinhvien.setNGAYSINH(dataReader.GetValue(5).ToString());
-                    sinhvien.setNOISINH(dataReader.GetValue(6).ToString());
-                    sinhvien.setDIACHI(dataReader.GetValue(7).ToString());
-                    sinhvien.setGHICHU(dataReader.GetValue(8).ToString());
-                    sinhvien.setNGHIHOC(dataReader.GetValue(9).ToString());
-
-                } //MessageBox.Show(sinhvien.ToStringSinhVien());
-                  // TODO : Must Close dataReader
-                dataReader.Close();
-
-                if (STATE == 2)// CHUYỂN LỚP KHÁC KHOA - LỚP ĐÓ ĐANG TRỐNG
-                {
-                    
-                    // TODO : Cập nhập trạng thái học của sinh viên đó tại khoa ban đầu thành nghỉ học
-                    QUERY = "Update SINHVIEN SET NGHIHOC=1 WHERE MASV='" + maSVTextBox + "'";
-                    command = new SqlCommand(QUERY, connection);
-                    adapter.UpdateCommand = new SqlCommand(QUERY, connection);
-                    adapter.UpdateCommand.ExecuteNonQuery();
-
-                    // TODO : Cấp mã mới
+                    //    // TODO : Cấp mã mới
                     string nienkhoa = maLopChuyenDenTextBox.Substring(1, 2);
                     string major = maLopChuyenDenTextBox.Substring(5, 2);
                     string newID = "N" + nienkhoa + "DC" + major + "001";
 
-                    sinhvien.setMASV(newID);
-                    sinhvien.setMALOP(maLopChuyenDenTextBox);
-                    Console.WriteLine("MA SINH VIEN DUOC CAP MOI : " + sinhvien.getMASV());
-
-                    // TODO : Đưa thông tin sinh viên qua khoa mới và tạo (Sử dụng LINK0 để về site chủ làm việc)
-                    QUERY = "INSERT INTO LINK0.QLDSV.dbo.SINHVIEN (MASV,HO,TEN,MALOP,PHAI,NGAYSINH,NOISINH,DIACHI,GHICHU,NGHIHOC) \n"
-                        + "VALUES  ('" + sinhvien.getMASV() + "',N'" + sinhvien.getHO() + "',N'" + sinhvien.getTEN() + "','" + sinhvien.getMALOP() + "','" + sinhvien.getPHAI() + "','" + sinhvien.getNGAYSINH() + "',N'" + sinhvien.getNOISINH() + "',N'" + sinhvien.getDIACHI() + "',NULL, 0)";
-
+                    QUERY = "SP_CHUYENLOP";
                     command = new SqlCommand(QUERY, connection);
-                    adapter.InsertCommand = new SqlCommand(QUERY, connection);
-                    adapter.InsertCommand.ExecuteNonQuery();
+                    command.CommandType = CommandType.StoredProcedure;
+                    command.Parameters.AddWithValue("MASV", maSVTextBox);// masv cũ
+                    command.Parameters.AddWithValue("MASVMOI", newID);// masv mới
+                    command.Parameters.AddWithValue("MALOPCHUYENDEN", maLopChuyenDenTextBox);// mã lớp chuyển đến
 
-                    XtraMessageBox.Show("Chuyển Sinh Viên Qua Lớp "+maLopChuyenDenTextBox+" Thành Công", "INFO", MessageBoxButtons.OK);
-                    return;
-
+                    try
+                    {
+                        command.ExecuteNonQuery();
+                        XtraMessageBox.Show("Chuyển Sinh Viên Qua Lớp " + maLopChuyenDenTextBox + " Thành Công", "INFO", MessageBoxButtons.OK);
+                        return;
+                    }
+                    catch (Exception ex)
+                    {
+                        XtraMessageBox.Show(ex.Message, "INFO", MessageBoxButtons.OK);
+                    }
+                    command.Dispose();
                 }
 
                 if (STATE == 3)
                 {
                     // TODO : Kiểm tra mã sv mới trùng với mã đang có ?
-                    if(checkValidatedMASV(this.txtMaSVMoi.Text.Trim().ToString()) == false)
+                    if (checkValidatedMASV(this.txtMaSVMoi.Text.Trim().ToString()) == false)
                     {
                         this.buttonOK.Visible = false;
                         this.txtMaSVMoi.Text = "";
@@ -141,38 +113,37 @@ namespace QLDSV.Forms
                     }
                     else
                     {
-                        // TODO : Cập nhập trạng thái học của sinh viên đó tại khoa ban đầu thành nghỉ học
-                        QUERY = "Update SINHVIEN SET NGHIHOC=1 WHERE MASV='" + maSVTextBox + "'";
+                        string newID = this.txtMaSVMoi.Text.Trim().ToString();// lấy mã mới do người dùng nhập
+
+                        QUERY = "SP_CHUYENLOP";
                         command = new SqlCommand(QUERY, connection);
-                        adapter.UpdateCommand = new SqlCommand(QUERY, connection);
-                        adapter.UpdateCommand.ExecuteNonQuery();
+                        command.CommandType = CommandType.StoredProcedure;
+                        command.Parameters.AddWithValue("MASV", maSVTextBox);// masv cũ
+                        command.Parameters.AddWithValue("MASVMOI", newID);// masv mới
+                        command.Parameters.AddWithValue("MALOPCHUYENDEN", maLopChuyenDenTextBox);// mã lớp chuyển đến
 
-                        sinhvien.setMASV(this.txtMaSVMoi.Text);
-                        sinhvien.setMALOP(maLopChuyenDenTextBox);
-                        Console.WriteLine("MA SINH VIEN DUOC CAP MOI : " + sinhvien.getMASV());
-
-                        // TODO : Đưa thông tin sinh viên qua khoa mới và tạo (Sử dụng LINK0 để về site chủ làm việc)
-                        QUERY = "INSERT INTO LINK0.QLDSV.dbo.SINHVIEN (MASV,HO,TEN,MALOP,PHAI,NGAYSINH,NOISINH,DIACHI,GHICHU,NGHIHOC) \n"
-                            + "VALUES  ('" + sinhvien.getMASV() + "',N'" + sinhvien.getHO() + "',N'" + sinhvien.getTEN() + "','" + sinhvien.getMALOP() + "','" + sinhvien.getPHAI() + "','" + sinhvien.getNGAYSINH() + "',N'" + sinhvien.getNOISINH() + "',N'" + sinhvien.getDIACHI() + "',NULL, 0)";
-
-                        command = new SqlCommand(QUERY, connection);
-                        adapter.InsertCommand = new SqlCommand(QUERY, connection);
-                        adapter.InsertCommand.ExecuteNonQuery();
-
-                        XtraMessageBox.Show("Chuyển Sinh Viên Qua Lớp " + maLopChuyenDenTextBox + " Thành Công", "INFO", MessageBoxButtons.OK);
-                        return;
+                        try
+                        {
+                            command.ExecuteNonQuery();
+                            XtraMessageBox.Show("Chuyển Sinh Viên Qua Lớp " + maLopChuyenDenTextBox + " Thành Công", "INFO", MessageBoxButtons.OK);
+                            return;
+                        }
+                        catch (Exception ex)
+                        {
+                            XtraMessageBox.Show(ex.Message, "INFO", MessageBoxButtons.OK);
+                        }
                     }
-
+                    command.Dispose();
                 }
-
-                dataReader.Close();
-                command.Dispose();
+                
                 connection.Close();
                 
             }// END USING
 
         }
 
+
+        // TODO : Check All Validated In Process
         private void button_Check_Click(object sender, EventArgs e)
         {
             if (this.txtMaSV.Text.Trim().ToString().Equals("") || this.txtMaLopChuyenDen.Text.Trim().ToString().Equals(""))
