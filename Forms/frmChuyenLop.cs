@@ -208,6 +208,25 @@ namespace QLDSV.Forms
                 }
                 else // Mã Sinh Viên Tồn Tại Ở Khoa Này
                 {
+                    // TODO : Kiểm tra sinh viên còn đi học mới cho chuyển
+                    QUERY = string.Format("SELECT NGHIHOC FROM dbo.SINHVIEN WHERE MASV = '" + this.txtMaSV.Text.Trim().ToString() + "'");
+                    command = new SqlCommand(QUERY, connection);
+                    command.CommandType = CommandType.Text;
+                    bool nghihoc = false;
+                    try
+                    {
+                        nghihoc = (Boolean)command.ExecuteScalar();
+                    }
+                    catch { }
+                    if (nghihoc == true)// Sinh Viên Đã Nghỉ Học
+                    {
+                        Console.WriteLine("Status Nghi Hoc : " + nghihoc);
+                        this.labelSupport.Visible = true;
+                        this.labelSupport.Text = "Không thể chuyển sinh viên này vì đã nghỉ học";
+                        this.txtMaSV.Focus();
+                        return;
+                    }
+
                     // TODO : Check Mã Lớp Chuyển Đến Ở Site Hiện Tại
                     QUERY = string.Format("SELECT MALOP FROM dbo.LOP WHERE MALOP = '" + this.txtMaLopChuyenDen.Text.Trim().ToString() + "'");
                     command = new SqlCommand(QUERY, connection);

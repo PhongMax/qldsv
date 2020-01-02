@@ -129,11 +129,11 @@
             // 
             this.mAMHLabel.AutoSize = true;
             this.mAMHLabel.Font = new System.Drawing.Font("Consolas", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.mAMHLabel.Location = new System.Drawing.Point(207, 32);
+            this.mAMHLabel.Location = new System.Drawing.Point(186, 31);
             this.mAMHLabel.Name = "mAMHLabel";
-            this.mAMHLabel.Size = new System.Drawing.Size(98, 14);
+            this.mAMHLabel.Size = new System.Drawing.Size(119, 14);
             this.mAMHLabel.TabIndex = 0;
-            this.mAMHLabel.Text = "Mã sinh viên:";
+            this.mAMHLabel.Text = "Gõ Mã sinh viên:";
             // 
             // txtMaLop
             // 
@@ -282,9 +282,9 @@
             this.labelMaSV.Font = new System.Drawing.Font("Consolas", 11.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.labelMaSV.Location = new System.Drawing.Point(207, 113);
             this.labelMaSV.Name = "labelMaSV";
-            this.labelMaSV.Size = new System.Drawing.Size(144, 18);
+            this.labelMaSV.Size = new System.Drawing.Size(104, 18);
             this.labelMaSV.TabIndex = 0;
-            this.labelMaSV.Text = "Nhập Mã Sinh Viên";
+            this.labelMaSV.Text = "Mã Sinh Viên";
             // 
             // SINHVIENTableAdapter
             // 
