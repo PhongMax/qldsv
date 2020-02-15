@@ -8,6 +8,7 @@ using DevExpress.Skins;
 // sử dụng kiểu kết nối với Database là sqlclient
 using System.Data.SqlClient;
 using System.Data;
+using DevExpress.XtraEditors;
 
 namespace QLDSV
 {
@@ -21,7 +22,7 @@ namespace QLDSV
         // dùng để thực thi lệnh
         public static SqlCommand Sqlcmd = new SqlCommand();
 
-        // tạo đối tượng kết nối Conn  , kêt nối Database bằng mã lệnh
+        // tạo đối tượng kết nối Conn , kêt nối Database bằng mã lệnh
         public static SqlConnection Conn = new SqlConnection();
 
         // chuỗi kết nối connection string để kết nối với csdl , nó bước đầu tiên để thực hiện kết nối      
@@ -33,38 +34,44 @@ namespace QLDSV
         public static String ServerName = string.Empty;
         public static String UserName = string.Empty;
 
-        // MLogin là mã login và Password của nó
-        public static String MLogin = string.Empty;
-        public static String Password = string.Empty;
 
-        // vì tât cả các Database phân tán cùng tên nên để QLDSV cứng luôn, ở dưới RemoteLogin cũng v, Password cũng vậy
-        public static String Database = "QLDSV";
+        // lưu các login và password từ các form khi chương trình chạy.
+        public static String MLogin = string.Empty;
+        public static String MPassword = string.Empty;
 
         // RemoteLogin này là remote dùng để hỗ trợ kết nối ra ngoài ví dụ trong quá trình đăng nhập nó sẽ rẽ qua server 2
         // để đăng nhập truy vấn dữ liệu thì nó dùng login này để kết nối(hay là tạo link server)
-        // vì nó giống nhau trên các phân mãnh là HTKN nối nó sẽ gán cứng vào.
+        // vì nó giống nhau trên các phân mảnh là HTKN nối nó sẽ gán cứng vào.
         public static String RemoteLogin = "HTKN";
         public static String RemotePassword = "123456";
+        public static String Database = "QLDSV";
 
         //MLoginDN là mã login đăng nhập và mật khẩu của nó
         public static String MLoginDN = string.Empty;
         public static String PasswordDN = string.Empty;
 
-        // MGroup là mã group
+        // 3 Mgroup , MHoten, MKhoa dùng để hiển thi thông tin login vào
+        // MGroup là mã nhóm quyền khi của login đó đăng nhập vào.
         public static String MGroup = string.Empty;
 
-        // MHoten là mã họ tên. 
+        // MHoten là mã họ tên của login đăng nhập vào 
         public static String MHoten = string.Empty;
 
-        //mChinhanh cho biết hiện tại chi nhánh ta đăng nhập vô là chi nhanh nào.
-        //https://youtu.be/z8pgdIbtV3E?t=2595
+        //MKhoa cho biết hiện tại khoa ta đăng nhập vô là khoa nào.
         public static int MKhoa = 0;
 
-        //biến dùng để chứa danh sách các phân mãnh, mà mình sẽ gọi cái viewDSPM bằng code
-        // dùng để khi đi qua form nhân viên muốn hiện 2 chi nhánh lại thì chỉ cần chạy lấy lại dữ liệu và chỉ cần chạy 1 lần 
+        //biến dùng để chứa danh sách các phân mãnh từ viewDSPM (bằng code, ko kéo thả)
         public static BindingSource Bds_Dspm = new BindingSource(); //giu DSPM khi dang nhap
-        public static frmMain fr_Main;
 
+        // lưu các đối tượng form Main và form FrmDangNhap để thực hiển xử lý nghiệp vụ chuyển đổi từ frmMain sang frmDangNhap và ngược lại.
+        public static frmMain frmMain;
+        public static frmDangNhap FrmDangNhap;
+
+        // lưu danh sách các nhóm quyền
+        public static string[] NhomQuyen = new string[3] {"PGV", "KHOA", "PKeToan"};
+       
+
+        // hàm thực hiện kết nối tới Database
         public static int KetNoi()
         {
             if (Program.Conn != null && Program.Conn.State == ConnectionState.Open)
@@ -74,7 +81,7 @@ namespace QLDSV
             {
                 Program.URL_Connect = "Data Source=" + Program.ServerName + ";Initial Catalog=" +
                       Program.Database + ";User ID=" +
-                      Program.MLogin + ";Password=" + Program.Password;
+                      Program.MLogin + ";Password=" + Program.MPassword;
                 Program.Conn.ConnectionString = Program.URL_Connect;
 
                 // mở đối tượng kết nối
@@ -84,16 +91,17 @@ namespace QLDSV
 
             catch (Exception e)
             {
-                MessageBox.Show("Lỗi kết nối cơ sở dữ liệu.\nBạn xem lại user name và Password.\n " + e.Message, string.Empty, MessageBoxButtons.OK);
+                XtraMessageBox.Show("---> Lỗi kết nối cơ sở dữ liệu.\n---> Bạn xem lại Username và Password.\n " + e.Message, string.Empty, MessageBoxButtons.OK);
                 return 0;
             }
         }
 
 
-        // ExecSqlDataReader tôc độ tài về nhanh hơn ExecSqlDataTable vì đối tượng nó chỉ quam tân chỉ select
+        // ExecSqlDataReader tôc độ tải về nhanh hơn ExecSqlDataTable vì đối tượng nó chỉ quam tân chỉ select
         // chỉ duyệt 1 chiều từ trên xuống
-        // vì vậy báo cáo thì dùng datareader
+        // vì vậy trong nghiệp vụ form báo cáo thì dùng datareader
         // https://youtu.be/z8pgdIbtV3E?t=3233
+
         public static SqlDataReader ExecSqlDataReader(String strLenh)
         {
             SqlDataReader myReader;
@@ -105,19 +113,21 @@ namespace QLDSV
             if (Program.Conn.State == ConnectionState.Closed) Program.Conn.Open();
             try
             {
-                myReader = sqlcmd.ExecuteReader(); return myReader;
+                myReader = sqlcmd.ExecuteReader();
+                return myReader;
             }
             catch (SqlException ex)
             {
                 Program.Conn.Close();
-                MessageBox.Show(ex.Message);
+                XtraMessageBox.Show(ex.Message);
                 return null;
             }
         }
 
         // tải về cho phép xem xóa sửa ==> tốc độ tải chậm hơn cái ở trên
         // duyệt 2 chiều dưới lên
-        // form nhập liệu thì dùng datatable. 
+        // form nhập liệu thì dùng datatable.
+
         public static DataTable ExecSqlDataTable(String cmd)
         {
             DataTable dt = new DataTable();
@@ -136,9 +146,9 @@ namespace QLDSV
 
             BonusSkins.Register();
             SkinManager.EnableFormSkins();
-
-            Application.Run(new frmDangNhap());
-            //Application.Run(new frmMain());
+           
+            Program.FrmDangNhap = new frmDangNhap();
+            Application.Run(Program.FrmDangNhap);
 
         }
     }

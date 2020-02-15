@@ -1,4 +1,5 @@
-﻿using System;
+﻿using DevExpress.XtraEditors;
+using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
@@ -25,38 +26,42 @@ namespace QLDSV
 
             Program.Conn.ConnectionString = chuoiketnoi;
 
-
             DataTable dt = new DataTable();
             //gọi 1 view và trả về dưới dạng datatable
             dt = Program.ExecSqlDataTable("SELECT * FROM V_DSPM");
 
+          
             // cất dt vào biến toàn cục Bds_Dspm
             Program.Bds_Dspm.DataSource = dt;
-
-            // đoạn code liên kết giữa bds với combo box
-            cmbKhoa.DataSource = dt;
-            cmbKhoa.DisplayMember = "TENKHOA";
-            cmbKhoa.ValueMember = "TENSERVER";
-
-            // lệnh này quan trọng... phải bỏ vào. ==> để cho combo box chạy đúng.
-            cmbKhoa.SelectedIndex = 1;
-            cmbKhoa.SelectedIndex = 0;
-
-
+            
+            // đoạn code liên kết giữa bds với combobox
+            Utils.BindingDataToComBo(cmbKhoa, dt);
         }
 
-        private void button2_Click(object sender, EventArgs e)
-        {
-            Close();
-        }
 
         private void cmbKhoa_SelectedIndexChanged(object sender, EventArgs e)
         {
+            // gán tài khoản và mật khẩu vào form login...., sau này báo cáo xóa cụm if này đi.
+            if (cmbKhoa.SelectedIndex == 0)
+            {
+                this.txtLogin.Text = "pgv";
+                this.txtPass.Text = "123456";
+            }
+            if (cmbKhoa.SelectedIndex == 1)
+            {
+                this.txtLogin.Text = "vt";
+                this.txtPass.Text = "123456";
+            }
+            if (cmbKhoa.SelectedIndex == 2)
+            {
+                this.txtLogin.Text = "hp";
+                this.txtPass.Text = "123456";
+            }
+
             try
             {
                 // gán server đã chọn vào biến toàn cục.
                 Program.ServerName = cmbKhoa.SelectedValue.ToString();
- 
             }
             catch (Exception) { };
         }
@@ -66,7 +71,7 @@ namespace QLDSV
 
             if (txtLogin.Text.Trim() == "" || txtPass.Text.Trim() == "")
             {
-                MessageBox.Show("Tài khoản đăng nhập không được trống", "Lỗi đăng nhập", MessageBoxButtons.OK);
+                XtraMessageBox.Show("Tài khoản đăng nhập không được trống", "Lỗi đăng nhập", MessageBoxButtons.OK);
 
                // trỏ con trỏ chuột về ô user...
                txtLogin.Focus();
@@ -74,17 +79,16 @@ namespace QLDSV
             }
 
             Program.MLogin = txtLogin.Text;
-            Program.Password = txtPass.Text;
+            Program.MPassword = txtPass.Text;
             if (Program.KetNoi() == 0)
             {
                 return;
             }
-
            
-            Program.MKhoa = cmbKhoa.SelectedIndex;
+            Program.MKhoa = cmbKhoa.SelectedIndex;// 0: CNTT ,  1: VT, 2: HỌC PHÍ
 
             Program.MLoginDN = Program.MLogin;
-            Program.PasswordDN = Program.Password;
+            Program.PasswordDN = Program.MPassword;
 
           
             String strLenh = "exec SP_DANGNHAP '" + Program.MLogin + "'";
@@ -100,21 +104,51 @@ namespace QLDSV
             Program.UserName = Program.MyReader.GetString(0);     // Lay user name
             if (Convert.IsDBNull(Program.UserName))
             {
-                MessageBox.Show("Login bạn nhập không có quyền truy cập dữ liệu\nBạn xem lại username, password", "", MessageBoxButtons.OK);
+                XtraMessageBox.Show("Login bạn nhập không có quyền truy cập dữ liệu\nBạn xem lại username, password", "", MessageBoxButtons.OK);
                 return;
             }
-            Program.MHoten = Program.MyReader.GetString(1);
-            Program.MGroup = Program.MyReader.GetString(2);
+
+            try
+            {
+                Program.MHoten = Program.MyReader.GetString(1);
+                Program.MGroup = Program.MyReader.GetString(2);
+            }
+            catch(Exception ex)
+            {
+                Debug.WriteLine("---> Lỗi: " + ex.ToString());
+                XtraMessageBox.Show("Login bạn nhập không có quyền truy cập vào chương trình", "", MessageBoxButtons.OK);
+                return;
+            }
 
             Program.MyReader.Close();
             Program.Conn.Close();
-            MessageBox.Show("UserName : "+ Program.UserName + "   Họ tên :" + Program.MHoten + " Group: " + Program.MGroup, "", MessageBoxButtons.OK);
 
+            // truy cập vào frm main 
+            Program.frmMain = new frmMain();
+
+            // hiện thông tin tài khoản
+            Program.frmMain.lblMAGV.Text = "MÃ GIẢNG VIÊN : " + Program.UserName.Trim();
+            Program.frmMain.lblHOTEN.Text = "HỌ VÀ TÊN : " + Program.MHoten.Trim();
+            Program.frmMain.lblNHOM.Text = "NHÓM : " + Program.MGroup;
+
+            Program.frmMain.Show();
+            Program.FrmDangNhap.Visible = false;
         }
 
         private void chkShowPass_CheckedChanged(object sender, EventArgs e)
         {
             txtPass.UseSystemPasswordChar = (chkShowPass.Checked) ? false : true;
+        }
+
+        private void btnThoat_Click(object sender, EventArgs e)
+        {
+            Close();
+        }
+            
+        private void frmDangNhap_VisibleChanged(object sender, EventArgs e)
+        {
+            Program.Bds_Dspm.RemoveFilter();
+            cmbKhoa_SelectedIndexChanged(sender, e);
         }
     }
 }

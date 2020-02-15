@@ -4,12 +4,12 @@
     <xs:appinfo source="urn:schemas-microsoft-com:xml-msdatasource">
       <DataSource DefaultConnectionIndex="0" FunctionsComponentName="QueriesTableAdapter" Modifier="AutoLayout, AnsiClass, Class, Public" SchemaSerializationMode="IncludeSchema" xmlns="urn:schemas-microsoft-com:xml-msdatasource">
         <Connections>
-          <Connection AppSettingsObjectName="Settings" AppSettingsPropertyName="QLDSVConnectionString1" ConnectionStringObject="" IsAppSettingsProperty="true" Modifier="Assembly" Name="QLDSVConnectionString1 (Settings)" ParameterPrefix="@" PropertyReference="ApplicationSettings.QLDSV.Properties.Settings.GlobalReference.Default.QLDSVConnectionString1" Provider="System.Data.SqlClient" />
+          <Connection AppSettingsObjectName="Settings" AppSettingsPropertyName="QLDSVConnectionString" ConnectionStringObject="" IsAppSettingsProperty="true" Modifier="Assembly" Name="QLDSVConnectionString (Settings)" ParameterPrefix="@" PropertyReference="ApplicationSettings.QLDSV.Properties.Settings.GlobalReference.Default.QLDSVConnectionString" Provider="System.Data.SqlClient" />
         </Connections>
         <Tables>
           <TableAdapter BaseClass="System.ComponentModel.Component" DataAccessorModifier="AutoLayout, AnsiClass, Class, Public" DataAccessorName="DIEMTableAdapter" GeneratorDataComponentClassName="DIEMTableAdapter" Name="DIEM" UserDataComponentName="DIEMTableAdapter">
             <MainSource>
-              <DbSource ConnectionRef="QLDSVConnectionString1 (Settings)" DbObjectName="QLDSV.dbo.DIEM" DbObjectType="Table" FillMethodModifier="Public" FillMethodName="Fill" GenerateMethods="Both" GenerateShortCommands="true" GeneratorGetMethodName="GetData" GeneratorSourceName="Fill" GetMethodModifier="Public" GetMethodName="GetData" QueryType="Rowset" ScalarCallRetval="System.Object, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" UseOptimisticConcurrency="true" UserGetMethodName="GetData" UserSourceName="Fill">
+              <DbSource ConnectionRef="QLDSVConnectionString (Settings)" DbObjectName="QLDSV.dbo.DIEM" DbObjectType="Table" FillMethodModifier="Public" FillMethodName="Fill" GenerateMethods="Both" GenerateShortCommands="true" GeneratorGetMethodName="GetData" GeneratorSourceName="Fill" GetMethodModifier="Public" GetMethodName="GetData" QueryType="Rowset" ScalarCallRetval="System.Object, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" UseOptimisticConcurrency="true" UserGetMethodName="GetData" UserSourceName="Fill">
                 <DeleteCommand>
                   <DbCommand CommandType="Text" ModifiedByUser="false">
                     <CommandText>DELETE FROM [dbo].[DIEM] WHERE (([MASV] = @Original_MASV) AND ([MAMH] = @Original_MAMH) AND ([LAN] = @Original_LAN) AND ([DIEM] = @Original_DIEM))</CommandText>
@@ -67,7 +67,7 @@ SELECT MASV, MAMH, LAN, DIEM FROM DIEM WHERE (LAN = @LAN) AND (MAMH = @MAMH) AND
           </TableAdapter>
           <TableAdapter BaseClass="System.ComponentModel.Component" DataAccessorModifier="AutoLayout, AnsiClass, Class, Public" DataAccessorName="GIANGVIENTableAdapter" GeneratorDataComponentClassName="GIANGVIENTableAdapter" Name="GIANGVIEN" UserDataComponentName="GIANGVIENTableAdapter">
             <MainSource>
-              <DbSource ConnectionRef="QLDSVConnectionString1 (Settings)" DbObjectName="QLDSV.dbo.GIANGVIEN" DbObjectType="Table" FillMethodModifier="Public" FillMethodName="Fill" GenerateMethods="Both" GenerateShortCommands="true" GeneratorGetMethodName="GetData" GeneratorSourceName="Fill" GetMethodModifier="Public" GetMethodName="GetData" QueryType="Rowset" ScalarCallRetval="System.Object, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" UseOptimisticConcurrency="true" UserGetMethodName="GetData" UserSourceName="Fill">
+              <DbSource ConnectionRef="QLDSVConnectionString (Settings)" DbObjectName="QLDSV.dbo.GIANGVIEN" DbObjectType="Table" FillMethodModifier="Public" FillMethodName="Fill" GenerateMethods="Both" GenerateShortCommands="true" GeneratorGetMethodName="GetData" GeneratorSourceName="Fill" GetMethodModifier="Public" GetMethodName="GetData" QueryType="Rowset" ScalarCallRetval="System.Object, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" UseOptimisticConcurrency="true" UserGetMethodName="GetData" UserSourceName="Fill">
                 <DeleteCommand>
                   <DbCommand CommandType="Text" ModifiedByUser="false">
                     <CommandText>DELETE FROM [dbo].[GIANGVIEN] WHERE (([MAGV] = @Original_MAGV) AND ([HO] = @Original_HO) AND ([TEN] = @Original_TEN) AND ([MAKH] = @Original_MAKH))</CommandText>
@@ -125,7 +125,7 @@ SELECT MAGV, HO, TEN, MAKH FROM GIANGVIEN WHERE (MAGV = @MAGV)</CommandText>
           </TableAdapter>
           <TableAdapter BaseClass="System.ComponentModel.Component" DataAccessorModifier="AutoLayout, AnsiClass, Class, Public" DataAccessorName="KHOATableAdapter" GeneratorDataComponentClassName="KHOATableAdapter" Name="KHOA" UserDataComponentName="KHOATableAdapter">
             <MainSource>
-              <DbSource ConnectionRef="QLDSVConnectionString1 (Settings)" DbObjectName="QLDSV.dbo.KHOA" DbObjectType="Table" FillMethodModifier="Public" FillMethodName="Fill" GenerateMethods="Both" GenerateShortCommands="true" GeneratorGetMethodName="GetData" GeneratorSourceName="Fill" GetMethodModifier="Public" GetMethodName="GetData" QueryType="Rowset" ScalarCallRetval="System.Object, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" UseOptimisticConcurrency="true" UserGetMethodName="GetData" UserSourceName="Fill">
+              <DbSource ConnectionRef="QLDSVConnectionString (Settings)" DbObjectName="QLDSV.dbo.KHOA" DbObjectType="Table" FillMethodModifier="Public" FillMethodName="Fill" GenerateMethods="Both" GenerateShortCommands="true" GeneratorGetMethodName="GetData" GeneratorSourceName="Fill" GetMethodModifier="Public" GetMethodName="GetData" QueryType="Rowset" ScalarCallRetval="System.Object, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" UseOptimisticConcurrency="true" UserGetMethodName="GetData" UserSourceName="Fill">
                 <DeleteCommand>
                   <DbCommand CommandType="Text" ModifiedByUser="false">
                     <CommandText>DELETE FROM [dbo].[KHOA] WHERE (([MAKH] = @Original_MAKH) AND ([TENKH] = @Original_TENKH))</CommandText>
@@ -173,7 +173,7 @@ SELECT MAKH, TENKH FROM KHOA WHERE (MAKH = @MAKH)</CommandText>
           </TableAdapter>
           <TableAdapter BaseClass="System.ComponentModel.Component" DataAccessorModifier="AutoLayout, AnsiClass, Class, Public" DataAccessorName="LOPTableAdapter" GeneratorDataComponentClassName="LOPTableAdapter" Name="LOP" UserDataComponentName="LOPTableAdapter">
             <MainSource>
-              <DbSource ConnectionRef="QLDSVConnectionString1 (Settings)" DbObjectName="QLDSV.dbo.LOP" DbObjectType="Table" FillMethodModifier="Public" FillMethodName="Fill" GenerateMethods="Both" GenerateShortCommands="true" GeneratorGetMethodName="GetData" GeneratorSourceName="Fill" GetMethodModifier="Public" GetMethodName="GetData" QueryType="Rowset" ScalarCallRetval="System.Object, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" UseOptimisticConcurrency="true" UserGetMethodName="GetData" UserSourceName="Fill">
+              <DbSource ConnectionRef="QLDSVConnectionString (Settings)" DbObjectName="QLDSV.dbo.LOP" DbObjectType="Table" FillMethodModifier="Public" FillMethodName="Fill" GenerateMethods="Both" GenerateShortCommands="true" GeneratorGetMethodName="GetData" GeneratorSourceName="Fill" GetMethodModifier="Public" GetMethodName="GetData" QueryType="Rowset" ScalarCallRetval="System.Object, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" UseOptimisticConcurrency="true" UserGetMethodName="GetData" UserSourceName="Fill">
                 <DeleteCommand>
                   <DbCommand CommandType="Text" ModifiedByUser="false">
                     <CommandText>DELETE FROM [dbo].[LOP] WHERE (([MALOP] = @Original_MALOP) AND ((@IsNull_TENLOP = 1 AND [TENLOP] IS NULL) OR ([TENLOP] = @Original_TENLOP)) AND ((@IsNull_MAKH = 1 AND [MAKH] IS NULL) OR ([MAKH] = @Original_MAKH)))</CommandText>
@@ -230,7 +230,7 @@ SELECT MALOP, TENLOP, MAKH FROM LOP WHERE (MALOP = @MALOP)</CommandText>
           </TableAdapter>
           <TableAdapter BaseClass="System.ComponentModel.Component" DataAccessorModifier="AutoLayout, AnsiClass, Class, Public" DataAccessorName="MONHOCTableAdapter" GeneratorDataComponentClassName="MONHOCTableAdapter" Name="MONHOC" UserDataComponentName="MONHOCTableAdapter">
             <MainSource>
-              <DbSource ConnectionRef="QLDSVConnectionString1 (Settings)" DbObjectName="QLDSV.dbo.MONHOC" DbObjectType="Table" FillMethodModifier="Public" FillMethodName="Fill" GenerateMethods="Both" GenerateShortCommands="true" GeneratorGetMethodName="GetData" GeneratorSourceName="Fill" GetMethodModifier="Public" GetMethodName="GetData" QueryType="Rowset" ScalarCallRetval="System.Object, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" UseOptimisticConcurrency="true" UserGetMethodName="GetData" UserSourceName="Fill">
+              <DbSource ConnectionRef="QLDSVConnectionString (Settings)" DbObjectName="QLDSV.dbo.MONHOC" DbObjectType="Table" FillMethodModifier="Public" FillMethodName="Fill" GenerateMethods="Both" GenerateShortCommands="true" GeneratorGetMethodName="GetData" GeneratorSourceName="Fill" GetMethodModifier="Public" GetMethodName="GetData" QueryType="Rowset" ScalarCallRetval="System.Object, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" UseOptimisticConcurrency="true" UserGetMethodName="GetData" UserSourceName="Fill">
                 <DeleteCommand>
                   <DbCommand CommandType="Text" ModifiedByUser="false">
                     <CommandText>DELETE FROM [dbo].[MONHOC] WHERE (([MAMH] = @Original_MAMH) AND ((@IsNull_TENMH = 1 AND [TENMH] IS NULL) OR ([TENMH] = @Original_TENMH)))</CommandText>
@@ -253,7 +253,7 @@ SELECT MAMH, TENMH FROM MONHOC WHERE (MAMH = @MAMH)</CommandText>
                 </InsertCommand>
                 <SelectCommand>
                   <DbCommand CommandType="Text" ModifiedByUser="true">
-                    <CommandText>SELECT MAMH, TENMH  FROM dbo.MONHOC</CommandText>
+                    <CommandText>SELECT MAMH, TENMH FROM dbo.MONHOC</CommandText>
                     <Parameters />
                   </DbCommand>
                 </SelectCommand>
@@ -280,7 +280,7 @@ SELECT MAMH, TENMH FROM MONHOC WHERE (MAMH = @MAMH)</CommandText>
           </TableAdapter>
           <TableAdapter BaseClass="System.ComponentModel.Component" DataAccessorModifier="AutoLayout, AnsiClass, Class, Public" DataAccessorName="SINHVIENTableAdapter" GeneratorDataComponentClassName="SINHVIENTableAdapter" Name="SINHVIEN" UserDataComponentName="SINHVIENTableAdapter">
             <MainSource>
-              <DbSource ConnectionRef="QLDSVConnectionString1 (Settings)" DbObjectName="QLDSV.dbo.SINHVIEN" DbObjectType="Table" FillMethodModifier="Public" FillMethodName="Fill" GenerateMethods="Both" GenerateShortCommands="true" GeneratorGetMethodName="GetData" GeneratorSourceName="Fill" GetMethodModifier="Public" GetMethodName="GetData" QueryType="Rowset" ScalarCallRetval="System.Object, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" UseOptimisticConcurrency="true" UserGetMethodName="GetData" UserSourceName="Fill">
+              <DbSource ConnectionRef="QLDSVConnectionString (Settings)" DbObjectName="QLDSV.dbo.SINHVIEN" DbObjectType="Table" FillMethodModifier="Public" FillMethodName="Fill" GenerateMethods="Both" GenerateShortCommands="true" GeneratorGetMethodName="GetData" GeneratorSourceName="Fill" GetMethodModifier="Public" GetMethodName="GetData" QueryType="Rowset" ScalarCallRetval="System.Object, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" UseOptimisticConcurrency="true" UserGetMethodName="GetData" UserSourceName="Fill">
                 <DeleteCommand>
                   <DbCommand CommandType="Text" ModifiedByUser="false">
                     <CommandText>DELETE FROM [dbo].[SINHVIEN] WHERE (([MASV] = @Original_MASV) AND ((@IsNull_HO = 1 AND [HO] IS NULL) OR ([HO] = @Original_HO)) AND ((@IsNull_TEN = 1 AND [TEN] IS NULL) OR ([TEN] = @Original_TEN)) AND ([MALOP] = @Original_MALOP) AND ((@IsNull_PHAI = 1 AND [PHAI] IS NULL) OR ([PHAI] = @Original_PHAI)) AND ((@IsNull_NGAYSINH = 1 AND [NGAYSINH] IS NULL) OR ([NGAYSINH] = @Original_NGAYSINH)) AND ((@IsNull_NOISINH = 1 AND [NOISINH] IS NULL) OR ([NOISINH] = @Original_NOISINH)) AND ((@IsNull_DIACHI = 1 AND [DIACHI] IS NULL) OR ([DIACHI] = @Original_DIACHI)) AND ((@IsNull_NGHIHOC = 1 AND [NGHIHOC] IS NULL) OR ([NGHIHOC] = @Original_NGHIHOC)))</CommandText>
@@ -375,6 +375,268 @@ SELECT MASV, HO, TEN, MALOP, PHAI, NGAYSINH, NOISINH, DIACHI, GHICHU, NGHIHOC FR
               <Mapping SourceColumn="DIACHI" DataSetColumn="DIACHI" />
               <Mapping SourceColumn="GHICHU" DataSetColumn="GHICHU" />
               <Mapping SourceColumn="NGHIHOC" DataSetColumn="NGHIHOC" />
+            </Mappings>
+            <Sources />
+          </TableAdapter>
+          <TableAdapter BaseClass="System.ComponentModel.Component" DataAccessorModifier="AutoLayout, AnsiClass, Class, Public" DataAccessorName="GETDSGVTableAdapter" GeneratorDataComponentClassName="GETDSGVTableAdapter" Name="GETDSGV" UserDataComponentName="GETDSGVTableAdapter">
+            <MainSource>
+              <DbSource ConnectionRef="QLDSVConnectionString (Settings)" DbObjectName="QLDSV.dbo.GIANGVIEN" DbObjectType="Table" FillMethodModifier="Public" FillMethodName="Fill" GenerateMethods="Both" GenerateShortCommands="false" GeneratorGetMethodName="GetData" GeneratorSourceName="Fill" GetMethodModifier="Public" GetMethodName="GetData" QueryType="Rowset" ScalarCallRetval="System.Object, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" UseOptimisticConcurrency="false" UserGetMethodName="GetData" UserSourceName="Fill">
+                <SelectCommand>
+                  <DbCommand CommandType="Text" ModifiedByUser="true">
+                    <CommandText>  SELECT MAGV, HO + ' ' + TEN AS TEN
+  FROM dbo.GIANGVIEN</CommandText>
+                    <Parameters />
+                  </DbCommand>
+                </SelectCommand>
+              </DbSource>
+            </MainSource>
+            <Mappings>
+              <Mapping SourceColumn="MAGV" DataSetColumn="MAGV" />
+              <Mapping SourceColumn="TEN" DataSetColumn="TEN" />
+            </Mappings>
+            <Sources />
+          </TableAdapter>
+          <TableAdapter BaseClass="System.ComponentModel.Component" DataAccessorModifier="AutoLayout, AnsiClass, Class, Public" DataAccessorName="SP_REPORT_DSTHMTableAdapter" GeneratorDataComponentClassName="SP_REPORT_DSTHMTableAdapter" Name="SP_REPORT_DSTHM" UserDataComponentName="SP_REPORT_DSTHMTableAdapter">
+            <MainSource>
+              <DbSource ConnectionRef="QLDSVConnectionString (Settings)" DbObjectName="QLDSV.dbo.SP_REPORT_DSTHM" DbObjectType="StoredProcedure" FillMethodModifier="Public" FillMethodName="Fill" GenerateMethods="Both" GenerateShortCommands="false" GeneratorGetMethodName="GetData" GeneratorSourceName="Fill" GetMethodModifier="Public" GetMethodName="GetData" QueryType="Rowset" ScalarCallRetval="System.Object, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" UseOptimisticConcurrency="true" UserGetMethodName="GetData" UserSourceName="Fill">
+                <SelectCommand>
+                  <DbCommand CommandType="StoredProcedure" ModifiedByUser="false">
+                    <CommandText>dbo.SP_REPORT_DSTHM</CommandText>
+                    <Parameters>
+                      <Parameter AllowDbNull="true" AutogeneratedName="" DataSourceName="" DataTypeServer="int" DbType="Int32" Direction="ReturnValue" ParameterName="@RETURN_VALUE" Precision="10" ProviderType="Int" Scale="0" Size="4" SourceColumnNullMapping="false" SourceVersion="Current" />
+                      <Parameter AllowDbNull="true" AutogeneratedName="" DataSourceName="" DataTypeServer="char" DbType="AnsiStringFixedLength" Direction="Input" ParameterName="@MALOP" Precision="0" ProviderType="Char" Scale="0" Size="15" SourceColumnNullMapping="false" SourceVersion="Current" />
+                    </Parameters>
+                  </DbCommand>
+                </SelectCommand>
+              </DbSource>
+            </MainSource>
+            <Mappings>
+              <Mapping SourceColumn="MASV" DataSetColumn="MASV" />
+              <Mapping SourceColumn="HOTEN" DataSetColumn="HOTEN" />
+            </Mappings>
+            <Sources />
+          </TableAdapter>
+          <TableAdapter BaseClass="System.ComponentModel.Component" DataAccessorModifier="AutoLayout, AnsiClass, Class, Public" DataAccessorName="SP_REPORT_BDMHTableAdapter" GeneratorDataComponentClassName="SP_REPORT_BDMHTableAdapter" Name="SP_REPORT_BDMH" UserDataComponentName="SP_REPORT_BDMHTableAdapter">
+            <MainSource>
+              <DbSource ConnectionRef="QLDSVConnectionString (Settings)" DbObjectName="QLDSV.dbo.SP_REPORT_BDMH" DbObjectType="StoredProcedure" FillMethodModifier="Public" FillMethodName="Fill" GenerateMethods="Both" GenerateShortCommands="false" GeneratorGetMethodName="GetData" GeneratorSourceName="Fill" GetMethodModifier="Public" GetMethodName="GetData" QueryType="Rowset" ScalarCallRetval="System.Object, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" UseOptimisticConcurrency="true" UserGetMethodName="GetData" UserSourceName="Fill">
+                <SelectCommand>
+                  <DbCommand CommandType="StoredProcedure" ModifiedByUser="false">
+                    <CommandText>dbo.SP_REPORT_BDMH</CommandText>
+                    <Parameters>
+                      <Parameter AllowDbNull="true" AutogeneratedName="" DataSourceName="" DataTypeServer="int" DbType="Int32" Direction="ReturnValue" ParameterName="@RETURN_VALUE" Precision="10" ProviderType="Int" Scale="0" Size="4" SourceColumnNullMapping="false" SourceVersion="Current" />
+                      <Parameter AllowDbNull="true" AutogeneratedName="" DataSourceName="" DataTypeServer="nvarchar" DbType="String" Direction="Input" ParameterName="@MALOP" Precision="0" ProviderType="NVarChar" Scale="0" Size="15" SourceColumnNullMapping="false" SourceVersion="Current" />
+                      <Parameter AllowDbNull="true" AutogeneratedName="" DataSourceName="" DataTypeServer="nvarchar" DbType="String" Direction="Input" ParameterName="@MAMONHOC" Precision="0" ProviderType="NVarChar" Scale="0" Size="15" SourceColumnNullMapping="false" SourceVersion="Current" />
+                      <Parameter AllowDbNull="true" AutogeneratedName="" DataSourceName="" DataTypeServer="int" DbType="Int32" Direction="Input" ParameterName="@LAN" Precision="10" ProviderType="Int" Scale="0" Size="4" SourceColumnNullMapping="false" SourceVersion="Current" />
+                    </Parameters>
+                  </DbCommand>
+                </SelectCommand>
+              </DbSource>
+            </MainSource>
+            <Mappings>
+              <Mapping SourceColumn="HOTEN" DataSetColumn="HOTEN" />
+              <Mapping SourceColumn="DIEM" DataSetColumn="DIEM" />
+            </Mappings>
+            <Sources />
+          </TableAdapter>
+          <TableAdapter BaseClass="System.ComponentModel.Component" DataAccessorModifier="AutoLayout, AnsiClass, Class, Public" DataAccessorName="SP_REPORT_PDTableAdapter" GeneratorDataComponentClassName="SP_REPORT_PDTableAdapter" Name="SP_REPORT_PD" UserDataComponentName="SP_REPORT_PDTableAdapter">
+            <MainSource>
+              <DbSource ConnectionRef="QLDSVConnectionString (Settings)" DbObjectName="QLDSV.dbo.SP_REPORT_PD" DbObjectType="StoredProcedure" FillMethodModifier="Public" FillMethodName="Fill" GenerateMethods="Both" GenerateShortCommands="false" GeneratorGetMethodName="GetData" GeneratorSourceName="Fill" GetMethodModifier="Public" GetMethodName="GetData" QueryType="Rowset" ScalarCallRetval="System.Object, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" UseOptimisticConcurrency="true" UserGetMethodName="GetData" UserSourceName="Fill">
+                <SelectCommand>
+                  <DbCommand CommandType="StoredProcedure" ModifiedByUser="false">
+                    <CommandText>dbo.SP_REPORT_PD</CommandText>
+                    <Parameters>
+                      <Parameter AllowDbNull="true" AutogeneratedName="" DataSourceName="" DataTypeServer="int" DbType="Int32" Direction="ReturnValue" ParameterName="@RETURN_VALUE" Precision="10" ProviderType="Int" Scale="0" Size="4" SourceColumnNullMapping="false" SourceVersion="Current" />
+                      <Parameter AllowDbNull="true" AutogeneratedName="" DataSourceName="" DataTypeServer="nvarchar" DbType="String" Direction="Input" ParameterName="@MASV" Precision="0" ProviderType="NVarChar" Scale="0" Size="15" SourceColumnNullMapping="false" SourceVersion="Current" />
+                    </Parameters>
+                  </DbCommand>
+                </SelectCommand>
+              </DbSource>
+            </MainSource>
+            <Mappings>
+              <Mapping SourceColumn="TENMH" DataSetColumn="TENMH" />
+              <Mapping SourceColumn="DIEM" DataSetColumn="DIEM" />
+            </Mappings>
+            <Sources />
+          </TableAdapter>
+          <TableAdapter BaseClass="System.ComponentModel.Component" DataAccessorModifier="AutoLayout, AnsiClass, Class, Public" DataAccessorName="SP_REPORT_DSDHPTableAdapter" GeneratorDataComponentClassName="SP_REPORT_DSDHPTableAdapter" Name="SP_REPORT_DSDHP" UserDataComponentName="SP_REPORT_DSDHPTableAdapter">
+            <MainSource>
+              <DbSource ConnectionRef="QLDSVConnectionString (Settings)" DbObjectName="QLDSV.dbo.SP_REPORT_DSDHP" DbObjectType="StoredProcedure" FillMethodModifier="Public" FillMethodName="Fill" GenerateMethods="Both" GenerateShortCommands="false" GeneratorGetMethodName="GetData" GeneratorSourceName="Fill" GetMethodModifier="Public" GetMethodName="GetData" QueryType="Rowset" ScalarCallRetval="System.Object, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" UseOptimisticConcurrency="true" UserGetMethodName="GetData" UserSourceName="Fill">
+                <SelectCommand>
+                  <DbCommand CommandType="StoredProcedure" ModifiedByUser="false">
+                    <CommandText>dbo.SP_REPORT_DSDHP</CommandText>
+                    <Parameters>
+                      <Parameter AllowDbNull="true" AutogeneratedName="" DataSourceName="" DataTypeServer="int" DbType="Int32" Direction="ReturnValue" ParameterName="@RETURN_VALUE" Precision="10" ProviderType="Int" Scale="0" Size="4" SourceColumnNullMapping="false" SourceVersion="Current" />
+                      <Parameter AllowDbNull="true" AutogeneratedName="" DataSourceName="" DataTypeServer="nvarchar" DbType="String" Direction="Input" ParameterName="@MALOP" Precision="0" ProviderType="NVarChar" Scale="0" Size="15" SourceColumnNullMapping="false" SourceVersion="Current" />
+                      <Parameter AllowDbNull="true" AutogeneratedName="" DataSourceName="" DataTypeServer="nvarchar" DbType="String" Direction="Input" ParameterName="@NIENKHOA" Precision="0" ProviderType="NVarChar" Scale="0" Size="15" SourceColumnNullMapping="false" SourceVersion="Current" />
+                      <Parameter AllowDbNull="true" AutogeneratedName="" DataSourceName="" DataTypeServer="int" DbType="Int32" Direction="Input" ParameterName="@HOCKI" Precision="10" ProviderType="Int" Scale="0" Size="4" SourceColumnNullMapping="false" SourceVersion="Current" />
+                    </Parameters>
+                  </DbCommand>
+                </SelectCommand>
+              </DbSource>
+            </MainSource>
+            <Mappings>
+              <Mapping SourceColumn="HOTEN" DataSetColumn="HOTEN" />
+              <Mapping SourceColumn="HOCPHI" DataSetColumn="HOCPHI" />
+              <Mapping SourceColumn="SOTIENDADONG" DataSetColumn="SOTIENDADONG" />
+            </Mappings>
+            <Sources />
+          </TableAdapter>
+          <TableAdapter BaseClass="System.ComponentModel.Component" DataAccessorModifier="AutoLayout, AnsiClass, Class, Public" DataAccessorName="SP_REPORT_BDTKTableAdapter" GeneratorDataComponentClassName="SP_REPORT_BDTKTableAdapter" Name="SP_REPORT_BDTK" UserDataComponentName="SP_REPORT_BDTKTableAdapter">
+            <MainSource>
+              <DbSource ConnectionRef="QLDSVConnectionString (Settings)" DbObjectName="QLDSV.dbo.SP_REPORT_BDTK" DbObjectType="StoredProcedure" FillMethodModifier="Public" FillMethodName="Fill" GenerateMethods="Both" GenerateShortCommands="false" GeneratorGetMethodName="GetData" GeneratorSourceName="Fill" GetMethodModifier="Public" GetMethodName="GetData" QueryType="Rowset" ScalarCallRetval="System.Object, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" UseOptimisticConcurrency="true" UserGetMethodName="GetData" UserSourceName="Fill">
+                <SelectCommand>
+                  <DbCommand CommandType="StoredProcedure" ModifiedByUser="false">
+                    <CommandText>dbo.SP_REPORT_BDTK</CommandText>
+                    <Parameters>
+                      <Parameter AllowDbNull="true" AutogeneratedName="" DataSourceName="" DataTypeServer="int" DbType="Int32" Direction="ReturnValue" ParameterName="@RETURN_VALUE" Precision="10" ProviderType="Int" Scale="0" Size="4" SourceColumnNullMapping="false" SourceVersion="Current" />
+                      <Parameter AllowDbNull="true" AutogeneratedName="" DataSourceName="" DataTypeServer="char" DbType="AnsiStringFixedLength" Direction="Input" ParameterName="@MALOP" Precision="0" ProviderType="Char" Scale="0" Size="10" SourceColumnNullMapping="false" SourceVersion="Current" />
+                    </Parameters>
+                  </DbCommand>
+                </SelectCommand>
+              </DbSource>
+            </MainSource>
+            <Mappings>
+              <Mapping SourceColumn="HOTEN" DataSetColumn="HOTEN" />
+              <Mapping SourceColumn="TENMH" DataSetColumn="TENMH" />
+              <Mapping SourceColumn="DIEM" DataSetColumn="DIEM" />
+            </Mappings>
+            <Sources />
+          </TableAdapter>
+          <TableAdapter BaseClass="System.ComponentModel.Component" DataAccessorModifier="AutoLayout, AnsiClass, Class, Public" DataAccessorName="HOCPHITableAdapter" GeneratorDataComponentClassName="HOCPHITableAdapter" Name="HOCPHI" UserDataComponentName="HOCPHITableAdapter">
+            <MainSource>
+              <DbSource ConnectionRef="QLDSVConnectionString (Settings)" DbObjectName="QLDSV.dbo.HOCPHI" DbObjectType="Table" FillMethodModifier="Public" FillMethodName="Fill" GenerateMethods="Both" GenerateShortCommands="true" GeneratorGetMethodName="GetData" GeneratorSourceName="Fill" GetMethodModifier="Public" GetMethodName="GetData" QueryType="Rowset" ScalarCallRetval="System.Object, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" UseOptimisticConcurrency="true" UserGetMethodName="GetData" UserSourceName="Fill">
+                <DeleteCommand>
+                  <DbCommand CommandType="Text" ModifiedByUser="false">
+                    <CommandText>DELETE FROM [HOCPHI] WHERE (([MASV] = @Original_MASV) AND ([NIENKHOA] = @Original_NIENKHOA) AND ([HOCKY] = @Original_HOCKY) AND ([HOCPHI] = @Original_HOCPHI) AND ([SOTIENDADONG] = @Original_SOTIENDADONG))</CommandText>
+                    <Parameters>
+                      <Parameter AllowDbNull="false" AutogeneratedName="" DataSourceName="" DbType="AnsiStringFixedLength" Direction="Input" ParameterName="@Original_MASV" Precision="0" ProviderType="Char" Scale="0" Size="0" SourceColumn="MASV" SourceColumnNullMapping="false" SourceVersion="Original" />
+                      <Parameter AllowDbNull="false" AutogeneratedName="" DataSourceName="" DbType="String" Direction="Input" ParameterName="@Original_NIENKHOA" Precision="0" ProviderType="NVarChar" Scale="0" Size="0" SourceColumn="NIENKHOA" SourceColumnNullMapping="false" SourceVersion="Original" />
+                      <Parameter AllowDbNull="false" AutogeneratedName="" DataSourceName="" DbType="Int32" Direction="Input" ParameterName="@Original_HOCKY" Precision="0" ProviderType="Int" Scale="0" Size="0" SourceColumn="HOCKY" SourceColumnNullMapping="false" SourceVersion="Original" />
+                      <Parameter AllowDbNull="false" AutogeneratedName="" DataSourceName="" DbType="Int32" Direction="Input" ParameterName="@Original_HOCPHI" Precision="0" ProviderType="Int" Scale="0" Size="0" SourceColumn="HOCPHI" SourceColumnNullMapping="false" SourceVersion="Original" />
+                      <Parameter AllowDbNull="false" AutogeneratedName="" DataSourceName="" DbType="Int32" Direction="Input" ParameterName="@Original_SOTIENDADONG" Precision="0" ProviderType="Int" Scale="0" Size="0" SourceColumn="SOTIENDADONG" SourceColumnNullMapping="false" SourceVersion="Original" />
+                    </Parameters>
+                  </DbCommand>
+                </DeleteCommand>
+                <InsertCommand>
+                  <DbCommand CommandType="Text" ModifiedByUser="false">
+                    <CommandText>INSERT INTO [HOCPHI] ([MASV], [NIENKHOA], [HOCKY], [HOCPHI], [SOTIENDADONG]) VALUES (@MASV, @NIENKHOA, @HOCKY, @HOCPHI, @SOTIENDADONG);
+SELECT MASV, NIENKHOA, HOCKY, HOCPHI, SOTIENDADONG FROM HOCPHI WHERE (HOCKY = @HOCKY) AND (MASV = @MASV) AND (NIENKHOA = @NIENKHOA)</CommandText>
+                    <Parameters>
+                      <Parameter AllowDbNull="false" AutogeneratedName="" DataSourceName="" DbType="AnsiStringFixedLength" Direction="Input" ParameterName="@MASV" Precision="0" ProviderType="Char" Scale="0" Size="0" SourceColumn="MASV" SourceColumnNullMapping="false" SourceVersion="Current" />
+                      <Parameter AllowDbNull="false" AutogeneratedName="" DataSourceName="" DbType="String" Direction="Input" ParameterName="@NIENKHOA" Precision="0" ProviderType="NVarChar" Scale="0" Size="0" SourceColumn="NIENKHOA" SourceColumnNullMapping="false" SourceVersion="Current" />
+                      <Parameter AllowDbNull="false" AutogeneratedName="" DataSourceName="" DbType="Int32" Direction="Input" ParameterName="@HOCKY" Precision="0" ProviderType="Int" Scale="0" Size="0" SourceColumn="HOCKY" SourceColumnNullMapping="false" SourceVersion="Current" />
+                      <Parameter AllowDbNull="false" AutogeneratedName="" DataSourceName="" DbType="Int32" Direction="Input" ParameterName="@HOCPHI" Precision="0" ProviderType="Int" Scale="0" Size="0" SourceColumn="HOCPHI" SourceColumnNullMapping="false" SourceVersion="Current" />
+                      <Parameter AllowDbNull="false" AutogeneratedName="" DataSourceName="" DbType="Int32" Direction="Input" ParameterName="@SOTIENDADONG" Precision="0" ProviderType="Int" Scale="0" Size="0" SourceColumn="SOTIENDADONG" SourceColumnNullMapping="false" SourceVersion="Current" />
+                    </Parameters>
+                  </DbCommand>
+                </InsertCommand>
+                <SelectCommand>
+                  <DbCommand CommandType="Text" ModifiedByUser="true">
+                    <CommandText>SELECT        MASV, NIENKHOA, HOCKY, HOCPHI, SOTIENDADONG
+FROM            HOCPHI</CommandText>
+                    <Parameters />
+                  </DbCommand>
+                </SelectCommand>
+                <UpdateCommand>
+                  <DbCommand CommandType="Text" ModifiedByUser="false">
+                    <CommandText>UPDATE [HOCPHI] SET [MASV] = @MASV, [NIENKHOA] = @NIENKHOA, [HOCKY] = @HOCKY, [HOCPHI] = @HOCPHI, [SOTIENDADONG] = @SOTIENDADONG WHERE (([MASV] = @Original_MASV) AND ([NIENKHOA] = @Original_NIENKHOA) AND ([HOCKY] = @Original_HOCKY) AND ([HOCPHI] = @Original_HOCPHI) AND ([SOTIENDADONG] = @Original_SOTIENDADONG));
+SELECT MASV, NIENKHOA, HOCKY, HOCPHI, SOTIENDADONG FROM HOCPHI WHERE (HOCKY = @HOCKY) AND (MASV = @MASV) AND (NIENKHOA = @NIENKHOA)</CommandText>
+                    <Parameters>
+                      <Parameter AllowDbNull="false" AutogeneratedName="" DataSourceName="" DbType="AnsiStringFixedLength" Direction="Input" ParameterName="@MASV" Precision="0" ProviderType="Char" Scale="0" Size="0" SourceColumn="MASV" SourceColumnNullMapping="false" SourceVersion="Current" />
+                      <Parameter AllowDbNull="false" AutogeneratedName="" DataSourceName="" DbType="String" Direction="Input" ParameterName="@NIENKHOA" Precision="0" ProviderType="NVarChar" Scale="0" Size="0" SourceColumn="NIENKHOA" SourceColumnNullMapping="false" SourceVersion="Current" />
+                      <Parameter AllowDbNull="false" AutogeneratedName="" DataSourceName="" DbType="Int32" Direction="Input" ParameterName="@HOCKY" Precision="0" ProviderType="Int" Scale="0" Size="0" SourceColumn="HOCKY" SourceColumnNullMapping="false" SourceVersion="Current" />
+                      <Parameter AllowDbNull="false" AutogeneratedName="" DataSourceName="" DbType="Int32" Direction="Input" ParameterName="@HOCPHI" Precision="0" ProviderType="Int" Scale="0" Size="0" SourceColumn="HOCPHI" SourceColumnNullMapping="false" SourceVersion="Current" />
+                      <Parameter AllowDbNull="false" AutogeneratedName="" DataSourceName="" DbType="Int32" Direction="Input" ParameterName="@SOTIENDADONG" Precision="0" ProviderType="Int" Scale="0" Size="0" SourceColumn="SOTIENDADONG" SourceColumnNullMapping="false" SourceVersion="Current" />
+                      <Parameter AllowDbNull="false" AutogeneratedName="" DataSourceName="" DbType="AnsiStringFixedLength" Direction="Input" ParameterName="@Original_MASV" Precision="0" ProviderType="Char" Scale="0" Size="0" SourceColumn="MASV" SourceColumnNullMapping="false" SourceVersion="Original" />
+                      <Parameter AllowDbNull="false" AutogeneratedName="" DataSourceName="" DbType="String" Direction="Input" ParameterName="@Original_NIENKHOA" Precision="0" ProviderType="NVarChar" Scale="0" Size="0" SourceColumn="NIENKHOA" SourceColumnNullMapping="false" SourceVersion="Original" />
+                      <Parameter AllowDbNull="false" AutogeneratedName="" DataSourceName="" DbType="Int32" Direction="Input" ParameterName="@Original_HOCKY" Precision="0" ProviderType="Int" Scale="0" Size="0" SourceColumn="HOCKY" SourceColumnNullMapping="false" SourceVersion="Original" />
+                      <Parameter AllowDbNull="false" AutogeneratedName="" DataSourceName="" DbType="Int32" Direction="Input" ParameterName="@Original_HOCPHI" Precision="0" ProviderType="Int" Scale="0" Size="0" SourceColumn="HOCPHI" SourceColumnNullMapping="false" SourceVersion="Original" />
+                      <Parameter AllowDbNull="false" AutogeneratedName="" DataSourceName="" DbType="Int32" Direction="Input" ParameterName="@Original_SOTIENDADONG" Precision="0" ProviderType="Int" Scale="0" Size="0" SourceColumn="SOTIENDADONG" SourceColumnNullMapping="false" SourceVersion="Original" />
+                    </Parameters>
+                  </DbCommand>
+                </UpdateCommand>
+              </DbSource>
+            </MainSource>
+            <Mappings>
+              <Mapping SourceColumn="MASV" DataSetColumn="MASV" />
+              <Mapping SourceColumn="NIENKHOA" DataSetColumn="NIENKHOA" />
+              <Mapping SourceColumn="HOCKY" DataSetColumn="HOCKY" />
+              <Mapping SourceColumn="HOCPHI" DataSetColumn="HOCPHI" />
+              <Mapping SourceColumn="SOTIENDADONG" DataSetColumn="SOTIENDADONG" />
+            </Mappings>
+            <Sources />
+          </TableAdapter>
+          <TableAdapter BaseClass="System.ComponentModel.Component" DataAccessorModifier="AutoLayout, AnsiClass, Class, Public" DataAccessorName="THONGTINHOCPHICUASINHVIENTableAdapter" GeneratorDataComponentClassName="THONGTINHOCPHICUASINHVIENTableAdapter" Name="THONGTINHOCPHICUASINHVIEN" UserDataComponentName="THONGTINHOCPHICUASINHVIENTableAdapter">
+            <MainSource>
+              <DbSource ConnectionRef="QLDSVConnectionString (Settings)" DbObjectName="QLDSV.dbo.sp_GETTHONGTINHOCPHICUASINHVIEN" DbObjectType="StoredProcedure" FillMethodModifier="Public" FillMethodName="Fill" GenerateMethods="Both" GenerateShortCommands="true" GeneratorGetMethodName="GetData" GeneratorSourceName="Fill" GetMethodModifier="Public" GetMethodName="GetData" QueryType="Rowset" ScalarCallRetval="System.Object, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" UseOptimisticConcurrency="true" UserGetMethodName="GetData" UserSourceName="Fill">
+                <DeleteCommand>
+                  <DbCommand CommandType="StoredProcedure" ModifiedByUser="false">
+                    <CommandText>dbo.sp_GETTHONGTINHOCPHICUASINHVIEN</CommandText>
+                    <Parameters>
+                      <Parameter AllowDbNull="true" AutogeneratedName="" DataSourceName="" DataTypeServer="int" DbType="Int32" Direction="ReturnValue" ParameterName="@RETURN_VALUE" Precision="10" ProviderType="Int" Scale="0" Size="4" SourceColumnNullMapping="false" SourceVersion="Current" />
+                      <Parameter AllowDbNull="true" AutogeneratedName="" DataSourceName="" DataTypeServer="char" DbType="AnsiStringFixedLength" Direction="Input" ParameterName="@masv" Precision="0" ProviderType="Char" Scale="0" Size="12" SourceColumn="MASV" SourceColumnNullMapping="false" SourceVersion="Current" />
+                    </Parameters>
+                  </DbCommand>
+                </DeleteCommand>
+                <InsertCommand>
+                  <DbCommand CommandType="StoredProcedure" ModifiedByUser="false">
+                    <CommandText>dbo.sp_GETTHONGTINHOCPHICUASINHVIEN</CommandText>
+                    <Parameters>
+                      <Parameter AllowDbNull="true" AutogeneratedName="" DataSourceName="" DataTypeServer="int" DbType="Int32" Direction="ReturnValue" ParameterName="@RETURN_VALUE" Precision="10" ProviderType="Int" Scale="0" Size="4" SourceColumnNullMapping="false" SourceVersion="Current" />
+                      <Parameter AllowDbNull="true" AutogeneratedName="" DataSourceName="" DataTypeServer="char" DbType="AnsiStringFixedLength" Direction="Input" ParameterName="@masv" Precision="0" ProviderType="Char" Scale="0" Size="12" SourceColumn="MASV" SourceColumnNullMapping="false" SourceVersion="Current" />
+                    </Parameters>
+                  </DbCommand>
+                </InsertCommand>
+                <SelectCommand>
+                  <DbCommand CommandType="StoredProcedure" ModifiedByUser="false">
+                    <CommandText>dbo.sp_GETTHONGTINHOCPHICUASINHVIEN</CommandText>
+                    <Parameters>
+                      <Parameter AllowDbNull="true" AutogeneratedName="" DataSourceName="" DataTypeServer="int" DbType="Int32" Direction="ReturnValue" ParameterName="@RETURN_VALUE" Precision="10" ProviderType="Int" Scale="0" Size="4" SourceColumnNullMapping="false" SourceVersion="Current" />
+                      <Parameter AllowDbNull="true" AutogeneratedName="" DataSourceName="" DataTypeServer="char" DbType="AnsiStringFixedLength" Direction="Input" ParameterName="@masv" Precision="0" ProviderType="Char" Scale="0" Size="12" SourceColumnNullMapping="false" SourceVersion="Current" />
+                    </Parameters>
+                  </DbCommand>
+                </SelectCommand>
+                <UpdateCommand>
+                  <DbCommand CommandType="StoredProcedure" ModifiedByUser="false">
+                    <CommandText>dbo.sp_GETTHONGTINHOCPHICUASINHVIEN</CommandText>
+                    <Parameters>
+                      <Parameter AllowDbNull="true" AutogeneratedName="" DataSourceName="" DataTypeServer="int" DbType="Int32" Direction="ReturnValue" ParameterName="@RETURN_VALUE" Precision="10" ProviderType="Int" Scale="0" Size="4" SourceColumnNullMapping="false" SourceVersion="Current" />
+                      <Parameter AllowDbNull="true" AutogeneratedName="" DataSourceName="" DataTypeServer="char" DbType="AnsiStringFixedLength" Direction="Input" ParameterName="@masv" Precision="0" ProviderType="Char" Scale="0" Size="12" SourceColumn="MASV" SourceColumnNullMapping="false" SourceVersion="Current" />
+                    </Parameters>
+                  </DbCommand>
+                </UpdateCommand>
+              </DbSource>
+            </MainSource>
+            <Mappings>
+              <Mapping SourceColumn="MASV" DataSetColumn="MASV" />
+              <Mapping SourceColumn="NIENKHOA" DataSetColumn="NIENKHOA" />
+              <Mapping SourceColumn="HOCKY" DataSetColumn="HOCKY" />
+              <Mapping SourceColumn="HOCPHI" DataSetColumn="HOCPHI" />
+              <Mapping SourceColumn="SOTIENDADONG" DataSetColumn="SOTIENDADONG" />
+            </Mappings>
+            <Sources />
+          </TableAdapter>
+          <TableAdapter BaseClass="System.ComponentModel.Component" DataAccessorModifier="AutoLayout, AnsiClass, Class, Public" DataAccessorName="SP_REPORT_DSSVTableAdapter" GeneratorDataComponentClassName="SP_REPORT_DSSVTableAdapter" Name="SP_REPORT_DSSV" UserDataComponentName="SP_REPORT_DSSVTableAdapter">
+            <MainSource>
+              <DbSource ConnectionRef="QLDSVConnectionString (Settings)" DbObjectName="QLDSV.dbo.SP_REPORT_DSSV" DbObjectType="StoredProcedure" FillMethodModifier="Public" FillMethodName="Fill" GenerateMethods="Both" GenerateShortCommands="false" GeneratorGetMethodName="GetData" GeneratorSourceName="Fill" GetMethodModifier="Public" GetMethodName="GetData" QueryType="Rowset" ScalarCallRetval="System.Object, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" UseOptimisticConcurrency="true" UserGetMethodName="GetData" UserSourceName="Fill">
+                <SelectCommand>
+                  <DbCommand CommandType="StoredProcedure" ModifiedByUser="false">
+                    <CommandText>dbo.SP_REPORT_DSSV</CommandText>
+                    <Parameters>
+                      <Parameter AllowDbNull="true" AutogeneratedName="" DataSourceName="" DataTypeServer="int" DbType="Int32" Direction="ReturnValue" ParameterName="@RETURN_VALUE" Precision="10" ProviderType="Int" Scale="0" Size="4" SourceColumnNullMapping="false" SourceVersion="Current" />
+                      <Parameter AllowDbNull="true" AutogeneratedName="" DataSourceName="" DataTypeServer="char" DbType="AnsiStringFixedLength" Direction="Input" ParameterName="@MALOP" Precision="0" ProviderType="Char" Scale="0" Size="15" SourceColumnNullMapping="false" SourceVersion="Current" />
+                    </Parameters>
+                  </DbCommand>
+                </SelectCommand>
+              </DbSource>
+            </MainSource>
+            <Mappings>
+              <Mapping SourceColumn="HO" DataSetColumn="HO" />
+              <Mapping SourceColumn="TEN" DataSetColumn="TEN" />
+              <Mapping SourceColumn="PHAI" DataSetColumn="PHAI" />
+              <Mapping SourceColumn="NGAYSINH" DataSetColumn="NGAYSINH" />
+              <Mapping SourceColumn="NOISINH" DataSetColumn="NOISINH" />
+              <Mapping SourceColumn="DIACHI" DataSetColumn="DIACHI" />
             </Mappings>
             <Sources />
           </TableAdapter>
@@ -567,6 +829,204 @@ SELECT MASV, HO, TEN, MALOP, PHAI, NGAYSINH, NOISINH, DIACHI, GHICHU, NGHIHOC FR
             </xs:sequence>
           </xs:complexType>
         </xs:element>
+        <xs:element name="GETDSGV" msprop:Generator_TableClassName="GETDSGVDataTable" msprop:Generator_TableVarName="tableGETDSGV" msprop:Generator_TablePropName="GETDSGV" msprop:Generator_RowDeletingName="GETDSGVRowDeleting" msprop:Generator_RowChangingName="GETDSGVRowChanging" msprop:Generator_RowEvHandlerName="GETDSGVRowChangeEventHandler" msprop:Generator_RowDeletedName="GETDSGVRowDeleted" msprop:Generator_UserTableName="GETDSGV" msprop:Generator_RowChangedName="GETDSGVRowChanged" msprop:Generator_RowEvArgName="GETDSGVRowChangeEvent" msprop:Generator_RowClassName="GETDSGVRow">
+          <xs:complexType>
+            <xs:sequence>
+              <xs:element name="MAGV" msprop:Generator_ColumnVarNameInTable="columnMAGV" msprop:Generator_ColumnPropNameInRow="MAGV" msprop:Generator_ColumnPropNameInTable="MAGVColumn" msprop:Generator_UserColumnName="MAGV">
+                <xs:simpleType>
+                  <xs:restriction base="xs:string">
+                    <xs:maxLength value="10" />
+                  </xs:restriction>
+                </xs:simpleType>
+              </xs:element>
+              <xs:element name="TEN" msdata:ReadOnly="true" msprop:Generator_ColumnVarNameInTable="columnTEN" msprop:Generator_ColumnPropNameInRow="TEN" msprop:Generator_ColumnPropNameInTable="TENColumn" msprop:Generator_UserColumnName="TEN" minOccurs="0">
+                <xs:simpleType>
+                  <xs:restriction base="xs:string">
+                    <xs:maxLength value="61" />
+                  </xs:restriction>
+                </xs:simpleType>
+              </xs:element>
+            </xs:sequence>
+          </xs:complexType>
+        </xs:element>
+        <xs:element name="SP_REPORT_DSTHM" msprop:Generator_TableClassName="SP_REPORT_DSTHMDataTable" msprop:Generator_TableVarName="tableSP_REPORT_DSTHM" msprop:Generator_TablePropName="SP_REPORT_DSTHM" msprop:Generator_RowDeletingName="SP_REPORT_DSTHMRowDeleting" msprop:Generator_RowChangingName="SP_REPORT_DSTHMRowChanging" msprop:Generator_RowEvHandlerName="SP_REPORT_DSTHMRowChangeEventHandler" msprop:Generator_RowDeletedName="SP_REPORT_DSTHMRowDeleted" msprop:Generator_UserTableName="SP_REPORT_DSTHM" msprop:Generator_RowChangedName="SP_REPORT_DSTHMRowChanged" msprop:Generator_RowEvArgName="SP_REPORT_DSTHMRowChangeEvent" msprop:Generator_RowClassName="SP_REPORT_DSTHMRow">
+          <xs:complexType>
+            <xs:sequence>
+              <xs:element name="MASV" msprop:Generator_ColumnVarNameInTable="columnMASV" msprop:Generator_ColumnPropNameInRow="MASV" msprop:Generator_ColumnPropNameInTable="MASVColumn" msprop:Generator_UserColumnName="MASV">
+                <xs:simpleType>
+                  <xs:restriction base="xs:string">
+                    <xs:maxLength value="12" />
+                  </xs:restriction>
+                </xs:simpleType>
+              </xs:element>
+              <xs:element name="HOTEN" msdata:ReadOnly="true" msprop:Generator_ColumnVarNameInTable="columnHOTEN" msprop:Generator_ColumnPropNameInRow="HOTEN" msprop:Generator_ColumnPropNameInTable="HOTENColumn" msprop:Generator_UserColumnName="HOTEN" minOccurs="0">
+                <xs:simpleType>
+                  <xs:restriction base="xs:string">
+                    <xs:maxLength value="51" />
+                  </xs:restriction>
+                </xs:simpleType>
+              </xs:element>
+            </xs:sequence>
+          </xs:complexType>
+        </xs:element>
+        <xs:element name="SP_REPORT_BDMH" msprop:Generator_TableClassName="SP_REPORT_BDMHDataTable" msprop:Generator_TableVarName="tableSP_REPORT_BDMH" msprop:Generator_RowChangedName="SP_REPORT_BDMHRowChanged" msprop:Generator_TablePropName="SP_REPORT_BDMH" msprop:Generator_RowDeletingName="SP_REPORT_BDMHRowDeleting" msprop:Generator_RowChangingName="SP_REPORT_BDMHRowChanging" msprop:Generator_RowEvHandlerName="SP_REPORT_BDMHRowChangeEventHandler" msprop:Generator_RowDeletedName="SP_REPORT_BDMHRowDeleted" msprop:Generator_RowClassName="SP_REPORT_BDMHRow" msprop:Generator_UserTableName="SP_REPORT_BDMH" msprop:Generator_RowEvArgName="SP_REPORT_BDMHRowChangeEvent">
+          <xs:complexType>
+            <xs:sequence>
+              <xs:element name="HOTEN" msdata:ReadOnly="true" msprop:Generator_ColumnVarNameInTable="columnHOTEN" msprop:Generator_ColumnPropNameInRow="HOTEN" msprop:Generator_ColumnPropNameInTable="HOTENColumn" msprop:Generator_UserColumnName="HOTEN" minOccurs="0">
+                <xs:simpleType>
+                  <xs:restriction base="xs:string">
+                    <xs:maxLength value="4" />
+                  </xs:restriction>
+                </xs:simpleType>
+              </xs:element>
+              <xs:element name="DIEM" msdata:ReadOnly="true" msprop:Generator_ColumnVarNameInTable="columnDIEM" msprop:Generator_ColumnPropNameInRow="DIEM" msprop:Generator_ColumnPropNameInTable="DIEMColumn" msprop:Generator_UserColumnName="DIEM" type="xs:int" minOccurs="0" />
+            </xs:sequence>
+          </xs:complexType>
+        </xs:element>
+        <xs:element name="SP_REPORT_PD" msprop:Generator_TableClassName="SP_REPORT_PDDataTable" msprop:Generator_TableVarName="tableSP_REPORT_PD" msprop:Generator_TablePropName="SP_REPORT_PD" msprop:Generator_RowDeletingName="SP_REPORT_PDRowDeleting" msprop:Generator_RowChangingName="SP_REPORT_PDRowChanging" msprop:Generator_RowEvHandlerName="SP_REPORT_PDRowChangeEventHandler" msprop:Generator_RowDeletedName="SP_REPORT_PDRowDeleted" msprop:Generator_UserTableName="SP_REPORT_PD" msprop:Generator_RowChangedName="SP_REPORT_PDRowChanged" msprop:Generator_RowEvArgName="SP_REPORT_PDRowChangeEvent" msprop:Generator_RowClassName="SP_REPORT_PDRow">
+          <xs:complexType>
+            <xs:sequence>
+              <xs:element name="TENMH" msdata:ReadOnly="true" msprop:Generator_ColumnVarNameInTable="columnTENMH" msprop:Generator_ColumnPropNameInRow="TENMH" msprop:Generator_ColumnPropNameInTable="TENMHColumn" msprop:Generator_UserColumnName="TENMH" minOccurs="0">
+                <xs:simpleType>
+                  <xs:restriction base="xs:string">
+                    <xs:maxLength value="4" />
+                  </xs:restriction>
+                </xs:simpleType>
+              </xs:element>
+              <xs:element name="DIEM" msdata:ReadOnly="true" msprop:Generator_ColumnVarNameInTable="columnDIEM" msprop:Generator_ColumnPropNameInRow="DIEM" msprop:Generator_ColumnPropNameInTable="DIEMColumn" msprop:Generator_UserColumnName="DIEM" type="xs:int" minOccurs="0" />
+            </xs:sequence>
+          </xs:complexType>
+        </xs:element>
+        <xs:element name="SP_REPORT_DSDHP" msprop:Generator_TableClassName="SP_REPORT_DSDHPDataTable" msprop:Generator_TableVarName="tableSP_REPORT_DSDHP" msprop:Generator_RowChangedName="SP_REPORT_DSDHPRowChanged" msprop:Generator_TablePropName="SP_REPORT_DSDHP" msprop:Generator_RowDeletingName="SP_REPORT_DSDHPRowDeleting" msprop:Generator_RowChangingName="SP_REPORT_DSDHPRowChanging" msprop:Generator_RowEvHandlerName="SP_REPORT_DSDHPRowChangeEventHandler" msprop:Generator_RowDeletedName="SP_REPORT_DSDHPRowDeleted" msprop:Generator_RowClassName="SP_REPORT_DSDHPRow" msprop:Generator_UserTableName="SP_REPORT_DSDHP" msprop:Generator_RowEvArgName="SP_REPORT_DSDHPRowChangeEvent">
+          <xs:complexType>
+            <xs:sequence>
+              <xs:element name="HOTEN" msdata:ReadOnly="true" msprop:Generator_ColumnVarNameInTable="columnHOTEN" msprop:Generator_ColumnPropNameInRow="HOTEN" msprop:Generator_ColumnPropNameInTable="HOTENColumn" msprop:Generator_UserColumnName="HOTEN" minOccurs="0">
+                <xs:simpleType>
+                  <xs:restriction base="xs:string">
+                    <xs:maxLength value="4" />
+                  </xs:restriction>
+                </xs:simpleType>
+              </xs:element>
+              <xs:element name="HOCPHI" msdata:ReadOnly="true" msprop:Generator_ColumnVarNameInTable="columnHOCPHI" msprop:Generator_ColumnPropNameInRow="HOCPHI" msprop:Generator_ColumnPropNameInTable="HOCPHIColumn" msprop:Generator_UserColumnName="HOCPHI" type="xs:int" minOccurs="0" />
+              <xs:element name="SOTIENDADONG" msdata:ReadOnly="true" msprop:Generator_ColumnVarNameInTable="columnSOTIENDADONG" msprop:Generator_ColumnPropNameInRow="SOTIENDADONG" msprop:Generator_ColumnPropNameInTable="SOTIENDADONGColumn" msprop:Generator_UserColumnName="SOTIENDADONG" type="xs:int" minOccurs="0" />
+            </xs:sequence>
+          </xs:complexType>
+        </xs:element>
+        <xs:element name="SP_REPORT_BDTK" msprop:Generator_TableClassName="SP_REPORT_BDTKDataTable" msprop:Generator_TableVarName="tableSP_REPORT_BDTK" msprop:Generator_TablePropName="SP_REPORT_BDTK" msprop:Generator_RowDeletingName="SP_REPORT_BDTKRowDeleting" msprop:Generator_RowChangingName="SP_REPORT_BDTKRowChanging" msprop:Generator_RowEvHandlerName="SP_REPORT_BDTKRowChangeEventHandler" msprop:Generator_RowDeletedName="SP_REPORT_BDTKRowDeleted" msprop:Generator_UserTableName="SP_REPORT_BDTK" msprop:Generator_RowChangedName="SP_REPORT_BDTKRowChanged" msprop:Generator_RowEvArgName="SP_REPORT_BDTKRowChangeEvent" msprop:Generator_RowClassName="SP_REPORT_BDTKRow">
+          <xs:complexType>
+            <xs:sequence>
+              <xs:element name="HOTEN" msdata:ReadOnly="true" msprop:Generator_ColumnVarNameInTable="columnHOTEN" msprop:Generator_ColumnPropNameInRow="HOTEN" msprop:Generator_ColumnPropNameInTable="HOTENColumn" msprop:Generator_UserColumnName="HOTEN" minOccurs="0">
+                <xs:simpleType>
+                  <xs:restriction base="xs:string">
+                    <xs:maxLength value="65" />
+                  </xs:restriction>
+                </xs:simpleType>
+              </xs:element>
+              <xs:element name="TENMH" msprop:Generator_ColumnVarNameInTable="columnTENMH" msprop:Generator_ColumnPropNameInRow="TENMH" msprop:Generator_ColumnPropNameInTable="TENMHColumn" msprop:Generator_UserColumnName="TENMH" minOccurs="0">
+                <xs:simpleType>
+                  <xs:restriction base="xs:string">
+                    <xs:maxLength value="40" />
+                  </xs:restriction>
+                </xs:simpleType>
+              </xs:element>
+              <xs:element name="DIEM" msdata:ReadOnly="true" msprop:Generator_ColumnVarNameInTable="columnDIEM" msprop:Generator_ColumnPropNameInRow="DIEM" msprop:Generator_ColumnPropNameInTable="DIEMColumn" msprop:Generator_UserColumnName="DIEM" type="xs:double" minOccurs="0" />
+            </xs:sequence>
+          </xs:complexType>
+        </xs:element>
+        <xs:element name="HOCPHI" msprop:Generator_TableClassName="HOCPHIDataTable" msprop:Generator_TableVarName="tableHOCPHI" msprop:Generator_TablePropName="HOCPHI" msprop:Generator_RowDeletingName="HOCPHIRowDeleting" msprop:Generator_RowChangingName="HOCPHIRowChanging" msprop:Generator_RowEvHandlerName="HOCPHIRowChangeEventHandler" msprop:Generator_RowDeletedName="HOCPHIRowDeleted" msprop:Generator_UserTableName="HOCPHI" msprop:Generator_RowChangedName="HOCPHIRowChanged" msprop:Generator_RowEvArgName="HOCPHIRowChangeEvent" msprop:Generator_RowClassName="HOCPHIRow">
+          <xs:complexType>
+            <xs:sequence>
+              <xs:element name="MASV" msprop:Generator_ColumnVarNameInTable="columnMASV" msprop:Generator_ColumnPropNameInRow="MASV" msprop:Generator_ColumnPropNameInTable="MASVColumn" msprop:Generator_UserColumnName="MASV">
+                <xs:simpleType>
+                  <xs:restriction base="xs:string">
+                    <xs:maxLength value="12" />
+                  </xs:restriction>
+                </xs:simpleType>
+              </xs:element>
+              <xs:element name="NIENKHOA" msprop:Generator_ColumnVarNameInTable="columnNIENKHOA" msprop:Generator_ColumnPropNameInRow="NIENKHOA" msprop:Generator_ColumnPropNameInTable="NIENKHOAColumn" msprop:Generator_UserColumnName="NIENKHOA">
+                <xs:simpleType>
+                  <xs:restriction base="xs:string">
+                    <xs:maxLength value="50" />
+                  </xs:restriction>
+                </xs:simpleType>
+              </xs:element>
+              <xs:element name="HOCKY" msprop:Generator_ColumnVarNameInTable="columnHOCKY" msprop:Generator_ColumnPropNameInRow="HOCKY" msprop:Generator_ColumnPropNameInTable="HOCKYColumn" msprop:Generator_UserColumnName="HOCKY" type="xs:int" />
+              <xs:element name="HOCPHI" msprop:Generator_ColumnVarNameInTable="columnHOCPHI" msprop:Generator_ColumnPropNameInRow="HOCPHI" msprop:Generator_ColumnPropNameInTable="HOCPHIColumn" msprop:Generator_UserColumnName="HOCPHI" type="xs:int" />
+              <xs:element name="SOTIENDADONG" msprop:Generator_ColumnVarNameInTable="columnSOTIENDADONG" msprop:Generator_ColumnPropNameInRow="SOTIENDADONG" msprop:Generator_ColumnPropNameInTable="SOTIENDADONGColumn" msprop:Generator_UserColumnName="SOTIENDADONG" type="xs:int" />
+            </xs:sequence>
+          </xs:complexType>
+        </xs:element>
+        <xs:element name="THONGTINHOCPHICUASINHVIEN" msprop:Generator_TableClassName="THONGTINHOCPHICUASINHVIENDataTable" msprop:Generator_TableVarName="tableTHONGTINHOCPHICUASINHVIEN" msprop:Generator_TablePropName="THONGTINHOCPHICUASINHVIEN" msprop:Generator_RowDeletingName="THONGTINHOCPHICUASINHVIENRowDeleting" msprop:Generator_RowChangingName="THONGTINHOCPHICUASINHVIENRowChanging" msprop:Generator_RowEvHandlerName="THONGTINHOCPHICUASINHVIENRowChangeEventHandler" msprop:Generator_RowDeletedName="THONGTINHOCPHICUASINHVIENRowDeleted" msprop:Generator_UserTableName="THONGTINHOCPHICUASINHVIEN" msprop:Generator_RowChangedName="THONGTINHOCPHICUASINHVIENRowChanged" msprop:Generator_RowEvArgName="THONGTINHOCPHICUASINHVIENRowChangeEvent" msprop:Generator_RowClassName="THONGTINHOCPHICUASINHVIENRow">
+          <xs:complexType>
+            <xs:sequence>
+              <xs:element name="MASV" msprop:Generator_ColumnVarNameInTable="columnMASV" msprop:Generator_ColumnPropNameInRow="MASV" msprop:Generator_ColumnPropNameInTable="MASVColumn" msprop:Generator_UserColumnName="MASV">
+                <xs:simpleType>
+                  <xs:restriction base="xs:string">
+                    <xs:maxLength value="12" />
+                  </xs:restriction>
+                </xs:simpleType>
+              </xs:element>
+              <xs:element name="NIENKHOA" msprop:Generator_ColumnVarNameInTable="columnNIENKHOA" msprop:Generator_ColumnPropNameInRow="NIENKHOA" msprop:Generator_ColumnPropNameInTable="NIENKHOAColumn" msprop:Generator_UserColumnName="NIENKHOA">
+                <xs:simpleType>
+                  <xs:restriction base="xs:string">
+                    <xs:maxLength value="50" />
+                  </xs:restriction>
+                </xs:simpleType>
+              </xs:element>
+              <xs:element name="HOCKY" msprop:Generator_ColumnVarNameInTable="columnHOCKY" msprop:Generator_ColumnPropNameInRow="HOCKY" msprop:Generator_ColumnPropNameInTable="HOCKYColumn" msprop:Generator_UserColumnName="HOCKY" type="xs:int" />
+              <xs:element name="HOCPHI" msprop:Generator_ColumnVarNameInTable="columnHOCPHI" msprop:Generator_ColumnPropNameInRow="HOCPHI" msprop:Generator_ColumnPropNameInTable="HOCPHIColumn" msprop:Generator_UserColumnName="HOCPHI" type="xs:int" />
+              <xs:element name="SOTIENDADONG" msprop:Generator_ColumnVarNameInTable="columnSOTIENDADONG" msprop:Generator_ColumnPropNameInRow="SOTIENDADONG" msprop:Generator_ColumnPropNameInTable="SOTIENDADONGColumn" msprop:Generator_UserColumnName="SOTIENDADONG" type="xs:int" />
+            </xs:sequence>
+          </xs:complexType>
+        </xs:element>
+        <xs:element name="SP_REPORT_DSSV" msprop:Generator_TableClassName="SP_REPORT_DSSVDataTable" msprop:Generator_TableVarName="tableSP_REPORT_DSSV" msprop:Generator_TablePropName="SP_REPORT_DSSV" msprop:Generator_RowDeletingName="SP_REPORT_DSSVRowDeleting" msprop:Generator_RowChangingName="SP_REPORT_DSSVRowChanging" msprop:Generator_RowEvHandlerName="SP_REPORT_DSSVRowChangeEventHandler" msprop:Generator_RowDeletedName="SP_REPORT_DSSVRowDeleted" msprop:Generator_UserTableName="SP_REPORT_DSSV" msprop:Generator_RowChangedName="SP_REPORT_DSSVRowChanged" msprop:Generator_RowEvArgName="SP_REPORT_DSSVRowChangeEvent" msprop:Generator_RowClassName="SP_REPORT_DSSVRow">
+          <xs:complexType>
+            <xs:sequence>
+              <xs:element name="HO" msdata:ReadOnly="true" msprop:Generator_ColumnVarNameInTable="columnHO" msprop:Generator_ColumnPropNameInRow="HO" msprop:Generator_ColumnPropNameInTable="HOColumn" msprop:Generator_UserColumnName="HO" minOccurs="0">
+                <xs:simpleType>
+                  <xs:restriction base="xs:string">
+                    <xs:maxLength value="4" />
+                  </xs:restriction>
+                </xs:simpleType>
+              </xs:element>
+              <xs:element name="TEN" msdata:ReadOnly="true" msprop:Generator_ColumnVarNameInTable="columnTEN" msprop:Generator_ColumnPropNameInRow="TEN" msprop:Generator_ColumnPropNameInTable="TENColumn" msprop:Generator_UserColumnName="TEN" minOccurs="0">
+                <xs:simpleType>
+                  <xs:restriction base="xs:string">
+                    <xs:maxLength value="4" />
+                  </xs:restriction>
+                </xs:simpleType>
+              </xs:element>
+              <xs:element name="PHAI" msdata:ReadOnly="true" msprop:Generator_ColumnVarNameInTable="columnPHAI" msprop:Generator_ColumnPropNameInRow="PHAI" msprop:Generator_ColumnPropNameInTable="PHAIColumn" msprop:Generator_UserColumnName="PHAI" minOccurs="0">
+                <xs:simpleType>
+                  <xs:restriction base="xs:string">
+                    <xs:maxLength value="3" />
+                  </xs:restriction>
+                </xs:simpleType>
+              </xs:element>
+              <xs:element name="NGAYSINH" msdata:ReadOnly="true" msprop:Generator_ColumnVarNameInTable="columnNGAYSINH" msprop:Generator_ColumnPropNameInRow="NGAYSINH" msprop:Generator_ColumnPropNameInTable="NGAYSINHColumn" msprop:Generator_UserColumnName="NGAYSINH" minOccurs="0">
+                <xs:simpleType>
+                  <xs:restriction base="xs:string">
+                    <xs:maxLength value="4" />
+                  </xs:restriction>
+                </xs:simpleType>
+              </xs:element>
+              <xs:element name="NOISINH" msdata:ReadOnly="true" msprop:Generator_ColumnVarNameInTable="columnNOISINH" msprop:Generator_ColumnPropNameInRow="NOISINH" msprop:Generator_ColumnPropNameInTable="NOISINHColumn" msprop:Generator_UserColumnName="NOISINH" minOccurs="0">
+                <xs:simpleType>
+                  <xs:restriction base="xs:string">
+                    <xs:maxLength value="4" />
+                  </xs:restriction>
+                </xs:simpleType>
+              </xs:element>
+              <xs:element name="DIACHI" msdata:ReadOnly="true" msprop:Generator_ColumnVarNameInTable="columnDIACHI" msprop:Generator_ColumnPropNameInRow="DIACHI" msprop:Generator_ColumnPropNameInTable="DIACHIColumn" msprop:Generator_UserColumnName="DIACHI" minOccurs="0">
+                <xs:simpleType>
+                  <xs:restriction base="xs:string">
+                    <xs:maxLength value="4" />
+                  </xs:restriction>
+                </xs:simpleType>
+              </xs:element>
+            </xs:sequence>
+          </xs:complexType>
+        </xs:element>
       </xs:choice>
     </xs:complexType>
     <xs:unique name="Constraint1" msdata:PrimaryKey="true">
@@ -595,6 +1055,30 @@ SELECT MASV, HO, TEN, MALOP, PHAI, NGAYSINH, NOISINH, DIACHI, GHICHU, NGHIHOC FR
       <xs:selector xpath=".//mstns:SINHVIEN" />
       <xs:field xpath="mstns:MASV" />
     </xs:unique>
+    <xs:unique name="GETDSGV_Constraint1" msdata:ConstraintName="Constraint1" msdata:PrimaryKey="true">
+      <xs:selector xpath=".//mstns:GETDSGV" />
+      <xs:field xpath="mstns:MAGV" />
+    </xs:unique>
+    <xs:unique name="SP_REPORT_DSTHM_Constraint1" msdata:ConstraintName="Constraint1" msdata:PrimaryKey="true">
+      <xs:selector xpath=".//mstns:SP_REPORT_DSTHM" />
+      <xs:field xpath="mstns:MASV" />
+    </xs:unique>
+    <xs:unique name="HOCPHI_Constraint1" msdata:ConstraintName="Constraint1" msdata:PrimaryKey="true">
+      <xs:selector xpath=".//mstns:HOCPHI" />
+      <xs:field xpath="mstns:MASV" />
+      <xs:field xpath="mstns:NIENKHOA" />
+      <xs:field xpath="mstns:HOCKY" />
+    </xs:unique>
+    <xs:unique name="THONGTINHOCPHICUASINHVIEN_Constraint1" msdata:ConstraintName="Constraint1" msdata:PrimaryKey="true">
+      <xs:selector xpath=".//mstns:THONGTINHOCPHICUASINHVIEN" />
+      <xs:field xpath="mstns:MASV" />
+      <xs:field xpath="mstns:NIENKHOA" />
+      <xs:field xpath="mstns:HOCKY" />
+    </xs:unique>
+    <xs:keyref name="FK_HOCPHI_SINHVIEN" refer="SINHVIEN_Constraint1" msprop:rel_Generator_UserChildTable="HOCPHI" msprop:rel_Generator_ChildPropName="GetHOCPHIRows" msprop:rel_Generator_UserRelationName="FK_HOCPHI_SINHVIEN" msprop:rel_Generator_ParentPropName="SINHVIENRow" msprop:rel_Generator_RelationVarName="relationFK_HOCPHI_SINHVIEN" msprop:rel_Generator_UserParentTable="SINHVIEN" msdata:DeleteRule="None">
+      <xs:selector xpath=".//mstns:HOCPHI" />
+      <xs:field xpath="mstns:MASV" />
+    </xs:keyref>
     <xs:keyref name="FK_SINHVIEN_LOP" refer="LOP_Constraint1" msprop:rel_Generator_UserChildTable="SINHVIEN" msprop:rel_Generator_ChildPropName="GetSINHVIENRows" msprop:rel_Generator_UserRelationName="FK_SINHVIEN_LOP" msprop:rel_Generator_ParentPropName="LOPRow" msprop:rel_Generator_RelationVarName="relationFK_SINHVIEN_LOP" msprop:rel_Generator_UserParentTable="LOP" msdata:DeleteRule="None">
       <xs:selector xpath=".//mstns:SINHVIEN" />
       <xs:field xpath="mstns:MALOP" />

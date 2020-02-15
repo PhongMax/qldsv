@@ -12,7 +12,7 @@ namespace QLDSV.Properties {
     
     
     [global::System.Runtime.CompilerServices.CompilerGeneratedAttribute()]
-    [global::System.CodeDom.Compiler.GeneratedCodeAttribute("Microsoft.VisualStudio.Editors.SettingsDesigner.SettingsSingleFileGenerator", "15.9.0.0")]
+    [global::System.CodeDom.Compiler.GeneratedCodeAttribute("Microsoft.VisualStudio.Editors.SettingsDesigner.SettingsSingleFileGenerator", "15.0.1.0")]
     internal sealed partial class Settings : global::System.Configuration.ApplicationSettingsBase {
         
         private static Settings defaultInstance = ((Settings)(global::System.Configuration.ApplicationSettingsBase.Synchronized(new Settings())));
@@ -26,7 +26,19 @@ namespace QLDSV.Properties {
         [global::System.Configuration.ApplicationScopedSettingAttribute()]
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
         [global::System.Configuration.SpecialSettingAttribute(global::System.Configuration.SpecialSetting.ConnectionString)]
-        [global::System.Configuration.DefaultSettingValueAttribute("Data Source=DESKTOP-CCI6BQR;Initial Catalog=QLDSV;Integrated Security=True")]
+        [global::System.Configuration.DefaultSettingValueAttribute("Data Source=DESKTOP-CCI6BQR\\SERVER1;Initial Catalog=QLDSV;User ID=pgv;Password=12" +
+            "3456")]
+        public string QLDSVConnectionString1 {
+            get {
+                return ((string)(this["QLDSVConnectionString1"]));
+            }
+        }
+        
+        [global::System.Configuration.ApplicationScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.SpecialSettingAttribute(global::System.Configuration.SpecialSetting.ConnectionString)]
+        [global::System.Configuration.DefaultSettingValueAttribute("Data Source=DESKTOP-ASUS\\SERVER1;Initial Catalog=QLDSV;User ID=HTKN;Password=1234" +
+            "56")]
         public string QLDSVConnectionString {
             get {
                 return ((string)(this["QLDSVConnectionString"]));
@@ -36,11 +48,11 @@ namespace QLDSV.Properties {
         [global::System.Configuration.ApplicationScopedSettingAttribute()]
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
         [global::System.Configuration.SpecialSettingAttribute(global::System.Configuration.SpecialSetting.ConnectionString)]
-        [global::System.Configuration.DefaultSettingValueAttribute("Data Source=DESKTOP-CCI6BQR\\SERVER1;Initial Catalog=QLDSV;User ID=pgv;Password=12" +
-            "3456")]
-        public string QLDSVConnectionString1 {
+        [global::System.Configuration.DefaultSettingValueAttribute("Data Source=DESKTOP-ASUS\\SERVER1;Initial Catalog=QLDSV;User ID=cntt;Password=1234" +
+            "56")]
+        public string QLDSVConnectionString2 {
             get {
-                return ((string)(this["QLDSVConnectionString1"]));
+                return ((string)(this["QLDSVConnectionString2"]));
             }
         }
     }
