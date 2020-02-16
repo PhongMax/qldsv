@@ -161,15 +161,31 @@ namespace QLDSV.Forms
             DataTable tblDiem_Nhap = Program.ExecSqlDataTable(cmd1);
             this.bdsBangDiem_Nhap.DataSource = tblDiem_Nhap;
 
+
+            //   ==> TRƯỜNG HỢP HIỆU CHỈNH ĐIỂM
             if (this.bdsBangDiem_Sua.Count > 0)
             {
-                // trường hợp sửa điểm
+                 if (lanthi == 1)
+                {  
+                    // check lần 2 có điểm chưa
+                    string temp = "  EXEC[dbo].[SP_BDMH] " +
+                        " @malop = N'" + lop + "'," +
+                        " @mamh = N'" + monhoc + "'," +
+                           "@lan =" + 2;
+                    DataTable dataTableCheck = Program.ExecSqlDataTable(temp);
+                    if (dataTableCheck.Rows.Count > 0)
+                    {
+                        errorProvider.SetError(this.btnNhap, "Lần thi 2 đã có điểm nên  điểm ở lần thi 1 không được phép hiệu chỉnh ! ");
+                        this.btnLuu.Enabled = false;
+                    }
+
+                }
+
+                 // display thông tin trên lưới
                 this.gridControlDiem.DataSource = this.bdsBangDiem_Sua;
             }
-            else
+            else  //  ==> TRƯỜNG HỢP NHẬP ĐIỂM
             {
-                // trường hợp nhập điểm cho lần thi thứ 2...
-
                 // lần 2 được nhập điểm nếu lần 1 đã nhập điểm
                 if (lanthi == 2)
                 {
@@ -188,7 +204,7 @@ namespace QLDSV.Forms
                     }
                     else
                     {
-                        // nếu lần 1 đã có điểm thì thực hiện nhập điểm cho lần 2 với điều kiện là chỉ những sinh viên có điểm < 4.
+                        // nếu lần 1 đã có điểm thì thực hiện nhập điểm cho lần 2 với điều kiện là chỉ những sinh viên có điểm < 5.
 
                         for(int i = dataTableCheck.Rows.Count - 1; i >= 0; i--)
 {
@@ -203,10 +219,10 @@ namespace QLDSV.Forms
                         }
                         dataTableCheck.AcceptChanges();
                         this.bdsBangDiem_Nhap.DataSource = dataTableCheck;
-                        
+                        this.gridControlDiem.DataSource = this.bdsBangDiem_Nhap;
+                        return;
                     }
                 }
-
 
                 //trường hợp nhập điểm cho lần thi thứ nhất.
                 this.gridControlDiem.DataSource = this.bdsBangDiem_Nhap;
@@ -258,7 +274,7 @@ namespace QLDSV.Forms
                 {
 
                    
-                    for (int i = 0; i < bdsBangDiem_Nhap.Count ; i++)
+                    for (int i = 0; i < bdsTemp.Count ; i++)
                     {
 
                         SqlCommand cmd = new SqlCommand("SP_INSERT_DIEM", conn);
