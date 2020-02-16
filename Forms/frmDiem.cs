@@ -110,6 +110,20 @@ namespace QLDSV.Forms
             catch (Exception) { }
         }
 
+
+        // xử lý 6 trường hợp có thể có trong nghiệp vụ nhập điểm
+        //Nếu lan thi = 1
+        //    + Danh sách lớp chưa có điểm thi lần 1 thì hiện ra bảng sau:
+        //        MASV            Họ Tên                 Điểm
+        //    + Danh sách lớp đã có điểm môn học lần thi 1 thì hiện bảng như trên , nhưng cột điểm sẽ có giá trị ta nhập lần trước
+        //    ==> cho  phép người dùng hiệu chỉnh điểm 
+        //    + Trường hợp nếu đã có điểm môn học ở lần thi 2 thì hiện thông tin điểm như trên nhưng ko cho phép người dùng hiệu chỉnh điểm trong csdl
+        //Nếu lan thi = 2
+        //    + Danh sách lớp chưa nhập điểm cho lần 1 thì báo lỗi
+        //    + Nếu đã nhập lần thì 1 và lần thi 2 chưa nhập : hiện bản như sau:
+        //        MASV             Họ Tên                Điểm
+        //    Trong đó, họ và tên là của sinh viên có điểm môn học lần thi 1 nhỏ hơn 5 hoặc vắng, còn cột điểm trống để cho người dùng nhập
+        //    + Nếu đã nhập lần thì 2 thì hiện ra bảng như trên và dữ liệu điểm là của lần thi 2 cho người dùng hiệu chỉnh
         private void btnNhap_Click(object sender, EventArgs e)
         {
            
@@ -180,7 +194,7 @@ namespace QLDSV.Forms
 {
                             DataRow dr = dataTableCheck.Rows[i];
                             float checkDiem = float.Parse(dr["DIEM"] as string);
-                            if (checkDiem > 4)
+                            if (checkDiem > 5)
                                 dr.Delete();
                             else
                             {

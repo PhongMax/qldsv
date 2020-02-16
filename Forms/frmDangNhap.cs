@@ -33,7 +33,9 @@ namespace QLDSV
           
             // cất dt vào biến toàn cục Bds_Dspm
             Program.Bds_Dspm.DataSource = dt;
-            
+
+            // fix lỗi nho nhỏ :v
+            Program.Bds_Dspm.Sort = "TENKHOA ASC";
             // đoạn code liên kết giữa bds với combobox
             Utils.BindingDataToComBo(cmbKhoa, dt);
         }

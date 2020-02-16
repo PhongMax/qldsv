@@ -408,7 +408,7 @@
             // 
             // barButton_Register
             // 
-            this.barButton_Register.Caption = "Tạo tài khoản";
+            this.barButton_Register.Caption = "TAỌ TÀI KHOẢN";
             this.barButton_Register.Id = 2;
             this.barButton_Register.ImageOptions.SvgImage = ((DevExpress.Utils.Svg.SvgImage)(resources.GetObject("barButton_Register.ImageOptions.SvgImage")));
             this.barButton_Register.ItemAppearance.Normal.Font = new System.Drawing.Font("Consolas", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
@@ -420,7 +420,7 @@
             // 
             // barButton_Logout
             // 
-            this.barButton_Logout.Caption = "Đăng xuất";
+            this.barButton_Logout.Caption = "ĐĂNG XUẤT";
             this.barButton_Logout.Id = 3;
             this.barButton_Logout.ImageOptions.Image = global::QLDSV.Properties.Resources.turn_off_32;
             this.barButton_Logout.ItemAppearance.Normal.Font = new System.Drawing.Font("Consolas", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));

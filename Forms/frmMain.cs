@@ -113,6 +113,11 @@ namespace QLDSV
                     e.Cancel = true;
                     return;
                 }
+                else
+                {
+                    this.Dispose();
+                    Program.FrmDangNhap.Close();
+                }
 
             }
         }

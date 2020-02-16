@@ -754,13 +754,19 @@ namespace QLDSV.Forms
             }
             int indexLastRow = bdsSV.Count - 1;
 
-            if (_positionSV > 0  &&  indexLastRow == this.gridViewSinhVien.FocusedRowHandle   && _flagUpdateSV)
+            //if (_positionSV > 0  &&  indexLastRow == this.gridViewSinhVien.FocusedRowHandle   && _flagUpdateSV)
+            //{
+            //        e.Cancel = false;
+            //}
+
+            if ( indexLastRow == this.gridViewSinhVien.FocusedRowHandle && _flagUpdateSV)
             {
-                    e.Cancel = false;
+                e.Cancel = false;
             }
 
 
-          
+
+
         }
 
         private void gridViewSinhVien_ValidateRow(object sender, DevExpress.XtraGrid.Views.Base.ValidateRowEventArgs e)
