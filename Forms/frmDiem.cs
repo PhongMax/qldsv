@@ -410,8 +410,12 @@ namespace QLDSV.Forms
         {
             // get binding source từ gridcontrol
             BindingSource bdsTemp = (BindingSource)this.gridControlDiem.DataSource;
-            bdsTemp.CancelEdit();
-            bdsTemp.ResetBindings(true);
+            if (bdsTemp != null)
+            {
+                bdsTemp.CancelEdit();
+                bdsTemp.ResetBindings(true);
+            }
+          
             // gọi lại form load.
             frmDiem_Load(sender, e);
         }
