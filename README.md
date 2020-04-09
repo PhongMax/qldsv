@@ -1,6 +1,6 @@
 # QLDSV | QUẢN LÝ ĐIỂM SINH VIÊN
 
-Đồ án kết thúc môn Cơ sở dữ liệu phân tán lớp D16CQCP01 
+Đồ án kết thúc môn Cơ sở dữ liệu phân tán lớp D16CQCP01-N 
 
 # Demo
 <a href="https://www.youtube.com/watch?v=RUsqJeA89vo&t=757s">Xem video tại đây!!!</a>
@@ -9,13 +9,12 @@
 | Họ & Tên  | MSSV| Lớp|
 | ------------- | ------------- |----------|
 | Võ Duy Khánh   | N16DCCN076  |D16CQCP01|
-| ------------- | ------------- |----------|
 | Nguyễn Thanh Phong    | N16DCCN116  |D16CQCP01|
 -----------------------------------------------
 ### Giảng viên hướng dẫn
->>**Lưu Nguyễn Kỳ Thư**
+>>**Thầy Lưu Nguyễn Kỳ Thư**
 -----------------------------------------------
-### Prerequisites
+### Sử dụng: 
  - .Net Framework version 4.5
  -  Devexpress version 19.2
 -----------------------------------------------
