@@ -1,9 +1,10 @@
 # QLDSV | QUẢN LÝ ĐIỂM SINH VIÊN
 
-Đồ án kết thúc môn Cơ sở dữ liệu phân tán lớp D16CQCP01  (được 7đ :v)
+Đồ án kết thúc môn Cơ sở dữ liệu phân tán lớp D16CQCP01 
 
 # Demo
 <a href="https://www.youtube.com/watch?v=RUsqJeA89vo&t=757s">Xem video tại đây!!!</a>
+(p/s: Đồ án không có gì ngoài giao diện được thầy khăn)
 ## Thành viên
 | Họ & Tên  | MSSV| Lớp|
 | ------------- | ------------- |----------|
