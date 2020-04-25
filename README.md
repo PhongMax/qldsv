@@ -15,8 +15,8 @@
 >>**Thầy Lưu Nguyễn Kỳ Thư**
 -----------------------------------------------
 ### Sử dụng: 
- - .Net Framework version 4.5
- -  Devexpress version 19.2
+ - .Net Framework version 4.5.2
+ -  Devexpress version 19.2.5.0 (đúng phiên bản mới chạy ^_^)
 -----------------------------------------------
 ### Chi tiết
  - 1 site chủ, 3 site phân mãnh
