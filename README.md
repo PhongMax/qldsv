@@ -4,7 +4,7 @@
 
 # Demo
 <a href="https://www.youtube.com/watch?v=816nt2xopvM">Xem video tại đây!!!</a>
-(p/s: Giao diện được thầy khăn  :v)
+(p/s: Giao diện được thầy khen  :v)
 ## Thành viên
 | Họ & Tên  | MSSV| Lớp|
 | ------------- | ------------- |----------|
